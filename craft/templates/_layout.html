@@ -13,37 +13,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
 <head>
 	<meta charset="utf-8" />
-	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+
+	<meta content="" property="og:url">
+	<meta content="" property="og:title">
+	<meta content="" property="og:description">
+	<meta content="" property="og:image">
+
+	<title>{{ siteName }}</title>
+	
 	<link rel="home" href="{{ siteUrl }}" />
+	<link rel="apple-touch-icon" href="assets/images/static/misc/icon-iphone.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="assets/images/static/misc/icon-ipad.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="assets/images/static/misc/icon-iphone4.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="assets/images/static/misc/icon-ipad3.png">
+	<link rel="shortcut icon" href="assets/images/static/misc/favicon.ico">
+	<link rel="stylesheet" href="assets/styles/css/gux.css">
 
-	<style type="text/css">
-		body { margin: 50px; font-family: sans-serif; background: #fff; }
-		#container { margin: 0 auto; width: 700px;
-			-webkit-box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-			        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-		}
-
-		#header, #footer { display: block; color: #fff; background: #da5a47; }
-		#header a, #footer a { color: #fff; }
-		#header { border-radius: 7px 7px 0 0; padding: 25px; }
-		#header:after { content: '.'; display: block; height: 0; clear: both; visibility: hidden; }
-		#header a { text-decoration: none; }
-		#header h1 { float: left; margin: 0; font-weight: normal; font-size: 30px; line-height: 1; }
-		#header nav { display: block; float: right; }
-		#header nav ul { margin: 0; list-style-type: none; }
-		#header nav ul li { float: left; margin-left: 20px; }
-		#header nav ul li a { display: block; margin-top: 4px; line-height: 22px; }
-		#header nav ul li a:hover,
-		#header nav ul li a.active { border-bottom: 2px solid #fff; }
-		#header nav ul li a.active { cursor: default; }
-
-		#content { display: block; padding: 25px; background: #fff; }
-		#content h1 { margin-top: 0; font-size: 35px; font-weight: bold; }
-		#content a { color: #da5a47; text-decoration: none; }
-		#content a:hover { text-decoration: underline; }
-
-		#footer { border-radius: 0 0 7px 7px; padding: 15px; font-size: 12px; text-align: center; }
-	</style>
+	<script>(function(w){var dpr=((w.devicePixelRatio===undefined)?1:w.devicePixelRatio);if(!!w.navigator.standalone){var r=new XMLHttpRequest();r.open('GET','assets/php/retinaimages.php?devicePixelRatio='+dpr,false);r.send()}else{document.cookie='devicePixelRatio='+dpr+'; path=/'}})(window)</script>
 </head>
 
 <body>
@@ -68,6 +58,9 @@
 		<footer id="footer">
 			Copyright {{ now.year }} {{ craft.request.serverName | ucfirst }}. All rights reserved  •  Built with <a href="http://buildwithcraft.com">Craft</a>
 		</footer>
+
+		{% block scripts %}
+		{% endblock %}
 	</div>
 </body>
 </html>

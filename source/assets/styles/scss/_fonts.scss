@@ -1,0 +1,4 @@
+@include font-face("tahomaregular", font-files("tahoma/tahoma-webfont.ttf", "tahoma/tahoma-webfont.woff", "tahoma/tahoma-webfont.svg"), "tahoma/tahoma-webfont.eot");
+
+$font_tahoma: "tahomaregular";
+$font_system: $font_tahoma, Helvetica, Arial, sans-serif;

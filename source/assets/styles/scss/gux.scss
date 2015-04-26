@@ -1,0 +1,9 @@
+@import "global";
+
+body{
+	&:before{
+		content: "";
+		display: block;
+		@include retina-icon("joeonmars");
+	}
+}

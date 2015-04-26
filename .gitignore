@@ -3,4 +3,8 @@ craft/app/*
 craft/config/license.key
 craft/storage/*
 !craft/storage/backups
+source/bower_components
+source/node_modules
+source/.sass-cache
+source/assets/js/thirdparty/closure-library
 public/images/drinks/_AUTOx150_crop/*
