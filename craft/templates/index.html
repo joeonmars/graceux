@@ -33,13 +33,14 @@
 {% endblock %}
 
 {% block scripts %}
-<!-- third-party -->
-<script src="assets/js/thirdparty.js"></script>
-<!-- project js -->
+<!-- Live Reload -->
 <script src="http://localhost:35729/livereload.js"></script>
-<script src="assets/js/source/thirdparty/closure-library/closure/goog/base.js"></script>
-<script src="assets/js/source/project/gux-deps.js"></script>
-<script src="assets/js/source/project/gux.js"></script>
+<!-- third-party -->
+<script src="{{ siteUrl }}/assets/js/thirdparty.js"></script>
+<!-- project js -->
+<script src="{{ siteUrl }}/assets/js/source/thirdparty/closure-library/closure/goog/base.js"></script>
+<script src="{{ siteUrl }}/assets/js/source/project/gux-deps.js"></script>
+<script src="{{ siteUrl }}/assets/js/source/project/gux.js"></script>
 
 <!-- execute project js-->
 <script>
