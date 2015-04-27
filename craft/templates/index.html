@@ -20,16 +20,33 @@
 {% extends "_layout" %}
 
 {% block content %}
-	<h1>{{ entry.title }}</h1>
+	<div class="logo"></div>
+	<div id="container">
+		<header id="header">
+			<h1><a href="{{ siteUrl }}">{{ siteName }}</a></h1>
 
-	{{ entry.body }}
+			<nav>
+				<ul>
+					<li><a href="{{ url('news') }}" {% if craft.request.firstSegment == 'news' %}class="active"{% endif %}>News</a></li>
+				</ul>
+			</nav>
+		</header>
 
-	<h2>Recent News</h2>
-	<ul>
-		{% for entry in craft.entries.section('news').limit(5).find() %}
-			<li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
-		{% endfor %}
-	</ul>
+		<h1>{{ entry.title }}</h1>
+
+		{{ entry.body }}
+
+		<h2>Recent News</h2>
+		<ul>
+			{% for entry in craft.entries.section('news').limit(5).find() %}
+				<li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
+			{% endfor %}
+		</ul>
+
+		<footer id="footer">
+			Copyright {{ now.year }} {{ craft.request.serverName | ucfirst }}. All rights reserved  •  Built with <a href="http://buildwithcraft.com">Craft</a>
+		</footer>
+	</div>
 {% endblock %}
 
 {% block scripts %}

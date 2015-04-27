@@ -1,0 +1,29 @@
+$susy: (
+	columns: 12,
+	gutters: 1/4,
+	container: 1280px,
+	math: fluid,
+	output: float,
+	gutter-position: inside,
+	debug: (
+		image: show,
+		output: overlay,
+		toggle: top right,
+	),
+);
+
+.container{
+	@include container();
+
+	>.content{
+		background: blue;
+		height: 100vh;
+		@include span(3 of 12);
+	}
+
+	>.sidebar{
+		background: gray;
+		height: 100vh;
+		@include span(2 of 12 last);
+	}
+}

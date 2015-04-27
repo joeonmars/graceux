@@ -1,9 +1,6 @@
 @import "global";
+@import "grid";
 
-body{
-	&:before{
-		content: "";
-		display: block;
-		@include retina-icon("joeonmars");
-	}
+.logo{
+	@include retina-icon("joeonmars");
 }

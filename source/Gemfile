@@ -12,3 +12,6 @@ ruby '2.2.0'
 # Gem Dependencies - Compass & Sass
 # Required Deps for Breakpoint Gem
 gem 'compass', '~> 1.0.3'
+gem 'compass-normalize', '~> 1.5'
+gem 'susy', '~> 2.2.2'
+gem "breakpoint", '~> 2.5.0'
