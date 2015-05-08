@@ -37,7 +37,7 @@ module.exports = function( grunt ) {
 
     watch: {
       html: {
-        files: [ './*.{html,php}' ],
+        files: [ './*.{html,php}', '../craft/templates/*.{html,php}' ],
         options: {
           livereload: true,
           interrupt: true,
@@ -116,6 +116,7 @@ module.exports = function( grunt ) {
         destCss: './assets/styles/scss',
         options: {
           stylesheet: 'scss',
+          relativeFontPath: '../fonts/fontcustom',
           htmlDemo: true,
           hashes: true,
           engine: 'node',

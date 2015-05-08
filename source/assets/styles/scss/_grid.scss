@@ -1,6 +1,7 @@
 $susy: (
 	columns: 12,
 	container: 1280px,
+	gutters: .33,
 	global-box-sizing: border-box,
 	debug: (
 		image: show,
@@ -9,51 +10,6 @@ $susy: (
 	),
 );
 
-header{
-	position: absolute;
-	width: 100%;
-	height: 50px;
-	background: rgba(purple, .2);
-
-	.wrap{
-		@include container;
-		height: 100%;
-	}
-
-	.icon{
-		width: 100px;
-		height: 100%;
-		float: left;
-		background: pink;
-	}
-
-	nav{
-		width: 200px;
-		height: 100%;
-		float: right;
-		background: yellow;
-	}
-}
-
-.container{
-	@include container();
-
-	>.content{
-		background: rgba(blue, .2);
-		height: 100vh;
-		@include span(3 of 12);
-
-		>.inner-content{
-			height: 100%;
-			background: rgba(green, .2);
-			margin-left: span(3 wide of 12);
-			width: span(6 of 12);
-		}
-	}
-
-	>.sidebar{
-		background: rgba(gray, .2);
-		height: 100vh;
-		@include span(2 of 12 last);
-	}
-}
+$projects-grid: (
+	
+);

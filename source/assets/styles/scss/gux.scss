@@ -1,6 +1,260 @@
 @import "global";
+@import "typography";
 @import "grid";
 
-.logo{
-	@include retina-icon("joeonmars");
+#main-header{
+	position: fixed;
+	width: 100%;
+	height: 7em;
+	padding: 1.5em 2em;
+	background: white;
+	@include box-shadow(0px 1px 2px 0px rgba(black,0.08));
+
+	.branding{
+		float: left;
+		height: 100%;
+
+		.logo{
+			height: 100%;
+
+			.icon{
+				font-size: 4em;
+			}
+
+			&:after{
+				content: "";
+				@include inline-block(bottom);
+				height: 100%;
+				margin: 0 1.2em;
+				border-right: 1px solid $color_gray;
+			}
+		}
+
+		h1{
+			display: inline-block;
+			vertical-align: bottom;
+			@extend %italic-heading;
+		}
+	}
+
+	.navigation{
+		position: relative;
+		float: right;
+		height: 100%;
+
+		ul{
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			white-space: nowrap;
+
+			li{
+				@include inline-block(bottom);
+				font-size: 2.4em;
+				text-transform: uppercase;
+				font-family: $font_whitney_light;
+				letter-spacing: 0.1em;
+				margin-left: 1.5em;
+			}
+		}
+	}
+}
+
+#main-footer{
+	width: 100%;
+	padding: 8px;
+	background: $color_lightergray;
+	@include clearfix;
+
+	.logo{
+		float: left;
+	}
+
+	.info{
+		float: right;
+		color: $color_lightgray;
+
+		.copyright{
+			@include inline-block(middle);
+			font-family: $font_whitney_bookitalic;
+			font-size: 1.6em;
+			letter-spacing: 0;
+
+
+			&:before{
+				content: "";
+				@include inline-block(middle);
+				margin-right: .4em;
+				@include retina-icon("gux");
+			}
+		}
+
+		.social{
+			@include inline-block(middle);
+			font-size: 1.8em;
+			white-space: nowrap;
+
+			li{
+				@include inline-block(middle);
+				margin: 0 .4em;
+
+				&:first-child{
+					margin-left: 0;
+				}
+			}
+
+			&:before{
+				content: "";
+				height: 100%;
+				border-left: 1px solid $color_lightgray;
+				margin: 0 1em;
+			}
+		}
+	}
+}
+
+#main-container{
+	width: 100%;
+	padding: 8px;
+}
+
+#main-content{
+	@include container();
+	padding-top: 7em;
+}
+
+#projects{
+
+	@include with-layout($projects-grid) {
+
+		li{
+			display: table;
+			padding: gutter();
+
+			&:nth-child(6n+1){
+				@include span(7);
+				//background: blue;
+
+				.text-container{
+					display: table-footer-group;
+
+					>.inner{
+						@include span(5 of 7);
+					}
+				}
+
+				.preview{
+					display: table-header-group;
+
+					.image{
+						padding-top: 97%;
+					}
+				}
+			}
+
+			&:nth-child(6n+2){
+				@include span(5 last);
+				//background: green;
+
+				.image{
+					padding-top: 132%;
+				}
+			}
+
+			&:nth-child(6n+3){
+				@include span(full);
+				//background: red;
+
+				.text-container{
+					@include span(6 last);
+
+					>.inner{
+						@include span(5 of 6 last);
+					}
+				}
+
+				.preview{
+					@include span(6 first);
+
+					.image{
+						padding-top: 72%;
+					}
+				}
+			}
+
+			&:nth-child(6n+4){
+				@include span(5);
+				//background: green;
+
+				.image{
+					padding-top: 132%;
+				}
+			}
+
+			&:nth-child(6n+5){
+				@include span(7 last);
+				//background: blue;
+
+				.text-container{
+					display: table-footer-group;
+
+					>.inner{
+						@include span(5 of 7);
+					}
+				}
+
+				.preview{
+					display: table-header-group;
+
+					.image{
+						padding-top: 97%;
+					}
+				}
+			}
+
+			&:nth-child(6n+6){
+				@include span(full);
+				//background: red;
+
+				.text-container{
+					@include span(6);
+
+					>.inner{
+						@include span(5 of 6);
+					}
+				}
+
+				.preview{
+					@include span(6 last);
+
+					.image{
+						padding-top: 72%;
+					}
+				}
+			}
+
+			.text-container{
+				width: 100%;
+
+				.inner{
+					margin: 2.5rem 0;
+				}
+
+				p{
+					margin: 2rem 0;
+				}
+			}
+
+			.preview{
+				width: 100%;
+
+				.image{
+					width: 100%;
+					height: 0;
+					background-size: cover;
+					background-position: center center;
+				}
+			}
+		}
+	}
 }

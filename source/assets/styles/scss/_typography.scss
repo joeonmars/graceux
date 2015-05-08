@@ -1,0 +1,89 @@
+$color_lightergray: #F7F7F7;
+$color_lightgray: #CCCCCC;
+$color_gray: #979797;
+$color_logo_red: #FF8680;
+$color_logo_blue: #82BCFF;
+$color_logo_yellow: #FFDCA4;
+$color_logo_green: #C1D5D5;
+
+
+h1, h2, h3, h4, h5, h6{
+	font-family: $font_flama;
+	text-transform: uppercase;
+}
+
+h3{
+	font-size: 3.2rem;
+	line-height: (3.7/3.2);
+}
+
+p{
+	font-family: $font_whitney_light;
+	font-size: 1.5rem;
+	line-height: (2.6/1.5);
+	letter-spacing: 0.15rem;
+}
+
+a{
+	color: inherit;
+}
+
+.subheading{
+	&.above{
+		color: $color_lightgray;
+		font-size: 12px;
+		letter-spacing: 1px;
+	}
+}
+
+.description{
+	font-family: $font_whitney_lightitalic;
+}
+
+.square-button{
+	display: inline-block;
+	font-family: $font_flama;
+	text-transform: uppercase;
+	border: 2px solid black;
+	cursor: pointer;
+	font-size: 12px;
+	letter-spacing: 0.85px;
+	padding: 14px 20px;
+}
+
+%italic-heading{
+	font-family: $font_whitney_bookitalic;
+	text-transform: capitalize;
+	color: $color_gray;
+	font-size: 1.6rem;
+}
+
+.logo{
+	display: inline-block;
+
+	.icon{
+		font-size: 2.5em;
+
+		&.icon-shape-g{
+			color: $color_logo_red;
+		}
+
+		&.icon-shape-u{
+			color: $color_logo_blue;
+		}
+
+		&.icon-shape-x-up{
+			color: $color_logo_yellow;
+		}
+
+		&.icon-shape-x-down{
+			color: $color_logo_green;
+			@include absoluteTopLeft;
+		}
+	}
+
+	span{
+		position: relative;
+		@include inline-block(top);
+	}
+}

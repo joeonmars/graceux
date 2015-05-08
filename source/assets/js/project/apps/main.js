@@ -9,8 +9,6 @@ gux.apps.Main = function() {
 
 	goog.fx.anim.setAnimationWindow(window);
 
-	var helloWorld = soy.renderAsFragment(gux.templates.Main.HelloWorld);
-	goog.dom.appendChild(document.body, helloWorld);
-
-	//console.log(TweenMax);
+	//var helloWorld = soy.renderAsFragment(gux.templates.Main.HelloWorld);
+	//goog.dom.appendChild(document.body, helloWorld);
 };

@@ -20,38 +20,65 @@
 {% extends "_layout" %}
 
 {% block content %}
-	<div class="logo"></div>
-	<div id="container">
-		<header id="header">
-			<h1><a href="{{ siteUrl }}">{{ siteName }}</a></h1>
 
-			<nav>
-				<ul>
-					<li><a href="{{ url('news') }}" {% if craft.request.firstSegment == 'news' %}class="active"{% endif %}>News</a></li>
-				</ul>
-			</nav>
-		</header>
-
-		<h1>{{ entry.title }}</h1>
-
-		{{ entry.body }}
-
-		<h2>Recent News</h2>
-		<ul>
-			{% for entry in craft.entries.section('news').limit(5).find() %}
-				<li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
-			{% endfor %}
-		</ul>
-
-		<footer id="footer">
-			Copyright {{ now.year }} {{ craft.request.serverName | ucfirst }}. All rights reserved  •  Built with <a href="http://buildwithcraft.com">Craft</a>
-		</footer>
+<header id="main-header">
+	<div class="branding">
+		{% include "_includes/_logo" %}
+		<h1>{{ siteName }}</h1>
 	</div>
+
+	<nav class="navigation">
+		<ul>
+			<li><a href="{{ url('projects') }}" {% if craft.request.firstSegment == 'projects' %}class="active"{% endif %}>Projects</a></li>
+			<li><a href="{{ url('labs') }}" {% if craft.request.firstSegment == 'labs' %}class="active"{% endif %}>Labs</a></li>
+			<li><a href="{{ url('about') }}" {% if craft.request.firstSegment == 'about' %}class="active"{% endif %}>About</a></li>
+		</ul>
+	</nav>
+</header>
+<div id="main-container">
+	<div id="main-content">
+		<section>
+			<h1>{{ entry.title }}</h1>
+			<p>{{ entry.body }}</p>
+		</section>
+
+		<section id="projects">
+			<ul>
+				{% for entry in craft.entries.section('portfolio').find() %}
+					{% if entry.portfolioCategory.first() == 'Projects' %}
+					<li>
+						<div class="text-container">
+							<div class="inner">
+								<time class="subheading above">{{ entry.year }}</time>
+								<h3>{{ entry.title }}</h3>
+								<p class="description">{{ entry.shortDescription }}</p>
+								<a href="{{ entry.url }}" class="square-button">{{ Copy.viewProject }}</a>
+							</div>
+						</div>
+						<div class="preview">
+							<div class="image" style="background-image:url({{ entry.previewImage[0].url }})"></div>
+						</div>
+					</li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</section>
+	</div>
+	<footer id="main-footer">
+		{% include "_includes/_logo" %}
+		<div class="info">
+			<p class="copyright">{{ siteName }} &copy; Copyright 2010-{{ now.year }}.</p>
+			<ul class="social">
+			{% for social in footer.social %}
+				<li><a class="icon icon-{{ social.id }}" href="{{ social.url }}" target="_blank"></a></li>
+			{% endfor %}
+			</ul>
+		</div>
+	</footer>
+</div>
 {% endblock %}
 
 {% block scripts %}
-<!-- Live Reload -->
-<script src="http://localhost:35729/livereload.js"></script>
 <!-- third-party -->
 <script src="{{ siteUrl }}/assets/js/thirdparty.js"></script>
 <!-- project js -->
