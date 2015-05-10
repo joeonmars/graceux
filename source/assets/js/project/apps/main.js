@@ -1,14 +1,19 @@
-goog.provide('gux.apps.Main');
+goog.provide( 'gux.apps.Main' );
 
-goog.require('goog.dom');
-goog.require('goog.fx.anim');
-goog.require('gux.templates.Main');
+goog.require( 'goog.dom' );
+goog.require( 'goog.dom.query' );
+goog.require( 'goog.fx.anim' );
+goog.require( 'goog.style' );
+goog.require( 'gux.templates.Main' );
+goog.require( 'gux.controllers.Intro' );
 
 
 gux.apps.Main = function() {
 
-	goog.fx.anim.setAnimationWindow(window);
+	goog.fx.anim.setAnimationWindow( window );
 
 	//var helloWorld = soy.renderAsFragment(gux.templates.Main.HelloWorld);
 	//goog.dom.appendChild(document.body, helloWorld);
+
+	var intro = gux.controllers.Intro.getInstance();
 };

@@ -1,0 +1,69 @@
+{% extends "_extends/_layout" %}
+
+{% block body %}
+<header id="main-header">
+	<div class="branding">
+		{% include "_includes/_logo" %}
+		<h1>{{ siteName }}</h1>
+	</div>
+
+	<nav class="navigation">
+		<ul>
+			<li><a href="/" {% if craft.request.firstSegment == 'projects' %}class="active"{% endif %}>Projects</a></li>
+			<li><a href="{{ url('labs') }}" {% if craft.request.firstSegment == 'labs' %}class="active"{% endif %}>Labs</a></li>
+			<li><a href="{{ url('about') }}" {% if craft.request.firstSegment == 'about' %}class="active"{% endif %}>About</a></li>
+		</ul>
+	</nav>
+</header>
+<div id="main-container">
+	<div id="main-intro">
+		<div class="canvas-container">
+			<canvas></canvas>
+			<div class="text-container">
+				<div class="logo">
+					<span>Grace</span>
+					<span>Experience</span>
+				</div>
+				<div class="quotation">
+					{{ intro.quotation }}
+				</div>
+			</div>
+		</div>
+		<button class="scroll square-button loading"></button>
+	</div>
+	<div id="main-content">
+	{% block content %}
+	{% endblock %}
+	</div>
+	<footer id="main-footer">
+		{% include "_includes/_logo" %}
+		<div class="info">
+			<p class="copyright">{{ siteName }} &copy; Copyright 2010-{{ now.year }}.</p>
+			<ul class="social">
+			{% for social in footer.social %}
+				<li><a class="icon icon-{{ social.id }}" href="{{ social.url }}" target="_blank"></a></li>
+			{% endfor %}
+			</ul>
+		</div>
+	</footer>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<!-- third-party -->
+<script src="{{ siteUrl }}/assets/js/thirdparty.js"></script>
+<!-- main js -->
+<script src="{{ siteUrl }}/assets/js/source/thirdparty/closure-library/closure/goog/base.js"></script>
+<script src="{{ siteUrl }}/assets/js/source/project/gux-deps.js"></script>
+<script src="{{ siteUrl }}/assets/js/source/project/gux.js"></script>
+
+<!-- execute main js-->
+<script>
+	var config = {
+		basePath: './',
+		app: 'main'
+	};
+
+	gux.init( config );
+</script>
+{% endblock %}

@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"opt",
+				"opt_alpha"
+			],
+			[
+				"_sha",
+				"_shapeG"
+			],
+			[
+				"anc",
+				"anchorX"
+			],
+			[
+				"_shape",
+				"_shapeG"
+			],
+			[
+				"canvas",
+				"canvasSize"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
 				"font-",
 				"font-size"
 			],
@@ -38,10 +62,6 @@
 			[
 				"font-s",
 				"font-size"
-			],
-			[
-				"text",
-				"text-transform"
 			],
 			[
 				"nav",
@@ -150,10 +170,6 @@
 			[
 				"obs",
 				"observeModel"
-			],
-			[
-				"opt",
-				"opt_height"
 			],
 			[
 				"res",
@@ -498,22 +514,6 @@
 			[
 				"ave",
 				"averageColor"
-			],
-			[
-				"UPDE",
-				"UPDATE_PIXEL_TRANSMISSION"
-			],
-			[
-				"hexCol",
-				"hexColors"
-			],
-			[
-				"hexColor",
-				"hexColorsRow"
-			],
-			[
-				"hexC",
-				"hexColors"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "craft/templates/index.html",
 			"settings":
 			{
-				"buffer_size": 3143,
+				"buffer_size": 2112,
 				"line_ending": "Unix"
 			}
 		},
@@ -531,7 +531,7 @@
 			"file": "source/assets/styles/scss/_typography.scss",
 			"settings":
 			{
-				"buffer_size": 1321,
+				"buffer_size": 1437,
 				"line_ending": "Unix"
 			}
 		},
@@ -539,15 +539,39 @@
 			"file": "craft/templates/_layout.html",
 			"settings":
 			{
-				"buffer_size": 3300,
+				"buffer_size": 4469,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "source/assets/styles/scss/_icons.scss",
+			"file": "source/assets/js/project/controllers/intro.js",
 			"settings":
 			{
-				"buffer_size": 1505,
+				"buffer_size": 4008,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/assets/js/project/apps/main.js",
+			"settings":
+			{
+				"buffer_size": 492,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/assets/js/project/fx/shape.js",
+			"settings":
+			{
+				"buffer_size": 1141,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/assets/styles/scss/_intro.scss",
+			"settings":
+			{
+				"buffer_size": 461,
 				"line_ending": "Unix"
 			}
 		},
@@ -555,15 +579,15 @@
 			"file": "source/assets/styles/scss/gux.scss",
 			"settings":
 			{
-				"buffer_size": 3567,
+				"buffer_size": 3608,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "source/assets/styles/scss/_retina.scss",
+			"file": "source/assets/styles/scss/_global.scss",
 			"settings":
 			{
-				"buffer_size": 1999,
+				"buffer_size": 1463,
 				"line_ending": "Unix"
 			}
 		},
@@ -572,14 +596,6 @@
 			"settings":
 			{
 				"buffer_size": 303,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "source/assets/styles/scss/_global.scss",
-			"settings":
-			{
-				"buffer_size": 1184,
 				"line_ending": "Unix"
 			}
 		},
@@ -642,13 +658,21 @@
 		"/Users/yixiongzhou/Documents/workspace/graceux/public/assets/styles/css",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets",
+		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/js",
+		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/js/project",
+		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/js/project/apps",
+		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/js/project/controllers",
+		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/js/project/fx",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/styles",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/styles/scss"
 	],
 	"file_history":
 	[
-		"/Users/yixiongzhou/Documents/workspace/graceux/craft/templates/_includes/_logo.twig",
+		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/js/project/controllers/shape.js",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/Gruntfile.js",
+		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/styles/scss/_icons.scss",
+		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/styles/scss/_global.scss",
+		"/Users/yixiongzhou/Documents/workspace/graceux/craft/templates/_includes/_logo.twig",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/styles/scss/_fonts.scss",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/Gemfile",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/styles/scss/_typography.scss",
@@ -771,10 +795,7 @@
 		"/Users/yixiongzhou/Documents/workspace/butter/node_modules/grunt-bower-task/node_modules/bower/node_modules/inquirer/node_modules/cli-color/node_modules/es5-ext/node_modules/es6-iterator/test/for-of.js",
 		"/Users/yixiongzhou/Documents/workspace/butter/node_modules/grunt-bower-task/node_modules/bower/node_modules/cardinal/node_modules/redeyed/test/redeyed-config-with-undefineds.js",
 		"/Users/yixiongzhou/Documents/workspace/butter/node_modules/grunt-bower-task/node_modules/bower/node_modules/inquirer/lib/prompts/checkbox.js",
-		"/Users/yixiongzhou/Documents/workspace/butter/node_modules/grunt-webfont/node_modules/svgicons2svgfont/node_modules/svg-pathdata/tests/quadraticbeziercurveto.js",
-		"/Users/yixiongzhou/Documents/workspace/butter/bower_components/closure-library/closure/goog/dom/classes_quirks_test.html",
-		"/Users/yixiongzhou/Documents/workspace/butter/bower_components/closure-library/closure/goog/demos/quadtree.html",
-		"/Users/yixiongzhou/Documents/workspace/butter/node_modules/grunt-bower-task/node_modules/bower/node_modules/inquirer/lib/inquirer.js"
+		"/Users/yixiongzhou/Documents/workspace/butter/node_modules/grunt-webfont/node_modules/svgicons2svgfont/node_modules/svg-pathdata/tests/quadraticbeziercurveto.js"
 	],
 	"find":
 	{
@@ -841,6 +862,48 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"BLACK",
+			".4",
+			"Top",
+			".5, .5",
+			"200",
+			"width",
+			"height * .35",
+			"shapeG",
+			"this._g",
+			"_shapeU",
+			"this._u",
+			"shapeXTop",
+			"xTop",
+			"shapeXBottom",
+			"xBottom",
+			"shapeXTop",
+			"shapeXBottom",
+			"shapeU",
+			"shapeXTop",
+			"shapeUShape",
+			"shapeG",
+			"shapeGShape",
+			"G",
+			"Top",
+			"TOP",
+			"Top",
+			"eG",
+			"this._shapeG",
+			"width",
+			"arr",
+			"el",
+			"arr",
+			"color",
+			"'#",
+			"gux.controllers.Intro",
+			"0.4.1",
+			"preloadjs",
+			"tween",
+			"how",
+			"gux.apps.Main",
+			"8px;",
+			"8px",
 			"flex",
 			"footer",
 			"joeo",
@@ -926,49 +989,7 @@
 			"./styles",
 			"./",
 			"svg",
-			"closuredir",
-			"source",
-			"public/",
-			"source/",
-			"source",
-			"outputCssDir",
-			"outputjs",
-			"outputJsDir",
-			"assets/",
-			"assets",
-			"80%",
-			" 80%",
-			"40%",
-			"chromeOSDefaultCursor",
-			"80%",
-			"40%",
-			"30px;",
-			"-30px;",
-			"margin-left: 10",
-			"margin-left: 0",
-			"margin-left:0",
-			" 10%;",
-			"45",
-			"eft: 5%;",
-			"5%;",
-			"font-size: 0",
-			"Conference ",
-			"index.html?chrome_extension=true",
-			"popupCenter",
-			"opupCenter",
-			"4",
-			"1",
-			"navigateWindowUrl",
-			"navigatePopupUrl",
-			"Up",
-			"state",
-			"preloader",
-			"clock",
-			"event-list",
-			"13px",
-			"padding-right: 13",
-			"state",
-			"state ="
+			"closuredir"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -1008,7 +1029,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -1017,15 +1038,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3143,
+						"buffer_size": 2112,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2332,
-								2332
+								1339,
+								1339
 							]
 						],
 						"settings":
@@ -1034,10 +1055,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 380.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -1046,15 +1067,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1321,
+						"buffer_size": 1437,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								949,
-								949
+								631,
+								631
 							]
 						],
 						"settings":
@@ -1062,11 +1083,11 @@
 							"syntax": "Packages/SCSS/SCSS.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": -0.0,
-						"translation.y": 138.0,
+						"translation.x": 0.0,
+						"translation.y": 340.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -1075,20 +1096,78 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3300,
+						"buffer_size": 4469,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								304,
-								304
+								1088,
+								1088
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 450.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "source/assets/js/project/controllers/intro.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4008,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3270,
+								3270
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 845.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "source/assets/js/project/apps/main.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 492,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								489,
+								489
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
@@ -1099,32 +1178,32 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "source/assets/styles/scss/_icons.scss",
+					"buffer": 5,
+					"file": "source/assets/js/project/fx/shape.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1505,
+						"buffer_size": 1141,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1070,
-								1070
+								1137,
+								1137
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/SCSS/SCSS.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": -0.0,
-						"translation.y": 50.0,
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -1134,20 +1213,48 @@
 			"sheets":
 			[
 				{
-					"buffer": 4,
-					"file": "source/assets/styles/scss/gux.scss",
+					"buffer": 6,
+					"file": "source/assets/styles/scss/_intro.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3567,
+						"buffer_size": 461,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1556,
-								1556
+								221,
+								221
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SCSS/SCSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "source/assets/styles/scss/gux.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3608,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								332,
+								332
 							]
 						],
 						"settings":
@@ -1155,45 +1262,45 @@
 							"syntax": "Packages/SCSS/SCSS.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 722.0,
+						"translation.x": -0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "source/assets/styles/scss/_retina.scss",
-					"semi_transient": true,
+					"buffer": 8,
+					"file": "source/assets/styles/scss/_global.scss",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1999,
+						"buffer_size": 1463,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1047,
+								1047
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/SCSS/SCSS.tmLanguage",
-							"tab_size": 4,
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": -0.0,
+						"translation.y": 145.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 9,
 					"file": "craft/templates/susy.html",
 					"semi_transient": false,
 					"settings":
@@ -1217,41 +1324,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "source/assets/styles/scss/_global.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1184,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								364,
-								364
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/SCSS/SCSS.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
+					"buffer": 10,
 					"file": "source/assets/styles/scss/_grid.scss",
 					"semi_transient": false,
 					"settings":
@@ -1276,7 +1353,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 9,
 					"type": "text"
 				}
 			]
@@ -1310,7 +1387,7 @@
 		"cols":
 		[
 			0.0,
-			0.582068315103,
+			0.55733765485,
 			1.0
 		],
 		"rows":

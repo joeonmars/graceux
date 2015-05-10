@@ -53,6 +53,19 @@ input{
   -webkit-appearance: none;
 }
 
+%reset-button{
+  @include user-select('none');
+  border: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  @include user-select('none');
+  @include appearance(none);
+}
+
 @mixin absoluteTopLeft() {
   position: absolute;
   top: 0;

@@ -6,6 +6,8 @@ $color_logo_blue: #82BCFF;
 $color_logo_yellow: #FFDCA4;
 $color_logo_green: #C1D5D5;
 
+$border-padding: 8px;
+
 
 h1, h2, h3, h4, h5, h6{
 	font-family: $font_flama;
@@ -40,7 +42,7 @@ a{
 	font-family: $font_whitney_lightitalic;
 }
 
-.square-button{
+.bordered-button{
 	display: inline-block;
 	font-family: $font_flama;
 	text-transform: uppercase;
@@ -49,6 +51,12 @@ a{
 	font-size: 12px;
 	letter-spacing: 0.85px;
 	padding: 14px 20px;
+}
+
+.square-button{
+	@extend %reset-button;
+	@include inline-block(top);
+	background: #000;
 }
 
 %italic-heading{

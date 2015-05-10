@@ -20,25 +20,5 @@
 {% extends "_extends/_main" %}
 
 {% block content %}
-<section id="projects">
-	<ul>
-		{% for entry in craft.entries.section('portfolio').find() %}
-			{% if entry.portfolioCategory.first() == 'Projects' %}
-			<li>
-				<div class="text-container">
-					<div class="inner">
-						<time class="subheading above">{{ entry.year }}</time>
-						<h3>{{ entry.title }}</h3>
-						<p class="description">{{ entry.shortDescription }}</p>
-						<a href="{{ entry.url }}" class="bordered-button">{{ Copy.viewProject }}</a>
-					</div>
-				</div>
-				<div class="preview">
-					<div class="image" style="background-image:url({{ entry.previewImage[0].url }})"></div>
-				</div>
-			</li>
-			{% endif %}
-		{% endfor %}
-	</ul>
-</section>
+About
 {% endblock %}

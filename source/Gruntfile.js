@@ -78,7 +78,8 @@ module.exports = function( grunt ) {
     concat: {
       thirdparty: {
         src: [
-          '<%= thirdPartyJsDir %>/createjs/preloadjs-0.4.1.min.js',
+          '<%= thirdPartyJsDir %>/createjs/preloadjs-0.6.0.min.js',
+          '<%= thirdPartyJsDir %>/pixi.min.js',
           '<%= thirdPartyJsDir %>/greensock/TweenMax.min.js',
           '<%= thirdPartyJsDir %>/greensock/plugins/ScrollToPlugin.min.js',
           '<%= thirdPartyJsDir %>/greensock/plugins/ThrowPropsPlugin.min.js',
