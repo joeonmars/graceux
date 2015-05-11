@@ -15,9 +15,30 @@
 		</ul>
 	</nav>
 </header>
+
+<nav id="portfolio-navigation">
+	<div class="inner">
+		<ul class="projects">
+		{% for entry in craft.entries.section('portfolio').find() %}
+			{% if entry.portfolioCategory.first() == 'Projects' %}
+			<li><a>{{ entry.title }}</a></li>
+			{% endif %}
+		{% endfor %}
+		</ul>
+
+		<ul class="labs">
+		{% for entry in craft.entries.section('portfolio').find() %}
+			{% if entry.portfolioCategory.first() == 'Labs' %}
+			<li><a>{{ entry.title }}</a></li>
+			{% endif %}
+		{% endfor %}
+		</ul>
+	</div>
+</nav>
+
 <div id="main-container">
 	<div id="main-intro">
-		<div class="canvas-container">
+		<div class="container">
 			<canvas></canvas>
 			<div class="text-container">
 				<div class="logo">

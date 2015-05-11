@@ -1,0 +1,98 @@
+>.intro{
+	height: calc(100vh - 7em - #{$border-padding});
+	text-align: center;
+
+	>.container{
+		position: relative;
+		height: calc(100% - 5rem - #{$border-padding});
+
+		>.media-container{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background: black;
+
+			>.image{
+				@include absoluteTopLeft;
+				width: 100%;
+				height: 100%;
+				opacity: .5;
+				background-size: cover;
+				background-position: center center;
+			}
+		}
+
+		>.text-container{
+			position: relative;
+			height: 100%;
+			color: white;
+		}
+	}
+
+	>.scroll{
+		margin-top: $border-padding;
+		width: 5rem;
+		height: 5rem;
+		background: #000 center center no-repeat;
+
+		&.loading{
+			background-image: image-url('loader-simple-black.gif');
+		}
+	}
+}
+
+>.content{
+	@include container();
+}
+
+.details{
+	@include span(10 of 12);
+}
+
+.info{
+	@include span(2 of 12 last);
+}
+
+.brief, .learned{
+	background: $color_lightergray;
+	padding: span(1 of 10) span(1 of 10 wide);
+}
+
+.learned{
+	.signature{
+		@include retina-icon('gux-m');
+		margin-top: span(1 of 10);
+	}
+}
+
+.siblings{
+	>a{
+		display: block;
+		margin: 6em auto;
+		@include span(3 of 10);
+
+		&.next{
+			@include last;
+		}
+
+		>.inner{
+			position: relative;
+			height: 0;
+			padding-bottom: 40%;
+			text-align: center;
+			background: $color_lightergray;
+
+			>.movable{
+				position: absolute;
+				width: 100%;
+				height: 100%;
+
+				>.text-container{
+					position: absolute;
+					width: 100%;
+					height: 100%;
+				}
+			}
+		}
+	}
+}

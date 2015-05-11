@@ -1,0 +1,122 @@
+{#
+ # Project entry template
+ # -------------------
+ #
+ # This template gets loaded whenever a Project (from projects or labs) entry’s URL is requested.
+ #}
+
+{% extends "_extends/_main" %}
+
+{% block content %}
+<div id="project-container">
+
+	<section class="intro">
+		<div class="container">
+			<div class="media-container">
+				<div class="image" style="background-image: url({{ siteUrl }}{{ entry.promotionalImage[0].url }})"></div>
+			</div>
+			<div class="text-container">
+				<p class="subheading above">{{ entry.genre }}</p>
+				<h3>{{ entry.title }}</h3>
+				<p>{{ entry.shortDescription }}</p>
+			</div>
+		</div>
+		<button class="scroll square-button loading"></button>
+	</section>
+
+	<section class="content">
+		<div class="details">
+			<article class="brief">
+				<h4>{{ entry.briefHeading }}</h4>
+				<div>{{ entry.briefBody }}</div>
+			</article>
+
+			<article class="learned">
+				<h4>{{ entry.learnedHeading }}</h4>
+				<div>
+					{{ entry.learnedBody }}
+					<div class="signature"></div>
+				</div>
+			</article>
+
+			<nav class="siblings">
+				{% set category = entry.portfolioCategory[0] %}
+				{% set projects = [] %}
+
+				{% for _entry in craft.entries.section('portfolio').order('year desc').find() %}
+					{% if _entry.portfolioCategory.first() == category %}
+						{% set projects = projects|merge([_entry]) %}
+					{% endif %}
+				{% endfor %}
+
+				{% set projectIndex = 0 %}
+
+				{% for _entry in projects %}
+					{% if _entry.title == entry.title %}
+						{% set projectIndex = loop.index0 %}
+					{% endif %}
+				{% endfor %}
+
+				{% set prevProject = projects[projectIndex - 1]|default(projects[projects|length - 1]) %}
+				<a class="prev" href="{{ prevProject.url }}">
+					<div class="inner">
+						<div class="movable">
+							<div class="text-container">
+								<div class="icon icon-arrow-prev"></div>
+								<p>{{ prevProject.title }}</p>
+							</div>
+						</div>
+					</div>
+				</a>
+
+				{% set nextProject = projects[projectIndex + 1]|default(projects[0]) %}
+				<a class="next" href="{{ nextProject.url }}">
+					<div class="inner">
+						<div class="movable">
+							<div class="text-container">
+								<div class="icon icon-arrow-next"></div>
+								<p>{{ nextProject.title }}</p>
+							</div>
+						</div>
+					</div>
+				</a>
+			</nav>
+		</div>
+
+		<aside class="info">
+			<a href="{{ entry.projectUrl }}" class="bordered-button" target="_blank">{{ Copy.launchProject }}</a>
+
+			<div>
+				<h6>{{ Copy.client }}</h6>
+				<a {% if entry.clientUrl %}href="{{ entry.clientUrl }}" target="_blank"{% endif %}>
+					{{ entry.client|default(Copy.personalProject) }}
+				</a>
+			</div>
+
+			<div>
+				<h6>{{ Copy.responsibilities }}</h6>
+				<p>{{ entry.responsibilities }}</p>
+			</div>
+
+			<div>
+				<h6>{{ Copy.tools }}</h6>
+				<ul>
+				{% for tool in entry.tools %}
+			        <li>{{ tool }}</li>
+			    {% endfor %}
+				</ul>
+			</div>
+
+			<div>
+				<h6>{{ Copy.share }}</h6>
+				<ul>
+					<li><a class="facebook"></a></li>
+					<li><a class="twitter"></a></li>
+					<li><a class="google"></a></li>
+				</ul>
+			</div>
+		</aside>
+	</section>
+
+</div>
+{% endblock %}

@@ -2,7 +2,7 @@
 	height: calc(100vh - #{$border-padding*2});
 	text-align: center;
 
-	>.canvas-container{
+	>.container{
 		position: relative;
 		height: calc(100% - 5rem - #{$border-padding});
 		background-color: $color_lightergray;

@@ -14,7 +14,7 @@ h1, h2, h3, h4, h5, h6{
 	text-transform: uppercase;
 }
 
-h3{
+h3, h4{
 	font-size: 3.2rem;
 	line-height: (3.7/3.2);
 }
@@ -31,6 +31,9 @@ a{
 }
 
 .subheading{
+	text-transform: uppercase;
+	@include font-smoothing;
+	
 	&.above{
 		color: $color_lightgray;
 		font-size: 12px;
@@ -47,6 +50,7 @@ a{
 	font-family: $font_flama;
 	text-transform: uppercase;
 	border: 2px solid black;
+	color: black;
 	cursor: pointer;
 	font-size: 12px;
 	letter-spacing: 0.85px;

@@ -1,0 +1,66 @@
+@include container();
+
+.intro{
+	@include container();
+	padding-left: span(1 wide);
+
+	>h3{
+		@include span(5);
+	}
+
+	>div{
+		@include span(7);
+	}
+}
+
+.featured{
+	@include container();
+	color: white;
+	background-color: $color_logo_blue;
+
+	>.text-container{
+		@include span(6 last);
+		padding: 11em 0;
+	}
+}
+
+@include with-layout($labs-grid) {
+
+	li{
+		display: table;
+		@include span(4);
+		margin-bottom: gutter();
+		height: 45em;
+		padding: 4em;
+		background: $color_lightergray;
+
+		&:nth-child(3n){
+			@include last();
+		}
+
+		.text-container{
+			width: 100%;
+			display: table-cell;
+			vertical-align: middle;
+
+			.inner{
+				margin: 2.5rem 0;
+			}
+
+			p{
+				margin: 2rem 0;
+			}
+		}
+
+		.preview{
+			width: 100%;
+
+			.image{
+				width: 100%;
+				height: 0;
+				background-size: cover;
+				background-position: center center;
+			}
+		}
+	}
+}

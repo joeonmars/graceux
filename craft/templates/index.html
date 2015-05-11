@@ -20,15 +20,15 @@
 {% extends "_extends/_main" %}
 
 {% block content %}
-<section id="projects">
+<div id="projects">
 	<ul>
-		{% for entry in craft.entries.section('portfolio').find() %}
+		{% for entry in craft.entries.section('portfolio').order('year desc').find() %}
 			{% if entry.portfolioCategory.first() == 'Projects' %}
 			<li>
 				<div class="text-container">
 					<div class="inner">
 						<time class="subheading above">{{ entry.year }}</time>
-						<h3>{{ entry.title }}</h3>
+						<h4>{{ entry.title }}</h4>
 						<p class="description">{{ entry.shortDescription }}</p>
 						<a href="{{ entry.url }}" class="bordered-button">{{ Copy.viewProject }}</a>
 					</div>
@@ -40,5 +40,5 @@
 			{% endif %}
 		{% endfor %}
 	</ul>
-</section>
+</div>
 {% endblock %}

@@ -3,6 +3,12 @@
 @import "grid";
 @import "intro";
 
+body{
+	&:not(.touch){
+		overflow: hidden;
+	}
+}
+
 #main-header{
 	position: fixed;
 	z-index: 1;
@@ -88,7 +94,7 @@
 				content: "";
 				@include inline-block(middle);
 				margin-right: .4em;
-				@include retina-icon("gux");
+				@include retina-icon('gux-s');
 			}
 		}
 
@@ -116,148 +122,39 @@
 	}
 }
 
+#portfolio-navigation{
+	position: relative;
+	overflow: hidden;
+
+	>.inner{
+		position: absolute;
+		width: 100%;
+		height: 0;
+		padding-bottom: 33%;
+		background: $color_lightergray;
+	}
+}
+
 #main-container{
+	position: absolute;
 	width: 100%;
+	height: 100%;
 	padding: $border-padding;
+	overflow: auto;
 }
 
 #main-content{
-	@include container();
-	padding-top: 7em;
+	padding-top: calc(7em - #{$border-padding});
 }
 
 #projects{
+	@import "home";
+}
 
-	@include with-layout($projects-grid) {
+#labs{
+	@import "labs";
+}
 
-		li{
-			display: table;
-			padding: gutter();
-
-			&:nth-child(6n+1){
-				@include span(7);
-				//background: blue;
-
-				.text-container{
-					display: table-footer-group;
-
-					>.inner{
-						@include span(5 of 7);
-					}
-				}
-
-				.preview{
-					display: table-header-group;
-
-					.image{
-						padding-top: 97%;
-					}
-				}
-			}
-
-			&:nth-child(6n+2){
-				@include span(5 last);
-				//background: green;
-
-				.image{
-					padding-top: 132%;
-				}
-			}
-
-			&:nth-child(6n+3){
-				@include span(full);
-				//background: red;
-
-				.text-container{
-					@include span(6 last);
-
-					>.inner{
-						@include span(5 of 6 last);
-					}
-				}
-
-				.preview{
-					@include span(6 first);
-
-					.image{
-						padding-top: 72%;
-					}
-				}
-			}
-
-			&:nth-child(6n+4){
-				@include span(5);
-				//background: green;
-
-				.image{
-					padding-top: 132%;
-				}
-			}
-
-			&:nth-child(6n+5){
-				@include span(7 last);
-				//background: blue;
-
-				.text-container{
-					display: table-footer-group;
-
-					>.inner{
-						@include span(5 of 7);
-					}
-				}
-
-				.preview{
-					display: table-header-group;
-
-					.image{
-						padding-top: 97%;
-					}
-				}
-			}
-
-			&:nth-child(6n+6){
-				@include span(full);
-				//background: red;
-
-				.text-container{
-					@include span(6);
-
-					>.inner{
-						@include span(5 of 6);
-					}
-				}
-
-				.preview{
-					@include span(6 last);
-
-					.image{
-						padding-top: 72%;
-					}
-				}
-			}
-
-			.text-container{
-				width: 100%;
-
-				.inner{
-					margin: 2.5rem 0;
-				}
-
-				p{
-					margin: 2rem 0;
-				}
-			}
-
-			.preview{
-				width: 100%;
-
-				.image{
-					width: 100%;
-					height: 0;
-					background-size: cover;
-					background-position: center center;
-				}
-			}
-		}
-	}
+#project-container{
+	@import "project";
 }
