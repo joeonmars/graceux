@@ -1,0 +1,26 @@
+<section class="feature media {{ feature.layout }}">
+	<article>
+		<h4>{{ feature.heading }}</h4>
+		<div>{{ feature.body }}</div>
+	</article>
+	<figure>
+	{% for media in feature.media %}
+		{% switch media.getExtension() %}
+
+		    {% case "png" %}
+		    {% case "jpg" %}
+		    {% case "gif" %}
+		        <div class="media image">
+		        	<div class="movable" style="background-image: url({{ media.url }})"></div>
+		        </div>
+
+		    {% case "mp4" %}
+		        <div class="media video">
+		        	<div class="movable">
+		        	</div>
+		        </div>
+
+		{% endswitch %}
+	{% endfor %}
+	</figure>
+</section>

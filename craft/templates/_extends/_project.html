@@ -13,7 +13,7 @@
 	<section class="intro">
 		<div class="container">
 			<div class="media-container">
-				<div class="image" style="background-image: url({{ siteUrl }}{{ entry.promotionalImage[0].url }})"></div>
+				<div class="image" style="background-image: url({{ entry.promotionalImage[0].url }})"></div>
 			</div>
 			<div class="text-container">
 				<p class="subheading above">{{ entry.genre }}</p>
@@ -26,18 +26,41 @@
 
 	<section class="content">
 		<div class="details">
-			<article class="brief">
-				<h4>{{ entry.briefHeading }}</h4>
-				<div>{{ entry.briefBody }}</div>
-			</article>
+			<section class="brief full">
+				<article>
+					<h4>{{ entry.briefHeading }}</h4>
+					<div>{{ entry.briefBody }}</div>
+				</article>
+			</section>
 
-			<article class="learned">
-				<h4>{{ entry.learnedHeading }}</h4>
-				<div>
-					{{ entry.learnedBody }}
-					<div class="signature"></div>
-				</div>
-			</article>
+			<section class="analysis full">
+				<article>
+					<h4>{{ entry.analysisHeading }}</h4>
+					<div>{{ entry.analysisBody }}</div>
+				</article>
+				{% if entry.analysisFlow|length %}
+					{% include "_includes/_workflow" with {'workflow': entry.analysisFlow} %}
+				{% endif %}
+			</section>
+
+			{% for feature in entry.features %}
+			    {% switch feature.type %}
+
+				    {% case "mediaFeature" %}
+				        {% include "_includes/_media-feature" with {'feature': feature} %}
+
+				{% endswitch %}
+			{% endfor %}
+
+			<section class="learned full">
+				<article>
+					<h4>{{ entry.learnedHeading }}</h4>
+					<div>
+						{{ entry.learnedBody }}
+						<div class="signature"></div>
+					</div>
+				</article>
+			</section>
 
 			<nav class="siblings">
 				{% set category = entry.portfolioCategory[0] %}
@@ -110,9 +133,9 @@
 			<div>
 				<h6>{{ Copy.share }}</h6>
 				<ul>
-					<li><a class="facebook"></a></li>
-					<li><a class="twitter"></a></li>
-					<li><a class="google"></a></li>
+					<li><a class="icon-facebook icon" data-id="facebook"></a></li>
+					<li><a class="icon-twitter icon" data-id="twitter"></a></li>
+					<li><a class="icon-google icon" data-id="google"></a></li>
 				</ul>
 			</div>
 		</aside>

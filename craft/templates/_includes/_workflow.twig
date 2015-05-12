@@ -1,0 +1,32 @@
+{% import "_imports/_utils" as utils %}
+
+<figure class="workflow">
+
+	<div class="image-container">
+		<ul>
+		{% for step in workflow.step %}
+		    <li>
+		    	{% set image = step.image[0] %}
+		    	<img src="{{ image.url }}" {{ utils.srcset(image, 975, true) }} draggable="false">
+		   	</li>
+		{% endfor %}
+		</ul>
+	</div>
+
+	<div class="caption-container">
+		<ul>
+		{% for step in workflow.step %}
+		    <li>
+		    	<figcaption>{{ step.caption }}</figcaption>
+		    </li>
+		{% endfor %}
+		</ul>
+	</div>
+
+	<div class="pagination">
+		<button class="icon icon-arrow-prev prev"></button>
+		<span class="page">1</span>/<span>{{ workflow.step|length }}</span>
+		<button class="icon icon-arrow-next next"></button>
+	</div>
+
+</figure>

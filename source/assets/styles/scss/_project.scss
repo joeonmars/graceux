@@ -47,6 +47,29 @@
 
 .details{
 	@include span(10 of 12);
+
+	@include nested(10) {
+		>section{
+			padding: span(1) 0;
+			@include clearfix;
+
+			&.full{
+				>article{
+					@include span(6);
+					margin-left: span(1 wide);
+				}
+			}
+
+			&.fluid{
+				>article{
+					@include span(4);
+				}
+				>figure{
+					@include span(6 last);
+				}
+			}
+		}
+	}
 }
 
 .info{
@@ -55,13 +78,60 @@
 
 .brief, .learned{
 	background: $color_lightergray;
-	padding: span(1 of 10) span(1 of 10 wide);
 }
 
 .learned{
 	.signature{
 		@include retina-icon('gux-m');
 		margin-top: span(1 of 10);
+	}
+}
+
+.workflow{
+	@include full;
+
+	>.image-container{
+		position: relative;
+		height: 0;
+		padding-bottom: 52%;
+		overflow: hidden;
+
+		>ul{
+			position: absolute;
+			white-space: nowrap;
+			font-size: 0;
+			width: 100%;
+			height: 100%;
+
+			>li{
+				@include inline-block(top);
+				width: 100%;
+				height: 100%;
+
+				img{
+					width: 100%;
+					height: 100%;
+				}
+			}
+		}
+	}
+}
+
+.feature{
+	>figure{
+		>.media{
+			position: relative;
+			height: 0;
+			padding-bottom: 73%;
+
+			>.movable{
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				background-position: center center;
+				background-size: cover;
+			}
+		}
 	}
 }
 
