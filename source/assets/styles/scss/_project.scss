@@ -58,6 +58,9 @@
 					@include span(6);
 					margin-left: span(1 wide);
 				}
+				>figure{
+					@include full;
+				}
 			}
 
 			&.fluid{
@@ -74,10 +77,124 @@
 
 .info{
 	@include span(2 of 12 last);
+
+	>div{
+		margin-top: 3.5em;
+
+		h6{
+			font-size: 1.2em;
+			line-height: 2.2;
+		}
+
+		p, a:not(.icon){
+			font-size: 1.6em;
+			font-family: $font_whitney_bookitalic;
+			text-transform: capitalize;
+			color: $color_gray;
+			letter-spacing: 0;
+			line-height: 1.5;
+			@include font-smoothing;
+		}
+
+		&.share{
+			li{
+				@include inline-block(middle);
+				position: relative;
+				font-size: 2.4em;
+				margin-right: .4em;
+				padding-bottom: 1em;
+
+				.icon{
+					opacity: .5;
+					@include scale(1);
+					@include transition(transform .25s $easeOutCubic, opacity .25s $easeOutCubic);
+					@include backfaceHidden;
+				}
+
+				.underline{
+					position: absolute;
+					bottom: 0;
+					width: 100%;
+					height: 10px;
+					background: $color_logo_blue;
+					opacity: 0;
+					@include translateY(0);
+					@include transition(transform .25s $easeOutCubic, opacity .25s $easeOutCubic);
+				}
+
+				&:hover{
+					.icon{
+						opacity: 1;
+						@include scale(.85);
+					}
+
+					.underline{
+						opacity: 1;
+						@include translateY(-.3em);
+					}
+				}
+			}
+		}
+	}
 }
 
 .brief, .learned{
 	background: $color_lightergray;
+}
+
+.comparison{
+	.images-container{
+		position: relative;
+		height: 0;
+		padding-bottom: (540/975*100%);
+		border: 1px solid $color_lightgray;
+		@include user-select(none);
+
+		>.inner{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			border: 10px solid white;
+
+			>img{
+				@include absoluteTopLeft;
+				width: 100%;
+				height: 100%;	
+			}
+		}
+
+		>.wiper-container{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			padding: 0 10px;
+
+			>.wiper{
+				position: relative;
+				margin-left: -5px;
+				width: 10px;
+				height: 100%;
+				background: $color_logo_blue;
+			}
+		}
+	}
+
+	figcaption{
+		p{
+			font-family: $font_flama;
+			text-transform: uppercase;
+			font-size: 1.2em;
+			line-height: 3;
+
+			&:first-child{
+				float: left;
+			}
+
+			&:last-child{
+				float: right;
+			}
+		}
+	}
 }
 
 .learned{
@@ -117,9 +234,95 @@
 	}
 }
 
-.feature{
+.responsive{
 	>figure{
-		>.media{
+		margin-top: span(1);
+	}
+
+	.device{
+		position: absolute;
+		height: 0;
+		z-index: 10;
+		@include translateY(0);
+		@include transition(transform .4s $easeOutCubic);
+
+		&:hover{
+			@include translateY(-5px);
+		}
+
+		>.case{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background-size: 100% 100%;
+			z-index: 1;
+		}
+
+		>img{
+			position: absolute;
+		}
+	}
+
+	.desktop{
+		position: relative;
+		width: 68%;
+		padding-bottom: 37.74%;
+
+		>.case{
+			background-image: image-url('devices/laptop.png');
+		}
+
+		>img{
+			left: 13.6%;
+			top: 9.9%;
+			width: 72.52%;
+			height: 76.59%;
+		}
+	}
+	.tablet{
+		width: 21.28%;
+		padding-bottom: 31.36%;
+		left: 63%;
+		top: -10%;
+
+		>.case{
+			background-image: image-url('devices/tablet.png');
+		}
+
+		>img{
+			left: 7.76%;
+			top: 10%;
+			width: 85%;
+			height: 80%;
+		}
+	}
+	.mobile{
+		width: 14%;
+		padding-bottom: 28%;
+		right: 0;
+		top: 10%;
+
+		>.case{
+			background-image: image-url('devices/mobile.png');
+		}
+
+		>img{
+			left: 7.1%;
+			top: 13.07%;
+			width: 86.36%;
+			height: 72.91%;
+		}
+	}
+}
+
+.feature{
+
+	figure{
+		position: relative;
+	}
+
+	&.media{
+		.media{
 			position: relative;
 			height: 0;
 			padding-bottom: 73%;

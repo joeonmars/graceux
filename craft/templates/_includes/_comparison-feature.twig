@@ -1,0 +1,24 @@
+{% import "_imports/_utils" as utils %}
+
+<section class="feature comparison full">
+	<article>
+		<h4>{{ feature.heading }}</h4>
+		<div>{{ feature.body }}</div>
+	</article>
+	<figure>
+		<div class="images-container">
+			<div class="inner">
+			{% for image in feature.images %}
+			    <img src="{{ image.url }}" {{ utils.srcset(image, 975) }} draggable="false">
+			{% endfor %}
+			</div>
+			<div class="wiper-container">
+				<div class="wiper"></div>
+			</div>
+		</div>
+		<figcaption>
+			<p>{{ feature.firstCaption }}</p>
+			<p>{{ feature.secondCaption }}</p>
+		</figcaption>
+	</figure>
+</section>

@@ -1,0 +1,20 @@
+<section class="feature responsive full">
+	<article>
+		<h4>{{ feature.heading }}</h4>
+		<div>{{ feature.body }}</div>
+	</article>
+	<figure>
+		<div class="desktop device">
+			<div class="case"></div>
+			<img src="{{ feature.desktopScreen[0].url }}" draggable="false">
+		</div>
+		<div class="tablet device">
+			<div class="case"></div>
+			<img src="{{ feature.tabletScreen[0].url }}" draggable="false">
+		</div>
+		<div class="mobile device">
+			<div class="case"></div>
+			<img src="{{ feature.mobileScreen[0].url }}" draggable="false">
+		</div>
+	</figure>
+</section>

@@ -25,6 +25,49 @@
 	</section>
 
 	<section class="content">
+		<aside class="info">
+			<a href="{{ entry.projectUrl }}" class="bordered-button" target="_blank">{{ Copy.launchProject }}</a>
+
+			<div>
+				<h6>{{ Copy.client }}</h6>
+				<a {% if entry.clientUrl %}href="{{ entry.clientUrl }}" target="_blank"{% endif %}>
+					{{ entry.client|default(Copy.personalProject) }}
+				</a>
+			</div>
+
+			<div>
+				<h6>{{ Copy.responsibilities }}</h6>
+				<p>{{ entry.responsibilities }}</p>
+			</div>
+
+			<div>
+				<h6>{{ Copy.tools }}</h6>
+				<ul>
+				{% for tool in entry.tools %}
+			        <li><p>{{ tool.label }}</p></li>
+			    {% endfor %}
+				</ul>
+			</div>
+
+			<div class="share">
+				<h6>{{ Copy.share }}</h6>
+				<ul>
+					<li>
+						<a class="icon-facebook icon" data-id="facebook"></a>
+						<div class="underline"></div>
+					</li>
+					<li>
+						<a class="icon-twitter icon" data-id="twitter"></a>
+						<div class="underline"></div>
+					</li>
+					<li>
+						<a class="icon-google icon" data-id="google"></a>
+						<div class="underline"></div>
+					</li>
+				</ul>
+			</div>
+		</aside>
+
 		<div class="details">
 			<section class="brief full">
 				<article>
@@ -48,6 +91,12 @@
 
 				    {% case "mediaFeature" %}
 				        {% include "_includes/_media-feature" with {'feature': feature} %}
+
+				    {% case "comparisonFeature" %}
+				        {% include "_includes/_comparison-feature" with {'feature': feature} %}
+
+				    {% case "responsiveFeature" %}
+				        {% include "_includes/_responsive-feature" with {'feature': feature} %}
 
 				{% endswitch %}
 			{% endfor %}
@@ -106,39 +155,6 @@
 			</nav>
 		</div>
 
-		<aside class="info">
-			<a href="{{ entry.projectUrl }}" class="bordered-button" target="_blank">{{ Copy.launchProject }}</a>
-
-			<div>
-				<h6>{{ Copy.client }}</h6>
-				<a {% if entry.clientUrl %}href="{{ entry.clientUrl }}" target="_blank"{% endif %}>
-					{{ entry.client|default(Copy.personalProject) }}
-				</a>
-			</div>
-
-			<div>
-				<h6>{{ Copy.responsibilities }}</h6>
-				<p>{{ entry.responsibilities }}</p>
-			</div>
-
-			<div>
-				<h6>{{ Copy.tools }}</h6>
-				<ul>
-				{% for tool in entry.tools %}
-			        <li>{{ tool }}</li>
-			    {% endfor %}
-				</ul>
-			</div>
-
-			<div>
-				<h6>{{ Copy.share }}</h6>
-				<ul>
-					<li><a class="icon-facebook icon" data-id="facebook"></a></li>
-					<li><a class="icon-twitter icon" data-id="twitter"></a></li>
-					<li><a class="icon-google icon" data-id="google"></a></li>
-				</ul>
-			</div>
-		</aside>
 	</section>
 
 </div>

@@ -16,6 +16,8 @@
 $min_width: 320px;
 $min_height: 320px;
 
+$easeOutCubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+
 html, body{
   position: absolute;
   width: 100%;
@@ -75,4 +77,8 @@ input{
 @mixin font-smoothing() {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin backfaceHidden() {
+  -webkit-backface-visibility: hidden;
 }
