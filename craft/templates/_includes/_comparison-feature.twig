@@ -2,7 +2,7 @@
 
 <section class="feature comparison full">
 	<article>
-		<h4>{{ feature.heading }}</h4>
+		{% include "_includes/_border-heading" with {'tag': 'h4', 'bottom': true, 'text': feature.heading} %}
 		<div>{{ feature.body }}</div>
 	</article>
 	<figure>

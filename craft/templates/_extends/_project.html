@@ -16,9 +16,14 @@
 				<div class="image" style="background-image: url({{ entry.promotionalImage[0].url }})"></div>
 			</div>
 			<div class="text-container">
-				<p class="subheading above">{{ entry.genre }}</p>
-				<h3>{{ entry.title }}</h3>
-				<p>{{ entry.shortDescription }}</p>
+				<div class="inner">
+					<h6 class="subheading above {{ entry.color }}">{{ entry.genre }}</h6>
+
+					{% include "_includes/_border-heading"
+						with {'tag': 'h3', 'left': true, 'bottom': true, 'text': entry.title, 'color': entry.color} %}
+
+					<p class="description">{{ entry.shortDescription }}</p>
+				</div>
 			</div>
 		</div>
 		<button class="scroll square-button loading"></button>
@@ -33,6 +38,11 @@
 				<a {% if entry.clientUrl %}href="{{ entry.clientUrl }}" target="_blank"{% endif %}>
 					{{ entry.client|default(Copy.personalProject) }}
 				</a>
+			</div>
+
+			<div>
+				<h6>{{ Copy.year }}</h6>
+				<p>{{ entry.year }}</p>
 			</div>
 
 			<div>
@@ -71,14 +81,14 @@
 		<div class="details">
 			<section class="brief full">
 				<article>
-					<h4>{{ entry.briefHeading }}</h4>
+					{% include "_includes/_border-heading" with {'tag': 'h4', 'bottom': true, 'text': entry.briefHeading} %}
 					<div>{{ entry.briefBody }}</div>
 				</article>
 			</section>
 
 			<section class="analysis full">
 				<article>
-					<h4>{{ entry.analysisHeading }}</h4>
+					{% include "_includes/_border-heading" with {'tag': 'h4', 'bottom': true, 'text': entry.analysisHeading} %}
 					<div>{{ entry.analysisBody }}</div>
 				</article>
 				{% if entry.analysisFlow|length %}
@@ -103,7 +113,7 @@
 
 			<section class="learned full">
 				<article>
-					<h4>{{ entry.learnedHeading }}</h4>
+					{% include "_includes/_border-heading" with {'tag': 'h4', 'bottom': true, 'text': entry.learnedHeading} %}
 					<div>
 						{{ entry.learnedBody }}
 						<div class="signature"></div>
