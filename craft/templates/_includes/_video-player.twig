@@ -1,0 +1,13 @@
+<div class="video-player not-played" data-loop="{{ video.loop ? 'true' : 'false' }}">
+	<video preload="none">
+		<source src="{{ video.url }}" type="video/mp4">
+	</video>
+	<div class="controls">
+		<button class="icon play paused"></button>
+		<div class="slider">
+			<div class="track">
+				<div class="fill"></div>
+			</div>
+		</div>
+	</div>
+</div>

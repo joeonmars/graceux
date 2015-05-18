@@ -10,13 +10,14 @@
 		    {% case "png" %}
 		    {% case "jpg" %}
 		    {% case "gif" %}
-		        <div class="media image">
+		        <div class="image" style="padding-bottom:{{ media.height/media.width*100 }}%">
 		        	<div class="movable" style="background-image: url({{ media.url }})"></div>
 		        </div>
 
 		    {% case "mp4" %}
-		        <div class="media video">
+		        <div class="video" style="padding-bottom:{{ media.videoHeight/media.videoWidth*100 }}%">
 		        	<div class="movable">
+		        		{% include "_includes/_video-player" with {'video': media} %}
 		        	</div>
 		        </div>
 

@@ -8,28 +8,6 @@ $color_logo_green: #C1D5D5;
 
 $border-padding: 8px;
 
-
-h1, h2, h3, h4, h5, h6{
-	font-family: $font_flama;
-	text-transform: uppercase;
-}
-
-h3, h4{
-	font-size: 3.2rem;
-	line-height: (3.7/3.2);
-}
-
-p{
-	font-family: $font_whitney_light;
-	font-size: 1.5rem;
-	line-height: (2.6/1.5);
-	letter-spacing: 0.15rem;
-}
-
-a{
-	color: inherit;
-}
-
 %color-text{
 	color: $color_logo_blue !important;
 
@@ -87,24 +65,6 @@ a{
 
 .description{
 	font-family: $font_whitney_lightitalic;
-}
-
-.bordered-button{
-	display: inline-block;
-	font-family: $font_flama;
-	text-transform: uppercase;
-	border: 2px solid black;
-	color: black;
-	cursor: pointer;
-	font-size: 12px;
-	letter-spacing: 0.85px;
-	padding: 14px 20px;
-}
-
-.square-button{
-	@extend %reset-button;
-	@include inline-block(top);
-	background: #000;
 }
 
 %italic-heading{
@@ -180,4 +140,64 @@ a{
 		position: relative;
 		@include inline-block(top);
 	}
+}
+
+h1, h2, h3, h4, h5, h6{
+	font-family: $font_flama;
+	text-transform: uppercase;
+}
+
+h3, h4{
+	font-size: 3.2rem;
+	line-height: (3.7/3.2);
+}
+
+p{
+	font-family: $font_whitney_light;
+	font-size: 1.5rem;
+	line-height: (2.6/1.5);
+	letter-spacing: 0.15rem;
+}
+
+a{
+	color: inherit;
+	text-decoration: none;
+}
+
+legend{
+	display: block;
+	font-family: $font_flama;
+	text-transform: uppercase;
+	font-size: 1.2rem;
+	letter-spacing: .1rem;
+}
+
+label{
+	display: block;
+	font-family: $font_whitney_lightitalic;
+	font-size: 1.6rem;
+}
+
+input, textarea, .textarea{
+	@include appearance(none);
+	outline: none !important;
+	border: none;
+	background: transparent;
+
+	&:not([type="submit"]){
+		border-bottom: 1px solid $color_lightgray;
+		font-family: $font_whitney_light;
+		font-size: 1.6rem;
+		letter-spacing: .15rem;
+		color: $color_gray;
+		@include transition( border-color .25s );
+
+		&:focus{
+			border-color: $color_logo_blue;
+		}
+	}
+}
+
+textarea{
+	resize: none;
 }

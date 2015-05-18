@@ -316,7 +316,7 @@
 		top: -10%;
 
 		>.case{
-			background-image: image-url('devices/tablet.png');
+			background-image: image-url('devices/tablet-portrait.png');
 		}
 
 		>img{
@@ -349,13 +349,16 @@
 
 	figure{
 		position: relative;
-	}
 
-	&.media{
-		.media{
+		>div{
 			position: relative;
 			height: 0;
+			margin-top: 1rem;
 			padding-bottom: 73%;
+
+			&:first-child{
+				margin-top: 0;
+			}
 
 			>.movable{
 				position: absolute;
