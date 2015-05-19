@@ -266,6 +266,7 @@
 
 .responsive{
 	>figure{
+		position: relative;
 		margin-top: span(1);
 	}
 
@@ -279,94 +280,111 @@
 		&:hover{
 			@include translateY(-5px);
 		}
-
-		>.case{
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			background-size: 100% 100%;
-			z-index: 1;
-		}
-
-		>img{
-			position: absolute;
-		}
 	}
 
 	.desktop{
 		position: relative;
-		width: 68%;
-		padding-bottom: 37.74%;
-
-		>.case{
-			background-image: image-url('devices/laptop.png');
-		}
-
-		>img{
-			left: 13.6%;
-			top: 9.9%;
-			width: 72.52%;
-			height: 76.59%;
-		}
+		@include device-desktop(68%);
 	}
 	.tablet{
-		width: 21.28%;
-		padding-bottom: 31.36%;
 		left: 63%;
 		top: -10%;
-
-		>.case{
-			background-image: image-url('devices/tablet-portrait.png');
-		}
-
-		>img{
-			left: 7.76%;
-			top: 10%;
-			width: 85%;
-			height: 80%;
-		}
+		@include device-tablet-portrait(21.28%);
 	}
 	.mobile{
-		width: 14%;
-		padding-bottom: 28%;
 		right: 0;
 		top: 10%;
-
-		>.case{
-			background-image: image-url('devices/mobile.png');
-		}
-
-		>img{
-			left: 7.1%;
-			top: 13.07%;
-			width: 86.36%;
-			height: 72.91%;
-		}
+		@include device-mobile(14%);
 	}
 }
 
 .feature{
 
 	figure{
-		position: relative;
 
-		>div{
+		>.inner{
 			position: relative;
-			height: 0;
-			margin-top: 1rem;
-			padding-bottom: 73%;
+			margin: 0 auto;
+			text-align: center;
 
-			&:first-child{
-				margin-top: 0;
-			}
+			>div{
+				position: relative;
+				height: 0;
+				margin-top: 1rem;
+				padding-bottom: 73%;
 
-			>.movable{
-				position: absolute;
-				width: 100%;
-				height: 100%;
-				background-position: center center;
-				background-size: cover;
+				&:first-child{
+					margin-top: 0;
+				}
+
+				>.movable{
+					position: absolute;
+					width: 100%;
+					height: 100%;
+
+					img{
+						width: 100%;
+						height: auto;
+					}
+				}
 			}
+		}
+
+		.image{
+			@include inline-block(top);
+			width: 100%;
+		}
+
+		&.desktop{
+			.image{
+				@include device-desktop(100%);
+			}
+		}
+		&.mobile{
+			.image{
+				@include device-mobile(60%);
+			}
+		}
+		&.tablet-portrait{
+			.image{
+				@include device-tablet-portrait(80%);
+			}
+		}
+		&.tablet-landscape{
+			.image{
+				@include device-tablet-landscape(100%);
+			}
+		}
+	}
+}
+
+section.full{
+	.desktop{
+		>.inner{
+			max-width: 960px;
+		}
+	}
+	.mobile{
+		>.inner{
+			max-width: 350px;
+		}
+
+		.image{
+			@include device-mobile(100%);
+		}
+	}
+	.tablet-portrait{
+		>.inner{
+			max-width: 500px;
+		}
+
+		.image{
+			@include device-tablet-portrait(100%);
+		}
+	}
+	.tablet-landscape{
+		>.inner{
+			max-width: 740px;
 		}
 	}
 }

@@ -3,25 +3,33 @@
 		{% include "_includes/_border-heading" with {'tag': 'h4', 'bottom': true, 'text': feature.heading} %}
 		<div>{{ feature.body }}</div>
 	</article>
-	<figure>
-	{% for media in feature.media %}
-		{% switch media.getExtension() %}
 
-		    {% case "png" %}
-		    {% case "jpg" %}
-		    {% case "gif" %}
-		        <div class="image" style="padding-bottom:{{ media.height/media.width*100 }}%">
-		        	<div class="movable" style="background-image: url({{ media.url }})"></div>
-		        </div>
+	{% set device = feature.device != 'none' ? feature.device %}
 
-		    {% case "mp4" %}
-		        <div class="video" style="padding-bottom:{{ media.videoHeight/media.videoWidth*100 }}%">
-		        	<div class="movable">
-		        		{% include "_includes/_video-player" with {'video': media} %}
-		        	</div>
-		        </div>
+	<figure class="{{device}}">
+		<div class="inner">
+		{% for media in feature.media %}
+			{% switch media.getExtension() %}
 
-		{% endswitch %}
-	{% endfor %}
+			    {% case "png" %}
+			    {% case "jpg" %}
+			    {% case "gif" %}
+			        <div class="image" style="padding-bottom:{{ media.height/media.width*100 }}%">
+			        	<div class="movable">
+			        		{% if device|length %}<div class="case"></div>{% endif %}
+			        		<img src="{{media.url}}">
+			        	</div>
+			        </div>
+
+			    {% case "mp4" %}
+			        <div class="video" style="padding-bottom:{{ media.videoHeight/media.videoWidth*100 }}%">
+			        	<div class="movable">
+			        		{% include "_includes/_video-player" with {'video': media} %}
+			        	</div>
+			        </div>
+
+			{% endswitch %}
+		{% endfor %}
+		</div>
 	</figure>
 </section>

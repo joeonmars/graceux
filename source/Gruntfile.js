@@ -37,7 +37,7 @@ module.exports = function( grunt ) {
 
     watch: {
       html: {
-        files: [ './*.{html,php}', '../craft/templates/**/*.{html,php}' ],
+        files: [ './*.{html,php}', '../craft/templates/**/*.{html,php,twig}' ],
         options: {
           livereload: true,
           interrupt: true,

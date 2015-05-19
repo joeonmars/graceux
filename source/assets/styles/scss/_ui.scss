@@ -159,3 +159,85 @@ button.icon{
 		}
 	}
 }
+
+%device{
+	.case{
+		background-size: 100% 100%;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+	}
+
+	img{
+		position: absolute;
+	}
+}
+
+@mixin device-desktop($width) {
+	width: $width;
+	padding-bottom: #{534/961*$width} !important;
+	@extend %device;
+
+	.case{
+		background-image: image-url('devices/laptop.png');
+	}
+
+	img{
+		left: 13.6% !important;
+		top: 9.9% !important;
+		width: 72.52% !important;
+		height: 76.59% !important;
+	}
+}
+
+@mixin device-mobile($width) {
+	width: $width;
+	padding-bottom: #{742/352*$width} !important;
+	@extend %device;
+
+	.case{
+		background-image: image-url('devices/mobile.png');
+	}
+
+	img{
+		left: 7.1% !important;
+		top: 13.07% !important;
+		width: 86.36% !important;
+		height: 72.91% !important;
+	}
+}
+
+@mixin device-tablet-portrait($width) {
+	width: $width;
+	padding-bottom: #{740/502*$width} !important;
+	@extend %device;
+
+	.case{
+		background-image: image-url('devices/tablet-portrait.png');
+	}
+
+	img{
+		left: 7.76% !important;
+		top: 10% !important;
+		width: 85% !important;
+		height: 80% !important;
+	}
+}
+
+@mixin device-tablet-landscape($width) {
+	width: $width;
+	padding-bottom: #{502/740*$width} !important;
+	@extend %device;
+
+	.case{
+		background-image: image-url('devices/tablet-landscape.png');
+	}
+
+	img{
+		left: 10% !important;
+		top: 7.76% !important;
+		width: 80% !important;
+		height: 85% !important;
+	}
+}
