@@ -6,6 +6,7 @@ goog.require( 'goog.fx.anim' );
 goog.require( 'goog.style' );
 goog.require( 'gux.templates.Main' );
 goog.require( 'gux.controllers.Intro' );
+goog.require( 'gux.controllers.PortfolioNavigation' );
 goog.require( 'gux.controllers.MainScroller' );
 goog.require( 'gux.controllers.ContactForm' );
 goog.require( 'gux.controllers.VideoPlayer' );
@@ -19,6 +20,7 @@ gux.apps.Main = function() {
 	//goog.dom.appendChild(document.body, helloWorld);
 
 	var intro = gux.controllers.Intro.getInstance();
+	var portfolioNavigation = gux.controllers.PortfolioNavigation.getInstance();
 	var mainScroller = gux.controllers.MainScroller.getInstance();
 	var contactForm = gux.controllers.ContactForm.getInstance();
 

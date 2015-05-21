@@ -1,6 +1,6 @@
 <section class="feature responsive full">
 	<article>
-		<h4>{{ feature.heading|nl2br }}</h4>
+		{% include "_includes/_border-heading" with {'tag': 'h4', 'bottom': true, 'text': feature.heading} %}
 		<div>{{ feature.body }}</div>
 	</article>
 	<figure>

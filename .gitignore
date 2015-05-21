@@ -7,5 +7,6 @@ source/bower_components
 source/node_modules
 source/.sass-cache
 source/assets/js/thirdparty/closure-library
+source/assets/images/upload-backup
 public/assets/images/upload
 public/assets/videos/upload

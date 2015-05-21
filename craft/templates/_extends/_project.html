@@ -7,6 +7,10 @@
 
 {% extends "_extends/_main" %}
 
+{% set pageTitle = entry.title %}
+{% set portfolioCategory = entry.portfolioCategory[0] %}
+{% set showMenuButton = true %}
+
 {% block content %}
 <div id="project-container">
 
@@ -143,9 +147,16 @@
 				<a class="prev" href="{{ prevProject.url }}">
 					<div class="inner">
 						<div class="movable">
+							<div class="background-container" style="background-image: url({{ prevProject.navigationImage[0].url }})">
+								<div class="inner">
+									<div class="icon icon-arrow-prev"></div>
+								</div>
+							</div>
 							<div class="text-container">
-								<div class="icon icon-arrow-prev"></div>
-								<p>{{ prevProject.title }}</p>
+								<div class="inner">
+									<div class="icon icon-arrow-prev"></div>
+									<p>{{ prevProject.title }}</p>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -155,9 +166,16 @@
 				<a class="next" href="{{ nextProject.url }}">
 					<div class="inner">
 						<div class="movable">
+							<div class="background-container" style="background-image: url({{ nextProject.navigationImage[0].url }})">
+								<div class="inner">
+									<div class="icon icon-arrow-next"></div>
+								</div>
+							</div>
 							<div class="text-container">
-								<div class="icon icon-arrow-next"></div>
-								<p>{{ nextProject.title }}</p>
+								<div class="inner">
+									<div class="icon icon-arrow-next"></div>
+									<p>{{ nextProject.title }}</p>
+								</div>
 							</div>
 						</div>
 					</div>

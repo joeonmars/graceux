@@ -5,20 +5,11 @@
 	</article>
 
 	{% set device = (feature.device != 'none' ? feature.device : null) %}
+	{% set mediaColumns = min(feature.media|length, 3) %}
 
-	<figure>
+	<figure class="media-col-{{mediaColumns}}">
 	{% for media in feature.media %}
 		{% switch media.getExtension() %}
-		    {% case "png" %}
-		    {% case "jpg" %}
-		    {% case "gif" %}
-		        <div class="image {{device}}" {% if device == null %}style="padding-bottom:{{ media.height/media.width*100 }}%"{% endif %}>
-		        	<div class="movable">
-		        		{% if device != null %}<div class="case"></div>{% endif %}
-		        		<img src="{{media.url}}">
-		        	</div>
-		        </div>
-
 		    {% case "mp4" %}
 		        <div class="video" style="padding-bottom:{{ media.videoHeight/media.videoWidth*100 }}%">
 		        	<div class="movable">
@@ -26,6 +17,15 @@
 		        	</div>
 		        </div>
 
+		    {% default %}
+		        <div class="image {{device}} {% if device != null %}device{% endif %}"
+		        	{% if device == null %}style="padding-bottom:{{ media.height/media.width*100 }}%"{% endif %}>
+
+		        	<div class="movable">
+		        		{% if device != null %}<div class="case"></div>{% endif %}
+		        		<img src="{{media.url}}">
+		        	</div>
+		        </div>
 		{% endswitch %}
 	{% endfor %}
 	</figure>

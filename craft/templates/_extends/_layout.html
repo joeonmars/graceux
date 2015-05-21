@@ -30,7 +30,7 @@
 	<meta content="" property="og:description">
 	<meta content="" property="og:image">
 
-	<title>{{ siteName }}</title>
+	<title>{{ siteName }} - {% if pageTitle is defined %}{{ pageTitle }}{% endif %}</title>
 	
 	<link rel="home" href="{{ siteUrl }}" />
 	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/images/static/misc/apple-touch-icon-57x57.png" />

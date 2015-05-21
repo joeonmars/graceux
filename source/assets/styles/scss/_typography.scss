@@ -8,6 +8,22 @@ $color_logo_green: #C1D5D5;
 
 $border-padding: 8px;
 
+.blue{
+	color: $color_logo_blue !important;
+}
+
+.red{
+	color: $color_logo_red !important;
+}
+
+.yellow{
+	color: $color_logo_yellow !important;
+}
+
+.green{
+	color: $color_logo_green !important;
+}
+
 %color-text{
 	color: $color_logo_blue !important;
 
@@ -72,6 +88,8 @@ $border-padding: 8px;
 	text-transform: capitalize;
 	color: $color_gray;
 	font-size: 1.6rem;
+	letter-spacing: 0;
+	line-height: 1;
 }
 
 .border-heading{
