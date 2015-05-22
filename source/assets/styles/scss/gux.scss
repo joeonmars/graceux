@@ -86,12 +86,24 @@ body{
 		border-top: none;
 		overflow: hidden;
 
+		>.particles-container{
+			position: relative;
+			width: calc(100% - #{15rem*2});
+			height: calc(100% - #{10rem});
+			margin: (10rem/2) auto;
+		}
+
 		li{
-			display: inline-block;
-			opacity: .3;
-			@include transition(opacity .4s $easeOutSine);
+			position: absolute;
+			margin-left: -15rem;
+			width: 30rem;
+			text-align: center;
 
 			>a{
+				display: inline-block;
+				opacity: .3;
+				@include transition(opacity .5s);
+
 				.icon{
 					@include inline-block(middle);
 					font-size: 2rem;
@@ -104,8 +116,10 @@ body{
 				}
 			}
 
-			&:hover{
-				opacity: 1;
+			&:hover, &.active{
+				>a{
+					opacity: 1;
+				}
 			}
 
 			&:nth-child(3n+1) {

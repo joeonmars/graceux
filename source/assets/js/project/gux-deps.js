@@ -4,7 +4,7 @@ goog.addDependency('../../../../project/apps/main.js', ['gux.apps.Main'], ['goog
 goog.addDependency('../../../../project/controllers/contactform.js', ['gux.controllers.ContactForm'], ['goog.async.Delay', 'goog.dom.classlist', 'goog.dom.forms', 'goog.events.EventHandler', 'goog.events.EventTarget', 'goog.format.EmailAddress', 'goog.net.XhrIo']);
 goog.addDependency('../../../../project/controllers/intro.js', ['gux.controllers.Intro'], ['goog.events.EventHandler', 'goog.events.EventTarget', 'goog.math.Size', 'gux.fx.Shape']);
 goog.addDependency('../../../../project/controllers/mainscroller.js', ['gux.controllers.MainScroller'], ['goog.events.EventHandler', 'goog.events.EventTarget', 'gux.fx.DummyScroller']);
-goog.addDependency('../../../../project/controllers/portfolionavigation.js', ['gux.controllers.PortfolioNavigation'], ['goog.events.EventHandler', 'goog.events.EventTarget', 'goog.math.Size']);
+goog.addDependency('../../../../project/controllers/portfolionavigation.js', ['gux.controllers.PortfolioNavigation'], ['goog.events.EventHandler', 'goog.events.EventTarget', 'goog.fx.easing', 'goog.math.Size']);
 goog.addDependency('../../../../project/controllers/videoplayer.js', ['gux.controllers.VideoPlayer'], ['goog.events.EventHandler', 'goog.events.EventTarget', 'goog.fx.Dragger']);
 goog.addDependency('../../../../project/events/events.js', ['gux.events'], ['goog.userAgent']);
 goog.addDependency('../../../../project/fx/dummyscroller.js', ['gux.fx.DummyScroller'], ['goog.async.Delay', 'goog.dom', 'goog.events.EventHandler', 'goog.events.EventTarget', 'goog.fx.Dragger', 'goog.math.Box', 'goog.math.Size', 'gux.events']);

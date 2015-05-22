@@ -28,25 +28,27 @@
 
 <nav id="portfolio-navigation" data-category="{% if portfolioCategory is defined %}{{ portfolioCategory|lower }}{% endif %}">
 	<div class="inner">
-		<ul class="projects">
-		{% for entry in craft.entries.section('portfolio').find() %}
-			{% if entry.portfolioCategory.first() == 'Projects' %}
-			<li>
-				<a href="{{ entry.url }}"><div class="icon {{entry.color}}"></div><h6>{{ entry.title }}</h6></a>
-			</li>
-			{% endif %}
-		{% endfor %}
-		</ul>
+		<div class="particles-container">
+			<ul class="projects">
+			{% for entry in craft.entries.section('portfolio').find() %}
+				{% if entry.portfolioCategory.first() == 'Projects' %}
+				<li {% if pageTitle is defined and pageTitle == entry.title %}class="active"{% endif %}>
+					<a href="{{ entry.url }}"><div class="icon {{entry.color}}"></div><h6>{{ entry.title }}</h6></a>
+				</li>
+				{% endif %}
+			{% endfor %}
+			</ul>
 
-		<ul class="labs">
-		{% for entry in craft.entries.section('portfolio').find() %}
-			{% if entry.portfolioCategory.first() == 'Labs' %}
-			<li>
-				<a href="{{ entry.url }}"><div class="icon {{entry.color}}"></div><h6>{{ entry.title }}</h6></a>
-			</li>
-			{% endif %}
-		{% endfor %}
-		</ul>
+			<ul class="labs">
+			{% for entry in craft.entries.section('portfolio').find() %}
+				{% if entry.portfolioCategory.first() == 'Labs' %}
+				<li {% if pageTitle is defined and pageTitle == entry.title %}class="active"{% endif %}>
+					<a href="{{ entry.url }}"><div class="icon {{entry.color}}"></div><h6>{{ entry.title }}</h6></a>
+				</li>
+				{% endif %}
+			{% endfor %}
+			</ul>
+		</div>
 
 		<button class="icon icon-close close"></button>
 	</div>

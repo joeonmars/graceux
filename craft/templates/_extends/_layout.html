@@ -19,7 +19,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" {% if craft.request.isMobileBrowser(true) %}class="touch"{% endif %}>
 <head>
-	<meta charset="utf-8" />
+	<meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
 	<meta name="keywords" content="">
@@ -30,7 +30,7 @@
 	<meta content="" property="og:description">
 	<meta content="" property="og:image">
 
-	<title>{{ siteName }} - {% if pageTitle is defined %}{{ pageTitle }}{% endif %}</title>
+	<title>{{ siteName }}{% if pageTitle is defined %} - {{ pageTitle }}{% endif %}</title>
 	
 	<link rel="home" href="{{ siteUrl }}" />
 	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/images/static/misc/apple-touch-icon-57x57.png" />
