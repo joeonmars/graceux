@@ -17,8 +17,11 @@
  # http://buildwithcraft.com/docs/routing
  #}
 
-{% extends "_extends/_main" %}
+{% set isAjax = (craft.request.getQuery("ajax") == "true") ? true : false %}
+{% extends isAjax ? "_extends/_main-content" : "_extends/_main" %}
 
 {% block content %}
-About
+<div id="about">
+	About
+</div>
 {% endblock %}

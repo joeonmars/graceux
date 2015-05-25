@@ -17,7 +17,8 @@
  # http://buildwithcraft.com/docs/routing
  #}
 
-{% extends "_extends/_main" %}
+{% set isAjax = (craft.request.getQuery("ajax") == "true") ? true : false %}
+{% extends isAjax ? "_extends/_main-content" : "_extends/_main" %}
 
 {% block content %}
 <div id="projects">
@@ -30,7 +31,7 @@
 						<time class="subheading above">{{ entry.year }}</time>
 						<h4>{{ entry.title }}</h4>
 						<p class="description">{{ entry.shortDescription }}</p>
-						<a href="{{ entry.url }}" class="bordered-button">{{ Copy.viewProject }}</a>
+						<a href="{{ entry.url }}" class="bordered-button" data-ajax="true">{{ Copy.viewProject }}</a>
 					</div>
 				</div>
 				<div class="preview">

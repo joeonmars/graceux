@@ -4,6 +4,7 @@
 <header id="main-header">
 	<div class="branding">
 		{% include "_includes/_logo" %}
+		<span class="vertical-bar"></span>
 		<h1>{{ siteName }}</h1>
 	</div>
 
@@ -19,9 +20,15 @@
 
 	<nav class="navigation">
 		<ul>
-			<li><a href="/" {% if craft.request.firstSegment == 'projects' %}class="active"{% endif %}>Projects</a></li>
-			<li><a href="{{ url('labs') }}" {% if craft.request.firstSegment == 'labs' %}class="active"{% endif %}>Labs</a></li>
-			<li><a href="{{ url('about') }}" {% if craft.request.firstSegment == 'about' %}class="active"{% endif %}>About</a></li>
+			<li>
+				<a href="/" {% if craft.request.firstSegment == 'projects' %}class="active"{% endif %} data-ajax="true">Projects</a>
+			</li>
+			<li>
+				<a href="{{ url('labs') }}" {% if craft.request.firstSegment == 'labs' %}class="active"{% endif %} data-ajax="true">Labs</a>
+			</li>
+			<li>
+				<a href="{{ url('about') }}" {% if craft.request.firstSegment == 'about' %}class="active"{% endif %} data-ajax="true">About</a>
+			</li>
 		</ul>
 	</nav>
 </header>
@@ -33,7 +40,9 @@
 			{% for entry in craft.entries.section('portfolio').find() %}
 				{% if entry.portfolioCategory.first() == 'Projects' %}
 				<li {% if pageTitle is defined and pageTitle == entry.title %}class="active"{% endif %}>
-					<a href="{{ entry.url }}"><div class="icon {{entry.color}}"></div><h6>{{ entry.title }}</h6></a>
+					<a href="{{ entry.url }}" data-ajax="true">
+						<div class="icon {{entry.color}}"></div><h6>{{ entry.title }}</h6>
+					</a>
 				</li>
 				{% endif %}
 			{% endfor %}
@@ -43,7 +52,9 @@
 			{% for entry in craft.entries.section('portfolio').find() %}
 				{% if entry.portfolioCategory.first() == 'Labs' %}
 				<li {% if pageTitle is defined and pageTitle == entry.title %}class="active"{% endif %}>
-					<a href="{{ entry.url }}"><div class="icon {{entry.color}}"></div><h6>{{ entry.title }}</h6></a>
+					<a href="{{ entry.url }}" data-ajax="true">
+						<div class="icon {{entry.color}}"></div><h6>{{ entry.title }}</h6>
+					</a>
 				</li>
 				{% endif %}
 			{% endfor %}
@@ -109,7 +120,7 @@
 <!-- execute main js-->
 <script>
 	var config = {
-		basePath: './',
+		basePath: '{{ siteUrl }}',
 		app: 'main'
 	};
 

@@ -7,30 +7,41 @@ goog.require( 'gux.fx.DummyScroller' );
 
 gux.controllers.MainScroller = function() {
 
-
 	this.el = goog.dom.getElement( 'main-container' );
 
-	var scrollbar = goog.dom.getElement( 'main-scrollbar' );
+	this.scrollbar = goog.dom.getElement( 'main-scrollbar' );
 
-	this._dummyScroller = new gux.fx.DummyScroller( this.el, scrollbar, .8 );
-	this._dummyScroller.activate();
+	goog.base( this, this.el, this.scrollbar, .8 );
 
-	this.resize();
+	this.activate();
 };
-goog.inherits( gux.controllers.MainScroller, goog.events.EventTarget );
+goog.inherits( gux.controllers.MainScroller, gux.fx.DummyScroller );
 goog.addSingletonGetter( gux.controllers.MainScroller );
 
 
 gux.controllers.MainScroller.prototype.activate = function() {
 
+	goog.base( this, 'activate' );
+
+	this._eventHandler.listen( gux.router, gux.events.EventType.LOAD_PAGE, this.onLoadPage, false, this );
+	this._eventHandler.listen( gux.router, gux.events.EventType.SWITCH_PAGE, this.onSwitchPage, false, this );
 };
 
 
 gux.controllers.MainScroller.prototype.deactivate = function() {
 
+	goog.base( this, 'deactivate' );
 };
 
 
-gux.controllers.MainScroller.prototype.resize = function() {
+gux.controllers.MainScroller.prototype.onLoadPage = function() {
 
+	this.lock();
+};
+
+
+gux.controllers.MainScroller.prototype.onSwitchPage = function() {
+
+	this.reset();
+	this.unlock();
 };

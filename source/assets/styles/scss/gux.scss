@@ -108,6 +108,7 @@ body{
 					@include inline-block(middle);
 					font-size: 2rem;
 					margin-right: .8rem;
+					@include backfaceHidden;
 				}
 
 				h6{

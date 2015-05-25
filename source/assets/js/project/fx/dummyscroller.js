@@ -72,6 +72,7 @@ gux.fx.DummyScroller = function( viewOuter, scrollbar, opt_speed, opt_ease ) {
 
   // init
   this.disableDummyScroll();
+  this.unlock();
   this.resize();
 };
 goog.inherits( gux.fx.DummyScroller, goog.events.EventTarget );
@@ -79,8 +80,6 @@ goog.inherits( gux.fx.DummyScroller, goog.events.EventTarget );
 
 gux.fx.DummyScroller.prototype.activate = function() {
 
-  this._eventHandler.listen( this._viewOuter, 'mousewheel', this.onMouseWheel, false, this );
-  this._eventHandler.listen( this._dummyOuter, 'scroll', this.onDummyScroll, false, this );
   this._eventHandler.listen( window, 'resize', this.resize, false, this );
 
   this._eventHandler.listen( this._dragger, goog.fx.Dragger.EventType.START, this.onDragHandleStart, false, this );
@@ -101,6 +100,30 @@ gux.fx.DummyScroller.prototype.reset = function() {
 
   this._dummyOuter.scrollTop = 0;
   this.scrollTo( 0 );
+};
+
+
+gux.fx.DummyScroller.prototype.lock = function( opt_y ) {
+
+  this._eventHandler.unlisten( this._viewOuter, 'mousewheel', this.onMouseWheel, false, this );
+  this._eventHandler.unlisten( this._dummyOuter, 'scroll', this.onDummyScroll, false, this );
+
+  goog.style.setStyle( this._scrollbar, 'visibility', 'hidden' );
+  goog.style.setStyle( this._dummyOuter, 'overflow', 'hidden' );
+
+  if ( goog.isNumber( opt_y ) ) {
+    this.scrollTo( opt_y );
+  }
+};
+
+
+gux.fx.DummyScroller.prototype.unlock = function() {
+
+  this._eventHandler.listen( this._viewOuter, 'mousewheel', this.onMouseWheel, false, this );
+  this._eventHandler.listen( this._dummyOuter, 'scroll', this.onDummyScroll, false, this );
+
+  goog.style.setStyle( this._scrollbar, 'visibility', 'visible' );
+  goog.style.setStyle( this._dummyOuter, 'overflow', 'auto' );
 };
 
 
@@ -225,11 +248,11 @@ gux.fx.DummyScroller.prototype.onAnimationFrame = function( now ) {
 
   this._viewInnerY += ( targetY - this._viewInnerY ) * this._ease;
 
-  if ( goog.math.nearlyEquals( this._viewInnerY, targetY, .1 ) ) {
+  this.scrollTo( this._viewInnerY );
+
+  if ( goog.math.nearlyEquals( this._viewInnerY, targetY, 2 ) ) {
     this._viewInnerY = targetY;
   }
-
-  this.scrollTo( this._viewInnerY );
 
   if ( this._viewInnerY === targetY ) {
 

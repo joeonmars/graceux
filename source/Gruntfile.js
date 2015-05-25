@@ -79,6 +79,8 @@ module.exports = function( grunt ) {
       thirdparty: {
         src: [
           '<%= thirdPartyJsDir %>/createjs/preloadjs-0.6.0.min.js',
+          '<%= thirdPartyJsDir %>/js-signals.min.js',
+          '<%= thirdPartyJsDir %>/crossroads.min.js',
           '<%= thirdPartyJsDir %>/pixi.min.js',
           '<%= thirdPartyJsDir %>/greensock/TweenMax.min.js',
           '<%= thirdPartyJsDir %>/greensock/plugins/ScrollToPlugin.min.js',

@@ -22,14 +22,13 @@
 			.icon{
 				font-size: 4em;
 			}
+		}
 
-			&:after{
-				content: "";
-				@include inline-block(bottom);
-				height: 100%;
-				margin: 0 1.2em;
-				border-right: 1px solid $color_gray;
-			}
+		.vertical-bar{
+			@include inline-block(bottom);
+			height: 100%;
+			margin: 0 1.2em;
+			border-right: 1px solid $color_gray;
 		}
 
 		h1{

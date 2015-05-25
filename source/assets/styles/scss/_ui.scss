@@ -16,6 +16,12 @@ button.icon{
 	@extend %reset-button;
 }
 
+a{
+	*{
+		pointer-events: none;
+	}
+}
+
 .scrollbar{
 	position: absolute;
 	top: 0;

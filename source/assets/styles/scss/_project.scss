@@ -425,10 +425,6 @@ section.full{
 		margin: 6em auto;
 		@include span(3 of 10);
 
-		&.next{
-			@include last;
-		}
-
 		>.inner{
 			position: relative;
 			height: 0;
@@ -491,17 +487,21 @@ section.full{
 					}
 				}
 			}
+		}
 
-			&:hover{
-				.movable{
-					top: -10px;
-				}
+		&.next{
+			@include last;
+		}
 
-				.background-container{
+		&:hover{
+			.movable{
+				top: -10px;
+
+				>.background-container{
 					@include translateY(-20%);
 				}
 
-				.text-container{
+				>.text-container{
 					@include translateY(0);
 
 					.icon{

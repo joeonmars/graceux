@@ -206,7 +206,7 @@ gux.controllers.ContactForm.prototype.onSubmit = function( e ) {
 	this.unstyleValidationErrors();
 
 	var url = '/';
-	var timeout = 5000;
+	var timeout = 10000;
 	var data = goog.dom.forms.getFormDataString( this._form );
 
 	goog.net.XhrIo.send( url, goog.bind( this.onSubmitComplete, this ), 'POST', data, null, timeout );

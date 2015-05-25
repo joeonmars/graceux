@@ -5,7 +5,8 @@
  # This template gets loaded whenever a Project (from projects or labs) entry’s URL is requested.
  #}
 
-{% extends "_extends/_main" %}
+{% set isAjax = (craft.request.getQuery("ajax") == "true") ? true : false %}
+{% extends isAjax ? "_extends/_main-content" : "_extends/_main" %}
 
 {% set pageTitle = entry.title %}
 {% set portfolioCategory = entry.portfolioCategory[0] %}
@@ -144,7 +145,7 @@
 				{% endfor %}
 
 				{% set prevProject = projects[projectIndex - 1]|default(projects[projects|length - 1]) %}
-				<a class="prev" href="{{ prevProject.url }}">
+				<a class="prev" href="{{ prevProject.url }}" data-ajax="true">
 					<div class="inner">
 						<div class="movable">
 							<div class="background-container" style="background-image: url({{ prevProject.navigationImage[0].url }})">
@@ -163,7 +164,7 @@
 				</a>
 
 				{% set nextProject = projects[projectIndex + 1]|default(projects[0]) %}
-				<a class="next" href="{{ nextProject.url }}">
+				<a class="next" href="{{ nextProject.url }}" data-ajax="true">
 					<div class="inner">
 						<div class="movable">
 							<div class="background-container" style="background-image: url({{ nextProject.navigationImage[0].url }})">

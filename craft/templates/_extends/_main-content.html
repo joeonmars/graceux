@@ -1,0 +1,9 @@
+{% set Copy = {} %}
+
+{# store a variable of template copies from global copy #}
+{% for _copy in copy.dictionary %}
+	{% set Copy = Copy|merge({(_copy.id): _copy.text}) %}
+{% endfor %}
+
+{% block content %}
+{% endblock %}

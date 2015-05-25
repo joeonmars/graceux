@@ -5,6 +5,7 @@ goog.require( 'goog.dom.query' );
 goog.require( 'goog.fx.anim' );
 goog.require( 'goog.style' );
 goog.require( 'gux.templates.Main' );
+goog.require( 'gux.controllers.Router' );
 goog.require( 'gux.controllers.Intro' );
 goog.require( 'gux.controllers.PortfolioNavigation' );
 goog.require( 'gux.controllers.MainScroller' );
@@ -21,10 +22,11 @@ gux.apps.Main = function() {
 
 	var intro = gux.controllers.Intro.getInstance();
 	var portfolioNavigation = gux.controllers.PortfolioNavigation.getInstance();
-	var mainScroller = gux.controllers.MainScroller.getInstance();
 	var contactForm = gux.controllers.ContactForm.getInstance();
 
-	goog.array.forEach( goog.dom.query( '.video-player' ), function( el ) {
-		var videoPlayer = new gux.controllers.VideoPlayer( el );
-	} );
+	//
+	gux.router = gux.controllers.Router.getInstance();
+	gux.router.init();
+
+	gux.mainScroller = gux.controllers.MainScroller.getInstance();
 };

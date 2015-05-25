@@ -22,9 +22,11 @@ gux.controllers.PortfolioNavigation = function() {
 	this._eventHandler = new goog.events.EventHandler( this );
 	this._eventHandler.listen( this._hamburgerButton, gux.events.EventType.DOWN, this.toggle, false, this );
 	this._eventHandler.listen( this._closeButton, goog.events.EventType.CLICK, this.close, false, this );
+	this._eventHandler.listen( this.el, goog.events.EventType.CLICK, this.onClickSelf, false, this );
 	this._eventHandler.listen( this._mainContainer, goog.events.EventType.CLICK, this.onClickMain, false, this );
 	this._eventHandler.listen( window, goog.events.EventType.RESIZE, this.resize, false, this );
 
+	//
 	this.resize();
 };
 goog.inherits( gux.controllers.PortfolioNavigation, goog.events.EventTarget );
@@ -141,6 +143,14 @@ gux.controllers.PortfolioNavigation.prototype.resize = function() {
 		y = goog.math.lerp( 0, cy, ( y - cy ) / maxRad ) + cy;
 
 		goog.style.setPosition( items[ i ], x, y );
+	}
+};
+
+
+gux.controllers.PortfolioNavigation.prototype.onClickSelf = function( e ) {
+
+	if ( e.target.tagName === goog.dom.TagName.A ) {
+		this.close();
 	}
 };
 

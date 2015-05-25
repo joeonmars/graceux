@@ -10,6 +10,8 @@ gux.events.EventType = {
 	SCROLL_START: 'scroll_start',
 	SCROLL_UPDATE: 'scroll_update',
 	SCROLL_COMPLETE: 'scroll_complete',
+	LOAD_PAGE: 'load_page',
+	SWITCH_PAGE: 'switch_page',
 	PROGRESS: 'progress',
 	DOWN: goog.userAgent.MOBILE ? 'touchstart' : 'mousedown',
 	MOVE: goog.userAgent.MOBILE ? 'touchmove' : 'mousemove',
