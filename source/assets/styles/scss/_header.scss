@@ -148,6 +148,17 @@
 				font-family: $font_whitney_light;
 				letter-spacing: 0.1em;
 				margin-left: 1.5em;
+
+				a{
+					position: relative;
+					color: black;
+					opacity: .5;
+					@include transition(opacity .2s $easeOutCubic);
+
+					&.active{
+						opacity: 1;
+					}
+				}
 			}
 		}
 	}

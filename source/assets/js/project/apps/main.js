@@ -6,6 +6,7 @@ goog.require( 'goog.fx.anim' );
 goog.require( 'goog.style' );
 goog.require( 'gux.templates.Main' );
 goog.require( 'gux.controllers.Router' );
+goog.require( 'gux.controllers.Header' );
 goog.require( 'gux.controllers.Intro' );
 goog.require( 'gux.controllers.PortfolioNavigation' );
 goog.require( 'gux.controllers.MainScroller' );
@@ -21,12 +22,14 @@ gux.apps.Main = function() {
 	//goog.dom.appendChild(document.body, helloWorld);
 
 	var intro = gux.controllers.Intro.getInstance();
-	var portfolioNavigation = gux.controllers.PortfolioNavigation.getInstance();
 	var contactForm = gux.controllers.ContactForm.getInstance();
 
 	//
 	gux.router = gux.controllers.Router.getInstance();
 	gux.router.init();
+
+	gux.header = gux.controllers.Header.getInstance();
+	gux.portfolioNavigation = gux.controllers.PortfolioNavigation.getInstance();
 
 	gux.mainScroller = gux.controllers.MainScroller.getInstance();
 };

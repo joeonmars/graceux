@@ -115,10 +115,8 @@ body{
 					@include inline-block(middle);
 					font-size: 1.2rem;
 				}
-			}
 
-			&:hover, &.active{
-				>a{
+				&:hover, &.active{
 					opacity: 1;
 				}
 			}

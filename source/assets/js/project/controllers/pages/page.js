@@ -19,7 +19,6 @@ gux.controllers.pages.Page = function( el ) {
 goog.inherits( gux.controllers.pages.Page, goog.events.EventTarget );
 
 
-
 gux.controllers.pages.Page.prototype.init = function() {
 
 	this._eventHandler.listen( gux.router, gux.events.EventType.LOAD_PAGE, this.onRouterLoadPage, false, this );

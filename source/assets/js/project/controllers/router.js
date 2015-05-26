@@ -35,8 +35,8 @@ gux.controllers.Router = function() {
 
 	this._routes = [];
 
-	goog.object.forEach( mappings, function( value, key ) {
-		this._routes.push( crossroads.addRoute( key ) );
+	goog.object.forEach( mappings, function( value ) {
+		this._routes.push( crossroads.addRoute( value.pattern ) );
 	}, this );
 };
 goog.inherits( gux.controllers.Router, goog.events.EventTarget );
@@ -69,7 +69,11 @@ gux.controllers.Router.prototype.getMatchedRoute = function( token ) {
 
 gux.controllers.Router.prototype.createPage = function( pattern, el ) {
 
-	var PageClass = gux.controllers.Router.mappings[ pattern ];
+	var mapping = goog.object.findValue( gux.controllers.Router.mappings, function( value ) {
+		return value.pattern === pattern;
+	} );
+
+	var PageClass = mapping.page;
 	var page = new PageClass( el );
 
 	return page;
@@ -88,7 +92,7 @@ gux.controllers.Router.prototype.switchToNextPage = function() {
 };
 
 
-gux.controllers.Router.prototype.loadPage = function( url ) {
+gux.controllers.Router.prototype.loadPage = function( url, routeKey, routeParams ) {
 
 	// create deferred list
 	this._deferredLoad = new goog.async.Deferred();
@@ -106,8 +110,12 @@ gux.controllers.Router.prototype.loadPage = function( url ) {
 
 	this.dispatchEvent( {
 		type: gux.events.EventType.LOAD_PAGE,
-		deferred: this._deferredAnimateOut
+		deferred: this._deferredAnimateOut,
+		routeKey: routeKey,
+		routeParams: routeParams
 	} );
+
+	console.log( "LOAD PAGE: ", routeKey, routeParams );
 };
 
 
@@ -121,8 +129,15 @@ gux.controllers.Router.prototype.onRouted = function( request, data ) {
 
 	console.log( 'routed: ', request, data );
 
+	var routeKey = goog.object.findKey( gux.controllers.Router.mappings, function( value ) {
+		return value.pattern === data.route[ '_pattern' ];
+	} );
+
+	var routeParams = data[ 'params' ];
+
 	var url = gux.Config[ 'basePath' ] + data[ 'params' ][ 'input' ] + '?ajax=true';
-	this.loadPage( url );
+
+	this.loadPage( url, routeKey, routeParams );
 };
 
 
@@ -166,9 +181,24 @@ gux.controllers.Router.prototype.onClick = function( e ) {
 
 
 gux.controllers.Router.mappings = {
-	'': gux.controllers.pages.Page,
-	'labs': gux.controllers.pages.Page,
-	'projects/{id}': gux.controllers.pages.Page,
-	'labs/{id}': gux.controllers.pages.Page,
-	'about': gux.controllers.pages.Page
+	'home': {
+		pattern: '',
+		page: gux.controllers.pages.Page
+	},
+	'labs': {
+		pattern: 'labs',
+		page: gux.controllers.pages.Page
+	},
+	'projects-project': {
+		pattern: 'projects/{id}',
+		page: gux.controllers.pages.Page
+	},
+	'labs-project': {
+		pattern: 'labs/{id}',
+		page: gux.controllers.pages.Page
+	},
+	'about': {
+		pattern: 'about',
+		page: gux.controllers.pages.Page
+	}
 };

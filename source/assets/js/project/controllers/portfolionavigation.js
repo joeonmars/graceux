@@ -1,6 +1,5 @@
 goog.provide( 'gux.controllers.PortfolioNavigation' );
 
-goog.require( 'goog.events.EventTarget' );
 goog.require( 'goog.events.EventHandler' );
 goog.require( 'goog.fx.easing' );
 goog.require( 'goog.math.Size' );
@@ -13,6 +12,7 @@ gux.controllers.PortfolioNavigation = function() {
 	this._inner = goog.dom.query( '.inner', this.el )[ 0 ];
 	this._closeButton = goog.dom.query( '.close', this.el )[ 0 ];
 	this._hamburgerButton = goog.dom.query( '#main-header .hamburger' )[ 0 ];
+	this._menu = goog.dom.query( '#main-header .menu' )[ 0 ];
 	this._mainContainer = goog.dom.query( '#main-container' )[ 0 ];
 	this._particlesContainer = goog.dom.query( '.particles-container', this.el )[ 0 ];
 
@@ -22,14 +22,10 @@ gux.controllers.PortfolioNavigation = function() {
 	this._eventHandler = new goog.events.EventHandler( this );
 	this._eventHandler.listen( this._hamburgerButton, gux.events.EventType.DOWN, this.toggle, false, this );
 	this._eventHandler.listen( this._closeButton, goog.events.EventType.CLICK, this.close, false, this );
-	this._eventHandler.listen( this.el, goog.events.EventType.CLICK, this.onClickSelf, false, this );
 	this._eventHandler.listen( this._mainContainer, goog.events.EventType.CLICK, this.onClickMain, false, this );
 	this._eventHandler.listen( window, goog.events.EventType.RESIZE, this.resize, false, this );
-
-	//
-	this.resize();
+	this._eventHandler.listen( gux.router, gux.events.EventType.LOAD_PAGE, this.onLoadPage, false, this );
 };
-goog.inherits( gux.controllers.PortfolioNavigation, goog.events.EventTarget );
 goog.addSingletonGetter( gux.controllers.PortfolioNavigation );
 
 
@@ -57,6 +53,8 @@ gux.controllers.PortfolioNavigation.prototype.open = function() {
 	this._isOpened = true;
 
 	goog.dom.classlist.enable( this._hamburgerButton, 'active', true );
+
+	this.resize();
 
 	var innerHeight = goog.style.getSize( this._inner ).height;
 
@@ -147,14 +145,6 @@ gux.controllers.PortfolioNavigation.prototype.resize = function() {
 };
 
 
-gux.controllers.PortfolioNavigation.prototype.onClickSelf = function( e ) {
-
-	if ( e.target.tagName === goog.dom.TagName.A ) {
-		this.close();
-	}
-};
-
-
 gux.controllers.PortfolioNavigation.prototype.onClickMain = function( e ) {
 
 	if ( !this._isOpened ) return;
@@ -162,4 +152,43 @@ gux.controllers.PortfolioNavigation.prototype.onClickMain = function( e ) {
 	if ( goog.dom.contains( this._mainContainer, e.target ) ) {
 		this.close();
 	}
+};
+
+
+gux.controllers.PortfolioNavigation.prototype.onLoadPage = function( e ) {
+
+	this.close();
+
+	if ( e.routeKey === 'projects-project' ) {
+
+		this.el.setAttribute( 'data-category', 'projects' );
+		goog.dom.classlist.enable( this._menu, 'hide', false );
+
+	} else if ( e.routeKey === 'labs-project' ) {
+
+		this.el.setAttribute( 'data-category', 'labs' );
+		goog.dom.classlist.enable( this._menu, 'hide', false );
+
+	} else {
+
+		goog.dom.classlist.enable( this._menu, 'hide', true );
+		return;
+	}
+
+	var anchors = goog.dom.query( 'a', this.el );
+	var slug = e.routeParams[ 0 ];
+	var activeAnchor;
+
+	goog.array.forEach( anchors, function( el ) {
+
+		var isActive = ( el.getAttribute( 'data-slug' ) === slug );
+		goog.dom.classlist.enable( el, 'active', isActive );
+
+		if ( isActive ) {
+			activeAnchor = el;
+		}
+	} );
+
+	var menuText = goog.dom.getTextContent( activeAnchor );
+	goog.dom.setTextContent( goog.dom.query( 'p', this._menu )[ 0 ], menuText );
 };

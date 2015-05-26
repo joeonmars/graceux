@@ -8,6 +8,10 @@ $color_logo_green: #C1D5D5;
 
 $border-padding: 8px;
 
+.white{
+	color: white !important;
+}
+
 .blue{
 	color: $color_logo_blue !important;
 }
@@ -26,6 +30,10 @@ $border-padding: 8px;
 
 %color-text{
 	color: $color_logo_blue !important;
+
+	&.white{
+		color: white !important;
+	}
 
 	&.blue{
 		color: $color_logo_blue !important;
@@ -46,6 +54,10 @@ $border-padding: 8px;
 
 %color-background{
 	background: $color_logo_blue !important;
+
+	&.white{
+		background: white !important;
+	}
 
 	&.blue{
 		background: $color_logo_blue !important;
@@ -70,7 +82,6 @@ $border-padding: 8px;
 	text-transform: uppercase;
 	text-align: left;
 	@include font-smoothing;
-	@extend %color-text;
 
 	&.above{
 		color: $color_lightgray;

@@ -247,3 +247,11 @@ a{
 		height: 85% !important;
 	}
 }
+
+
+@mixin dots-pattern($scale: auto) {
+  background-image: image-url('dots-pattern.png');
+  background-repeat: repeat;
+  background-position: center center;
+  background-size: #{$scale};
+}

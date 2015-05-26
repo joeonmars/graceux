@@ -21,13 +21,25 @@
 	<nav class="navigation">
 		<ul>
 			<li>
-				<a href="/" {% if craft.request.firstSegment == 'projects' %}class="active"{% endif %} data-ajax="true">Projects</a>
+				<a href="/"
+					{% if craft.request.firstSegment == 'projects' %}class="active"{% endif %}
+					data-id='home' data-ajax="true">
+					Projects
+				</a>
 			</li>
 			<li>
-				<a href="{{ url('labs') }}" {% if craft.request.firstSegment == 'labs' %}class="active"{% endif %} data-ajax="true">Labs</a>
+				<a href="{{ url('labs') }}"
+					{% if craft.request.firstSegment == 'labs' %}class="active"{% endif %}
+					data-id='labs' data-ajax="true">
+					Labs
+				</a>
 			</li>
 			<li>
-				<a href="{{ url('about') }}" {% if craft.request.firstSegment == 'about' %}class="active"{% endif %} data-ajax="true">About</a>
+				<a href="{{ url('about') }}"
+					{% if craft.request.firstSegment == 'about' %}class="active"{% endif %}
+					data-id='about' data-ajax="true">
+					About
+				</a>
 			</li>
 		</ul>
 	</nav>
@@ -39,8 +51,10 @@
 			<ul class="projects">
 			{% for entry in craft.entries.section('portfolio').find() %}
 				{% if entry.portfolioCategory.first() == 'Projects' %}
-				<li {% if pageTitle is defined and pageTitle == entry.title %}class="active"{% endif %}>
-					<a href="{{ entry.url }}" data-ajax="true">
+				<li>
+					<a href="{{ entry.url }}"
+						{% if pageTitle is defined and pageTitle == entry.title %}class="active"{% endif %}
+						data-slug="{{entry.slug}}" data-ajax="true">
 						<div class="icon {{entry.color}}"></div><h6>{{ entry.title }}</h6>
 					</a>
 				</li>
@@ -51,8 +65,10 @@
 			<ul class="labs">
 			{% for entry in craft.entries.section('portfolio').find() %}
 				{% if entry.portfolioCategory.first() == 'Labs' %}
-				<li {% if pageTitle is defined and pageTitle == entry.title %}class="active"{% endif %}>
-					<a href="{{ entry.url }}" data-ajax="true">
+				<li>
+					<a href="{{ entry.url }}"
+						{% if pageTitle is defined and pageTitle == entry.title %}class="active"{% endif %}
+						data-slug="{{entry.slug}}" data-ajax="true">
 						<div class="icon {{entry.color}}"></div><h6>{{ entry.title }}</h6>
 					</a>
 				</li>
