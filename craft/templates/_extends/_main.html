@@ -9,13 +9,15 @@
 	</div>
 
 	<div class="menu {% if showMenuButton is not defined or showMenuButton != true %}hide{% endif %}">
-		<button class="hamburger">
-			<div class="line"></div>
-			<div class="line"></div>
-			<div class="line"></div>
-			<div class="icon icon-arrow-down arrow"></div>
+		<button>
+			<div class="hamburger">
+				<div class="line"></div>
+				<div class="line"></div>
+				<div class="line"></div>
+				<div class="icon icon-arrow-down arrow"></div>
+			</div>
+			<p>{% if pageTitle is defined %}{{ pageTitle }}{% endif %}</p>
 		</button>
-		<p>{% if pageTitle is defined %}{{ pageTitle }}{% endif %}</p>
 	</div>
 
 	<nav class="navigation">

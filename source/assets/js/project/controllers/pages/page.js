@@ -4,6 +4,8 @@ goog.require( 'goog.events.EventTarget' );
 goog.require( 'goog.events.EventHandler' );
 goog.require( 'goog.dom.classlist' );
 goog.require( 'goog.net.XhrIo' );
+goog.require( 'gux.controllers.modules.VideoPlayer' );
+goog.require( 'gux.controllers.modules.Comparison' );
 
 
 gux.controllers.pages.Page = function( el ) {
@@ -11,6 +13,8 @@ gux.controllers.pages.Page = function( el ) {
 	goog.base( this );
 
 	this.el = el;
+
+	this._modules = [];
 
 	this._eventHandler = new goog.events.EventHandler( this );
 
@@ -23,15 +27,33 @@ gux.controllers.pages.Page.prototype.init = function() {
 
 	this._eventHandler.listen( gux.router, gux.events.EventType.LOAD_PAGE, this.onRouterLoadPage, false, this );
 
-	goog.array.forEach( goog.dom.query( '.video-player' ), function( el ) {
-		var videoPlayer = new gux.controllers.VideoPlayer( el );
+	// create video player modules
+	var videoPlayers = goog.array.map( goog.dom.query( '.video-player', this.el ), function( el ) {
+		var videoPlayer = new gux.controllers.modules.VideoPlayer( el );
+		return videoPlayer;
 	} );
+
+	this._modules.push.apply( this._modules, videoPlayers );
+
+	// create comparison modules
+	var comparisons = goog.array.map( goog.dom.query( '.comparison figure', this.el ), function( el ) {
+		var comparison = new gux.controllers.modules.Comparison( el );
+		return comparison;
+	} );
+
+	this._modules.push.apply( this._modules, comparisons );
 };
 
 
 gux.controllers.pages.Page.prototype.disposeInternal = function() {
 
 	goog.dom.removeNode( this.el );
+
+	goog.array.forEach( this._modules, function( module ) {
+		module.dispose();
+	} );
+
+	this._modules = null;
 
 	this._eventHandler.removeAll();
 	this._eventHandler.dispose();

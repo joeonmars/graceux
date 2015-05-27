@@ -11,8 +11,7 @@ gux.controllers.PortfolioNavigation = function() {
 
 	this._inner = goog.dom.query( '.inner', this.el )[ 0 ];
 	this._closeButton = goog.dom.query( '.close', this.el )[ 0 ];
-	this._hamburgerButton = goog.dom.query( '#main-header .hamburger' )[ 0 ];
-	this._menu = goog.dom.query( '#main-header .menu' )[ 0 ];
+	this._menuButton = goog.dom.query( '#main-header .menu button' )[ 0 ];
 	this._mainContainer = goog.dom.query( '#main-container' )[ 0 ];
 	this._particlesContainer = goog.dom.query( '.particles-container', this.el )[ 0 ];
 
@@ -20,7 +19,7 @@ gux.controllers.PortfolioNavigation = function() {
 
 	//
 	this._eventHandler = new goog.events.EventHandler( this );
-	this._eventHandler.listen( this._hamburgerButton, gux.events.EventType.DOWN, this.toggle, false, this );
+	this._eventHandler.listen( this._menuButton, gux.events.EventType.DOWN, this.toggle, false, this );
 	this._eventHandler.listen( this._closeButton, goog.events.EventType.CLICK, this.close, false, this );
 	this._eventHandler.listen( this._mainContainer, goog.events.EventType.CLICK, this.onClickMain, false, this );
 	this._eventHandler.listen( window, goog.events.EventType.RESIZE, this.resize, false, this );
@@ -52,7 +51,7 @@ gux.controllers.PortfolioNavigation.prototype.open = function() {
 
 	this._isOpened = true;
 
-	goog.dom.classlist.enable( this._hamburgerButton, 'active', true );
+	goog.dom.classlist.enable( this._menuButton, 'active', true );
 
 	this.resize();
 
@@ -89,7 +88,7 @@ gux.controllers.PortfolioNavigation.prototype.close = function() {
 
 	this._isOpened = false;
 
-	goog.dom.classlist.enable( this._hamburgerButton, 'active', false );
+	goog.dom.classlist.enable( this._menuButton, 'active', false );
 
 	TweenMax.to( this.el, 1, {
 		'height': 0,
@@ -162,16 +161,16 @@ gux.controllers.PortfolioNavigation.prototype.onLoadPage = function( e ) {
 	if ( e.routeKey === 'projects-project' ) {
 
 		this.el.setAttribute( 'data-category', 'projects' );
-		goog.dom.classlist.enable( this._menu, 'hide', false );
+		goog.dom.classlist.enable( this._menuButton, 'hide', false );
 
 	} else if ( e.routeKey === 'labs-project' ) {
 
 		this.el.setAttribute( 'data-category', 'labs' );
-		goog.dom.classlist.enable( this._menu, 'hide', false );
+		goog.dom.classlist.enable( this._menuButton, 'hide', false );
 
 	} else {
 
-		goog.dom.classlist.enable( this._menu, 'hide', true );
+		goog.dom.classlist.enable( this._menuButton, 'hide', true );
 		return;
 	}
 
@@ -190,5 +189,5 @@ gux.controllers.PortfolioNavigation.prototype.onLoadPage = function( e ) {
 	} );
 
 	var menuText = goog.dom.getTextContent( activeAnchor );
-	goog.dom.setTextContent( goog.dom.query( 'p', this._menu )[ 0 ], menuText );
+	goog.dom.setTextContent( goog.dom.query( 'p', this._menuButton )[ 0 ], menuText );
 };

@@ -42,22 +42,31 @@
 		width: 50%;
 		height: 100%;
 		text-align: center;
-		opacity: 1;
-		visibility: visible;
-		@include transition(opacity .5s, visibility .5s);
 
-		>.hamburger{
-			position: relative;
+		button{
 			@extend %reset-button;
-			@include inline-block(bottom);
-			width: 2rem;
-			height: 1.2rem;
-			margin-right: .6rem;
-			margin-bottom: .3rem;
+			opacity: .5;
+			visibility: visible;
+			@include transition(opacity .5s, visibility .5s);
 
-			>.line{
+			>.hamburger{
+				position: relative;
+				@include inline-block(bottom);
+				width: 2rem;
+				height: 1.2rem;
+				margin-right: .6rem;
+				margin-bottom: .3rem;
+			}
+
+			>p{
+				@include inline-block(bottom);
+				@extend %italic-heading;
+				color: black;
+			}
+
+			.line{
 				height: 1px;
-				background: $color_gray;
+				background: black;
 				margin-bottom: .4rem;
 				opacity: 1;
 				@include transition(width .25s, opacity .35s ease-out, transform .35s ease-out);
@@ -76,24 +85,28 @@
 				}
 			}
 
-			>.arrow{
+			.arrow{
 				@include absoluteTopLeft;
 				width: 100%;
 				text-align: center;
-				color: $color_gray;
+				color: black;
 				opacity: 0;
 				@include translateY(0);
 				@include transition(opacity .35s ease-out, transform .35s ease-out);
 			}
 
 			&:hover{
-				>.line{
+				opacity: 1;
+
+				.line{
 					width: 100%;
 				}
 			}
 
 			&.active{
-				>.line{
+				opacity: 1;
+				
+				.line{
 					&:nth-child(2) {
 						opacity: 0;
 						@include translateY(-.25rem);
@@ -105,16 +118,16 @@
 					}
 				}
 
-				>.arrow{
+				.arrow{
 					opacity: 1;
 					@include translateY(.5rem);
 				}
 			}
-		}
 
-		>p{
-			@include inline-block(bottom);
-			@extend %italic-heading;
+			&.hide{
+				opacity: 0;
+				visibility: hidden;
+			}
 		}
 
 		&:after{
@@ -122,11 +135,6 @@
 			@include inline-block(bottom);
 			width: 0;
 			height: 100%;
-		}
-
-		&.hide{
-			opacity: 0;
-			visibility: hidden;
 		}
 	}
 

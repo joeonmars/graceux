@@ -11,7 +11,6 @@ goog.require( 'gux.controllers.Intro' );
 goog.require( 'gux.controllers.PortfolioNavigation' );
 goog.require( 'gux.controllers.MainScroller' );
 goog.require( 'gux.controllers.ContactForm' );
-goog.require( 'gux.controllers.VideoPlayer' );
 
 
 gux.apps.Main = function() {

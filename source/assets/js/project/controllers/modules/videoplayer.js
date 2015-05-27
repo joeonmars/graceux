@@ -1,13 +1,12 @@
-goog.provide( 'gux.controllers.VideoPlayer' );
+goog.provide( 'gux.controllers.modules.VideoPlayer' );
 
-goog.require( 'goog.events.EventTarget' );
-goog.require( 'goog.events.EventHandler' );
+goog.require( 'gux.controllers.Module' );
 goog.require( 'goog.fx.Dragger' );
 
 
-gux.controllers.VideoPlayer = function( element ) {
+gux.controllers.modules.VideoPlayer = function( element ) {
 
-	this.el = element;
+	goog.base( this, element );
 
 	this._video = goog.dom.query( 'video', this.el )[ 0 ];
 	this._controls = goog.dom.getElementByClass( 'controls', this.el );
@@ -21,18 +20,26 @@ gux.controllers.VideoPlayer = function( element ) {
 	this._canPlay = false;
 	this._shouldLoop = ( this.el.getAttribute( 'data-loop' ) === 'true' );
 
-	this._eventHandler = new goog.events.EventHandler( this );
-
 	this._dragger = new goog.fx.Dragger( this._track );
 	this._dragger.defaultAction = goog.nullFunction;
 	this._draggerLimits = new goog.math.Rect( 0, 0, 0, 0 );
 
 	this.activate();
 };
-goog.inherits( gux.controllers.VideoPlayer, goog.events.EventTarget );
+goog.inherits( gux.controllers.modules.VideoPlayer, gux.controllers.Module );
 
 
-gux.controllers.VideoPlayer.prototype.activate = function() {
+gux.controllers.modules.VideoPlayer.prototype.disposeInternal = function() {
+
+	this._dragger.dispose();
+
+	goog.base( this, 'disposeInternal' );
+};
+
+
+gux.controllers.modules.VideoPlayer.prototype.doActivate = function() {
+
+	goog.base( this, 'doActivate' );
 
 	this._eventHandler.listen( this._playButton, goog.events.EventType.CLICK, this.togglePlay, false, this );
 	this._eventHandler.listen( this.el, goog.events.EventType.MOUSEOVER, this.onMouseOver, false, this );
@@ -46,18 +53,10 @@ gux.controllers.VideoPlayer.prototype.activate = function() {
 	this._eventHandler.listen( this._dragger, goog.fx.Dragger.EventType.END, this.onDragEnd, false, this );
 	this._eventHandler.listen( this._dragger, goog.fx.Dragger.EventType.DRAG, this.onDrag, false, this );
 	this._eventHandler.listen( window, goog.events.EventType.RESIZE, this.resize, false, this );
-
-	this.resize();
 };
 
 
-gux.controllers.VideoPlayer.prototype.deactivate = function() {
-
-	this._eventHandler.removeAll();
-};
-
-
-gux.controllers.VideoPlayer.prototype.togglePlay = function() {
+gux.controllers.modules.VideoPlayer.prototype.togglePlay = function() {
 
 	if ( this._video.paused ) {
 
@@ -73,14 +72,14 @@ gux.controllers.VideoPlayer.prototype.togglePlay = function() {
 };
 
 
-gux.controllers.VideoPlayer.prototype.resize = function() {
+gux.controllers.modules.VideoPlayer.prototype.resize = function() {
 
 	this._draggerLimits.width = goog.style.getSize( this._track ).width;
 	this._dragger.setLimits( this._draggerLimits );
 };
 
 
-gux.controllers.VideoPlayer.prototype.onMouseOver = function( e ) {
+gux.controllers.modules.VideoPlayer.prototype.onMouseOver = function( e ) {
 
 	if ( !e.relatedTarget || goog.dom.contains( this.el, e.relatedTarget ) ) {
 		return false;
@@ -90,7 +89,7 @@ gux.controllers.VideoPlayer.prototype.onMouseOver = function( e ) {
 };
 
 
-gux.controllers.VideoPlayer.prototype.onMouseOut = function( e ) {
+gux.controllers.modules.VideoPlayer.prototype.onMouseOut = function( e ) {
 
 	if ( !e.relatedTarget || goog.dom.contains( this.el, e.relatedTarget ) ) {
 		return false;
@@ -102,7 +101,7 @@ gux.controllers.VideoPlayer.prototype.onMouseOut = function( e ) {
 };
 
 
-gux.controllers.VideoPlayer.prototype.onClickControls = function( e ) {
+gux.controllers.modules.VideoPlayer.prototype.onClickControls = function( e ) {
 
 	if ( e.currentTarget === e.target ) {
 		this.togglePlay();
@@ -110,7 +109,7 @@ gux.controllers.VideoPlayer.prototype.onClickControls = function( e ) {
 };
 
 
-gux.controllers.VideoPlayer.prototype.onDragStart = function( e ) {
+gux.controllers.modules.VideoPlayer.prototype.onDragStart = function( e ) {
 
 	this._wasPlaying = !this._video.paused;
 
@@ -122,7 +121,7 @@ gux.controllers.VideoPlayer.prototype.onDragStart = function( e ) {
 };
 
 
-gux.controllers.VideoPlayer.prototype.onDragEnd = function( e ) {
+gux.controllers.modules.VideoPlayer.prototype.onDragEnd = function( e ) {
 
 	if ( this._wasPlaying ) {
 		this._video.play();
@@ -132,7 +131,7 @@ gux.controllers.VideoPlayer.prototype.onDragEnd = function( e ) {
 };
 
 
-gux.controllers.VideoPlayer.prototype.onDrag = function( e ) {
+gux.controllers.modules.VideoPlayer.prototype.onDrag = function( e ) {
 
 	var dragDistance = e.clientX - goog.style.getPageOffsetLeft( this._track );
 	var progress = goog.math.clamp( dragDistance / this._draggerLimits.width, 0, 1 );
@@ -142,7 +141,7 @@ gux.controllers.VideoPlayer.prototype.onDrag = function( e ) {
 };
 
 
-gux.controllers.VideoPlayer.prototype.onCanPlay = function( e ) {
+gux.controllers.modules.VideoPlayer.prototype.onCanPlay = function( e ) {
 
 	this._canPlay = true;
 
@@ -152,7 +151,7 @@ gux.controllers.VideoPlayer.prototype.onCanPlay = function( e ) {
 };
 
 
-gux.controllers.VideoPlayer.prototype.onPlay = function( e ) {
+gux.controllers.modules.VideoPlayer.prototype.onPlay = function( e ) {
 
 	goog.dom.classlist.enable( this._playButton, 'paused', false );
 
@@ -163,7 +162,7 @@ gux.controllers.VideoPlayer.prototype.onPlay = function( e ) {
 };
 
 
-gux.controllers.VideoPlayer.prototype.onPause = function( e ) {
+gux.controllers.modules.VideoPlayer.prototype.onPause = function( e ) {
 
 	goog.dom.classlist.enable( this._playButton, 'paused', true );
 
@@ -171,7 +170,7 @@ gux.controllers.VideoPlayer.prototype.onPause = function( e ) {
 };
 
 
-gux.controllers.VideoPlayer.prototype.onEnd = function( e ) {
+gux.controllers.modules.VideoPlayer.prototype.onEnd = function( e ) {
 
 	if ( this._dragger.isDragging() ) {
 		return;
@@ -189,7 +188,7 @@ gux.controllers.VideoPlayer.prototype.onEnd = function( e ) {
 };
 
 
-gux.controllers.VideoPlayer.prototype.onAnimationFrame = function( now ) {
+gux.controllers.modules.VideoPlayer.prototype.onAnimationFrame = function( now ) {
 
 	var progress = this._video.currentTime / this._video.duration;
 	var percent = Math.round( progress * 100 ) + '%';
