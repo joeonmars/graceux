@@ -192,19 +192,24 @@
 			position: relative;
 			margin-bottom: 1rem;
 
-			&:first-child{
-				margin-top: 0;
-			}
-
 			&.image, &.video{
 				@include inline-block(top);
 				width: 100%;
-				height: 0;
+				max-width: 100%;
 
 				&.device{
 					.movable{
 						position: relative;
 					}
+
+					.aspect-container{
+						height: auto;
+					}
+				}
+
+				.aspect-container{
+					max-width: 100%;
+					height: 0;
 				}
 			}
 
@@ -241,6 +246,10 @@
 						border-bottom: 10px solid $color_logo_blue;
 					}
 				}
+			}
+
+			&:last-child{
+				margin-bottom: 0;
 			}
 		}
 	}
@@ -326,14 +335,17 @@
 
 .annotation{
 	.movable{
+		/*
 		@include flexbox((
 			display: flex,
 			justify-content: center,
 			align-items: center
 		));
+		*/
 
 		.annotation-container{
-			max-width: 70%;
+			max-width: 100%;
+			//max-width: 70%;
 		}
 	}
 }
@@ -473,22 +485,22 @@ section{
 
 section.fluid{
 	.desktop{
-		>.movable{
+		.movable{
 			@include device-desktop(100%);
 		}
 	}
 	.mobile{
-		>.movable{
+		.movable{
 			@include device-mobile(60%);
 		}
 	}
 	.tablet-portrait{
-		>.movable{
+		.movable{
 			@include device-tablet-portrait(80%);
 		}
 	}
 	.tablet-landscape{
-		>.movable{
+		.movable{
 			@include device-tablet-landscape(100%);
 		}
 	}
@@ -498,28 +510,28 @@ section.full{
 	.desktop{
 		max-width: 960px;
 
-		>.movable{
+		.movable{
 			@include device-desktop(100%);
 		}
 	}
 	.mobile{
 		max-width: 350px;
 
-		>.movable{
+		.movable{
 			@include device-mobile(60%);
 		}
 	}
 	.tablet-portrait{
 		max-width: 500px;
 
-		>.movable{
+		.movable{
 			@include device-tablet-portrait(80%);
 		}
 	}
 	.tablet-landscape{
 		max-width: 740px;
 
-		>.movable{
+		.movable{
 			@include device-tablet-landscape(100%);
 		}
 	}

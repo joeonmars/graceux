@@ -1,3 +1,5 @@
+{% import "_imports/_utils" as utils %}
+
 <section class="feature media {{ feature.layout }}">
 	<article>
 		{% include "_includes/_border-heading" with {'tag': 'h4', 'bottom': true, 'text': feature.heading} %}
@@ -11,19 +13,23 @@
 	{% for media in feature.media %}
 		{% switch media.getExtension() %}
 		    {% case "mp4" %}
-		        <div class="video" style="padding-bottom:{{ media.videoHeight/media.videoWidth*100 }}%">
-		        	<div class="movable">
-		        		{% include "_includes/_video-player" with {'video': media} %}
-		        	</div>
+		        <div class="video">
+
+		        	<div class="aspect-container" style="padding-bottom:{{ media.videoHeight/media.videoWidth*100 }}%">
+			        	<div class="movable">
+			        		{% include "_includes/_video-player" with {'video': media} %}
+			        	</div>
+			        </div>
 		        </div>
 
 		    {% default %}
-		        <div class="image {{device}} {% if device != null %}device{% endif %}"
-		        	{% if device == null %}style="padding-bottom:{{ media.height/media.width*100 }}%"{% endif %}>
+		        <div class="image {{device}} {% if device != null %}device{% endif %}" style="width:{{ utils.getActualImageWidth(media) }}px">
 
-		        	<div class="movable">
-		        		{% if device != null %}<div class="case"></div>{% endif %}
-		        		<img src="{{media.url}}">
+		        	<div class="aspect-container" {% if device == null %}style="padding-bottom:{{ media.height/media.width*100 }}%"{% endif %}>
+			        	<div class="movable">
+			        		{% if device != null %}<div class="case"></div>{% endif %}
+			        		<img src="{{media.url}}">
+			        	</div>
 		        	</div>
 		        </div>
 		{% endswitch %}
