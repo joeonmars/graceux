@@ -1,77 +1,86 @@
-goog.provide( 'gux.controllers.pages.Page' );
+goog.provide('gux.controllers.pages.Page');
 
-goog.require( 'goog.events.EventTarget' );
-goog.require( 'goog.events.EventHandler' );
-goog.require( 'goog.dom.classlist' );
-goog.require( 'goog.net.XhrIo' );
-goog.require( 'gux.controllers.modules.VideoPlayer' );
-goog.require( 'gux.controllers.modules.Comparison' );
+goog.require('goog.events.EventTarget');
+goog.require('goog.events.EventHandler');
+goog.require('goog.dom.classlist');
+goog.require('goog.net.XhrIo');
+goog.require('gux.controllers.modules.VideoPlayer');
+goog.require('gux.controllers.modules.Comparison');
+goog.require('gux.controllers.modules.Workflow');
 
 
-gux.controllers.pages.Page = function( el ) {
+gux.controllers.pages.Page = function(el) {
 
-	goog.base( this );
+	goog.base(this);
 
 	this.el = el;
 
 	this._modules = [];
 
-	this._eventHandler = new goog.events.EventHandler( this );
+	this._eventHandler = new goog.events.EventHandler(this);
 
 	this.init();
 };
-goog.inherits( gux.controllers.pages.Page, goog.events.EventTarget );
+goog.inherits(gux.controllers.pages.Page, goog.events.EventTarget);
 
 
 gux.controllers.pages.Page.prototype.init = function() {
 
-	this._eventHandler.listen( gux.router, gux.events.EventType.LOAD_PAGE, this.onRouterLoadPage, false, this );
+	this._eventHandler.listen(gux.router, gux.events.EventType.LOAD_PAGE, this.onRouterLoadPage, false, this);
 
 	// create video player modules
-	var videoPlayers = goog.array.map( goog.dom.query( '.video-player', this.el ), function( el ) {
-		var videoPlayer = new gux.controllers.modules.VideoPlayer( el );
+	var videoPlayers = goog.array.map(goog.dom.query('.video-player', this.el), function(el) {
+		var videoPlayer = new gux.controllers.modules.VideoPlayer(el);
 		return videoPlayer;
-	} );
+	});
 
-	this._modules.push.apply( this._modules, videoPlayers );
+	this._modules.push.apply(this._modules, videoPlayers);
 
 	// create comparison modules
-	var comparisons = goog.array.map( goog.dom.query( '.comparison figure', this.el ), function( el ) {
-		var comparison = new gux.controllers.modules.Comparison( el );
+	var comparisons = goog.array.map(goog.dom.query('.comparison figure', this.el), function(el) {
+		var comparison = new gux.controllers.modules.Comparison(el);
 		return comparison;
-	} );
+	});
 
-	this._modules.push.apply( this._modules, comparisons );
+	this._modules.push.apply(this._modules, comparisons);
+
+	// create workflow modules
+	var workflows = goog.array.map(goog.dom.query('.workflow', this.el), function(el) {
+		var workflow = new gux.controllers.modules.Workflow(el);
+		return workflow;
+	});
+
+	this._modules.push.apply(this._modules, workflows);
 };
 
 
 gux.controllers.pages.Page.prototype.disposeInternal = function() {
 
-	goog.dom.removeNode( this.el );
+	goog.dom.removeNode(this.el);
 
-	goog.array.forEach( this._modules, function( module ) {
+	goog.array.forEach(this._modules, function(module) {
 		module.dispose();
-	} );
+	});
 
 	this._modules = null;
 
 	this._eventHandler.removeAll();
 	this._eventHandler.dispose();
 
-	goog.base( this, 'disposeInternal' );
+	goog.base(this, 'disposeInternal');
 };
 
 
 gux.controllers.pages.Page.prototype.animateIn = function() {
 
-	var mainContent = goog.dom.getElement( 'main-content' );
-	goog.dom.appendChild( mainContent, this.el );
+	var mainContent = goog.dom.getElement('main-content');
+	goog.dom.appendChild(mainContent, this.el);
 
-	var tweener = TweenMax.fromTo( this.el, .5, {
+	var tweener = TweenMax.fromTo(this.el, .5, {
 		'opacity': 0
 	}, {
 		'opacity': 1
-	} );
+	});
 
 	return tweener;
 };
@@ -79,22 +88,22 @@ gux.controllers.pages.Page.prototype.animateIn = function() {
 
 gux.controllers.pages.Page.prototype.animateOut = function() {
 
-	var tweener = TweenMax.to( this.el, .45, {
+	var tweener = TweenMax.to(this.el, .45, {
 		'opacity': 0,
 		'x': '-5%',
 		'ease': Cubic.easeOut
-	} );
+	});
 
 	return tweener;
 };
 
 
-gux.controllers.pages.Page.prototype.onRouterLoadPage = function( e ) {
+gux.controllers.pages.Page.prototype.onRouterLoadPage = function(e) {
 
 	var tweener = this.animateOut();
 
-	tweener.eventCallback( "onComplete", function() {
+	tweener.eventCallback("onComplete", function() {
 		this.dispose();
 		e.deferred.callback();
-	}, null, this );
+	}, null, this);
 };

@@ -8,7 +8,8 @@ goog.addDependency('../../../../project/controllers/mainscroller.js', ['gux.cont
 goog.addDependency('../../../../project/controllers/modules/comparison.js', ['gux.controllers.modules.Comparison'], ['goog.fx.Dragger', 'gux.controllers.Module']);
 goog.addDependency('../../../../project/controllers/modules/module.js', ['gux.controllers.Module'], ['goog.events.EventHandler', 'goog.events.EventTarget']);
 goog.addDependency('../../../../project/controllers/modules/videoplayer.js', ['gux.controllers.modules.VideoPlayer'], ['goog.fx.Dragger', 'gux.controllers.Module']);
-goog.addDependency('../../../../project/controllers/pages/page.js', ['gux.controllers.pages.Page'], ['goog.dom.classlist', 'goog.events.EventHandler', 'goog.events.EventTarget', 'goog.net.XhrIo', 'gux.controllers.modules.Comparison', 'gux.controllers.modules.VideoPlayer']);
+goog.addDependency('../../../../project/controllers/modules/workflow.js', ['gux.controllers.modules.Workflow'], ['goog.fx.Dragger', 'gux.controllers.Module']);
+goog.addDependency('../../../../project/controllers/pages/page.js', ['gux.controllers.pages.Page'], ['goog.dom.classlist', 'goog.events.EventHandler', 'goog.events.EventTarget', 'goog.net.XhrIo', 'gux.controllers.modules.Comparison', 'gux.controllers.modules.VideoPlayer', 'gux.controllers.modules.Workflow']);
 goog.addDependency('../../../../project/controllers/portfolionavigation.js', ['gux.controllers.PortfolioNavigation'], ['goog.events.EventHandler', 'goog.fx.easing', 'goog.math.Size']);
 goog.addDependency('../../../../project/controllers/router.js', ['gux.controllers.Router'], ['goog.Uri', 'goog.async.Deferred', 'goog.async.DeferredList', 'goog.events.EventTarget', 'goog.history.Html5History', 'goog.net.XhrIo', 'goog.object', 'gux.controllers.pages.Page']);
 goog.addDependency('../../../../project/events/events.js', ['gux.events'], ['goog.userAgent']);

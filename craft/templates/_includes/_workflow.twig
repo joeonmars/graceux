@@ -1,32 +1,37 @@
 {% import "_imports/_utils" as utils %}
 
+{% set firstImage = workflow.step[0].image[0] %}
+
 <figure class="workflow">
 
-	<div class="image-container">
-		<ul>
-		{% for step in workflow.step %}
-		    <li>
-		    	{% set image = step.image[0] %}
-		    	<img src="{{ image.url }}" {{ utils.srcset(image, 975, true) }} draggable="false">
-		   	</li>
-		{% endfor %}
-		</ul>
-	</div>
+	<div class="image-container" style="width:{{ utils.getActualImageWidth(firstImage) }}px">
+		<div class="scroller" style="padding-bottom:{{ (firstImage.height/firstImage.width*100)|round }}%">
+			<ul>
+			{% for step in workflow.step %}
+			    <li>
+			    	{% set image = step.image[0] %}
+			    	<img src="{{ image.url }}" {{ utils.srcset(image, 975, true) }} draggable="false">
+			   	</li>
+			{% endfor %}
+			</ul>
+		</div>
 
-	<div class="caption-container">
-		<ul>
-		{% for step in workflow.step %}
-		    <li>
-		    	<figcaption>{{ step.caption }}</figcaption>
-		    </li>
-		{% endfor %}
-		</ul>
+		<div class="button-container">
+			<button class="icon icon-arrow-prev prev" disabled></button>
+			<button class="icon icon-arrow-next next"></button>
+		</div>
 	</div>
 
 	<div class="pagination">
-		<button class="icon icon-arrow-prev prev"></button>
-		<span class="page">1</span>/<span>{{ workflow.step|length }}</span>
-		<button class="icon icon-arrow-next next"></button>
+	{% for i in 1..(workflow.step|length) %}
+	    <button class="underlined-button {% if loop.first %}active{% endif %}" data-step="{{i-1}}">
+	    	<div class="content">{{i}}</div>
+	    	<div class="underline"></div>
+	    </button>
+	    {% if not loop.last %}
+	    	<span class="dash"></span>
+	    {% endif %}
+	{% endfor %}
 	</div>
 
 </figure>

@@ -10,6 +10,7 @@
 return array(
 	'*' => array(
         'omitScriptNameInUrls' => true,
+        'defaultImageQuality' => 100,
     ),
 
     'graceux.craft.dev' => array(

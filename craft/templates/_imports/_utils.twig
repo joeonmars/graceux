@@ -19,3 +19,17 @@
         {%- if includeDimensions %} width="{{ width }}" height="{{ image.getHeight({ width: width }) }}"{% endif %}
     {% endspaceless -%}
 {% endmacro %}
+
+
+{% macro getActualImageWidth(image) %}
+    {%- spaceless %}
+        {# Is this a 2X image? #}
+        {% set is2x = image.filename matches '/@2x\\.\\w+$/' %}
+
+        {%- if is2x %}
+            {{ round(image.width/2) }}
+        {% else %}
+            {{ image.width }}
+        {% endif %}
+    {% endspaceless -%}
+{% endmacro %}

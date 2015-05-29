@@ -158,40 +158,8 @@
 		&.share{
 			li{
 				@include inline-block(middle);
-				position: relative;
 				font-size: 2.4em;
 				margin-right: .4em;
-				padding-bottom: 1em;
-
-				.icon{
-					opacity: .5;
-					@include scale(1);
-					@include transition(transform .25s $easeOutCubic, opacity .25s $easeOutCubic);
-					@include backfaceHidden;
-				}
-
-				.underline{
-					position: absolute;
-					bottom: 0;
-					width: 100%;
-					height: 10px;
-					background: $color_logo_blue;
-					opacity: 0;
-					@include translateY(0);
-					@include transition(transform .25s $easeOutCubic, opacity .25s $easeOutCubic);
-				}
-
-				&:hover{
-					.icon{
-						opacity: 1;
-						@include scale(.85);
-					}
-
-					.underline{
-						opacity: 1;
-						@include translateY(-.3em);
-					}
-				}
 			}
 		}
 	}
@@ -199,6 +167,83 @@
 
 .brief, .learned{
 	background: $color_lightergray;
+}
+
+.feature{
+
+	.movable{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+
+		img{
+			width: 100%;
+			height: auto;
+		}
+	}
+	
+	figure{
+		position: relative;
+		margin: 0 auto;
+		text-align: center;
+		@include user-select(none);
+
+		>div{
+			position: relative;
+			margin-bottom: 1rem;
+
+			&:first-child{
+				margin-top: 0;
+			}
+
+			&.image, &.video{
+				@include inline-block(top);
+				width: 100%;
+				height: 0;
+
+				&.device{
+					.movable{
+						position: relative;
+					}
+				}
+			}
+
+			&.video{
+				>.movable{
+					position: absolute;
+				}
+			}
+
+			&[data-can-enlarge="true"] {
+				cursor: pointer;
+
+				.movable{
+					top: 0;
+					@include transition(top .2s $easeOutCubic);
+				}
+
+				.hover-box{
+					@include absoluteTopLeft;
+					width: 100%;
+					height: 100%;
+					opacity: 0;
+					border: 1px solid $color_logo_blue;
+					@include transition(opacity .2s, border-bottom .2s ease-out);
+				}
+
+				&:hover{
+					.movable{
+						top: -10px;
+					}
+
+					.hover-box{
+						opacity: 1;
+						border-bottom: 10px solid $color_logo_blue;
+					}
+				}
+			}
+		}
+	}
 }
 
 .comparison{
@@ -279,6 +324,20 @@
 	}
 }
 
+.annotation{
+	.movable{
+		@include flexbox((
+			display: flex,
+			justify-content: center,
+			align-items: center
+		));
+
+		.annotation-container{
+			max-width: 70%;
+		}
+	}
+}
+
 .learned{
 	.signature{
 		@include retina-icon('gux-m');
@@ -291,18 +350,24 @@
 
 	>.image-container{
 		position: relative;
-		height: 0;
-		padding-bottom: 52%;
-		overflow: hidden;
+		margin: 0 auto;
+		max-width: 100%;
 
-		>ul{
-			position: absolute;
-			white-space: nowrap;
-			font-size: 0;
+		>.scroller{
+			position: relative;
 			width: 100%;
-			height: 100%;
+			height: 0;
+			overflow: hidden;
 
-			>li{
+			ul{
+				position: absolute;
+				white-space: nowrap;
+				font-size: 0;
+				width: 100%;
+				height: 100%;
+			}
+
+			li{
 				@include inline-block(top);
 				width: 100%;
 				height: 100%;
@@ -312,6 +377,56 @@
 					height: 100%;
 				}
 			}
+		}
+
+		>.button-container{
+			position: absolute;
+			top: 50%;
+			left: 0;
+			width: 100%;
+			height: 0;
+
+			>button{
+				position: absolute;
+				font-size: 4rem;
+				top: -2rem;
+				opacity: 1;
+				visibility: visible;
+				@include transition(opacity .25s $easeOutCubic, visibility .25s);
+
+				&.prev{
+					left: 1rem;
+				}
+
+				&.next{
+					right: 1rem;
+				}
+
+				&:disabled{
+					opacity: 0;
+					visibility: hidden;
+				}
+			}
+		}
+	}
+
+	>.pagination{
+		margin-top: 1em;
+		text-align: center;
+
+		>button{
+			@include inline-block(top);
+			width: 1.25em;
+			font-size: 2.8em;
+			font-family: $font_flama;
+		}
+
+		>.dash{
+			@include inline-block(top);
+			margin-top: 1.5em;
+			width: 1.25em;
+			height: 1px;
+			background: $color_lightgray;
 		}
 	}
 }
@@ -347,47 +462,6 @@
 		right: 0;
 		top: 10%;
 		@include device-mobile(14%);
-	}
-}
-
-.feature{
-
-	figure{
-		position: relative;
-		margin: 0 auto;
-		text-align: center;
-
-		>div{
-			position: relative;
-			margin-bottom: 1rem;
-
-			&:first-child{
-				margin-top: 0;
-			}
-
-			>.movable{
-				position: relative;
-				width: 100%;
-				height: 100%;
-
-				img{
-					width: 100%;
-					height: auto;
-				}
-			}
-
-			&.image, &.video{
-				@include inline-block(top);
-				width: 100%;
-				height: 0;
-			}
-
-			&.video{
-				>.movable{
-					position: absolute;
-				}
-			}
-		}
 	}
 }
 
@@ -447,24 +521,6 @@ section.full{
 
 		>.movable{
 			@include device-tablet-landscape(100%);
-		}
-	}
-}
-
-article{
-	ul{
-		>li{
-			padding: 1.4em 0;
-			font-family: $font_whitney_lightitalic;
-			font-size: 1.5em;
-			line-height: 1.73;
-			letter-spacing: .08em;
-			border-bottom: 1px dashed $color_lightgray;
-
-			&:last-child{
-				padding-bottom: 0;
-				border-bottom: none;
-			}
 		}
 	}
 }

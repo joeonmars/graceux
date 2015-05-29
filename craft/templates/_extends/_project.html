@@ -67,16 +67,16 @@
 			<div class="share">
 				<h6>{{ Copy.share }}</h6>
 				<ul>
-					<li>
-						<a class="icon-facebook icon" data-id="facebook"></a>
+					<li class="underlined-button">
+						<a class="icon-facebook icon content" data-id="facebook"></a>
 						<div class="underline"></div>
 					</li>
-					<li>
-						<a class="icon-twitter icon" data-id="twitter"></a>
+					<li class="underlined-button">
+						<a class="icon-twitter icon content" data-id="twitter"></a>
 						<div class="underline"></div>
 					</li>
-					<li>
-						<a class="icon-google icon" data-id="google"></a>
+					<li class="underlined-button">
+						<a class="icon-google icon content" data-id="google"></a>
 						<div class="underline"></div>
 					</li>
 				</ul>
@@ -106,6 +106,9 @@
 
 				    {% case "mediaFeature" %}
 				        {% include "_includes/_media-feature" with {'feature': feature} %}
+
+				    {% case "annotationFeature" %}
+				        {% include "_includes/_annotation-feature" with {'feature': feature} %}
 
 				    {% case "comparisonFeature" %}
 				        {% include "_includes/_comparison-feature" with {'feature': feature} %}
