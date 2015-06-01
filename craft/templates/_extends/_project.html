@@ -15,7 +15,7 @@
 {% block content %}
 <div id="project-container">
 
-	<section class="intro">
+	<section class="intro {{animateByScroll}}">
 		<div class="container">
 			<div class="media-container">
 				<div class="image" style="background-image: url({{ entry.promotionalImage[0].url }})"></div>
@@ -35,13 +35,13 @@
 	</section>
 
 	<section class="content">
-		<aside class="info">
+		<aside class="info" data-sticky="true">
 			<a href="{{ entry.projectUrl }}" class="bordered-button" target="_blank">{{ Copy.launchProject }}</a>
 
 			<div>
 				<h6>{{ Copy.client }}</h6>
 				<a {% if entry.clientUrl %}href="{{ entry.clientUrl }}" target="_blank"{% endif %}>
-					{{ entry.client|default(Copy.personalProject) }}
+					<p>{{ entry.client|default(Copy.personalProject) }}</p>
 				</a>
 			</div>
 
@@ -84,14 +84,14 @@
 		</aside>
 
 		<div class="details">
-			<section class="brief full">
+			<section class="brief full {{animateByScroll}}">
 				<article>
 					{% include "_includes/_border-heading" with {'tag': 'h4', 'bottom': true, 'text': entry.briefHeading} %}
 					<div>{{ entry.briefBody }}</div>
 				</article>
 			</section>
 
-			<section class="analysis full">
+			<section class="analysis full {{animateByScroll}}">
 				<article>
 					{% include "_includes/_border-heading" with {'tag': 'h4', 'bottom': true, 'text': entry.analysisHeading} %}
 					<div>{{ entry.analysisBody }}</div>
@@ -105,21 +105,33 @@
 			    {% switch feature.type %}
 
 				    {% case "mediaFeature" %}
-				        {% include "_includes/_media-feature" with {'feature': feature} %}
+				        {% include "_includes/_media-feature" with {
+				        	'feature': feature,
+				        	'animateByScroll': animateByScroll
+				        	} %}
 
 				    {% case "annotationFeature" %}
-				        {% include "_includes/_annotation-feature" with {'feature': feature} %}
+				        {% include "_includes/_annotation-feature" with {
+				        	'feature': feature,
+				        	'animateByScroll': animateByScroll
+				        	} %}
 
 				    {% case "comparisonFeature" %}
-				        {% include "_includes/_comparison-feature" with {'feature': feature} %}
+				        {% include "_includes/_comparison-feature" with {
+				        	'feature': feature,
+				        	'animateByScroll': animateByScroll
+				        	} %}
 
 				    {% case "responsiveFeature" %}
-				        {% include "_includes/_responsive-feature" with {'feature': feature} %}
+				        {% include "_includes/_responsive-feature" with {
+				        	'feature': feature,
+				        	'animateByScroll': animateByScroll
+				        	} %}
 
 				{% endswitch %}
 			{% endfor %}
 
-			<section class="learned full">
+			<section class="learned full {{animateByScroll}}">
 				<article>
 					{% include "_includes/_border-heading" with {'tag': 'h4', 'bottom': true, 'text': entry.learnedHeading} %}
 					<div>
@@ -129,7 +141,7 @@
 				</article>
 			</section>
 
-			<nav class="siblings">
+			<nav class="siblings {{animateByScroll}}">
 				{% set category = entry.portfolioCategory[0] %}
 				{% set projects = [] %}
 

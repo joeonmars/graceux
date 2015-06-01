@@ -1,6 +1,6 @@
 {% import "_imports/_utils" as utils %}
 
-<section class="feature annotation full">
+<section class="feature annotation full {{animateByScroll}}">
 	<article>
 		{% include "_includes/_border-heading" with {'tag': 'h4', 'bottom': true, 'text': feature.heading} %}
 		<div>{{ feature.body }}</div>

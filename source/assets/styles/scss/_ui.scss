@@ -281,7 +281,8 @@ article{
 
 %device{
 	.case{
-		background-size: 100% 100%;
+		background-size: 100% auto;
+		background-repeat: no-repeat;
 		position: absolute;
 		width: 100%;
 		height: 100%;

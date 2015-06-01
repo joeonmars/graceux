@@ -1,10 +1,10 @@
 >.intro{
-	height: calc(100vh - 7em - #{$border-padding});
+	height: calc(100vh - 7em);
 	text-align: center;
 
 	>.container{
 		position: relative;
-		height: calc(100% - 5rem - #{$border-padding});
+		height: calc(100% - 5rem - #{$border-padding*2});
 
 		>.media-container{
 			position: absolute;
@@ -72,7 +72,7 @@
 
 	@include nested(10) {
 		>section{
-			padding: span(1) 0;
+			margin: span(1) 0;
 			@include clearfix;
 
 			&.full{
@@ -138,15 +138,15 @@
 	@include span(2 of 12 last);
 
 	>div{
-		margin-top: 3.5em;
+		margin-top: 2.25em;
 
 		h6{
 			font-size: 1.2em;
 			line-height: 2.2;
 		}
 
-		p, a:not(.icon){
-			font-size: 1.6em;
+		p{
+			font-size: 1.4em;
 			font-family: $font_whitney_bookitalic;
 			text-transform: capitalize;
 			color: $color_gray;
@@ -166,7 +166,16 @@
 }
 
 .brief, .learned{
+	padding: span(1) 0;
 	background: $color_lightergray;
+}
+
+.brief{
+	margin-top: 0 !important;
+}
+
+.learned{
+	margin-bottom: 0 !important;
 }
 
 .feature{
@@ -508,28 +517,28 @@ section.fluid{
 
 section.full{
 	.desktop{
-		max-width: 960px;
+		max-width: 960px !important;
 
 		.movable{
 			@include device-desktop(100%);
 		}
 	}
 	.mobile{
-		max-width: 350px;
+		max-width: 350px !important;
 
 		.movable{
 			@include device-mobile(60%);
 		}
 	}
 	.tablet-portrait{
-		max-width: 500px;
+		max-width: 500px !important;
 
 		.movable{
 			@include device-tablet-portrait(80%);
 		}
 	}
 	.tablet-landscape{
-		max-width: 740px;
+		max-width: 740px !important;
 
 		.movable{
 			@include device-tablet-landscape(100%);
@@ -538,6 +547,8 @@ section.full{
 }
 
 .siblings{
+	@include clearfix;
+
 	>a{
 		display: block;
 		margin: 6em auto;

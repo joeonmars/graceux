@@ -1,7 +1,7 @@
 {% import "_imports/_utils" as utils %}
 
-<section class="feature media {{ feature.layout }}">
-	<article>
+<section class="feature media {{ feature.layout }} {{animateByScroll}}">
+	<article {% if feature.layout == 'fluid' %}data-sticky="true"{% endif %}>
 		{% include "_includes/_border-heading" with {'tag': 'h4', 'bottom': true, 'text': feature.heading} %}
 		<div>{{ feature.body }}</div>
 	</article>
@@ -13,9 +13,10 @@
 	{% for media in feature.media %}
 		{% switch media.getExtension() %}
 		    {% case "mp4" %}
-		        <div class="video">
+		        <div class="video {{animateByScroll}}">
 
-		        	<div class="aspect-container" style="padding-bottom:{{ media.videoHeight/media.videoWidth*100 }}%">
+		        	<div class="aspect-container"
+		        		style="padding-bottom:{{ media.videoHeight/media.videoWidth*100 }}%">
 			        	<div class="movable">
 			        		{% include "_includes/_video-player" with {'video': media} %}
 			        	</div>
@@ -23,7 +24,8 @@
 		        </div>
 
 		    {% default %}
-		        <div class="image {{device}} {% if device != null %}device{% endif %}" style="width:{{ utils.getActualImageWidth(media) }}px">
+		        <div class="image {{device}} {% if device != null %}device{% endif %} {{animateByScroll}}"
+		        	style="width:{{ utils.getActualImageWidth(media) }}px">
 
 		        	<div class="aspect-container" {% if device == null %}style="padding-bottom:{{ media.height/media.width*100 }}%"{% endif %}>
 			        	<div class="movable">
