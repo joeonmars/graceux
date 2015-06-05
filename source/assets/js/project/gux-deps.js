@@ -2,7 +2,7 @@
 // Please do not edit.
 goog.addDependency('../../../../project/apps/main.js', ['gux.apps.Main'], ['goog.dom', 'goog.dom.query', 'goog.fx.anim', 'goog.style', 'gux.controllers.ContactForm', 'gux.controllers.Header', 'gux.controllers.Intro', 'gux.controllers.MainScroller', 'gux.controllers.PortfolioNavigation', 'gux.controllers.Router', 'gux.templates.Main']);
 goog.addDependency('../../../../project/controllers/contactform.js', ['gux.controllers.ContactForm'], ['goog.async.Delay', 'goog.dom.classlist', 'goog.dom.forms', 'goog.events.EventHandler', 'goog.events.EventTarget', 'goog.format.EmailAddress', 'goog.net.XhrIo']);
-goog.addDependency('../../../../project/controllers/header.js', ['gux.controllers.Header'], []);
+goog.addDependency('../../../../project/controllers/header.js', ['gux.controllers.Header'], ['goog.dom.classlist']);
 goog.addDependency('../../../../project/controllers/intro.js', ['gux.controllers.Intro'], ['goog.events.EventHandler', 'goog.events.EventTarget', 'goog.math.Size', 'gux.fx.Shape']);
 goog.addDependency('../../../../project/controllers/mainscroller.js', ['gux.controllers.MainScroller'], ['goog.events.EventHandler', 'goog.events.EventTarget', 'gux.fx.DummyScroller']);
 goog.addDependency('../../../../project/controllers/modules/comparison.js', ['gux.controllers.modules.Comparison'], ['goog.fx.Dragger', 'gux.controllers.Module']);

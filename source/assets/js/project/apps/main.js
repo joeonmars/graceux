@@ -26,10 +26,11 @@ gux.apps.Main = function() {
 	//
 	gux.router = gux.controllers.Router.getInstance();
 
-	gux.header = gux.controllers.Header.getInstance();
 	gux.portfolioNavigation = gux.controllers.PortfolioNavigation.getInstance();
 
 	gux.mainScroller = gux.controllers.MainScroller.getInstance();
+
+	gux.header = gux.controllers.Header.getInstance();
 
 	gux.router.init();
 };

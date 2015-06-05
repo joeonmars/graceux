@@ -98,9 +98,21 @@ $border-padding: 8px;
 	font-family: $font_whitney_bookitalic;
 	text-transform: capitalize;
 	color: $color_gray;
-	font-size: 1.6rem;
 	letter-spacing: 0;
 	line-height: 1;
+
+	/* -- break-points -- */
+	@include breakpoint($break_mobile) {
+		font-size: 1.2rem;
+	}
+
+	@include breakpoint($break_tablet) {
+		font-size: 1.4rem;
+	}
+
+	@include breakpoint($break_desktop) {
+		font-size: 1.6rem;
+	}
 }
 
 .border-heading{
@@ -177,8 +189,21 @@ h1, h2, h3, h4, h5, h6{
 }
 
 h3, h4{
-	font-size: 3.2rem;
-	line-height: (3.7/3.2);
+	/* -- break-points -- */
+	@include breakpoint($break_mobile) {
+		font-size: 2.8rem;
+		line-height: (3.7/2.8);
+	}
+
+	@include breakpoint($break_tablet) {
+		font-size: 3rem;
+		line-height: (3.7/3);
+	}
+
+	@include breakpoint($break_desktop) {
+		font-size: 3.2rem;
+		line-height: (3.7/3.2);
+	}
 }
 
 p{

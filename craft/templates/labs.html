@@ -37,7 +37,7 @@
 					<div class="text-container">
 						<div class="inner">
 							<h6 class="subheading above">{{ entry.genre }}</h6>
-							<h4>{{ entry.title }}</h4>
+							<h4>{{ entry.heading|nl2br }}</h4>
 							<p class="description">{{ entry.shortDescription }}</p>
 							<a href="{{ entry.url }}" class="bordered-button" data-ajax="true">{{ Copy.viewProject }}</a>
 						</div>

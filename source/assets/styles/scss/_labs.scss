@@ -1,32 +1,11 @@
 @include container();
 
-.intro{
-	@include container();
-	padding-top: span(1);
-	padding-bottom: span(1);
-	padding-left: span(1 wide);
-
-	>h3{
-		@include span(5);
-	}
-
-	>div{
-		@include span(7);
-	}
-}
-
 .featured{
-	@include container();
 	position: relative;
-	padding: 0 gutter();
-	margin-bottom: gutter();
 	color: white;
 	background-color: $color_logo_blue;
 
 	.text-container{
-		@include span(6 last);
-		padding: 10em 0;
-
 		.border-heading{
 			font-size: 8em;
 		}
@@ -41,52 +20,107 @@
 	}
 }
 
-@include with-layout($labs-grid) {
+li{
+	position: relative;
+	@include dots-pattern;
+
+	>.inner{
+		display: table;
+		width: 100%;
+		height: 100%;
+		padding: 4em;
+		background: rgba($color_lightergray, .8);
+		border: 1px solid rgba($color_gray, .5);
+	}
+
+	.text-container{
+		width: 100%;
+		display: table-cell;
+		vertical-align: middle;
+
+		.inner{
+			margin: 2.5rem 0;
+		}
+
+		p{
+			margin: 2rem 0;
+		}
+	}
+
+	.preview{
+		width: 100%;
+
+		.image{
+			width: 100%;
+			height: 0;
+			background-size: cover;
+			background-position: center center;
+		}
+	}
+}
+
+@include breakpoint($break_above_mobile) {
+	@include container(12);
+
+	.intro{
+		@include container(12);
+		padding: span(1 wide);
+
+		>h3{
+			@include span(5);
+		}
+
+		>div{
+			@include span(7);
+		}
+	}
+
+	.featured{
+		@include container();
+		padding: 0 gutter();
+		margin-bottom: gutter();
+
+		.text-container{
+			@include span(6 last);
+			padding: 10em 0;
+		}
+	}
 
 	li{
 		@include span(4);
 		margin-bottom: gutter();
-		position: relative;
 		height: 45em;
-		@include dots-pattern;
 
 		&:nth-child(3n){
 			@include last();
 		}
+	}
+}
 
-		>.inner{
-			display: table;
-			@include absoluteTopLeft;
-			width: 100%;
-			height: 100%;
-			padding: 4em;
-			background: rgba($color_lightergray, .8);
-			border: 1px solid rgba($color_gray, .5);
-		}
+@include breakpoint($break_mobile) {
+	@include container(8);
+
+	.intro{
+		@include container(8);
+		padding: span(1 of 8 wide);
+	}
+
+	.featured{
+		@include container(8);
+		padding: span(1 of 8 wide);
+		margin-bottom: gutter();
+		font-size: .65rem;
 
 		.text-container{
-			width: 100%;
-			display: table-cell;
-			vertical-align: middle;
-
-			.inner{
-				margin: 2.5rem 0;
-			}
-
-			p{
-				margin: 2rem 0;
-			}
+			padding: 4em 0;
 		}
+	}
 
-		.preview{
-			width: 100%;
+	ul{
+		padding: gutter();
+	}
 
-			.image{
-				width: 100%;
-				height: 0;
-				background-size: cover;
-				background-position: center center;
-			}
-		}
+	li{
+		margin: gutter() 0;
 	}
 }

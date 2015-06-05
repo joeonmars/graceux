@@ -107,7 +107,8 @@ module.exports = function(grunt) {
           assetCacheBuster: true,
           watch: false,
           outputStyle: 'compressed', //nested, expanded, compact, compressed
-          environment: 'development'
+          environment: 'development',
+          require: ['breakpoint']
         }
       },
     },

@@ -1,8 +1,3 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-
 // --- imports ---
 @import "compass/reset";
 @import "compass/css3";
@@ -11,10 +6,16 @@
 @import "retina";
 @import "fonts";
 @import "icons";
+@import "breakpoint";
 
 // --- Global vars ---
 $min_width: 320px;
 $min_height: 320px;
+
+$break_mobile: max-width 680px;
+$break_above_mobile: min-width 680px;
+$break_tablet: (min-width 680px) (max-width 1200px);
+$break_desktop: min-width 1200px;
 
 $easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1);
 $easeOutCubic: cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -55,7 +56,6 @@ body{
 
 .dummy-scroll{
   overflow: hidden !important;
-  padding-right: 20px;
 }
 
 @mixin absoluteTopLeft() {

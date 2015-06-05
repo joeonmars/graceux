@@ -1,0 +1,81 @@
+#main-footer{
+	width: 100%;
+	padding: $border-padding;
+	background: $color_lightergray;
+	@include clearfix;
+
+	.logo{
+		float: left;
+	}
+
+	.info{
+		float: right;
+		color: $color_lightgray;
+
+		.copyright{
+			@include inline-block(middle);
+			font-family: $font_whitney_bookitalic;
+			font-size: 1.6em;
+			letter-spacing: 0;
+
+			&:before{
+				content: "";
+				@include inline-block(middle);
+				margin-right: .4em;
+				@include retina-icon('gux-s');
+			}
+		}
+
+		.social{
+			@include inline-block(middle);
+			font-size: 1.8em;
+			white-space: nowrap;
+
+			li{
+				@include inline-block(middle);
+				margin: 0 .4em;
+
+				&:first-child{
+					margin-left: 0;
+				}
+			}
+
+			&:before{
+				content: "";
+				height: 100%;
+				border-left: 1px solid $color_lightgray;
+				margin: 0 1em;
+			}
+		}
+	}
+
+	@include breakpoint($break_mobile) {
+		padding: gutter() * 3 gutter() * 2;
+		font-size: .8rem;
+
+		.logo{
+			display: none;
+		}
+
+		.info{
+			float: left;
+
+			.copyright{
+				display: block;
+				line-height: 3;
+
+				&:before{
+					display: block;
+				}
+			}
+
+			.social{
+				display: block;
+
+				&:before{
+					content: none;
+				}
+			}
+		}
+	}
+}

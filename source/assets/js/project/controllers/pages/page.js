@@ -128,7 +128,6 @@ gux.controllers.pages.Page.prototype.animateOut = function() {
 
 	var tweener = TweenMax.to(this.el, .45, {
 		'opacity': 0,
-		'x': '-5%',
 		'ease': Cubic.easeOut
 	});
 

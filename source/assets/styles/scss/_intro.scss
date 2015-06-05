@@ -2,10 +2,12 @@
 	width: 100%;
 	height: calc(100vh - #{$border-padding*2});
 	text-align: center;
+	overflow: hidden;
 
 	>.container{
 		position: relative;
-		height: calc(100% - 5rem - #{$border-padding});
+		height: 100%;
+		//height: calc(100% - 5rem - #{$border-padding});
 		background-color: $color_lightergray;
 
 		>.canvas-container{
@@ -40,17 +42,59 @@
 					}
 				}
 			}
+
+			>.quotation{
+				display: none;
+			}
 		}
 	}
 
 	>.scroll{
-		margin-top: $border-padding;
+		position: relative;
+		//margin-top: $border-padding;
+		margin-top: -5rem;
 		width: 5rem;
 		height: 5rem;
 		background: #000 center center no-repeat;
 
 		&.loading{
 			background-image: image-url('loader-simple-black.gif');
+		}
+	}
+
+	&.animate-in-ui{
+		.text-container{
+			visibility: visible;
+		}
+
+		.logo{
+			>span{
+				&:first-child{
+					@include animation( fade-in-from-bottom 2.0s $easeOutCubic both 0s );
+				}
+				&:last-child{
+					@include animation( fade-in-from-bottom 1.8s $easeOutCubic both .2s );
+				}
+			}
+		}
+	}
+
+	&.animate-in-loader{
+		.scroll{
+			visibility: visible;
+			@include animation( animate-in-loader 1s linear both );
+		}
+	}
+
+	&:not(.animate-in-ui) {
+		.text-container{
+			visibility: hidden;
+		}
+	}
+
+	&:not(.animate-in-loader) {
+		.scroll{
+			visibility: hidden;
 		}
 	}
 }

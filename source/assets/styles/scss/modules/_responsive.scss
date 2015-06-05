@@ -1,0 +1,33 @@
+.responsive{
+	>figure{
+		position: relative;
+		margin-top: span(1);
+	}
+
+	.device{
+		position: absolute;
+		height: 0;
+		z-index: 10;
+		@include translateY(0);
+		@include transition(transform .4s $easeOutCubic);
+
+		&:hover{
+			@include translateY(-5px);
+		}
+	}
+
+	.desktop{
+		position: relative;
+		@include device-desktop(68%);
+	}
+	.tablet{
+		left: 63%;
+		top: -10%;
+		@include device-tablet-portrait(21.28%);
+	}
+	.mobile{
+		right: 0;
+		top: 10%;
+		@include device-mobile(14%);
+	}
+}

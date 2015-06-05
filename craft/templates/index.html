@@ -26,16 +26,16 @@
 		{% for entry in craft.entries.section('portfolio').order('year desc').find() %}
 			{% if entry.portfolioCategory.first() == 'Projects' %}
 			<li class="{{animateByScroll}}">
+				<div class="preview">
+					<div class="image" style="background-image:url({{ entry.previewImage[0].url }})"></div>
+				</div>
 				<div class="text-container">
 					<div class="inner">
 						<time class="subheading above">{{ entry.year }}</time>
-						<h4>{{ entry.title }}</h4>
+						<h4>{{ entry.heading|nl2br }}</h4>
 						<p class="description">{{ entry.shortDescription }}</p>
 						<a href="{{ entry.url }}" class="bordered-button" data-ajax="true">{{ Copy.viewProject }}</a>
 					</div>
-				</div>
-				<div class="preview">
-					<div class="image" style="background-image:url({{ entry.previewImage[0].url }})"></div>
 				</div>
 			</li>
 			{% endif %}

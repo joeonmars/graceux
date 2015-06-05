@@ -254,13 +254,9 @@ gux.fx.DummyScroller.prototype.onAnimationFrame = function(now) {
 
   this._viewInnerY += (targetY - this._viewInnerY) * this._ease;
 
-  this.scrollTo(this._viewInnerY);
-
   if (goog.math.nearlyEquals(this._viewInnerY, targetY, 2)) {
-    this._viewInnerY = targetY;
-  }
 
-  if (this._viewInnerY === targetY) {
+    this._viewInnerY = targetY;
 
     goog.fx.anim.unregisterAnimation(this);
 
@@ -273,4 +269,6 @@ gux.fx.DummyScroller.prototype.onAnimationFrame = function(now) {
       completeCallbacks[i](this.getProgress(), this._viewInnerY);
     }
   }
+
+  this.scrollTo(this._viewInnerY);
 };

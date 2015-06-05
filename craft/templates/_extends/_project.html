@@ -12,6 +12,10 @@
 {% set portfolioCategory = entry.portfolioCategory[0] %}
 {% set showMenuButton = true %}
 
+{% block ogTitle %}{{ entry.ogTitle|default(entry.title) }}{% endblock %}
+{% block ogDescription %}{{ entry.ogDescription|default(entry.shortDescription) }}{% endblock %}
+{% block ogImage %}{{ (entry.ogImage|length > 0) ? entry.ogImage[0].url : "/" }}{% endblock %}
+
 {% block content %}
 <div id="project-container">
 
@@ -25,7 +29,7 @@
 					<h6 class="subheading above {{ entry.color }}">{{ entry.genre }}</h6>
 
 					{% include "_includes/_border-heading"
-						with {'tag': 'h3', 'left': true, 'bottom': true, 'text': entry.title, 'color': entry.color} %}
+						with {'tag': 'h3', 'left': true, 'bottom': true, 'text': entry.heading, 'color': entry.color} %}
 
 					<p class="description">{{ entry.shortDescription }}</p>
 				</div>
