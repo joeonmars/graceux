@@ -3,6 +3,7 @@ goog.provide('gux.controllers.Intro');
 goog.require('goog.events.EventTarget');
 goog.require('goog.events.EventHandler');
 goog.require('goog.math.Size');
+goog.require('gux.controllers.Loader');
 goog.require('gux.fx.Shape');
 
 
@@ -11,6 +12,8 @@ gux.controllers.Intro = function() {
 	this.el = goog.dom.getElement('main-intro');
 
 	this._canvasContainer = goog.dom.query('.canvas-container', this.el)[0];
+	this._bottomBar = goog.dom.query('.bottom-bar', this.el)[0];
+	this._quotation = goog.dom.query('.quotation', this.el)[0];
 	this._maxResolution = new goog.math.Size(1280, 1080);
 
 	this._maskRatio = 1;
@@ -25,27 +28,39 @@ gux.controllers.Intro = function() {
 
 	this._shadowU = this.createPolygon(gux.fx.Shape.Vector.U, gux.fx.Shape.Color.BLACK, .05);
 	this._shapeU = this.createPolygon(gux.fx.Shape.Vector.U, gux.fx.Shape.Color.BLUE);
-	this._strokeU = this.createPolygon(gux.fx.Shape.Vector.U, gux.fx.Shape.Color.BLUE, .5, true);
+	this._strokeU = this.createPolygon(gux.fx.Shape.Vector.U, gux.fx.Shape.Color.BLUE, .2, true);
 
 	this._shadowXBottom = this.createPolygon(gux.fx.Shape.Vector.X_BOTTOM, gux.fx.Shape.Color.BLACK, .05);
 	this._shapeXBottom = this.createPolygon(gux.fx.Shape.Vector.X_BOTTOM, gux.fx.Shape.Color.GREEN);
-	this._strokeXBottom = this.createPolygon(gux.fx.Shape.Vector.X_BOTTOM, gux.fx.Shape.Color.GREEN, .5, true);
+	this._strokeXBottom = this.createPolygon(gux.fx.Shape.Vector.X_BOTTOM, gux.fx.Shape.Color.GREEN, .2, true);
 
 	this._shadowXTop = this.createPolygon(gux.fx.Shape.Vector.X_TOP, gux.fx.Shape.Color.BLACK, .05);
 	this._shapeXTop = this.createPolygon(gux.fx.Shape.Vector.X_TOP, gux.fx.Shape.Color.YELLOW);
-	this._strokeXTop = this.createPolygon(gux.fx.Shape.Vector.X_TOP, gux.fx.Shape.Color.YELLOW, .5, true);
+	this._strokeXTop = this.createPolygon(gux.fx.Shape.Vector.X_TOP, gux.fx.Shape.Color.YELLOW, .2, true);
 
 	this._shadowG = this.createPolygon(gux.fx.Shape.Vector.G, gux.fx.Shape.Color.BLACK, .05);
 	this._shapeG = this.createPolygon(gux.fx.Shape.Vector.G, gux.fx.Shape.Color.RED);
-	this._strokeG = this.createPolygon(gux.fx.Shape.Vector.G, gux.fx.Shape.Color.RED, .5, true);
+	this._strokeG = this.createPolygon(gux.fx.Shape.Vector.G, gux.fx.Shape.Color.RED, .2, true);
+
+	var openingQ1 = this.createPolygon(gux.fx.Shape.Vector.OPENING_QUOTE, gux.fx.Shape.Color.BLACK, .2, true);
+	var openingQ2 = this.createPolygon(gux.fx.Shape.Vector.OPENING_QUOTE, gux.fx.Shape.Color.BLACK, .2, true);
+	openingQ2.translation.x = 9;
+	this._openingQGroup = this._two.makeGroup(openingQ1, openingQ2);
+
+	var closingQ1 = this.createPolygon(gux.fx.Shape.Vector.CLOSING_QUOTE, gux.fx.Shape.Color.BLACK, .2, true);
+	var closingQ2 = this.createPolygon(gux.fx.Shape.Vector.CLOSING_QUOTE, gux.fx.Shape.Color.BLACK, .2, true);
+	closingQ2.translation.x = 9;
+	this._closingQGroup = this._two.makeGroup(closingQ1, closingQ2);
 
 	this._backGroup = this._two.makeGroup(
-		this._strokeG, this._strokeU, this._strokeXTop, this._strokeXBottom
+		this._strokeG, this._strokeU, this._strokeXTop, this._strokeXBottom,
+		this._openingQGroup, this._closingQGroup
 	);
 
 	this._foreGroup = this._two.makeGroup(
 		this._whiteBg, this._shadowU, this._shapeU, this._shadowG, this._shapeG,
-		this._shadowXTop, this._shapeXTop, this._shadowXBottom, this._shapeXBottom);
+		this._shadowXTop, this._shapeXTop, this._shadowXBottom, this._shapeXBottom
+	);
 
 	this._mask = this._two.makeRectangle(0, 0, 1, 1);
 
@@ -80,11 +95,26 @@ gux.controllers.Intro = function() {
 			slideY: 0,
 			scale: 0,
 			shadowOffset: 0
+		},
+		openingQ: {
+			baseX: 0,
+			slideY: 0
+		},
+		closingQ: {
+			baseX: 0,
+			slideY: 0
 		}
 	};
 
 	//
 	this._eventHandler = new goog.events.EventHandler(this);
+
+	this._loader = new gux.controllers.Loader('global', {
+		'g-spinner': gux.Config['imagesPath'] + 'g-spinner.gif',
+		'u-spinner': gux.Config['imagesPath'] + 'u-spinner.gif',
+		'x-spinner': gux.Config['imagesPath'] + 'x-spinner.gif',
+		'gux-spinner': gux.Config['imagesPath'] + 'gux-spinner.gif'
+	}, 1);
 
 	this.activate();
 };
@@ -97,12 +127,15 @@ gux.controllers.Intro.prototype.activate = function() {
 	this.resize();
 
 	this._eventHandler.listen(window, goog.events.EventType.RESIZE, this.resize, false, this);
+	this._eventHandler.listen(this._loader, gux.events.EventType.ANIMATE_COMPLETE, this.onLoadAnimateComplete, false, this);
 
 	TweenMax.ticker.addEventListener('tick', this.update, this);
 
 	// animate in
 	var timeline = new TimelineMax({
-		delay: 0.5
+		delay: 0.5,
+		onComplete: this.onTypeTransitionComplete,
+		onCompleteScope: this
 	});
 
 	var startY = this._two.height * 1.5;
@@ -131,24 +164,8 @@ gux.controllers.Intro.prototype.activate = function() {
 		goog.dom.classlist.enable(this.el, 'animate-in-loader', true);
 	}, 2500, this);
 
-	// animate mask
-	TweenMax.to(this, 1, {
-		_maskRatio: 0,
-		delay: 5,
-		ease: Quad.easeInOut,
-		onUpdate: this.updateMask,
-		onUpdateScope: this
-	});
-
-	// animate out
-	TweenMax.to(this.el, 1, {
-		'height': 0,
-		'display': 'none',
-		delay: 8,
-		ease: Strong.easeOut,
-		onComplete: this.dispose,
-		onCompleteScope: this
-	});
+	//
+	gux.mainScroller.lock(0);
 };
 
 
@@ -157,6 +174,8 @@ gux.controllers.Intro.prototype.deactivate = function() {
 	this._eventHandler.removeAll();
 
 	TweenMax.ticker.removeEventListener('tick', this.update, this);
+
+	gux.mainScroller.unlock();
 };
 
 
@@ -165,6 +184,8 @@ gux.controllers.Intro.prototype.disposeInternal = function() {
 	goog.base(this, 'disposeInternal');
 
 	this.deactivate();
+
+	this._loader.dispose();
 };
 
 
@@ -230,6 +251,12 @@ gux.controllers.Intro.prototype.update = function() {
 
 	this._shapeXBottom.scale = this._shadowXBottom.scale = this._strokeXBottom.scale = this._shapeBaseScale * config.xBottom.scale;
 
+	this._openingQGroup.scale = this._shapeBaseScale / 2.25;
+	this._closingQGroup.scale = this._shapeBaseScale / 2.25;
+
+	this._openingQGroup.translation.set(config.openingQ.baseX, config.openingQ.slideY);
+	this._closingQGroup.translation.set(config.closingQ.baseX, config.closingQ.slideY);
+
 	//
 	this._two.update();
 };
@@ -283,6 +310,9 @@ gux.controllers.Intro.prototype.resize = function() {
 	config.xBottom.baseY = y + scale / 4;
 	config.xBottom.shadowOffset = scale * .05;
 
+	config.openingQ.baseX = this._two.width * .07;
+	config.closingQ.baseX = this._two.width * .8;
+
 	// test mask
 	var halfWidth = canvasSize.width / 2;
 	var halfHeight = canvasSize.height / 2;
@@ -315,4 +345,60 @@ gux.controllers.Intro.prototype.resize = function() {
 
 	//
 	this.update();
+};
+
+
+gux.controllers.Intro.prototype.onTypeTransitionComplete = function() {
+
+	goog.dom.classlist.addRemove(this._bottomBar, 'hide', 'show');
+
+	this._loader.load();
+};
+
+
+gux.controllers.Intro.prototype.onLoadAnimateComplete = function(e) {
+
+	console.log("LOAD ANIMATE COMPLETE!", e.assets);
+
+	// animate mask
+	TweenMax.to(this, 1, {
+		_maskRatio: 0,
+		ease: Quad.easeInOut,
+		onUpdate: this.updateMask,
+		onUpdateScope: this
+	});
+
+	// animate indicator
+	goog.dom.classlist.addRemove(this._bottomBar, 'show', 'hide');
+
+	// animate quotation
+	goog.dom.classlist.enable(this._quotation, 'animate-in', true);
+
+	var config = this._shapeConfig;
+
+	TweenMax.fromTo(config.openingQ, 2, {
+		slideY: this._two.height + this._shapeBaseScale
+	}, {
+		delay: 0.7,
+		slideY: this._two.height * .3,
+		ease: Expo.easeOut
+	});
+
+	TweenMax.fromTo(config.closingQ, 2, {
+		slideY: this._two.height + this._shapeBaseScale
+	}, {
+		delay: 0.9,
+		slideY: this._two.height * .45,
+		ease: Expo.easeOut
+	});
+
+	// animate out
+	TweenMax.to(this.el, 1, {
+		'y': '-100%',
+		'display': 'none',
+		delay: 4,
+		ease: Strong.easeInOut,
+		onComplete: this.dispose,
+		onCompleteScope: this
+	});
 };

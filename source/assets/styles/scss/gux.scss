@@ -152,7 +152,7 @@ body{
 
 	/* -- break-points -- */
 	@include breakpoint($break_mobile) {
-		padding-top: calc(#{7em*.7} - #{$border-padding});
+		padding-top: #{7em*.7};
 	}
 
 	@include breakpoint($break_tablet) {

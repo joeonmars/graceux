@@ -78,7 +78,6 @@ module.exports = function(grunt) {
     concat: {
       thirdparty: {
         src: [
-          '<%= thirdPartyJsDir %>/createjs/preloadjs-0.6.0.min.js',
           '<%= thirdPartyJsDir %>/js-signals.min.js',
           '<%= thirdPartyJsDir %>/crossroads.min.js',
           '<%= thirdPartyJsDir %>/two.min.js',

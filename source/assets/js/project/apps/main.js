@@ -20,9 +20,6 @@ gux.apps.Main = function() {
 	//var helloWorld = soy.renderAsFragment(gux.templates.Main.HelloWorld);
 	//goog.dom.appendChild(document.body, helloWorld);
 
-	var intro = gux.controllers.Intro.getInstance();
-	var contactForm = gux.controllers.ContactForm.getInstance();
-
 	//
 	gux.router = gux.controllers.Router.getInstance();
 
@@ -33,4 +30,8 @@ gux.apps.Main = function() {
 	gux.header = gux.controllers.Header.getInstance();
 
 	gux.router.init();
+
+	//
+	var intro = gux.controllers.Intro.getInstance();
+	var contactForm = gux.controllers.ContactForm.getInstance();
 };

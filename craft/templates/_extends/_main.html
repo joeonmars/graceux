@@ -96,10 +96,14 @@
 				</div>
 				<div class="quotation">
 					{{ intro.quotation }}
+					<div class="border"></div>
+					<div class="logo"></div>
 				</div>
 			</div>
 		</div>
-		<button class="scroll square-button loading"></button>
+		<div class="bottom-bar hide">
+			<button class="scroll loading"></button>
+		</div>
 	</div>
 	<div id="main-content">
 	{% block content %}
@@ -141,6 +145,8 @@
 <script>
 	var config = {
 		basePath: '{{ siteUrl }}',
+		imagesPath: '{{ siteUrl }}/assets/images/static/',
+		videosPath: '{{ siteUrl }}/assets/videos/static/',
 		app: 'main'
 	};
 

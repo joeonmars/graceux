@@ -56,13 +56,16 @@
 	}
 
 	>.scroll{
+		@extend %reset-button;
 		margin-top: $border-padding;
 		width: 5rem;
 		height: 5rem;
-		background: #000 center center no-repeat;
+		background-position: center center;
+		background-size: auto 100%;
+		background-repeat: no-repeat;
 
 		&.loading{
-			background-image: image-url('loader-simple-black.gif');
+			background-image: image-url('u-spinner.gif');
 		}
 	}
 }
@@ -73,25 +76,27 @@
 }
 
 .details{
-	@include span(10 of 12);
+	@include breakpoint($break_mobile) {
+		@include full;
 
-	@include nested(10) {
-		>section{
-			margin: span(1) 0;
-			@include clearfix;
+		@include nested(12) {
+			>section{
+				margin: span(1) 0;
+				@include clearfix;
 
-			&.full{
-				>article{
-					@include span(6);
-					margin-left: span(1 wide);
-				}
-				>figure{
-					@include full;
-					margin-top: span(1);
-				}
+				&.full, &.fluid{
+					>article{
+						@include span(10);
+						margin-left: span(1 wide);
+						@include transform( translateY(0) !important );
+					}
+					>figure{
+						@include full;
+						margin-top: span(1);
+						padding: 0 gutter();
+					}
 
-				&.media{
-					@include nested(12) {
+					&.media{
 						>figure{
 							&.media-col-2{
 								.mobile{
@@ -117,21 +122,135 @@
 					}
 				}
 			}
+		}
+	}
 
-			&.fluid{
-				>article{
-					@include span(isolate 4 first);
-				}
-				>figure{
-					@include span(isolate 6 last);
-				}
+	@include breakpoint($break_tablet) {
+		@include full;
 
-				&:nth-child(odd) {
+		@include nested(12) {
+			>section{
+				margin: span(1) 0;
+				@include clearfix;
+
+				&.full{
 					>article{
-						@include span(isolate 4 last);
+						@include span(8);
+						margin-left: span(1 wide);
 					}
 					>figure{
-						@include span(isolate 6 first);
+						@include full;
+						margin-top: span(1);
+					}
+
+					&.media{
+						>figure{
+							&.media-col-2{
+								.mobile{
+									@include push(2);
+									@include span(4);
+
+									&:nth-child(2n) {
+										@include push(0);
+										@include span(4);
+									}
+								}
+							}
+							&.media-col-3{
+								.mobile{
+									@include span(4);
+
+									&:nth-child(3n) {
+										@include last;
+									}
+								}
+							}
+						}
+					}
+				}
+
+				&.fluid{
+					>article{
+						@include span(isolate 4 at 2 first);
+					}
+					>figure{
+						@include span(isolate 6 at 6 last);
+					}
+
+					&:nth-child(odd) {
+						>article{
+							@include span(isolate 4 at 8 last);
+						}
+						>figure{
+							@include span(isolate 6 at 2 first);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@include breakpoint($break_desktop) {
+		@include span(10 of 12);
+
+		@include nested(10) {
+			>section{
+				margin: span(1) 0;
+				@include clearfix;
+
+				&.full{
+					>article{
+						@include span(6);
+						margin-left: span(1 wide);
+					}
+					>figure{
+						@include full;
+						margin-top: span(1);
+					}
+
+					&.media{
+						@include nested(12) {
+							>figure{
+								&.media-col-2{
+									.mobile{
+										@include push(2);
+										@include span(4);
+
+										&:nth-child(2n) {
+											@include push(0);
+											@include span(4);
+										}
+									}
+								}
+								&.media-col-3{
+									.mobile{
+										@include span(4);
+
+										&:nth-child(3n) {
+											@include last;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+
+				&.fluid{
+					>article{
+						@include span(isolate 4 first);
+					}
+					>figure{
+						@include span(isolate 6 last);
+					}
+
+					&:nth-child(odd) {
+						>article{
+							@include span(isolate 4 last);
+						}
+						>figure{
+							@include span(isolate 6 first);
+						}
 					}
 				}
 			}
@@ -140,8 +259,6 @@
 }
 
 .info{
-	@include span(2 of 12 last);
-
 	>div{
 		margin-top: 2.25em;
 
@@ -168,6 +285,20 @@
 			}
 		}
 	}
+
+	@include breakpoint($break_mobile) {
+		@include full;
+		@include transform( translateY(0) !important );
+	}
+
+	@include breakpoint($break_tablet) {
+		@include full;
+		@include transform( translateY(0) !important );
+	}
+
+	@include breakpoint($break_desktop) {
+		@include span(2 of 12 last);
+	}
 }
 
 .brief, .learned{
@@ -181,6 +312,11 @@
 
 .learned{
 	margin-bottom: 0 !important;
+
+	.signature{
+		@include retina-icon('gux-m');
+		margin-top: span(1 of 10);
+	}
 }
 
 .feature{
@@ -269,13 +405,6 @@
 	}
 }
 
-.learned{
-	.signature{
-		@include retina-icon('gux-m');
-		margin-top: span(1 of 10);
-	}
-}
-
 section{
 	.device{
 		height: auto !important;
@@ -341,8 +470,6 @@ section.full{
 
 	>a{
 		display: block;
-		margin: 6em auto;
-		@include span(3 of 10);
 		@include dots-pattern;
 
 		>.inner{
@@ -409,6 +536,10 @@ section.full{
 			}
 		}
 
+		&.prev{
+			@include first;
+		}
+
 		&.next{
 			@include last;
 		}
@@ -436,7 +567,20 @@ section.full{
 				}
 			}
 		}
+
+		@include breakpoint($break_mobile) {
+			@include span(6 of 12);
+			margin-top: span(1);
+		}
+
+		@include breakpoint($break_tablet) {
+			@include span(6 of 12);
+			margin: 6em auto;
+		}
+
+		@include breakpoint($break_desktop) {
+			@include span(3 of 10);
+			margin: 6em auto;
+		}
 	}
 }
-
-/* -- break-points -- */
