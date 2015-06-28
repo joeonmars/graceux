@@ -12,14 +12,14 @@
 
 {% block content %}
 <div id="labs">
-	<article class="intro {{animateByScroll}}">
+	<article class="intro">
 		{% include "_includes/_border-heading"
 			with {'tag': 'h3', 'bottom': true, 'text': entry.heading} %}
 		<div>
 			{{ entry.body }}
 		</div>
 	</article>
-	<div class="featured {{animateByScroll}}">
+	<div class="featured">
 		<div class="text-container">
 		{% set featured = entry.featuredEntry[0] %}
 		<h6 class="subheading white above">{{ featured.genre }}</h6>
@@ -32,7 +32,7 @@
 	<ul>
 		{% for entry in craft.entries.section('portfolio').order('year desc').find() %}
 			{% if entry.portfolioCategory.first() == 'Labs' %}
-			<li class="{{animateByScroll}}">
+			<li>
 				<div class="inner">
 					<div class="text-container">
 						<div class="inner">

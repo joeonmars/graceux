@@ -1,6 +1,6 @@
 {% import "_imports/_utils" as utils %}
 
-<section class="feature media {{ feature.layout }} {{animateByScroll}}">
+<section class="feature media {{ feature.layout }}">
 	<article {% if feature.layout == 'fluid' %}data-sticky="true"{% endif %}>
 		{% include "_includes/_border-heading" with {'tag': 'h4', 'bottom': true, 'text': feature.heading} %}
 		<div>{{ feature.body }}</div>
