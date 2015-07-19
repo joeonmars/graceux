@@ -9,22 +9,6 @@
   }
 }
 
-.animate-by-scroll{
-	@include transition(transform 1s $easeOutCubic);
-
-	&.now{
-		@include translateY(0);
-	}
-
-	&.past{
-		@include translateY(-10rem);
-	}
-
-	&.future{
-		@include translateY(10rem);
-	}
-}
-
 /* Generated with Bounce.js. Edit at http://goo.gl/yq18sP */
 
 @keyframes animate-in-loader { 

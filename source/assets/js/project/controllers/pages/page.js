@@ -5,10 +5,11 @@ goog.require( 'goog.events.EventTarget' );
 goog.require( 'goog.events.EventHandler' );
 goog.require( 'goog.dom.classlist' );
 goog.require( 'goog.net.XhrIo' );
-goog.require( 'gux.fx.Sticky' );
+goog.require( 'gux.controllers.modules.Intro' );
 goog.require( 'gux.controllers.modules.VideoPlayer' );
 goog.require( 'gux.controllers.modules.Comparison' );
 goog.require( 'gux.controllers.modules.Workflow' );
+goog.require( 'gux.fx.Sticky' );
 
 
 gux.controllers.pages.Page = function( el ) {
@@ -37,6 +38,11 @@ gux.controllers.pages.Page.prototype.init = function() {
 
 	this._eventHandler.listen( gux.router, gux.events.EventType.LOAD_PAGE, this.onRouterLoadPage, false, this );
 	this._eventHandler.listen( window, goog.events.EventType.RESIZE, this.resize, false, this );
+
+	// create intro module
+	var el = goog.dom.query( '.intro', this.el )[ 0 ];
+	var intro = new gux.controllers.modules.Intro( el );
+	this._modules.push( intro );
 
 	// create video player modules
 	var videoPlayers = goog.array.map( goog.dom.query( '.video-player', this.el ), function( el ) {

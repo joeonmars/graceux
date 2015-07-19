@@ -13,7 +13,7 @@
 	{% for media in feature.media %}
 		{% switch media.getExtension() %}
 		    {% case "mp4" %}
-		        <div class="video {{animateByScroll}}">
+		        <div class="video">
 
 		        	<div class="aspect-container"
 		        		style="padding-bottom:{{ media.videoHeight/media.videoWidth*100 }}%">
@@ -24,7 +24,7 @@
 		        </div>
 
 		    {% default %}
-		        <div class="image {{device}} {% if device != null %}device{% endif %} {{animateByScroll}}"
+		        <div class="image {{device}} {% if device != null %}device{% endif %}"
 		        	style="width:{{ utils.getActualImageWidth(media) }}px">
 
 		        	<div class="aspect-container" {% if device == null %}style="padding-bottom:{{ media.height/media.width*100 }}%"{% endif %}>

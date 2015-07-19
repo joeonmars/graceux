@@ -176,6 +176,10 @@ body{
 	@import "project";
 }
 
+#about{
+	@import "about";
+}
+
 #main-scrollbar{
 	z-index: 10;
 	top: calc(7em + #{$border-padding});

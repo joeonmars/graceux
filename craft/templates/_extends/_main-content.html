@@ -5,7 +5,5 @@
 	{% set Copy = Copy|merge({(_copy.id): _copy.text}) %}
 {% endfor %}
 
-{% set animateByScroll = craft.request.isMobileBrowser() ? '' : 'animate-by-scroll' %}
-
 {% block content %}
 {% endblock %}

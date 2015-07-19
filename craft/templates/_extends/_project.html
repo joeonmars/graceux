@@ -19,7 +19,7 @@
 {% block content %}
 <div id="project-container">
 
-	<section class="intro {{animateByScroll}}">
+	<section class="intro">
 		<div class="container">
 			<div class="media-container">
 				<div class="image" style="background-image: url({{ entry.promotionalImage[0].url }})"></div>
@@ -88,14 +88,14 @@
 		</aside>
 
 		<div class="details">
-			<section class="brief full {{animateByScroll}}">
+			<section class="brief full">
 				<article>
 					{% include "_includes/_border-heading" with {'tag': 'h4', 'bottom': true, 'text': entry.briefHeading} %}
 					<div>{{ entry.briefBody }}</div>
 				</article>
 			</section>
 
-			<section class="analysis full {{animateByScroll}}">
+			<section class="analysis full">
 				<article>
 					{% include "_includes/_border-heading" with {'tag': 'h4', 'bottom': true, 'text': entry.analysisHeading} %}
 					<div>{{ entry.analysisBody }}</div>
@@ -110,32 +110,28 @@
 
 				    {% case "mediaFeature" %}
 				        {% include "_includes/_media-feature" with {
-				        	'feature': feature,
-				        	'animateByScroll': animateByScroll
+				        	'feature': feature
 				        	} %}
 
 				    {% case "annotationFeature" %}
 				        {% include "_includes/_annotation-feature" with {
-				        	'feature': feature,
-				        	'animateByScroll': animateByScroll
+				        	'feature': feature
 				        	} %}
 
 				    {% case "comparisonFeature" %}
 				        {% include "_includes/_comparison-feature" with {
-				        	'feature': feature,
-				        	'animateByScroll': animateByScroll
+				        	'feature': feature
 				        	} %}
 
 				    {% case "responsiveFeature" %}
 				        {% include "_includes/_responsive-feature" with {
-				        	'feature': feature,
-				        	'animateByScroll': animateByScroll
+				        	'feature': feature
 				        	} %}
 
 				{% endswitch %}
 			{% endfor %}
 
-			<section class="learned full {{animateByScroll}}">
+			<section class="learned full">
 				<article>
 					{% include "_includes/_border-heading" with {'tag': 'h4', 'bottom': true, 'text': entry.learnedHeading} %}
 					<div>
@@ -145,7 +141,7 @@
 				</article>
 			</section>
 
-			<nav class="siblings {{animateByScroll}}">
+			<nav class="siblings">
 				{% set category = entry.portfolioCategory[0] %}
 				{% set projects = [] %}
 
