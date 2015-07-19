@@ -1,7 +1,189 @@
-.masthead{
-	@include full();
+>.masthead{
 	height: 0;
 	padding-bottom: percentage(960/2133);
 	background-image: image-url('about-masthead.jpg');
 	background-size: 100%;
+}
+
+>.content{
+	margin-top: span(.5);
+
+	@include breakpoint($break_mobile) {
+
+	}
+
+	@include breakpoint($break_tablet) {
+
+	}
+
+	@include breakpoint($break_desktop) {
+		@include container(12);
+
+		aside{
+			@include span(2 first);
+			margin-left: span(1 wide);
+		}
+
+		.details{
+			@include span(8);
+
+			@include with-layout(8) {
+				.status{
+					@include span(6);
+				}
+
+				.merit{
+					@include span(4);
+
+					&.has-figure{
+						@include full;
+
+						.heading-container{
+							padding-right: span(4);
+						}
+
+						.content-container{
+							p{
+								@include span(4 first);
+							}
+
+							.figure{
+								@include span(4 last);
+							}
+						}
+					}
+
+					&:nth-child(even) {
+						@include last;
+					}
+
+					h4{
+						width: 80%;
+						min-height: 12rem;
+					}
+				}
+
+				.social{
+					li{
+						@include span(4);
+
+						&:nth-child(even) {
+							@include last;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.portrait{
+		@include retina-background('portrait.png');
+		margin-top: 1rem;
+		width: 75%;
+		padding-bottom: 75%;
+	}
+}
+
+.heading{
+	@include clearfix;
+
+	.greeting{
+		p{
+			font-size: 4rem;
+			font-family: $font_flama;
+
+			&:last-child{
+				font-size: 8rem;
+				font-family: $font_whitney_medium;
+				line-height: 0.9;
+			}
+		}
+	}
+
+	.status{
+		p{
+			font-size: 2.4rem;
+			font-family: $font_whitney_lightitalic;
+			line-height: 1.4;
+		}
+	}
+}
+
+.social{
+	h3{
+		font-size: 4rem;
+	}
+
+	.or{
+		display: block;
+		margin: 1rem 0 3rem 0;
+		font-size: 2.6rem;
+		font-family: $font_flama;
+		text-transform: uppercase;
+		color: $color_logo_blue;
+	}
+
+	ul{
+		@include clearfix;
+
+		>li{
+			>a{
+				@include inline-block(top);
+				margin: 1rem 0 1.5rem 0;
+
+				.icon{
+					@include inline-block(middle);
+					width: 5rem;
+					height: 5rem;
+					line-height: 5rem;
+					text-align: center;
+					font-size: 2rem;
+					color: #fff;
+					background: #000;
+				}
+
+				p{
+					@include inline-block(middle);
+					font-size: 2rem;
+					text-indent: 1rem;
+				}
+			}
+		}
+	}
+}
+
+.border{
+	margin: 2rem 0;
+	width: 30px;
+	height: 10px;
+	@extend %color-background;
+}
+
+hr{
+	margin: 6rem 0;
+}
+
+.merit{
+	margin-bottom: span(1);
+
+	h4{
+		font-size: 3rem;
+	}
+
+	h5{
+		font-size: 1.2rem;
+		color: $color_lightgray;
+		letter-spacing: .1rem;
+		line-height: 2;
+		@include font-smoothing;
+	}
+
+	p{
+		font-size: 1.4rem;
+		line-height: 1.7;
+	}
+}
+
+.app-icon{
+	margin: .25rem;
 }

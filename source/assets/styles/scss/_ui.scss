@@ -22,6 +22,13 @@ a{
 	}
 }
 
+hr{
+	border: none;
+	width: 100%;
+	height: 1px;
+	@include retina-background('dotted-line.png', auto auto);
+}
+
 article{
 	ul{
 		>li{
@@ -276,6 +283,54 @@ article{
 		.track{
 			opacity: 0 !important;
 		}
+	}
+}
+
+.app-icon{
+	@include inline-block(middle);
+
+	&.photoshop{
+		@include retina-icon('photoshop');
+	}
+
+	&.fireworks{
+		@include retina-icon('fireworks');
+	}
+
+	&.invision{
+		@include retina-icon('invision');
+	}
+
+	&.evernote{
+		@include retina-icon('evernote');
+	}
+
+	&.justinmind{
+		@include retina-icon('justinmind');
+	}
+
+	&.sketch{
+		@include retina-icon('sketch');
+	}
+
+	&.axure{
+		@include retina-icon('axure');
+	}
+
+	&.codekit{
+		@include retina-icon('codekit');
+	}
+
+	&.html5{
+		@include retina-icon('html5');
+	}
+
+	&.javascript{
+		@include retina-icon('javascript');
+	}
+
+	&.keynote{
+		@include retina-icon('keynote');
 	}
 }
 

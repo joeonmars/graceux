@@ -4,17 +4,17 @@
 
 @font-face {
 	font-family:"icons";
-	src:url("../fonts/fontcustom/icons-f2d4fd528bf75174fa262c4da5f23ba1.eot");
+	src:url("../fonts/fontcustom/icons-37864419efdb6144e1785432124a66e9.eot");
 	font-weight:normal;
 	font-style:normal;
 }
 @font-face {
 	font-family:"icons";
-	src:url("../fonts/fontcustom/icons-f2d4fd528bf75174fa262c4da5f23ba1.eot");
-	src:url("../fonts/fontcustom/icons-f2d4fd528bf75174fa262c4da5f23ba1.eot?#iefix") format("embedded-opentype"),
-		url("../fonts/fontcustom/icons-f2d4fd528bf75174fa262c4da5f23ba1.woff") format("woff"),
-		url("../fonts/fontcustom/icons-f2d4fd528bf75174fa262c4da5f23ba1.ttf") format("truetype"),
-		url("../fonts/fontcustom/icons-f2d4fd528bf75174fa262c4da5f23ba1.svg?#icons") format("svg");
+	src:url("../fonts/fontcustom/icons-37864419efdb6144e1785432124a66e9.eot");
+	src:url("../fonts/fontcustom/icons-37864419efdb6144e1785432124a66e9.eot?#iefix") format("embedded-opentype"),
+		url("../fonts/fontcustom/icons-37864419efdb6144e1785432124a66e9.woff") format("woff"),
+		url("../fonts/fontcustom/icons-37864419efdb6144e1785432124a66e9.ttf") format("truetype"),
+		url("../fonts/fontcustom/icons-37864419efdb6144e1785432124a66e9.svg?#icons") format("svg");
 	font-weight:normal;
 	font-style:normal;
 }
@@ -73,71 +73,76 @@
 }
 
 
-.icon-facebook:before {
+.icon-email:before {
 	content:"\f108";
 }
 
 
-.icon-google:before {
+.icon-facebook:before {
 	content:"\f109";
 }
 
 
-.icon-linkedin:before {
+.icon-google:before {
 	content:"\f10a";
 }
 
 
-.icon-pause:before {
+.icon-linkedin:before {
 	content:"\f10b";
 }
 
 
-.icon-play:before {
+.icon-pause:before {
 	content:"\f10c";
 }
 
 
-.icon-shape-g-stroke:before {
+.icon-play:before {
 	content:"\f10d";
 }
 
 
-.icon-shape-g:before {
+.icon-shape-g-stroke:before {
 	content:"\f10e";
 }
 
 
-.icon-shape-u-stroke:before {
+.icon-shape-g:before {
 	content:"\f10f";
 }
 
 
-.icon-shape-u:before {
+.icon-shape-u-stroke:before {
 	content:"\f110";
 }
 
 
-.icon-shape-x-down:before {
+.icon-shape-u:before {
 	content:"\f111";
 }
 
 
-.icon-shape-x-stroke:before {
+.icon-shape-x-down:before {
 	content:"\f112";
 }
 
 
-.icon-shape-x-up:before {
+.icon-shape-x-stroke:before {
 	content:"\f113";
 }
 
 
-.icon-shape-x:before {
+.icon-shape-x-up:before {
 	content:"\f114";
 }
 
 
-.icon-twitter:before {
+.icon-shape-x:before {
 	content:"\f115";
+}
+
+
+.icon-twitter:before {
+	content:"\f116";
 }

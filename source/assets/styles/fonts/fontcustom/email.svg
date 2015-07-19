@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Artboard-1" sketch:type="MSArtboardGroup" fill="#FFFFFF">
+            <path d="M20.625,2 L1.375,2 C0.616,2 0,2.616 0,3.375 L0,18.5 C0,19.259683 0.616,19.875 1.375,19.875 L20.625,19.875 C21.384683,19.875 22,19.259683 22,18.5 L22,3.375 C22,2.616 21.384683,2 20.625,2 L20.625,2 Z M19.9375,17.8125 L2.0625,17.8125 L2.0625,7.29445098 L10.115866,14.052585 C10.372317,14.267085 10.6865,14.3750359 11,14.3750359 C11.314183,14.3750359 11.627683,14.267085 11.884134,14.052585 L19.9375,7.29445098 L19.9375,17.8125 L19.9375,17.8125 Z M19.9375,4.60218301 L11,12.101451 L2.0625,4.60218301 L2.0625,4.0625 L19.9375,4.0625 L19.9375,4.60218301 L19.9375,4.60218301 Z" id="mail" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>

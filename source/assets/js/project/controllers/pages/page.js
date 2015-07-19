@@ -41,8 +41,10 @@ gux.controllers.pages.Page.prototype.init = function() {
 
 	// create intro module
 	var el = goog.dom.query( '.intro', this.el )[ 0 ];
-	var intro = new gux.controllers.modules.Intro( el );
-	this._modules.push( intro );
+	if ( el ) {
+		var intro = new gux.controllers.modules.Intro( el );
+		this._modules.push( intro );
+	}
 
 	// create video player modules
 	var videoPlayers = goog.array.map( goog.dom.query( '.video-player', this.el ), function( el ) {

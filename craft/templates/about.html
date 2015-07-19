@@ -22,6 +22,64 @@
 
 {% block content %}
 <div id="about">
-	<div class="masthead"></div>
+	<section class="masthead"></section>
+	<section class="content">
+		<aside data-sticky="true">
+			<div class="portrait"></div>
+		</aside>
+		<div class="details">
+			<div class="heading">
+				<h3 class="greeting">{{ about.greeting }}</h3>
+				<div class="border blue"></div>
+				<div class="status">{{ about.currentStatus }}</div>
+				<a href="" class="resume bordered-button" target="_blank">{{ Copy.downloadResume }}</a>
+			</div>
+
+			<hr>
+
+			<div class="merits">
+				{% for merit in about.merits %}
+					{% set hasFigure = merit.applications|length ? true : false %}
+					<article class="merit {% if hasFigure == true %}has-figure{% endif %}">
+						<div class="heading-container">
+							<h5>{{ merit.subheading }}</h5>
+							<h4>{{ merit.heading }}</h4>
+						</div>
+						<div class="content-container">
+							<p>{{ merit.paragraph }}</p>
+							{% if hasFigure == true %}
+								<figure>
+									{% for app in merit.applications %}
+										<div class="app-icon {{ app.value }}"></div>
+									{% endfor %}
+								</figure>
+							{% endif %}
+						</div>
+					</article>
+				{% endfor %}
+			</div>
+
+			<hr>
+
+			<div class="social">
+				<h3>{{ about.connectHeading|nl2br }}</h3>
+				<div class="border blue"></div>
+				<ul>
+				{% for social in about.social %}
+					{% if social.enabled == true %}
+					<li>
+						<a href="{{ social.url }}" target="_blank">
+							<div class="icon icon-{{ social.name }}"></div>
+							<p>{{ social.cta }}</p>
+						</a>
+					</li>
+					{% endif %}
+				{% endfor %}
+				</ul>
+				<span class="or">{{ Copy.or }}</span>
+				<a href="" class="resume bordered-button" target="_blank">{{ Copy.downloadResume }}</a>
+			</div>
+		</div>
+	</section>
 </div>
 {% endblock %}

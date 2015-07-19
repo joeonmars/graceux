@@ -1,13 +1,13 @@
-goog.provide('gux.fx.Sticky');
+goog.provide( 'gux.fx.Sticky' );
 
-goog.require('goog.dom');
-goog.require('goog.style');
+goog.require( 'goog.dom' );
+goog.require( 'goog.style' );
 
 
-gux.fx.Sticky = function(element, scrollerElement, opt_autoRender) {
+gux.fx.Sticky = function( element, scrollerElement, opt_autoRender ) {
 
 	this.el = element;
-	this._parentEl = goog.dom.getParentElement(this.el);
+	this._parentEl = goog.dom.getParentElement( this.el );
 	this._scrollerEl = scrollerElement;
 
 	this._elHeight = 0; // element height
@@ -17,16 +17,16 @@ gux.fx.Sticky = function(element, scrollerElement, opt_autoRender) {
 	this._y = 0;
 	this._prevY = 0;
 
-	this._autoRender = goog.isBoolean(opt_autoRender) ? opt_autoRender : true;
+	this._autoRender = goog.isBoolean( opt_autoRender ) ? opt_autoRender : true;
 };
 
 
 gux.fx.Sticky.prototype.activate = function() {
 
-	goog.events.listen(window, goog.events.EventType.RESIZE, this.resize, false, this);
+	goog.events.listen( window, goog.events.EventType.RESIZE, this.resize, false, this );
 
-	if (this._autoRender) {
-		goog.events.listen(this._scrollerEl, goog.events.EventType.SCROLL, this.render, false, this);
+	if ( this._autoRender ) {
+		goog.events.listen( this._scrollerEl, goog.events.EventType.SCROLL, this.render, false, this );
 	}
 
 	this.resize();
@@ -36,35 +36,35 @@ gux.fx.Sticky.prototype.activate = function() {
 
 gux.fx.Sticky.prototype.deactivate = function() {
 
-	goog.events.unlisten(window, goog.events.EventType.RESIZE, this.resize, false, this);
+	goog.events.unlisten( window, goog.events.EventType.RESIZE, this.resize, false, this );
 
-	if (this._autoRender) {
-		goog.events.unlisten(this._scrollerEl, goog.events.EventType.SCROLL, this.render, false, this);
+	if ( this._autoRender ) {
+		goog.events.unlisten( this._scrollerEl, goog.events.EventType.SCROLL, this.render, false, this );
 	}
 };
 
 
 gux.fx.Sticky.prototype.resize = function() {
 
-	this._elHeight = goog.style.getSize(this.el).height;
+	this._elHeight = goog.style.getSize( this.el ).height;
 
-	this._top = goog.style.getPosition(this._parentEl).y;
-	this._bottom = goog.style.getSize(this._parentEl).height - this._elHeight;
+	this._top = goog.style.getPosition( this._parentEl ).y;
+	this._bottom = goog.style.getSize( this._parentEl ).height - this._elHeight;
 
-	this._marginTop = (goog.dom.getViewportSize().height - this._elHeight) / 2;
+	this._marginTop = ( goog.dom.getViewportSize().height - this._elHeight ) / 2;
 
 	this.render();
 };
 
 
-gux.fx.Sticky.prototype.render = function(opt_scrollTop) {
+gux.fx.Sticky.prototype.render = function( opt_scrollTop ) {
 
-	var scrollTop = goog.isNumber(opt_scrollTop) ? opt_scrollTop : this._scrollerEl.scrollTop;
+	var scrollTop = goog.isNumber( opt_scrollTop ) ? opt_scrollTop : this._scrollerEl.scrollTop;
 	scrollTop += this._marginTop;
 
-	var y = Math.min(Math.max(scrollTop - this._top, 0), this._bottom);
+	var y = Math.min( Math.max( scrollTop - this._top, 0 ), this._bottom );
 
-	if (this._prevY === y) {
+	if ( this._prevY === y ) {
 
 		return;
 
@@ -74,5 +74,5 @@ gux.fx.Sticky.prototype.render = function(opt_scrollTop) {
 		this._y = y;
 	}
 
-	goog.style.setStyle(this.el, 'transform', 'translateY(' + this._y + 'px)');
+	goog.style.setStyle( this.el, 'transform', 'translateY(' + this._y + 'px)' );
 };
