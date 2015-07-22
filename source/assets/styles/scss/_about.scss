@@ -1,3 +1,7 @@
+&{
+	padding-bottom: span(1);
+}
+
 >.masthead{
 	height: 0;
 	padding-bottom: percentage(960/2133);
@@ -6,22 +10,80 @@
 }
 
 >.content{
-	margin-top: span(.5);
-
 	@include breakpoint($break_mobile) {
+		@include container(6);
+		padding: gutter();
 
+		aside{
+			@include full;
+			@include transform( translateY(0) !important );
+
+			.portrait{
+				margin: span(1) auto;
+				width: 30%;
+				padding-bottom: 30%;
+			}
+		}
+
+		.details{
+			@include full;
+
+			@include with-layout(6) {
+				.heading{
+					text-align: center;
+
+					.border{
+						margin: 2rem auto;
+					}
+
+					.greeting{
+						font-size: 3em;
+					}
+				}
+
+				.merit{
+					margin-bottom: span(1);
+
+					h4{
+						margin-bottom: .6em;
+					}
+				}
+
+				.social{
+					font-size: .8em;
+					text-align: center;
+
+					.border{
+						margin: 2rem auto;
+					}
+
+					ul{
+						@include span(5);
+						margin-left: span(1);
+						text-align: left;
+					}
+
+					.or{
+						@include full;
+					}
+				}
+			}
+		}
 	}
 
-	@include breakpoint($break_tablet) {
-
-	}
-
-	@include breakpoint($break_desktop) {
+	@include breakpoint($break_above_mobile) {
 		@include container(12);
+		margin-top: span(.5);
 
 		aside{
 			@include span(2 first);
 			margin-left: span(1 wide);
+
+			.portrait{
+				margin-top: 1rem;
+				width: 75%;
+				padding-bottom: 75%;
+			}
 		}
 
 		.details{
@@ -75,25 +137,24 @@
 			}
 		}
 	}
+}
 
-	.portrait{
-		@include retina-background('portrait.png');
-		margin-top: 1rem;
-		width: 75%;
-		padding-bottom: 75%;
-	}
+.portrait{
+	@include retina-background('portrait.png');
 }
 
 .heading{
 	@include clearfix;
 
 	.greeting{
+		font-size: 4em;
+
 		p{
-			font-size: 4rem;
+			font-size: inherit;
 			font-family: $font_flama;
 
 			&:last-child{
-				font-size: 8rem;
+				font-size: 2em;
 				font-family: $font_whitney_medium;
 				line-height: 0.9;
 			}
@@ -101,8 +162,10 @@
 	}
 
 	.status{
+		margin-bottom: 2rem;
+
 		p{
-			font-size: 2.4rem;
+			font-size: 2.4em;
 			font-family: $font_whitney_lightitalic;
 			line-height: 1.4;
 		}
@@ -111,13 +174,13 @@
 
 .social{
 	h3{
-		font-size: 4rem;
+		font-size: 4em;
 	}
 
 	.or{
 		display: block;
-		margin: 1rem 0 3rem 0;
-		font-size: 2.6rem;
+		margin: .5em 0 1em 0;
+		font-size: 2.6em;
 		font-family: $font_flama;
 		text-transform: uppercase;
 		color: $color_logo_blue;
@@ -129,7 +192,14 @@
 		>li{
 			>a{
 				@include inline-block(top);
-				margin: 1rem 0 1.5rem 0;
+				margin: 1em 0 1.5em 0;
+
+				&:hover{
+					.icon{
+						background: transparent;
+						color: #000;
+					}
+				}
 
 				.icon{
 					@include inline-block(middle);
@@ -140,12 +210,15 @@
 					font-size: 2rem;
 					color: #fff;
 					background: #000;
+					border: 2px solid #000;
+					@include box-sizing(border-box);
+					@include transition(color .2s $easeOutCubic, background .2s $easeOutCubic);
 				}
 
 				p{
 					@include inline-block(middle);
-					font-size: 2rem;
-					text-indent: 1rem;
+					font-size: 2em;
+					text-indent: .6em;
 				}
 			}
 		}
@@ -168,14 +241,6 @@ hr{
 
 	h4{
 		font-size: 3rem;
-	}
-
-	h5{
-		font-size: 1.2rem;
-		color: $color_lightgray;
-		letter-spacing: .1rem;
-		line-height: 2;
-		@include font-smoothing;
 	}
 
 	p{

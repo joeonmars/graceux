@@ -42,8 +42,8 @@
 					{% set hasFigure = merit.applications|length ? true : false %}
 					<article class="merit {% if hasFigure == true %}has-figure{% endif %}">
 						<div class="heading-container">
-							<h5>{{ merit.subheading }}</h5>
-							<h4>{{ merit.heading }}</h4>
+							<h5 class="subheading above">{{ merit.subheading }}</h5>
+							<h4>{{ merit.heading|nl2br }}</h4>
 						</div>
 						<div class="content-container">
 							<p>{{ merit.paragraph }}</p>

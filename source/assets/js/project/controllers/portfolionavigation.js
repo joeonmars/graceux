@@ -16,13 +16,21 @@ gux.controllers.PortfolioNavigation = function() {
 	this._particlesContainer = goog.dom.query( '.particles-container', this.el )[ 0 ];
 
 	this._isOpened = false;
+	this._particlesRect = null;
+	this._mouseRect = null;
+
+	this._mouseRatio = {
+		targetX: 0,
+		targetY: 0,
+		currentX: 0,
+		currentY: 0
+	};
 
 	//
 	this._eventHandler = new goog.events.EventHandler( this );
 	this._eventHandler.listen( this._menuButton, gux.events.EventType.DOWN, this.toggle, false, this );
 	this._eventHandler.listen( this._closeButton, goog.events.EventType.CLICK, this.close, false, this );
 	this._eventHandler.listen( this._mainContainer, goog.events.EventType.CLICK, this.onClickMain, false, this );
-	this._eventHandler.listen( window, goog.events.EventType.RESIZE, this.resize, false, this );
 	this._eventHandler.listen( gux.router, gux.events.EventType.LOAD_PAGE, this.onLoadPage, false, this );
 };
 goog.addSingletonGetter( gux.controllers.PortfolioNavigation );
@@ -81,6 +89,12 @@ gux.controllers.PortfolioNavigation.prototype.open = function() {
 			'ease': Quint.easeOut
 		} );
 	} );
+
+	// add events
+	this._eventHandler.listen( document.body, goog.events.EventType.MOUSEMOVE, this.onMouseMove, false, this );
+	this._eventHandler.listen( window, goog.events.EventType.RESIZE, this.resize, false, this );
+
+	TweenMax.ticker.addEventListener( 'tick', this.update, this );
 };
 
 
@@ -92,13 +106,39 @@ gux.controllers.PortfolioNavigation.prototype.close = function() {
 
 	TweenMax.to( this.el, 1, {
 		'height': 0,
-		'ease': Quint.easeOut
+		'ease': Quint.easeOut,
+		'onComplete': function() {
+			// remove events
+			this._eventHandler.unlisten( document.body, goog.events.EventType.MOUSEMOVE, this.onMouseMove, false, this );
+			this._eventHandler.unlisten( window, goog.events.EventType.RESIZE, this.resize, false, this );
+
+			TweenMax.ticker.removeEventListener( 'tick', this.update, this );
+		},
+		'onCompleteScope': this
 	} );
 
 	TweenMax.to( this._mainContainer, 1, {
 		'y': 0,
 		'ease': Quint.easeOut
 	} );
+};
+
+
+gux.controllers.PortfolioNavigation.prototype.update = function() {
+
+	var ease = .1;
+	this._mouseRatio.currentX += ( this._mouseRatio.targetX - this._mouseRatio.currentX ) * ease;
+	this._mouseRatio.currentY += ( this._mouseRatio.targetY - this._mouseRatio.currentY ) * ease;
+
+	var halfDistX = ( this._particlesRect.width - this._mouseRect.width ) / 2;
+	var halfFractionX = halfDistX / this._particlesRect.width;
+	var halfPercentageX = halfFractionX * this._mouseRatio.currentX * -100 + '%';
+
+	var halfDistY = ( this._particlesRect.height - this._mouseRect.height ) / 2;
+	var halfFractionY = halfDistY / this._particlesRect.height;
+	var halfPercentageY = halfFractionY * this._mouseRatio.currentY * -100 + '%';
+
+	goog.style.setStyle( this._particlesContainer, 'transform', 'translate(' + halfPercentageX + ',' + halfPercentageY + ')' );
 };
 
 
@@ -141,6 +181,28 @@ gux.controllers.PortfolioNavigation.prototype.resize = function() {
 
 		goog.style.setPosition( items[ i ], x, y );
 	}
+
+	//
+	var innerRect = goog.style.getBounds( this._inner );
+	var x = innerRect.left;
+	var y = innerRect.top;
+	var w = innerRect.width;
+	var h = innerRect.height;
+
+	var mouseRect = innerRect;
+	mouseRect.width = w * .65;
+	mouseRect.height = h * .65;
+	mouseRect.top = y + ( h - mouseRect.height ) / 2;
+	mouseRect.left = x + ( w - mouseRect.width ) / 2;
+	var mouseRectHalfWidth = mouseRect.width / 2;
+	var mouseRectHalfHeight = mouseRect.height / 2;
+
+	var particlesRect = goog.style.getBounds( this._particlesContainer );
+	var particlesWidth = particlesRect.width;
+	var particlesHeight = particlesRect.height;
+
+	this._particlesRect = particlesRect;
+	this._mouseRect = mouseRect;
 };
 
 
@@ -151,6 +213,23 @@ gux.controllers.PortfolioNavigation.prototype.onClickMain = function( e ) {
 	if ( goog.dom.contains( this._mainContainer, e.target ) ) {
 		this.close();
 	}
+};
+
+
+gux.controllers.PortfolioNavigation.prototype.onMouseMove = function( e ) {
+
+	var mouseRect = this._mouseRect;
+	var mouseRectHalfWidth = mouseRect.width / 2;
+	var mouseRectHalfHeight = mouseRect.height / 2;
+
+	var particlesWidth = this._particlesRect.width;
+	var particlesHeight = this._particlesRect.height;
+
+	var mouseRatioX = goog.math.clamp( ( e.clientX - mouseRect.left - mouseRectHalfWidth ) / mouseRectHalfWidth, -1, 1 );
+	var mouseRatioY = goog.math.clamp( ( e.clientY - mouseRect.top - mouseRectHalfHeight ) / mouseRectHalfHeight, -1, 1 );
+
+	this._mouseRatio.targetX = mouseRatioX;
+	this._mouseRatio.targetY = mouseRatioY;
 };
 
 

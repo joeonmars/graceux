@@ -1,5 +1,17 @@
 @include container(12);
 
+&{
+	padding: span(1) 0;
+}
+
+hr{
+	@include full;
+
+	&:last-child{
+		display: none;
+	}
+}
+
 .text-container{
 	width: 100%;
 
@@ -26,7 +38,7 @@
 		display: table;
 		padding: gutter();
 
-		&:nth-child(6n+1){
+		&.i1{
 			@include span(7);
 			//background: blue;
 
@@ -47,7 +59,7 @@
 			}
 		}
 
-		&:nth-child(6n+2){
+		&.i2{
 			@include span(5 last);
 			//background: green;
 
@@ -64,7 +76,7 @@
 			}
 		}
 
-		&:nth-child(6n+3){
+		&.i3{
 			@include span(full);
 			//background: red;
 
@@ -85,7 +97,7 @@
 			}
 		}
 
-		&:nth-child(6n+4){
+		&.i4{
 			@include span(5);
 			//background: green;
 
@@ -102,7 +114,7 @@
 			}
 		}
 
-		&:nth-child(6n+5){
+		&.i5{
 			@include span(7 last);
 			//background: blue;
 
@@ -123,7 +135,7 @@
 			}
 		}
 
-		&:nth-child(6n+6){
+		&.i6{
 			@include span(full);
 			//background: red;
 
@@ -150,12 +162,21 @@
 			}
 		}
 	}
+
+	hr{
+		margin: span(1) 0;
+
+		&.i1, &.i4 {
+			display: none;
+		}
+	}
 }
 
 @include breakpoint($break_mobile) {
 	@include container(6);
 
 	li{
+		@include full;
 		padding: gutter();
 
 		.preview{
@@ -170,5 +191,9 @@
 				padding: 0 gutter();
 			}
 		}
+	}
+
+	hr{
+		margin: span(1) 0;
 	}
 }
