@@ -142,22 +142,67 @@ article{
 
 .bordered-button{
 	@extend %reset-button;
+	position: relative;
 	display: inline-block;
 	font-family: $font_flama;
 	text-transform: uppercase;
-	border: 2px solid black;
-	color: black;
+	border: 2px solid $color_logo_blue;
 	cursor: pointer;
 	font-size: 12px;
 	letter-spacing: 0.85px;
-	padding: 14px 20px;
 	background: transparent;
 	cursor: pointer;
-	@include transition(background .2s $easeOutCubic, color .2s);
+	overflow: hidden;
+	@include transition(background .3s $easeOutQuint);
+
+	>span{
+		display: block;
+		padding: 14px 20px;
+		color: $color_logo_blue;
+		@include translateY(0);
+		@include transition(transform .3s $easeOutQuint, opacity .3s $easeOutQuint);
+	}
+
+	&:after{
+		content: attr(data-text);
+		position: absolute;
+		top: 0;
+		left: 0;
+		padding: 14px 20px;
+		color: white;
+		opacity: 0;
+		@include translateY(50%);
+		@include transition(transform .3s $easeOutQuint, opacity .3s $easeOutQuint);
+	}
 
 	&:hover{
-		color: white;
-		background: black;
+		background: $color_logo_blue;
+
+		>span{
+			opacity: 0;
+			@include translateY(-50%);
+		}
+
+		&:after{
+			opacity: 1;
+			@include translateY(0);
+		}
+	}
+
+	&.white{
+		border-color: white;
+
+		>span{
+			color: white;
+		}
+
+		&:after{
+			color: $color_logo_blue;
+		}
+
+		&:hover{
+			background: white;
+		}
 	}
 }
 

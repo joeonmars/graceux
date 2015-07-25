@@ -1,0 +1,9 @@
+{% set target = target|default("_self") %}
+{% set classes = classes|default("") %}
+
+<a href="{{ href }}" class="bordered-button {{ classes }}" target="{{ target }}"
+	data-text="{{ text }}"
+	{% if ajax is defined and ajax == true %}data-ajax="true"{% endif %}
+	{% if loaderId is defined %}data-loader-id="{{ loaderId }}"{% endif %}>
+	<span>{{ text }}</span>
+</a>

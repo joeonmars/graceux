@@ -2,26 +2,27 @@
 
 /**
  * Full screen loader
- * @param heading the heading text
- * @param genre the genre text
- * @param color the color
- * @param shortDescription the short description text
+ * @param project the project info
+ * @param shapes the shape particles
  */
 {template .FullscreenLoader}
 <div id="fullscreen-loader">
-	<div class="masked-content">
-		<div class="dimmed-background"></div>
-		<div class="lightbox">
-			<div class="text-container">
-				<div class="masthead">
-					<h6 class="subheading above {$color}">{{ $genre }}</h6>
-					<h3 class="border-heading has-bottom has-left">
-						{ $heading }
-						<div class="border bottom {$color}"></div>
-						<div class="border left {$color}"></div>
-					</h3>
-					<p class="description">{{ $shortDescription }}</p>
-				</div>
+	<div class="dimmed-background"></div>
+	<div class="lightbox">
+		<div class="shapes">
+			{foreach $shape in $shapes}
+				<div class="icon" style="top:{$shape.y};left:{$shape.x}"></div>
+			{/foreach}
+		</div>
+		<div class="text-container">
+			<div class="masthead">
+				<h6 class="subheading above { $project.color }">{ $project.genre }</h6>
+				<h3 class="border-heading has-bottom has-left">
+					{ $project.heading }
+					<div class="border bottom { $project.color }"></div>
+					<div class="border left { $project.color }"></div>
+				</h3>
+				<p class="description">{ $project.shortDescription }</p>
 			</div>
 		</div>
 	</div>

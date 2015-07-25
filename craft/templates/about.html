@@ -32,7 +32,9 @@
 				<h3 class="greeting">{{ about.greeting }}</h3>
 				<div class="border blue"></div>
 				<div class="status">{{ about.currentStatus }}</div>
-				<a href="" class="resume bordered-button" target="_blank">{{ Copy.downloadResume }}</a>
+
+				{% include "_includes/_bordered-button"
+						with {'classes': 'resume', 'href': about.resume[0].url, 'target': '_blank', 'text': Copy.downloadResume} %}
 			</div>
 
 			<hr>
@@ -77,7 +79,9 @@
 				{% endfor %}
 				</ul>
 				<span class="or">{{ Copy.or }}</span>
-				<a href="" class="resume bordered-button" target="_blank">{{ Copy.downloadResume }}</a>
+
+				{% include "_includes/_bordered-button"
+						with {'classes': 'resume', 'href': about.resume[0].url, 'target': '_blank', 'text': Copy.downloadResume} %}
 			</div>
 		</div>
 	</section>

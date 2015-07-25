@@ -2,6 +2,7 @@ goog.provide( 'gux.controllers.FullscreenLoader' );
 
 goog.require( 'goog.events.EventTarget' );
 goog.require( 'goog.events.EventHandler' );
+goog.require( 'gux.fx.Shape' );
 goog.require( 'gux.templates.Main' );
 
 
@@ -26,44 +27,51 @@ gux.controllers.FullscreenLoader.prototype.open = function( lightBoxId ) {
 	// animate in
 	goog.dom.classlist.enable( this._container, 'show', true );
 
+	// create shape particles
+	var shape = gux.fx.Shape.getInstance();
+	var shapes = shape.generatePositions( 100, 50, 20, 10, true );
+
+	// reference lightbox texts from site map
 	var projectData = gux.siteMap[ 'portfolio' ][ lightBoxId ];
 
-	this._el = soy.renderAsFragment( gux.templates.Main.FullscreenLoader, projectData );
+	this._el = soy.renderAsFragment( gux.templates.Main.FullscreenLoader, {
+		shapes: shapes,
+		project: projectData
+	} );
 	goog.dom.appendChild( this._container, this._el );
 
 	var dimmedBackground = goog.dom.getElementByClass( 'dimmed-background', this._el );
-
-	var lightbox = goog.dom.getElementByClass( 'lightbox', this._el );
-	var lightboxSize = goog.style.getSize( lightBoxRef );
-	var lightboxPosition = goog.style.getPageOffset( lightBoxRef );
-
-	var maskedContent = goog.dom.getElementByClass( 'masked-content', this._el );
-	var padding = goog.style.getPaddingBox( maskedContent );
-	lightboxPosition.x += lightboxSize.width / 2 - padding.left;
-	lightboxPosition.y += lightboxSize.height / 2 - padding.top;
 
 	TweenMax.set( this._el, {
 		'height': '100%'
 	} );
 
-	var tweener = TweenMax.fromTo( dimmedBackground, .25, {
+	var tweener = TweenMax.fromTo( dimmedBackground, .4, {
 		'opacity': 0
 	}, {
 		'opacity': 1
 	} );
 
+	var lightbox = goog.dom.getElementByClass( 'lightbox', this._el );
+	var lightboxSize = goog.style.getSize( lightbox );
+	var lightboxRefSize = goog.style.getSize( lightBoxRef );
+	var lightboxRefPosition = goog.style.getPageOffset( lightBoxRef );
+
+	var startTop = lightboxRefPosition.y;
+	var startRight = lightboxRefPosition.x + lightboxRefSize.width;
+	var startBottom = lightboxRefPosition.y + lightboxRefSize.height;
+	var startLeft = lightboxRefPosition.x;
+
+	var endTop = 0;
+	var endRight = lightboxSize.width;
+	var endBottom = lightboxSize.height;
+	var endLeft = 0;
+
 	var tweener = TweenMax.fromTo( lightbox, .8, {
-		'opacity': 0,
-		'width': lightboxSize.width,
-		'height': lightboxSize.height,
-		'left': lightboxPosition.x,
-		'top': lightboxPosition.y
+		'clip': 'rect(' + startTop + 'px ' + startRight + 'px ' + startBottom + 'px ' + startLeft + 'px)'
 	}, {
-		'opacity': 1,
-		'width': '100%',
-		'height': '100%',
-		'left': '50%',
-		'top': '50%',
+		'clip': 'rect(' + endTop + 'px ' + endRight + 'px ' + endBottom + 'px ' + endLeft + 'px)',
+		'clearProps': 'clip',
 		'ease': Cubic.easeInOut
 	} );
 

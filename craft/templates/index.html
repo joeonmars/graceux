@@ -20,6 +20,8 @@
 {% set isAjax = (craft.request.getQuery("ajax") == "true") ? true : false %}
 {% extends isAjax ? "_extends/_main-content" : "_extends/_main" %}
 
+{% import "_imports/_utils" as utils %}
+
 {% block content %}
 <div id="projects">
 	<ul>
@@ -28,7 +30,7 @@
 			{% if entry.portfolioCategory.first() == 'Projects' %}
 			<li class="i{{ count % 6 + 1 }}">
 				<div class="preview">
-					<div class="image" style="background-image:url({{ entry.previewImage[0].url }})"
+					<div class="image" style="{{ utils.retinaBackground(entry.previewImage[0], 600) }}"
 						data-lightbox-id="{{ entry.id }}"></div>
 				</div>
 				<div class="text-container">
@@ -36,8 +38,9 @@
 						<h5 class="subheading above">{{ entry.genre }}</h5>
 						<h4>{{ entry.heading|nl2br }}</h4>
 						<p class="description">{{ entry.shortDescription }}</p>
-						<a href="{{ entry.url }}" class="bordered-button"
-							data-ajax="true" data-loader-id="{{ entry.id }}">{{ Copy.viewProject }}</a>
+						
+						{% include "_includes/_bordered-button"
+							with {'href': entry.url, 'text': Copy.viewProject, 'ajax': true, 'loaderId': entry.id} %}
 					</div>
 				</div>
 			</li>

@@ -40,7 +40,9 @@
 
 	<section class="content">
 		<aside class="info" data-sticky="true">
-			<a href="{{ entry.projectUrl }}" class="bordered-button" target="_blank">{{ Copy.launchProject }}</a>
+		
+			{% include "_includes/_bordered-button"
+					with {'href': entry.projectUrl, 'target': '_blank', 'text': Copy.launchProject} %}
 
 			<div>
 				<h6>{{ Copy.client }}</h6>

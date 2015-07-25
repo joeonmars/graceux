@@ -14,5 +14,13 @@ goog.require('soydata');
  * @notypecheck
  */
 gux.templates.Main.FullscreenLoader = function(opt_data, opt_ignored) {
-  return '<div id="fullscreen-loader"><div class="masked-content"><div class="dimmed-background"></div><div class="lightbox"><div class="text-container"><div class="masthead"><h6 class="subheading above ' + opt_data.color + '">' + opt_data.genre + '</h6><h3 class="border-heading has-bottom has-left">' + opt_data.heading + '<div class="border bottom ' + opt_data.color + '"></div><div class="border left ' + opt_data.color + '"></div></h3><p class="description">' + opt_data.shortDescription + '</p></div></div></div></div></div>';
+  var output = '<div id="fullscreen-loader"><div class="dimmed-background"></div><div class="lightbox"><div class="shapes">';
+  var shapeList4 = opt_data.shapes;
+  var shapeListLen4 = shapeList4.length;
+  for (var shapeIndex4 = 0; shapeIndex4 < shapeListLen4; shapeIndex4++) {
+    var shapeData4 = shapeList4[shapeIndex4];
+    output += '<div class="icon" style="top:' + shapeData4.y + ';left:' + shapeData4.x + '"></div>';
+  }
+  output += '</div><div class="text-container"><div class="masthead"><h6 class="subheading above ' + opt_data.project.color + '">' + opt_data.project.genre + '</h6><h3 class="border-heading has-bottom has-left">' + opt_data.project.heading + '<div class="border bottom ' + opt_data.project.color + '"></div><div class="border left ' + opt_data.project.color + '"></div></h3><p class="description">' + opt_data.project.shortDescription + '</p></div></div></div></div>';
+  return output;
 };

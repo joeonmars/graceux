@@ -195,7 +195,7 @@
 				&:hover{
 					.icon{
 						background: transparent;
-						color: #000;
+						color: $color_logo_blue;
 					}
 				}
 
@@ -207,8 +207,8 @@
 					text-align: center;
 					font-size: 2rem;
 					color: #fff;
-					background: #000;
-					border: 2px solid #000;
+					background: $color_logo_blue;
+					border: 2px solid $color_logo_blue;
 					@include box-sizing(border-box);
 					@include transition(color .2s $easeOutCubic, background .2s $easeOutCubic);
 				}

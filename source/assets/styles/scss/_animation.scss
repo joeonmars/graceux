@@ -9,6 +9,26 @@
   }
 }
 
+@include keyframes(floating-1) {
+  from {
+    @include transform( translateY(8px) rotate(3deg) );
+  }
+
+  to {
+    @include transform( translateY(-8px) rotate(0deg) );
+  }
+}
+
+@include keyframes(floating-2) {
+  from {
+    @include transform( translateY(12px) rotate(6deg) );
+  }
+
+  to {
+    @include transform( translateY(-12px) rotate(0deg) );
+  }
+}
+
 /* Generated with Bounce.js. Edit at http://goo.gl/yq18sP */
 
 @keyframes animate-in-loader { 

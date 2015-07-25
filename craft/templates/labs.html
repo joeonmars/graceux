@@ -28,8 +28,9 @@
 			{% include "_includes/_border-heading"
 				with {'tag': 'h3', 'left': true, 'bottom': true, 'text': featured.title, 'color': 'white'} %}
 			<p class="description">{{ featured.shortDescription }}</p>
-			<a href="{{ featured.url }}" class="bordered-button"
-				data-ajax="true" data-loader-id="{{ featured.id }}">{{ Copy.viewProject }}</a>
+
+			{% include "_includes/_bordered-button"
+				with {'classes': 'white', 'href': featured.url, 'text': Copy.viewProject, 'ajax': true, 'loaderId': featured.id} %}
 		</div>
 	</div>
 
@@ -43,8 +44,9 @@
 							<h6 class="subheading above">{{ entry.genre }}</h6>
 							<h4>{{ entry.heading|nl2br }}</h4>
 							<p class="description">{{ entry.shortDescription }}</p>
-							<a href="{{ entry.url }}" class="bordered-button"
-								data-ajax="true" data-loader-id="{{ entry.id }}">{{ Copy.viewProject }}</a>
+
+							{% include "_includes/_bordered-button"
+								with {'href': entry.url, 'text': Copy.viewProject, 'ajax': true, 'loaderId': entry.id} %}
 						</div>
 					</div>
 					<div class="preview">

@@ -95,7 +95,8 @@ gux.controllers.pages.Page.prototype.animateIn = function( opt_lightboxId ) {
 		TweenMax.fromTo( this.el, .5, {
 			'opacity': 0
 		}, {
-			'opacity': 1
+			'opacity': 1,
+			'immediateRender': true
 		} );
 
 	return tweener;

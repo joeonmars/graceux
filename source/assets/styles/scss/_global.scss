@@ -20,6 +20,7 @@ $break_desktop: min-width 1200px;
 $easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1);
 $easeOutCubic: cubic-bezier(0.215, 0.61, 0.355, 1);
 $easeOutSine: cubic-bezier(0.39, 0.575, 0.565, 1);
+$easeOutQuint: cubic-bezier(0.230, 1.000, 0.320, 1.000);
 
 html, body{
   position: absolute;

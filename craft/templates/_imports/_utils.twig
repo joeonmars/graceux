@@ -21,6 +21,30 @@
 {% endmacro %}
 
 
+{% macro retinaBackground(image, maxCssWidth) %}
+    {%- spaceless %}
+        {# Is this a 2X image? #}
+        {% set is2x = image.filename matches '/@2x\\.\\w+$/' %}
+
+        {# Determine the CSS width for the image, if it were output at 100% #}
+        {% set cssWidth = (is2x ? round(image.width / 2) : image.width) %}
+
+        {# Determine the image size that 1X screens should get #}
+        {% set width = (cssWidth > maxCssWidth ? maxCssWidth : cssWidth) %}
+
+        {# Determine the image size that 2X screens should get #}
+        {% set width2x = (width * 2) > image.width ? image.width : (width * 2) %}
+
+        {# Output #}
+        {% set url1x = image.getUrl(image.width != width ? { width: width }) %}
+        {% set url2x = image.getUrl(image.width != width2x ? { width: width2x }) %}
+        
+        background-image: url({{ url1x }});
+        background-image: -webkit-image-set(url({{url1x}}) 1x, url({{url2x}}) 2x);
+    {% endspaceless -%}
+{% endmacro %}
+
+
 {% macro getActualImageWidth(image) %}
     {%- spaceless %}
         {# Is this a 2X image? #}
