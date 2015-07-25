@@ -8,6 +8,7 @@ goog.require( 'goog.net.XhrIo' );
 goog.require( 'goog.object' );
 goog.require( 'goog.Uri' );
 goog.require( 'gux.controllers.pages.Page' );
+goog.require( 'gux.controllers.pages.ProjectPage' );
 
 
 gux.controllers.Router = function() {
@@ -23,6 +24,8 @@ gux.controllers.Router = function() {
 
 	this._currentPage = null;
 	this._nextPage = null;
+
+	this._lightboxId = null;
 
 	this._deferredSwitchToNextPage = null;
 	this._deferredLoad = null;
@@ -83,8 +86,10 @@ gux.controllers.Router.prototype.createPage = function( pattern, el ) {
 gux.controllers.Router.prototype.switchToNextPage = function() {
 
 	if ( this._nextPage ) {
-		this._nextPage.animateIn();
+		this._nextPage.animateIn( this._lightboxId );
 	}
+
+	this._lightboxId = null;
 
 	this.dispatchEvent( {
 		type: gux.events.EventType.SWITCH_PAGE
@@ -112,10 +117,11 @@ gux.controllers.Router.prototype.loadPage = function( url, routeKey, routeParams
 		type: gux.events.EventType.LOAD_PAGE,
 		deferred: this._deferredAnimateOut,
 		routeKey: routeKey,
-		routeParams: routeParams
+		routeParams: routeParams,
+		lightboxId: this._lightboxId
 	} );
 
-	console.log( "LOAD PAGE: ", routeKey, routeParams );
+	console.log( "LOAD PAGE: ", routeKey, routeParams, "Lightbox Id: " + this._lightboxId );
 };
 
 
@@ -172,6 +178,8 @@ gux.controllers.Router.prototype.onClick = function( e ) {
 
 	if ( target.tagName === goog.dom.TagName.A && target.getAttribute( 'data-ajax' ) === 'true' ) {
 
+		this._lightboxId = target.getAttribute( 'data-loader-id' );
+
 		var token = goog.Uri.parse( target.href ).getPath().replace( /^\/|\/$/g, '' );
 		this._history.setToken( token );
 
@@ -191,7 +199,7 @@ gux.controllers.Router.mappings = {
 	},
 	'projects-project': {
 		pattern: 'projects/{id}',
-		page: gux.controllers.pages.Page
+		page: gux.controllers.pages.ProjectPage
 	},
 	'labs-project': {
 		pattern: 'labs/{id}',

@@ -28,14 +28,16 @@
 			{% if entry.portfolioCategory.first() == 'Projects' %}
 			<li class="i{{ count % 6 + 1 }}">
 				<div class="preview">
-					<div class="image" style="background-image:url({{ entry.previewImage[0].url }})"></div>
+					<div class="image" style="background-image:url({{ entry.previewImage[0].url }})"
+						data-lightbox-id="{{ entry.id }}"></div>
 				</div>
 				<div class="text-container">
 					<div class="inner">
-						<time class="subheading above">{{ entry.genre }}</time>
+						<h5 class="subheading above">{{ entry.genre }}</h5>
 						<h4>{{ entry.heading|nl2br }}</h4>
 						<p class="description">{{ entry.shortDescription }}</p>
-						<a href="{{ entry.url }}" class="bordered-button" data-ajax="true">{{ Copy.viewProject }}</a>
+						<a href="{{ entry.url }}" class="bordered-button"
+							data-ajax="true" data-loader-id="{{ entry.id }}">{{ Copy.viewProject }}</a>
 					</div>
 				</div>
 			</li>
@@ -47,5 +49,7 @@
 			{% endif %}
 		{% endfor %}
 	</ul>
+
+	{% include "_includes/_footer" %}
 </div>
 {% endblock %}

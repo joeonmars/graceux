@@ -1,7 +1,6 @@
-@include container(12);
-
-&{
-	padding: span(1) 0;
+>ul{
+	padding-top: span(1);
+	padding-bottom: span(1);
 }
 
 hr{
@@ -32,133 +31,135 @@ hr{
 }
 
 @include breakpoint($break_above_mobile) {
-	@include container(12);
+	>ul{
+		@include container(12);
 
-	li{
-		display: table;
-		padding: gutter();
+		li{
+			display: table;
+			padding: gutter();
 
-		&.i1{
-			@include span(7);
-			//background: blue;
+			&.i1{
+				@include span(7);
+				//background: blue;
+
+				.text-container{
+					display: table-footer-group;
+
+					>.inner{
+						@include span(5 of 7);
+					}
+				}
+
+				.preview{
+					display: table-header-group;
+
+					.image{
+						padding-top: 97%;
+					}
+				}
+			}
+
+			&.i2{
+				@include span(5 last);
+				//background: green;
+
+				.text-container{
+					display: table-header-group;
+				}
+
+				.preview{
+					display: table-footer-group;
+
+					.image{
+						padding-top: 132%;
+					}
+				}
+			}
+
+			&.i3{
+				@include span(full);
+				//background: red;
+
+				.text-container{
+					@include span(6 last);
+
+					>.inner{
+						@include span(5 of 6 last);
+					}
+				}
+
+				.preview{
+					@include span(6 first);
+
+					.image{
+						padding-top: 72%;
+					}
+				}
+			}
+
+			&.i4{
+				@include span(5);
+				//background: green;
+
+				.text-container{
+					display: table-header-group;
+				}
+
+				.preview{
+					display: table-footer-group;
+
+					.image{
+						padding-top: 132%;
+					}
+				}
+			}
+
+			&.i5{
+				@include span(7 last);
+				//background: blue;
+
+				.text-container{
+					display: table-footer-group;
+
+					>.inner{
+						@include span(5 of 7);
+					}
+				}
+
+				.preview{
+					display: table-header-group;
+
+					.image{
+						padding-top: 97%;
+					}
+				}
+			}
+
+			&.i6{
+				@include span(full);
+				//background: red;
+
+				.text-container{
+					@include span(6);
+
+					>.inner{
+						@include span(5 of 6);
+					}
+				}
+
+				.preview{
+					@include span(6 last);
+
+					.image{
+						padding-top: 72%;
+					}
+				}
+			}
 
 			.text-container{
-				display: table-footer-group;
-
-				>.inner{
-					@include span(5 of 7);
+				.inner{
+					margin: 2.5rem 0;
 				}
-			}
-
-			.preview{
-				display: table-header-group;
-
-				.image{
-					padding-top: 97%;
-				}
-			}
-		}
-
-		&.i2{
-			@include span(5 last);
-			//background: green;
-
-			.text-container{
-				display: table-header-group;
-			}
-
-			.preview{
-				display: table-footer-group;
-
-				.image{
-					padding-top: 132%;
-				}
-			}
-		}
-
-		&.i3{
-			@include span(full);
-			//background: red;
-
-			.text-container{
-				@include span(6 last);
-
-				>.inner{
-					@include span(5 of 6 last);
-				}
-			}
-
-			.preview{
-				@include span(6 first);
-
-				.image{
-					padding-top: 72%;
-				}
-			}
-		}
-
-		&.i4{
-			@include span(5);
-			//background: green;
-
-			.text-container{
-				display: table-header-group;
-			}
-
-			.preview{
-				display: table-footer-group;
-
-				.image{
-					padding-top: 132%;
-				}
-			}
-		}
-
-		&.i5{
-			@include span(7 last);
-			//background: blue;
-
-			.text-container{
-				display: table-footer-group;
-
-				>.inner{
-					@include span(5 of 7);
-				}
-			}
-
-			.preview{
-				display: table-header-group;
-
-				.image{
-					padding-top: 97%;
-				}
-			}
-		}
-
-		&.i6{
-			@include span(full);
-			//background: red;
-
-			.text-container{
-				@include span(6);
-
-				>.inner{
-					@include span(5 of 6);
-				}
-			}
-
-			.preview{
-				@include span(6 last);
-
-				.image{
-					padding-top: 72%;
-				}
-			}
-		}
-
-		.text-container{
-			.inner{
-				margin: 2.5rem 0;
 			}
 		}
 	}
@@ -173,22 +174,24 @@ hr{
 }
 
 @include breakpoint($break_mobile) {
-	@include container(6);
+	>ul{
+		@include container(6);
 
-	li{
-		@include full;
-		padding: gutter();
+		li{
+			@include full;
+			padding: gutter();
 
-		.preview{
-			.image{
-				padding-top: 65%;
+			.preview{
+				.image{
+					padding-top: 65%;
+				}
 			}
-		}
 
-		.text-container{
-			.inner{
-				margin: 1rem 0 2rem 0;
-				padding: 0 gutter();
+			.text-container{
+				.inner{
+					margin: 1rem 0 2rem 0;
+					padding: 0 gutter();
+				}
 			}
 		}
 	}

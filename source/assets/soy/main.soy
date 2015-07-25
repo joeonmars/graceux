@@ -1,10 +1,29 @@
 {namespace gux.templates.Main autoescape="false"}
 
 /**
- * Say Hello
+ * Full screen loader
+ * @param heading the heading text
+ * @param genre the genre text
+ * @param color the color
+ * @param shortDescription the short description text
  */
-{template .HelloWorld}
-<div>
-	Hello World!
+{template .FullscreenLoader}
+<div id="fullscreen-loader">
+	<div class="masked-content">
+		<div class="dimmed-background"></div>
+		<div class="lightbox">
+			<div class="text-container">
+				<div class="masthead">
+					<h6 class="subheading above {$color}">{{ $genre }}</h6>
+					<h3 class="border-heading has-bottom has-left">
+						{ $heading }
+						<div class="border bottom {$color}"></div>
+						<div class="border left {$color}"></div>
+					</h3>
+					<p class="description">{{ $shortDescription }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 {/template}

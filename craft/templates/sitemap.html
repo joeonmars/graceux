@@ -1,0 +1,14 @@
+{% header "Content-Type: application/json" %}
+
+{
+	"portfolio": {
+	{% for entry in craft.entries.section('portfolio').find() %}
+		"{{ entry.id }}": {
+			"heading": "{{ entry.heading|replace({'\r\n': '\\n'})  }}",
+			"genre": "{{ entry.genre }}",
+			"color": "{{ entry.color }}",
+			"shortDescription": "{{ entry.shortDescription }}"
+		}{{ loop.last ? "" : "," }}
+	{% endfor %}
+	}
+}

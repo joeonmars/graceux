@@ -1,9 +1,8 @@
-@include container();
-
 .featured{
 	position: relative;
 	color: white;
 	background-color: $color_logo_blue;
+	padding-top: span(1);
 
 	.text-container{
 		.border-heading{
@@ -20,51 +19,54 @@
 	}
 }
 
-li{
-	position: relative;
-	@include dots-pattern;
+.projects{
+	padding-bottom: span(1);
 
-	>.inner{
-		display: table;
-		width: 100%;
-		height: 100%;
-		padding: 4em;
-		background: rgba($color_lightergray, .8);
-		border: 1px solid rgba($color_gray, .5);
-	}
+	li{
+		position: relative;
+		@include dots-pattern;
 
-	.text-container{
-		width: 100%;
-		display: table-cell;
-		vertical-align: middle;
-
-		.inner{
-			margin: 2.5rem 0;
-		}
-
-		p{
-			margin: 2rem 0;
-		}
-	}
-
-	.preview{
-		width: 100%;
-
-		.image{
+		>.inner{
+			display: table;
 			width: 100%;
-			height: 0;
-			background-size: cover;
-			background-position: center center;
+			height: 100%;
+			padding: 4em;
+			background: rgba($color_lightergray, .8);
+			border: 1px solid rgba($color_gray, .5);
+		}
+
+		.text-container{
+			width: 100%;
+			display: table-cell;
+			vertical-align: middle;
+
+			.inner{
+				margin: 2.5rem 0;
+			}
+
+			p{
+				margin: 2rem 0;
+			}
+		}
+
+		.preview{
+			width: 100%;
+
+			.image{
+				width: 100%;
+				height: 0;
+				background-size: cover;
+				background-position: center center;
+			}
 		}
 	}
 }
 
 @include breakpoint($break_above_mobile) {
-	@include container(12);
 
 	.intro{
 		@include container(12);
-		padding: span(1 wide);
+		padding: span(1);
 
 		>h3{
 			@include span(5);
@@ -76,7 +78,7 @@ li{
 	}
 
 	.featured{
-		@include container();
+		@include container(12);
 		padding: 0 gutter();
 		margin-bottom: gutter();
 
@@ -86,13 +88,17 @@ li{
 		}
 	}
 
-	li{
-		@include span(4);
-		margin-bottom: gutter();
-		height: 45em;
+	.projects{
+		@include container(12);
 
-		&:nth-child(3n){
-			@include last();
+		li{
+			@include span(4);
+			margin-bottom: gutter();
+			height: 45em;
+
+			&:nth-child(3n){
+				@include last();
+			}
 		}
 	}
 }
@@ -102,12 +108,12 @@ li{
 
 	.intro{
 		@include container(8);
-		padding: span(1 of 8 wide);
+		padding: span(1 of 8);
 	}
 
 	.featured{
 		@include container(8);
-		padding: span(1 of 8 wide);
+		padding: span(1 of 8);
 		margin-bottom: gutter();
 		font-size: .65rem;
 
@@ -116,11 +122,11 @@ li{
 		}
 	}
 
-	ul{
+	.projects{
 		padding: gutter();
-	}
 
-	li{
-		margin: gutter() 0;
+		li{
+			margin: gutter() 0;
+		}
 	}
 }

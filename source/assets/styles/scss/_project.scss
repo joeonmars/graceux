@@ -39,19 +39,8 @@
 				align-items: center
 			));
 
-			>.inner{
+			>.masthead{
 				padding: 0 span(3 wide);
-			}
-
-			.border-heading{
-				color: white;
-				font-size: 10em;
-			}
-
-			p{
-				font-size: 2.4em;
-				line-height: 1.4;
-				color: white;
 			}
 		}
 	}
@@ -259,7 +248,7 @@
 	}
 }
 
-.info{
+aside{
 	>div{
 		margin-top: 2.25em;
 

@@ -1,0 +1,13 @@
+<footer class="main-footer">
+	{% include "_includes/_logo" %}
+	<div class="info">
+		<p class="copyright">{{ siteName }} &copy; Copyright 2010-{{ now.year }}.</p>
+		<ul class="social">
+		{% for social in about.social %}
+			{% if social.enabled == true %}
+			<li><a class="icon icon-{{ social.name }}" href="{{ social.url }}" target="_blank"></a></li>
+			{% endif %}
+		{% endfor %}
+		</ul>
+	</div>
+</footer>

@@ -1,7 +1,3 @@
-&{
-	padding-bottom: span(1);
-}
-
 >.masthead{
 	height: 0;
 	padding-bottom: percentage(960/2133);
@@ -10,6 +6,8 @@
 }
 
 >.content{
+	padding-bottom: span(1);
+	
 	@include breakpoint($break_mobile) {
 		@include container(6);
 		padding: gutter();

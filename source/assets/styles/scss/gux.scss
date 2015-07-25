@@ -184,3 +184,74 @@ body{
 	top: calc(7em + #{$border-padding});
 	height: calc(100% - #{7em*2});
 }
+
+#fullscreen-loader-container{
+	position: fixed;
+	z-index: 15;
+	width: 100%;
+	height: 100%;
+	@include translateZ(0);
+	visibility: hidden;
+	
+	&.show{
+		visibility: visible;
+	}
+
+	#fullscreen-loader{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+
+		>.masked-content{
+			width: 100vw;
+			height: 100vh;
+
+			/* -- break-points -- */
+			@include breakpoint($break_mobile) {
+				padding: none;
+			}
+
+			@include breakpoint($break_tablet) {
+				padding: $border-padding;
+				padding-top: #{7em*.85};
+				padding-bottom: calc(5rem + #{$border-padding*2});
+			}
+
+			@include breakpoint($break_desktop) {
+				padding: $border-padding;
+				padding-top: 7em;
+				padding-bottom: calc(5rem + #{$border-padding*2});
+			}
+		}
+
+		.dimmed-background{
+			@include absoluteTopLeft;
+			width: 100%;
+			height: 100%;
+			background: #fff;
+		}
+
+		.lightbox{
+			position: relative;
+			@include translate(-50%, -50%);
+			background: $color_lightergray;
+			overflow: hidden;
+
+			>.text-container{
+				width: 100%;
+				height: 100%;
+				@include container(12);
+				@include flexbox((
+					display: flex,
+					align-items: center
+				));
+
+				>.masthead{
+					padding: 0 span(3 wide);
+					color: #000;
+				}
+			}
+		}
+	}
+}

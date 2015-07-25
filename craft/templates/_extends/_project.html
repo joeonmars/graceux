@@ -25,7 +25,7 @@
 				<div class="image" style="background-image: url({{ entry.promotionalImage[0].url }})"></div>
 			</div>
 			<div class="text-container">
-				<div class="inner">
+				<div class="masthead">
 					<h6 class="subheading above {{ entry.color }}">{{ entry.genre }}</h6>
 
 					{% include "_includes/_border-heading"
@@ -160,9 +160,10 @@
 				{% endfor %}
 
 				{% set prevProject = projects[projectIndex - 1]|default(projects[projects|length - 1]) %}
-				<a class="prev" href="{{ prevProject.url }}" data-ajax="true">
+				<a class="prev" href="{{ prevProject.url }}"
+					data-ajax="true" data-loader-id="{{ prevProject.id }}">
 					<div class="inner">
-						<div class="movable">
+						<div class="movable" data-lightbox-id="{{ prevProject.id }}">
 							<div class="background-container" style="background-image: url({{ prevProject.navigationImage[0].url }})">
 								<div class="inner">
 									<div class="icon icon-arrow-prev"></div>
@@ -179,9 +180,10 @@
 				</a>
 
 				{% set nextProject = projects[projectIndex + 1]|default(projects[0]) %}
-				<a class="next" href="{{ nextProject.url }}" data-ajax="true">
+				<a class="next" href="{{ nextProject.url }}"
+					data-ajax="true" data-loader-id="{{ nextProject.id }}">
 					<div class="inner">
-						<div class="movable">
+						<div class="movable" data-lightbox-id="{{ nextProject.id }}">
 							<div class="background-container" style="background-image: url({{ nextProject.navigationImage[0].url }})">
 								<div class="inner">
 									<div class="icon icon-arrow-next"></div>
@@ -200,6 +202,8 @@
 		</div>
 
 	</section>
+
+	{% include "_includes/_footer" %}
 
 </div>
 {% endblock %}
