@@ -35,26 +35,24 @@
 	</div>
 
 	<ul class="projects">
-		{% for entry in craft.entries.section('portfolio').order('year desc').find() %}
-			{% if entry.portfolioCategory.first() == 'Labs' %}
-			<li data-lightbox-id="{{ entry.id }}">
+		{% for project in entry.projects %}
+			<li data-lightbox-id="{{ project.id }}">
 				<div class="inner">
 					<div class="text-container">
 						<div class="inner">
-							<h6 class="subheading above">{{ entry.genre }}</h6>
-							<h4>{{ entry.heading|nl2br }}</h4>
-							<p class="description">{{ entry.shortDescription }}</p>
+							<h6 class="subheading above">{{ project.genre }}</h6>
+							<h4>{{ project.heading|nl2br }}</h4>
+							<p class="description">{{ project.shortDescription }}</p>
 
 							{% include "_includes/_bordered-button"
-								with {'href': entry.url, 'text': Copy.viewProject, 'ajax': true, 'loaderId': entry.id} %}
+								with {'href': project.url, 'text': Copy.viewProject, 'ajax': true, 'loaderId': project.id} %}
 						</div>
 					</div>
 					<div class="preview">
-						<div class="image" style="background-image:url({{ entry.previewImage[0].url }})"></div>
+						<div class="image" style="background-image:url({{ project.previewImage[0].url }})"></div>
 					</div>
 				</div>
 			</li>
-			{% endif %}
 		{% endfor %}
 	</ul>
 

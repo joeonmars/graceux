@@ -1,12 +1,12 @@
 {namespace gux.templates.Main autoescape="false"}
 
 /**
- * Full screen loader
+ * Project loader
  * @param project the project info
  * @param shapes the shape particles
  */
-{template .FullscreenLoader}
-<div id="fullscreen-loader">
+{template .ProjectLoader}
+<div class="project-loader">
 	<div class="dimmed-background"></div>
 	<div class="lightbox">
 		<div class="shapes">
@@ -26,5 +26,15 @@
 			</div>
 		</div>
 	</div>
+</div>
+{/template}
+
+
+/**
+ * Simple loader
+ */
+{template .SimpleLoader}
+<div class="simple-loader">
+	<div class="spinner"></div>
 </div>
 {/template}

@@ -26,21 +26,20 @@
 <div id="projects">
 	<ul>
 		{% set count = 0 %}
-		{% for entry in craft.entries.section('portfolio').order('year desc').find() %}
-			{% if entry.portfolioCategory.first() == 'Projects' %}
+		{% for project in entry.projects %}
 			<li class="i{{ count % 6 + 1 }}">
 				<div class="preview">
-					<div class="image" style="{{ utils.retinaBackground(entry.previewImage[0], 600) }}"
-						data-lightbox-id="{{ entry.id }}"></div>
+					<div class="image" style="{{ utils.retinaBackground(project.previewImage[0], 600) }}"
+						data-lightbox-id="{{ project.id }}"></div>
 				</div>
 				<div class="text-container">
 					<div class="inner">
-						<h5 class="subheading above">{{ entry.genre }}</h5>
-						<h4>{{ entry.heading|nl2br }}</h4>
-						<p class="description">{{ entry.shortDescription }}</p>
+						<h5 class="subheading above">{{ project.genre }}</h5>
+						<h4>{{ project.heading|nl2br }}</h4>
+						<p class="description">{{ project.shortDescription }}</p>
 						
 						{% include "_includes/_bordered-button"
-							with {'href': entry.url, 'text': Copy.viewProject, 'ajax': true, 'loaderId': entry.id} %}
+							with {'href': project.url, 'text': Copy.viewProject, 'ajax': true, 'loaderId': project.id} %}
 					</div>
 				</div>
 			</li>
@@ -48,8 +47,6 @@
 			<hr class="i{{ count % 6 + 1 }}">
 			
 			{% set count = count + 1 %}
-
-			{% endif %}
 		{% endfor %}
 	</ul>
 

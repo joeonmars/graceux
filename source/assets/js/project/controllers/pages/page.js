@@ -88,16 +88,7 @@ gux.controllers.pages.Page.prototype.animateIn = function( opt_lightboxId ) {
 
 	this.resize();
 
-	var tweener = goog.isString( opt_lightboxId ) ?
-
-		gux.fullscreenLoader.close( opt_lightboxId ) :
-
-		TweenMax.fromTo( this.el, .5, {
-			'opacity': 0
-		}, {
-			'opacity': 1,
-			'immediateRender': true
-		} );
+	var tweener = gux.fullscreenLoader.close( opt_lightboxId );
 
 	return tweener;
 };
@@ -105,14 +96,7 @@ gux.controllers.pages.Page.prototype.animateIn = function( opt_lightboxId ) {
 
 gux.controllers.pages.Page.prototype.animateOut = function( opt_lightboxId ) {
 
-	var tweener = goog.isString( opt_lightboxId ) ?
-
-		gux.fullscreenLoader.open( opt_lightboxId ) :
-
-		TweenMax.to( this.el, .45, {
-			'opacity': 0,
-			'ease': Cubic.easeOut
-		} );
+	var tweener = gux.fullscreenLoader.open( opt_lightboxId );
 
 	return tweener;
 };

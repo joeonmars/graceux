@@ -19,10 +19,40 @@ goog.inherits( gux.controllers.FullscreenLoader, goog.events.EventTarget );
 goog.addSingletonGetter( gux.controllers.FullscreenLoader );
 
 
-gux.controllers.FullscreenLoader.prototype.open = function( lightBoxId ) {
+gux.controllers.FullscreenLoader.prototype.open = function( opt_lightboxId ) {
+
+	var hasLightboxId = goog.isString( opt_lightboxId );
+
+	if ( hasLightboxId ) {
+
+		return this.openProjectLoader( opt_lightboxId );
+
+	} else {
+
+		return this.openSimpleLoader();
+	}
+};
+
+
+gux.controllers.FullscreenLoader.prototype.close = function( opt_lightboxId ) {
+
+	var hasLightboxId = goog.isString( opt_lightboxId );
+
+	if ( hasLightboxId ) {
+
+		return this.closeProjectLoader();
+
+	} else {
+
+		return this.closeSimpleLoader();
+	}
+};
+
+
+gux.controllers.FullscreenLoader.prototype.openProjectLoader = function( lightboxId ) {
 
 	// query for the lightbox reference dom
-	var lightBoxRef = goog.dom.query( '*[data-lightbox-id="' + lightBoxId + '"]' )[ 0 ];
+	var lightBoxRef = goog.dom.query( '*[data-lightbox-id="' + lightboxId + '"]' )[ 0 ];
 
 	// animate in
 	goog.dom.classlist.enable( this._container, 'show', true );
@@ -32,9 +62,9 @@ gux.controllers.FullscreenLoader.prototype.open = function( lightBoxId ) {
 	var shapes = shape.generatePositions( 100, 50, 20, 10, true );
 
 	// reference lightbox texts from site map
-	var projectData = gux.siteMap[ 'portfolio' ][ lightBoxId ];
+	var projectData = gux.siteMap[ 'portfolio' ][ lightboxId ];
 
-	this._el = soy.renderAsFragment( gux.templates.Main.FullscreenLoader, {
+	this._el = soy.renderAsFragment( gux.templates.Main.ProjectLoader, {
 		shapes: shapes,
 		project: projectData
 	} );
@@ -79,12 +109,49 @@ gux.controllers.FullscreenLoader.prototype.open = function( lightBoxId ) {
 };
 
 
-gux.controllers.FullscreenLoader.prototype.close = function() {
+gux.controllers.FullscreenLoader.prototype.openSimpleLoader = function() {
+
+	// animate in
+	goog.dom.classlist.enable( this._container, 'show', true );
+
+	this._el = soy.renderAsFragment( gux.templates.Main.SimpleLoader );
+	goog.dom.appendChild( this._container, this._el );
+
+	var tweener = TweenMax.fromTo( this._el, .8, {
+		'opacity': 0
+	}, {
+		'opacity': 1,
+		'ease': Cubic.easeInOut
+	} );
+
+	return tweener;
+};
+
+
+gux.controllers.FullscreenLoader.prototype.closeProjectLoader = function() {
 
 	// animate out
 	var tweener = TweenMax.to( this._el, .8, {
 		'delay': 1,
 		'height': 0,
+		'ease': Quad.easeInOut,
+		'onComplete': function() {
+			goog.dom.classlist.enable( this._container, 'show', false );
+			goog.dom.removeNode( this._el );
+			this._el = null;
+		},
+		'onCompleteScope': this
+	} );
+
+	return tweener;
+};
+
+
+gux.controllers.FullscreenLoader.prototype.closeSimpleLoader = function() {
+
+	// animate out
+	var tweener = TweenMax.to( this._el, .8, {
+		'opacity': 0,
 		'ease': Quad.easeInOut,
 		'onComplete': function() {
 			goog.dom.classlist.enable( this._container, 'show', false );
