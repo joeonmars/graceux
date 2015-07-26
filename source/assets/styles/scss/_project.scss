@@ -66,12 +66,22 @@
 }
 
 .details{
+	>section{
+		&:nth-child(2), &:nth-last-child(2) {
+			margin-top: span(1 of 12) !important;
+		}
+
+		&:first-child, &:nth-last-child(3) {
+			margin-bottom: span(1 of 12) !important;
+		}
+	}
+
 	@include breakpoint($break_mobile) {
 		@include full;
 
 		@include nested(12) {
 			>section{
-				margin: span(1) 0;
+				margin: span(2) 0;
 				@include clearfix;
 
 				&.full, &.fluid{
@@ -120,7 +130,7 @@
 
 		@include nested(12) {
 			>section{
-				margin: span(1) 0;
+				margin: span(2) 0;
 				@include clearfix;
 
 				&.full{
@@ -185,7 +195,7 @@
 
 		@include nested(10) {
 			>section{
-				margin: span(1) 0;
+				margin: span(2) 0;
 				@include clearfix;
 
 				&.full{
@@ -330,7 +340,7 @@ aside{
 
 		>div{
 			position: relative;
-			margin-bottom: 1rem;
+			margin-bottom: span(1 of 12);
 
 			&.image, &.video{
 				@include inline-block(top);
