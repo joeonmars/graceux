@@ -13,7 +13,11 @@
         {% set width2x = (width * 2) > image.width ? image.width : (width * 2) %}
 
         {# Output the srcset= attribute value #}
-        srcset="{{ image.getUrl(image.width != width ? { width: width }) }}, {{ image.getUrl(image.width != width2x ? { width: width2x }) }} 2x"
+        {% set url1x = image.getUrl(image.width != width ? { width: width }) %}
+        {% set url2x = image.getUrl(image.width != width2x ? { width: width2x }) %}
+
+        src="{{ url1x }}"
+        srcset="{{ url1x }}, {{ url2x }} 2x"
 
         {#- Output the width= and height= attributes if needed #}
         {%- if includeDimensions %} width="{{ width }}" height="{{ image.getHeight({ width: width }) }}"{% endif %}

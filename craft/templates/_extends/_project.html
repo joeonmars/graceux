@@ -8,6 +8,8 @@
 {% set isAjax = (craft.request.getQuery("ajax") == "true") ? true : false %}
 {% extends isAjax ? "_extends/_main-content" : "_extends/_main" %}
 
+{% import "_imports/_utils" as utils %}
+
 {% set pageTitle = entry.title %}
 {% set portfolioCategory = entry.portfolioCategory[0] %}
 {% set showMenuButton = true %}
@@ -40,7 +42,7 @@
 
 	<section class="content">
 		<aside class="info" data-sticky="true">
-		
+
 			{% include "_includes/_bordered-button"
 					with {'href': entry.projectUrl, 'target': '_blank', 'text': Copy.launchProject} %}
 
@@ -166,7 +168,7 @@
 					data-ajax="true" data-loader-id="{{ prevProject.id }}">
 					<div class="inner">
 						<div class="movable" data-lightbox-id="{{ prevProject.id }}">
-							<div class="background-container" style="background-image: url({{ prevProject.navigationImage[0].url }})">
+							<div class="background-container" style="{{ utils.retinaBackground(prevProject.navigationImage[0], 265) }}">
 								<div class="inner">
 									<div class="icon icon-arrow-prev"></div>
 								</div>
@@ -186,7 +188,7 @@
 					data-ajax="true" data-loader-id="{{ nextProject.id }}">
 					<div class="inner">
 						<div class="movable" data-lightbox-id="{{ nextProject.id }}">
-							<div class="background-container" style="background-image: url({{ nextProject.navigationImage[0].url }})">
+							<div class="background-container" style="{{ utils.retinaBackground(nextProject.navigationImage[0], 265) }}">
 								<div class="inner">
 									<div class="icon icon-arrow-next"></div>
 								</div>

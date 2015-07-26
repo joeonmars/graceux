@@ -10,7 +10,7 @@
 			{% for step in workflow.step %}
 			    <li>
 			    	{% set image = step.image[0] %}
-			    	<img src="{{ image.url }}" {{ utils.srcset(image, 975, true) }} draggable="false">
+			    	<img {{ utils.srcset(image, 975, true) }} draggable="false">
 			   	</li>
 			{% endfor %}
 			</ul>

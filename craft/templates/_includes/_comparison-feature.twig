@@ -11,7 +11,7 @@
 			<div class="images-container" style="padding-bottom:{{ firstImage.height/firstImage.width*100 }}%">
 				<div class="inner">
 				{% for image in feature.images %}
-				    <img src="{{ image.url }}" {{ utils.srcset(image, 975) }} draggable="false">
+				    <img {{ utils.srcset(image, 975) }} draggable="false">
 				{% endfor %}
 				</div>
 				<div class="wiper-container">
