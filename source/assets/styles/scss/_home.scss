@@ -1,4 +1,5 @@
 >ul{
+	@include container(12);
 	padding-top: span(1);
 	padding-bottom: span(1);
 }

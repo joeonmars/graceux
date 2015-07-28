@@ -277,6 +277,10 @@ aside{
 			@include font-smoothing;
 		}
 
+		&.launch{
+			margin-top: 0;
+		}
+
 		&.share{
 			li{
 				@include inline-block(middle);
@@ -289,11 +293,29 @@ aside{
 	@include breakpoint($break_mobile) {
 		@include full;
 		@include transform( translateY(0) !important );
+		padding: span(1 wide);
 	}
 
 	@include breakpoint($break_tablet) {
 		@include full;
 		@include transform( translateY(0) !important );
+		padding: span(1 wide);
+
+		>div{
+			@include span(5);
+
+			&.launch{
+				@include full;
+			}
+
+			&:nth-child(even) {
+				@include first;
+			}
+
+			&:nth-child(odd) {
+				@include last;
+			}
+		}
 	}
 
 	@include breakpoint($break_desktop) {
@@ -469,6 +491,8 @@ section.full{
 	@include clearfix;
 
 	>a{
+		position: relative;
+		z-index: 0;
 		display: block;
 		@include dots-pattern;
 
@@ -483,8 +507,7 @@ section.full{
 				width: 100%;
 				height: 100%;
 				overflow: hidden;
-				top: 0;
-				@include transition(top .2s $easeOutSine);
+				@include transition(transform .2s $easeOutSine);
 
 				>.background-container, >.text-container{
 					@include absoluteTopLeft;
@@ -545,9 +568,21 @@ section.full{
 		}
 
 		&:hover{
-			.movable{
-				top: -10px;
+			z-index: 1;
 
+			&.prev{
+				.movable{
+					@include translate(1.5rem, -1.5rem);
+				}
+			}
+
+			&.next{
+				.movable{
+					@include translate(-1.5rem, -1.5rem);
+				}
+			}
+
+			.movable{
 				>.background-container{
 					@include translateY(-20%);
 				}

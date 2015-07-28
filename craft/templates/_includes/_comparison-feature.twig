@@ -5,13 +5,15 @@
 		{% include "_includes/_border-heading" with {'tag': 'h4', 'bottom': true, 'text': feature.heading} %}
 		<div>{{ feature.body }}</div>
 	</article>
-	<figure>
+	<figure {%if feature.fadeEnabled %}class="fade-enabled"{% endif %}>
 		{% set firstImage = feature.images[0] %}
 		<div class="comparison-container" style="width:{{firstImage.width}}px">
 			<div class="images-container" style="padding-bottom:{{ firstImage.height/firstImage.width*100 }}%">
 				<div class="inner">
 				{% for image in feature.images %}
-				    <img {{ utils.srcset(image, 975) }} draggable="false">
+				    <div class="image-container">
+				    	<img {{ utils.srcset(image, 975) }} draggable="false">
+				    </div>
 				{% endfor %}
 				</div>
 				<div class="wiper-container">
