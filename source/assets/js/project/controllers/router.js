@@ -9,6 +9,7 @@ goog.require( 'goog.object' );
 goog.require( 'goog.Uri' );
 goog.require( 'gux.controllers.pages.Page' );
 goog.require( 'gux.controllers.pages.ProjectPage' );
+goog.require( 'gux.controllers.pages.LabsPage' );
 
 
 gux.controllers.Router = function() {
@@ -195,7 +196,7 @@ gux.controllers.Router.mappings = {
 	},
 	'labs': {
 		pattern: 'labs',
-		page: gux.controllers.pages.Page
+		page: gux.controllers.pages.LabsPage
 	},
 	'projects-project': {
 		pattern: 'projects/{id}',
@@ -203,7 +204,7 @@ gux.controllers.Router.mappings = {
 	},
 	'labs-project': {
 		pattern: 'labs/{id}',
-		page: gux.controllers.pages.Page
+		page: gux.controllers.pages.ProjectPage
 	},
 	'about': {
 		pattern: 'about',

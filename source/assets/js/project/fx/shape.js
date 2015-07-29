@@ -20,12 +20,12 @@ gux.fx.Shape.prototype.generatePositions = function( maxX, maxY, safeRadius, irr
 	var columns = Math.floor( maxX / safeRadius );
 
 	// loop through rows
-	for ( r = 1; r <= rows; r += 1 ) {
+	for ( r = 1; r <= rows; r++ ) {
 		// loop through columns
-		for ( c = 1; c <= columns; c += 1 ) {
+		for ( c = 1; c <= columns; c++ ) {
 			// populate array with point object
-			var x = maxX * c / columns + goog.math.uniformRandom( irregularity * -1, irregularity );
-			var y = maxY * r / rows + goog.math.uniformRandom( irregularity * -1, irregularity );
+			var x = maxX * c / ( columns + safeRadius / maxX * columns ) + goog.math.uniformRandom( -irregularity, irregularity );
+			var y = maxY * r / ( rows + safeRadius / maxY * rows ) + goog.math.uniformRandom( -irregularity, irregularity );
 
 			if ( inPercentage ) {
 				x = x / maxX * 100 + '%';

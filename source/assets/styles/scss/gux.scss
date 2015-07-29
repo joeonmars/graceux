@@ -250,26 +250,22 @@ body{
 
 					&:nth-child(3n+1) {
 						@extend .icon-shape-g-stroke;
-						@include rotate(0deg);
 						@include animation( floating-1 2s linear infinite alternate );
 					}
 
 					&:nth-child(3n+2) {
 						@extend .icon-shape-u-stroke;
-						@include rotate(90deg);
 						@include animation( floating-2 3s linear infinite alternate );
 					}
 
 					&:nth-child(3n+3) {
 						@extend .icon-shape-x-stroke;
-						@include rotate(180deg);
-						@include animation( floating-1 4s linear infinite alternate );
+						@include animation( floating-3 4s linear infinite alternate );
 					}
 
 					&:nth-child(3n+4) {
 						@extend .icon-shape-x-stroke;
-						@include rotate(270deg);
-						@include animation( floating-2 5s linear infinite alternate );
+						@include animation( floating-1 5s linear infinite alternate );
 					}
 				}
 			}

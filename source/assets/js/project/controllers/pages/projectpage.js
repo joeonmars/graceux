@@ -4,7 +4,6 @@ goog.require( 'gux.controllers.modules.Intro' );
 goog.require( 'gux.controllers.modules.Comparison' );
 goog.require( 'gux.controllers.modules.Workflow' );
 goog.require( 'gux.controllers.pages.Page' );
-goog.require( 'gux.controllers.pages.ProjectPage' );
 
 
 gux.controllers.pages.ProjectPage = function( el ) {

@@ -36,6 +36,8 @@
 		}
 
 		.text-container{
+			position: relative;
+			z-index: 1;
 			width: 100%;
 			display: table-cell;
 			vertical-align: middle;
@@ -50,9 +52,66 @@
 		}
 
 		.preview{
+			@include absoluteTopLeft;
+			z-index: 0;
 			width: 100%;
+			height: 100%;
+			overflow: hidden;
 
-			.image{
+			>.shapes{
+				position: absolute;
+				top: 25%;
+				left: -25%;
+				width: 150%;
+				height: 50%;
+
+				>.icon{
+					position: absolute;
+					opacity: .25;
+					@include backfaceHidden();
+
+					&:nth-child(3n+1) {
+						font-size: 3vmin;
+						margin: -1.5vmin;
+						@extend .icon-shape-g-stroke;
+					}
+
+					&:nth-child(3n+2) {
+						font-size: 4vmin;
+						margin: -2vmin;
+						@extend .icon-shape-u-stroke;
+					}
+
+					&:nth-child(3n+3) {
+						font-size: 6vmin;
+						margin: -3vmin;
+						@extend .icon-shape-x-stroke;
+					}
+
+					&:nth-child(1), &:nth-child(5) {
+						@extend .blue;
+						@include animation( floating-1 2s linear infinite alternate );
+					}
+
+					&:nth-child(2), &:nth-child(6) {
+						@extend .green;
+						@include animation( floating-2 3s linear infinite alternate );
+					}
+
+					&:nth-child(3) {
+						@extend .yellow;
+						@include animation( floating-3 4s linear infinite alternate );
+					}
+
+					&:nth-child(4) {
+						@extend .red;
+						@include animation( floating-1 3s linear infinite alternate );
+					}
+				}
+			}
+
+			>.image{
+				@include absoluteTopLeft;
 				width: 100%;
 				height: 0;
 				background-size: cover;
