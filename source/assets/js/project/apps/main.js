@@ -9,7 +9,6 @@ goog.require( 'gux.controllers.Header' );
 goog.require( 'gux.controllers.Intro' );
 goog.require( 'gux.controllers.PortfolioNavigation' );
 goog.require( 'gux.controllers.MainScroller' );
-goog.require( 'gux.controllers.ContactForm' );
 goog.require( 'gux.controllers.FullscreenLoader' );
 
 
@@ -40,8 +39,6 @@ gux.apps.Main = function() {
 
 			var intro = gux.controllers.Intro.getInstance();
 			intro.activate();
-
-			var contactForm = gux.controllers.ContactForm.getInstance();
 
 			gux.router.init();
 

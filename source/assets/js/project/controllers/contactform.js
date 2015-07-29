@@ -11,8 +11,10 @@ goog.require( 'goog.net.XhrIo' );
 
 gux.controllers.ContactForm = function() {
 
+	this.container = goog.dom.getElement( 'contact-form-container' );
 	this.el = goog.dom.getElement( 'contact-form' );
 
+	this._overlay = goog.dom.query( '.overlay', this.container )[ 0 ];
 	this._form = goog.dom.query( 'form', this.el )[ 0 ];
 	this._sendButton = goog.dom.query( '.send', this.el )[ 0 ];
 	this._composeEl = goog.dom.query( '.compose', this.el )[ 0 ];
@@ -21,7 +23,6 @@ gux.controllers.ContactForm = function() {
 	this._failEl = goog.dom.query( '.fail', this.el )[ 0 ];
 
 	this._closeButton = goog.dom.query( '.close', this.el )[ 0 ];
-	this._contactButton = goog.dom.getElement( 'contact-button' );
 
 	this._nameEl = goog.dom.getElement( 'from-name' );
 	this._emailEl = goog.dom.getElement( 'from-email' );
@@ -30,19 +31,9 @@ gux.controllers.ContactForm = function() {
 	this._eventHandler = new goog.events.EventHandler( this );
 
 	this._autoCloseDelay = new goog.async.Delay( this.close, 4000, this );
-
-	this.init();
 };
 goog.inherits( gux.controllers.ContactForm, goog.events.EventTarget );
 goog.addSingletonGetter( gux.controllers.ContactForm );
-
-
-gux.controllers.ContactForm.prototype.init = function() {
-
-	goog.events.listen( this._contactButton, goog.events.EventType.CLICK, this.open, false, this );
-
-	goog.style.setElementShown( this.el, false );
-};
 
 
 gux.controllers.ContactForm.prototype.activate = function() {
@@ -58,12 +49,46 @@ gux.controllers.ContactForm.prototype.deactivate = function() {
 };
 
 
+gux.controllers.ContactForm.prototype.show = function() {
+
+	goog.dom.classlist.enable( this.container, 'hide', false );
+};
+
+
+gux.controllers.ContactForm.prototype.hide = function() {
+
+	goog.dom.classlist.enable( this.container, 'hide', true );
+};
+
+
 gux.controllers.ContactForm.prototype.open = function() {
 
 	this.activate();
 	this.reset();
 
-	goog.style.setElementShown( this.el, true );
+	this.show();
+
+	TweenMax.set( this._overlay, {
+		'opacity': 1
+	} );
+
+	TweenMax.fromTo( this._overlay, .5, {
+		'height': 0
+	}, {
+		'height': '100%',
+		'immediateRender': true,
+		'ease': Cubic.easeInOut
+	} );
+
+	TweenMax.fromTo( this.el, .8, {
+		'y': '200%',
+		'opacity': 0
+	}, {
+		'y': '0%',
+		'opacity': 1,
+		'immediateRender': true,
+		'ease': Expo.easeOut
+	} );
 };
 
 
@@ -72,15 +97,20 @@ gux.controllers.ContactForm.prototype.close = function() {
 	this.deactivate();
 	this._autoCloseDelay.stop();
 
-	goog.style.setElementShown( this.el, false );
+	TweenMax.to( this._overlay, .65, {
+		'opacity': 0,
+		'onComplete': this.hide,
+		'onCompleteScope': this
+	} );
+
+	TweenMax.to( this.el, .65, {
+		'y': '200%',
+		'ease': Expo.easeOut
+	} );
 };
 
 
 gux.controllers.ContactForm.prototype.reset = function() {
-
-	this._nameEl.value = '';
-	this._emailEl.value = '';
-	this._messageEl.value = '';
 
 	this._sendButton.value = this._sendButton.getAttribute( 'data-copy-send' );
 	this._sendButton.disabled = false;
@@ -222,6 +252,8 @@ gux.controllers.ContactForm.prototype.onSubmitComplete = function( e ) {
 
 		goog.dom.classlist.enable( this._successEl, 'hide', false );
 		goog.dom.classlist.enable( this._successEl, 'animate', true );
+
+		this._messageEl.value = '';
 
 		this._autoCloseDelay.start();
 

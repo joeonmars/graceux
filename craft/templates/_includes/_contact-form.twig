@@ -43,7 +43,11 @@
 		    	</label>
 			</fieldset>
 
-		    <input type="submit" value="{{ Copy.send }}" class="bordered-button send" data-copy-send="{{ Copy.send }}" data-copy-sending="{{ Copy.sending }}">
+			<button type="submit" class="bordered-button" data-text="{{ Copy.send }}">
+				<span>{{ Copy.send }}</span>
+			</button>
+
+		    <input type="hidden" value="{{ Copy.send }}" class="send" data-copy-send="{{ Copy.send }}" data-copy-sending="{{ Copy.sending }}">
 		</form>
 	</div>
 
@@ -58,7 +62,9 @@
 		<div class="fail">
 			<div class="inner">
 				<p>{{ Copy.failHeading|replace({'. ': '.<br>'})|raw }}</p>
-				<button class="bordered-button again">{{ Copy.tryAgain }}</button>
+
+				{% include "_includes/_bordered-button"
+						with {'classes': 'again', 'tag': 'button', 'text': Copy.tryAgain} %}
 			</div>
 		</div>
 	</div>

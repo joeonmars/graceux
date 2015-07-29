@@ -70,7 +70,7 @@
 				{% for social in about.social %}
 					{% if social.enabled == true %}
 					<li>
-						<a href="{{ social.url }}" target="_blank">
+						<a class="{{social.name}}-button" href="{{ social.url }}" target="_blank">
 							<div class="icon icon-{{ social.name }}"></div>
 							<p>{{ social.cta }}</p>
 						</a>

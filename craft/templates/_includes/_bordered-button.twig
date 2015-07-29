@@ -1,9 +1,10 @@
 {% set target = target|default("_self") %}
+{% set tag = tag|default("a") %}
 {% set classes = classes|default("") %}
 
-<a href="{{ href }}" class="bordered-button {{ classes }}" target="{{ target }}"
+<{{tag}} {% if href is defined %}href="{{ href }}"{% endif %} class="bordered-button {{ classes }}" {% if tag == 'a' %}target="{{ target }}"{% endif %}
 	data-text="{{ text }}"
 	{% if ajax is defined and ajax == true %}data-ajax="true"{% endif %}
 	{% if loaderId is defined %}data-loader-id="{{ loaderId }}"{% endif %}>
 	<span>{{ text }}</span>
-</a>
+</{{tag}}>

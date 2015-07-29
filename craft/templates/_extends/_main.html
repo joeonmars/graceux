@@ -116,9 +116,11 @@
 	<div class="handle"></div>
 </div>
 
-<div id="contact-form-container">
-<button id="contact-button" class="icon icon-contact"></button>
-{% include "_includes/_contact-form" %}
+<div id="contact-form-container" class="hide">
+	<div class="overlay"></div>
+	<div class="inner">
+	{% include "_includes/_contact-form" %}
+	</div>
 </div>
 
 {% endblock %}

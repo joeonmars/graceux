@@ -5,6 +5,7 @@ goog.require( 'goog.events.EventTarget' );
 goog.require( 'goog.events.EventHandler' );
 goog.require( 'goog.dom.classlist' );
 goog.require( 'goog.net.XhrIo' );
+goog.require( 'gux.controllers.ContactForm' );
 goog.require( 'gux.controllers.modules.VideoPlayer' );
 goog.require( 'gux.fx.Sticky' );
 
@@ -33,6 +34,11 @@ gux.controllers.pages.Page.prototype.init = function() {
 
 	this._eventHandler.listen( gux.router, gux.events.EventType.LOAD_PAGE, this.onRouterLoadPage, false, this );
 	this._eventHandler.listen( window, goog.events.EventType.RESIZE, this.resize, false, this );
+
+	var emailButtons = goog.dom.query( '.email-button', this.el );
+	goog.array.forEach( emailButtons, function( emailButton ) {
+		this._eventHandler.listen( emailButton, goog.events.EventType.CLICK, this.onClickEmailButton, false, this );
+	}, this );
 
 	// create video player modules
 	var videoPlayers = goog.array.map( goog.dom.query( '.video-player', this.el ), function( el ) {
@@ -134,6 +140,15 @@ gux.controllers.pages.Page.prototype.onScrollUpdate = function( progress, y ) {
 	goog.array.forEach( this._stickies, function( sticky ) {
 		sticky.render( y );
 	} );
+};
+
+
+gux.controllers.pages.Page.prototype.onClickEmailButton = function( e ) {
+
+	e.preventDefault();
+
+	var contactForm = gux.controllers.ContactForm.getInstance();
+	contactForm.open();
 };
 
 
