@@ -9,7 +9,7 @@
 	</div>
 
 	<div class="menu {% if showMenuButton is not defined or showMenuButton != true %}hide{% endif %}">
-		<button>
+		<button class="hamburger-button">
 			<div class="hamburger">
 				<div class="line"></div>
 				<div class="line"></div>
@@ -20,27 +20,36 @@
 		</button>
 	</div>
 
+	<button id="mobile-hamburger-button" class="hamburger-button">
+		<div class="hamburger">
+			<div class="line"></div>
+			<div class="line"></div>
+			<div class="line"></div>
+			<div class="icon icon-arrow-down arrow"></div>
+		</div>
+	</button>
+
 	<nav class="navigation">
 		<ul>
 			<li>
 				<a href="/"
 					{% if craft.request.firstSegment == 'projects' %}class="active"{% endif %}
-					data-id='home' data-ajax="true">
-					Projects
+					data-id='home' data-ajax="true" data-text="{{Copy.projects}}">
+					<span>{{Copy.projects}}</span>
 				</a>
 			</li>
 			<li>
 				<a href="{{ url('labs') }}"
 					{% if craft.request.firstSegment == 'labs' %}class="active"{% endif %}
-					data-id='labs' data-ajax="true">
-					Labs
+					data-id='labs' data-ajax="true" data-text="{{Copy.labs}}">
+					<span>{{Copy.labs}}</span>
 				</a>
 			</li>
 			<li>
 				<a href="{{ url('about') }}"
 					{% if craft.request.firstSegment == 'about' %}class="active"{% endif %}
-					data-id='about' data-ajax="true">
-					About
+					data-id='about' data-ajax="true" data-text="{{Copy.about}}">
+					<span>{{Copy.about}}</span>
 				</a>
 			</li>
 		</ul>

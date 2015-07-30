@@ -16,6 +16,8 @@ gux.apps.Main = function() {
 
 	goog.fx.anim.setAnimationWindow( window );
 
+	FastClick.attach( document.body );
+
 	//
 	gux.router = gux.controllers.Router.getInstance();
 

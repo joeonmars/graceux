@@ -37,6 +37,109 @@
 			vertical-align: bottom;
 			@extend %italic-heading;
 		}
+
+		@include breakpoint($break_mobile) {
+			.vertical-bar, h1{
+				display: none;
+			}
+		}
+	}
+
+	.hamburger-button{
+		@extend %reset-button;
+		white-space: nowrap;
+		opacity: .5;
+		visibility: visible;
+		@include transition(opacity .5s, visibility .5s);
+
+		>.hamburger{
+			position: relative;
+			@include inline-block(bottom);
+			width: 2em;
+		}
+
+		>p{
+			@include inline-block(bottom);
+			@extend %italic-heading;
+			color: black;
+			max-width: 15vw;
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
+
+		.line{
+			height: 1px;
+			background: black;
+			margin-bottom: .4em;
+			opacity: 1;
+			@include transition(width .25s, opacity .35s ease-out, transform .35s ease-out);
+
+			&:nth-child(1) {
+				width: 100%;
+			}
+
+			&:nth-child(2) {
+				width: 80%;
+			}
+
+			&:nth-child(3) {
+				width: 90%;
+				margin-bottom: 0;
+			}
+		}
+
+		.arrow{
+			@include absoluteTopLeft;
+			width: 100%;
+			text-align: center;
+			color: black;
+			opacity: 0;
+			@include translateY(0);
+			@include transition(opacity .35s ease-out, transform .35s ease-out);
+		}
+
+		&:hover{
+			opacity: 1;
+
+			.line{
+				width: 100%;
+			}
+		}
+
+		&.active{
+			opacity: 1;
+			
+			.line{
+				&:nth-child(2) {
+					opacity: 0;
+					@include translateY(-.25em);
+				}
+
+				&:nth-child(3) {
+					opacity: 0;
+					@include translateY(-.5em);
+				}
+			}
+
+			.arrow{
+				opacity: 1;
+				@include translateY(.5em);
+			}
+		}
+
+		&.hide{
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+
+	#mobile-hamburger-button{
+		display: none;
+		font-size: 2em;
+
+		@include breakpoint($break_mobile) {
+			display: block;
+		}
 	}
 
 	.menu{
@@ -44,95 +147,9 @@
 		height: 100%;
 		text-align: center;
 
-		button{
-			@extend %reset-button;
-			white-space: nowrap;
-			opacity: .5;
-			visibility: visible;
-			@include transition(opacity .5s, visibility .5s);
-
-			>.hamburger{
-				position: relative;
-				@include inline-block(bottom);
-				width: 2rem;
-				height: 1.2rem;
-				margin-right: .6rem;
-				margin-bottom: .2rem;
-			}
-
-			>p{
-				@include inline-block(bottom);
-				@extend %italic-heading;
-				color: black;
-				max-width: 15vw;
-				text-overflow: ellipsis;
-				overflow: hidden;
-			}
-
-			.line{
-				height: 1px;
-				background: black;
-				margin-bottom: .4rem;
-				opacity: 1;
-				@include transition(width .25s, opacity .35s ease-out, transform .35s ease-out);
-
-				&:nth-child(1) {
-					width: 100%;
-				}
-
-				&:nth-child(2) {
-					width: 80%;
-				}
-
-				&:nth-child(3) {
-					width: 90%;
-					margin-bottom: 0;
-				}
-			}
-
-			.arrow{
-				@include absoluteTopLeft;
-				width: 100%;
-				text-align: center;
-				color: black;
-				opacity: 0;
-				@include translateY(0);
-				@include transition(opacity .35s ease-out, transform .35s ease-out);
-			}
-
-			&:hover{
-				opacity: 1;
-
-				.line{
-					width: 100%;
-				}
-			}
-
-			&.active{
-				opacity: 1;
-				
-				.line{
-					&:nth-child(2) {
-						opacity: 0;
-						@include translateY(-.25rem);
-					}
-
-					&:nth-child(3) {
-						opacity: 0;
-						@include translateY(-.5rem);
-					}
-				}
-
-				.arrow{
-					opacity: 1;
-					@include translateY(.5rem);
-				}
-			}
-
-			&.hide{
-				opacity: 0;
-				visibility: hidden;
-			}
+		.hamburger{
+			margin-right: .6rem;
+			margin-bottom: .2rem;
 		}
 
 		&:after{
@@ -148,32 +165,175 @@
 	}
 
 	.navigation{
-		position: relative;
-		width: 50%;
-		height: 100%;
-
 		ul{
-			position: absolute;
-			right: 0;
-			bottom: 0;
-			white-space: nowrap;
-
 			li{
-				@include inline-block(bottom);
-				font-size: 1.7em;
-				text-transform: uppercase;
-				font-family: $font_whitney_light;
-				letter-spacing: 0.1em;
-				margin-left: 1.2em;
+				position: relative;
 
 				a{
-					position: relative;
+					letter-spacing: 0.1em;
+					text-transform: uppercase;
 					color: black;
-					opacity: .5;
-					@include transition(opacity .2s $easeOutCubic);
+					
+					&:before{
+						@extend .icon;
+						vertical-align: baseline;
+						margin-right: .4em;
+					}
+				}
 
-					&.active{
-						opacity: 1;
+				&:nth-child(1) {
+					a{
+						&:before{
+							color: $color_logo_red;
+						}
+
+						@extend .icon-shape-g;
+					}
+				}
+
+				&:nth-child(2) {
+					a{
+						&:before{
+							color: $color_logo_blue;
+						}
+
+						@extend .icon-shape-u;
+					}
+				}
+
+				&:nth-child(3) {
+					a{
+						&:before{
+							color: $color_logo_yellow;
+						}
+
+						@extend .icon-shape-x;
+					}
+				}
+			}
+		}
+
+		@include breakpoint($break_above_mobile) {
+			position: relative;
+			width: 50%;
+			height: 100%;
+
+			ul{
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				white-space: nowrap;
+
+				li{
+					@include inline-block(bottom);
+					margin-left: 1.5em;
+
+					a{
+						display: block;
+						position: relative;
+						font-family: $font_whitney_light;
+						font-size: 1.7em;
+						overflow: hidden;
+
+						>span{
+							display: block;
+							@include translateY(0);
+							@include transition(transform .8s $easeOutQuint, opacity .8s $easeOutQuint);
+						}
+
+						&:before{
+							content: none !important;
+						}
+
+						&:after{
+							content: attr(data-text);
+							position: absolute;
+							top: 0;
+							left: 0;
+							color: $color_logo_blue;
+							opacity: 0;
+							@include translateY(100%);
+							@include transition(transform .8s $easeOutQuint, opacity .8s $easeOutQuint);
+						}
+
+						&.active{	
+							>span{
+								opacity: 0;
+								@include translateY(-100%);
+							}
+
+							&:after{
+								opacity: 1;
+								@include translateY(0);
+							}
+						}
+					}
+				}
+			}
+		}
+
+		@include breakpoint($break_mobile) {
+			position: fixed;
+			top: 100%;
+			left: 0;
+			width: 100%;
+			height: 100vh;
+			overflow: hidden;
+			background: transparent;
+			visibility: hidden;
+			@include transition(background .4s, visibility .4s);
+
+			&.open{
+				background: $color_logo_blue;
+				visibility: visible;
+
+				ul{
+					visibility: visible;
+					height: #{8rem * 3};
+				}
+			}
+
+			ul{
+				@include absoluteTopLeft;
+				width: 100%;
+				background: $color_lightergray;
+				overflow: hidden;
+				visibility: hidden;
+				height: 0;
+				@include transition(height .4s $easeInOutCubic, visibility .4s);
+
+				li{
+					width: 100%;
+					height: 8rem;
+
+					a{
+						display: block;
+						text-align: center;
+						line-height: 8rem;
+						font-family: $font_flama;
+						font-size: 2em;
+						background: transparent;
+						@include transition(background .25s);
+
+						&:active{
+							background: $color_lightgray;
+						}
+					}
+
+					&:after{
+						content: "";
+						position: absolute;
+						bottom: 0;
+						left: 10%;
+						width: 80%;
+						height: 1px;
+						@include retina-background('dotted-line.png', auto auto);
+					}
+
+					&:last-child{
+						&:after{
+							content: none;
+						}
 					}
 				}
 			}

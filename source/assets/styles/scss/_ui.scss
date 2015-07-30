@@ -138,6 +138,10 @@ article{
 	.touch &{
 		display: none;
 	}
+
+	@include breakpoint($break_mobile) {
+		display: none;
+	}
 }
 
 .bordered-button{

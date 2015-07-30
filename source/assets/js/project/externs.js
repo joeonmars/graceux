@@ -87,13 +87,6 @@ Linear.easeNone = {};
 var define = {};
 var module = {};
 
-/* Preload JS */
-var createjs = {};
-createjs.LoadQueue = {};
-createjs.LoadQueue.loadTimeout = {};
-createjs.LoadQueue.progress = {};
-createjs.LoadQueue.on = {};
-createjs.LoadQueue.off = {};
-createjs.LoadQueue.setMaxConnections = {};
-createjs.LoadQueue.loadManifest = {};
-createjs.LoadQueue.removeAllEventListeners = {};
+/* FastClick.js */
+var FastClick = {};
+FastClick.attach = {};

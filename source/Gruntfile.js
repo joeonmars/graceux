@@ -1,9 +1,9 @@
 'use strict';
 
-module.exports = function(grunt) {
+module.exports = function( grunt ) {
 
   // Project configuration.
-  grunt.initConfig({
+  grunt.initConfig( {
     projectJsDir: './assets/js/project',
     thirdPartyJsDir: './assets/js/thirdparty',
     closureDir: './assets/js/thirdparty/closure-library',
@@ -37,7 +37,7 @@ module.exports = function(grunt) {
 
     watch: {
       html: {
-        files: ['./*.{html,php}', '../craft/templates/**/*.{html,php,twig}'],
+        files: [ './*.{html,php}', '../craft/templates/**/*.{html,php,twig}' ],
         options: {
           livereload: true,
           interrupt: true,
@@ -45,12 +45,12 @@ module.exports = function(grunt) {
         },
       },
       soy: {
-        files: ['./assets/soy/*.soy'],
-        tasks: ['closureSoys'],
+        files: [ './assets/soy/*.soy' ],
+        tasks: [ 'closureSoys' ],
       },
       js: {
-        files: ['<%= projectJsDir %>/**/*.js'],
-        tasks: ['closureDepsWriter'],
+        files: [ '<%= projectJsDir %>/**/*.js' ],
+        tasks: [ 'closureDepsWriter' ],
         options: {
           livereload: true,
           interrupt: true,
@@ -58,11 +58,11 @@ module.exports = function(grunt) {
         },
       },
       scss: {
-        files: ['./assets/styles/scss/**/*.scss'],
-        tasks: ['compass']
+        files: [ './assets/styles/scss/**/*.scss' ],
+        tasks: [ 'compass' ]
       },
       css: {
-        files: ['<%= publicStylesDir %>/css/*.css'],
+        files: [ '<%= publicStylesDir %>/css/*.css' ],
         options: {
           livereload: true,
           interrupt: true,
@@ -70,8 +70,8 @@ module.exports = function(grunt) {
         },
       },
       svg: {
-        files: ['./assets/styles/fonts/fontcustom/*.svg'],
-        tasks: ['webfont']
+        files: [ './assets/styles/fonts/fontcustom/*.svg' ],
+        tasks: [ 'webfont' ]
       }
     },
 
@@ -81,6 +81,7 @@ module.exports = function(grunt) {
           '<%= thirdPartyJsDir %>/js-signals.min.js',
           '<%= thirdPartyJsDir %>/crossroads.min.js',
           '<%= thirdPartyJsDir %>/two.min.js',
+          '<%= thirdPartyJsDir %>/fastclick.js',
           '<%= thirdPartyJsDir %>/greensock/TweenMax.min.js',
           '<%= thirdPartyJsDir %>/greensock/plugins/ScrollToPlugin.min.js',
           '<%= thirdPartyJsDir %>/greensock/plugins/ThrowPropsPlugin.min.js',
@@ -107,7 +108,7 @@ module.exports = function(grunt) {
           watch: false,
           outputStyle: 'compressed', //nested, expanded, compact, compressed
           environment: 'development',
-          require: ['breakpoint']
+          require: [ 'breakpoint' ]
         }
       },
     },
@@ -162,7 +163,7 @@ module.exports = function(grunt) {
       },
 
       main: {
-        src: ['<%= closureDir %>', '<%= projectJsDir %>'],
+        src: [ '<%= closureDir %>', '<%= projectJsDir %>' ],
         dest: '<%= publicJsDir %>/gux-build.js'
       }
     },
@@ -173,10 +174,10 @@ module.exports = function(grunt) {
         checkModified: true,
         compilerOpts: {
           compilation_level: 'ADVANCED_OPTIMIZATIONS', //WHITESPACE_ONLY, SIMPLE_OPTIMIZATIONS, ADVANCED_OPTIMIZATIONS
-          externs: ['<%= projectJsDir %>/externs.js'],
-          define: ["'goog.DEBUG=false'"],
+          externs: [ '<%= projectJsDir %>/externs.js' ],
+          define: [ "'goog.DEBUG=false'" ],
           warning_level: 'verbose',
-          jscomp_off: ['checkTypes', 'fileoverviewTags'],
+          jscomp_off: [ 'checkTypes', 'fileoverviewTags' ],
           summary_detail_level: 3
         },
         execOpts: {
@@ -190,21 +191,21 @@ module.exports = function(grunt) {
       }
     }
 
-  });
+  } );
 
   // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-closure-tools');
-  grunt.loadNpmTasks('grunt-closure-soy');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-compass');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-open');
-  grunt.loadNpmTasks('grunt-webfont');
-  grunt.loadNpmTasks('grunt-bower-task');
+  grunt.loadNpmTasks( 'grunt-contrib-watch' );
+  grunt.loadNpmTasks( 'grunt-closure-tools' );
+  grunt.loadNpmTasks( 'grunt-closure-soy' );
+  grunt.loadNpmTasks( 'grunt-contrib-clean' );
+  grunt.loadNpmTasks( 'grunt-contrib-compass' );
+  grunt.loadNpmTasks( 'grunt-contrib-concat' );
+  grunt.loadNpmTasks( 'grunt-open' );
+  grunt.loadNpmTasks( 'grunt-webfont' );
+  grunt.loadNpmTasks( 'grunt-bower-task' );
 
   // Default task.
-  grunt.registerTask('default', [
+  grunt.registerTask( 'default', [
     'bower',
     'compass',
     'webfont',
@@ -213,9 +214,9 @@ module.exports = function(grunt) {
     'closureDepsWriter',
     'open:dev',
     'watch'
-  ]);
+  ] );
 
-  grunt.registerTask('dev', [
+  grunt.registerTask( 'dev', [
     'compass',
     'webfont',
     'concat:thirdparty',
@@ -223,14 +224,14 @@ module.exports = function(grunt) {
     'closureDepsWriter',
     'open:dev',
     'watch'
-  ]);
+  ] );
 
-  grunt.registerTask('build', [
+  grunt.registerTask( 'build', [
     'compass',
     'webfont',
     'closureSoys',
     'closureBuilder',
     'closureCompiler',
     'concat'
-  ]);
+  ] );
 };
