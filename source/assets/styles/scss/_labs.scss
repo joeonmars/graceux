@@ -24,15 +24,23 @@
 
 	li{
 		position: relative;
-		@include dots-pattern-large;
+		@include dots-pattern;
+
+		&:hover{
+			>.inner{
+				@include translate(-12px, -12px);
+			}
+		}
 
 		>.inner{
 			display: table;
 			width: 100%;
 			height: 100%;
 			padding: 4em;
-			background: rgba($color_lightergray, .9);
-			border: 1px solid rgba($color_gray, .5);
+			background: $color_lightergray;
+			border: 1px solid $color_lightgray;
+			@include translate(0, 0);
+			@include transition(transform, .15s, $easeOutQuint);
 		}
 
 		.text-container{

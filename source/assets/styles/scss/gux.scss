@@ -339,6 +339,7 @@ body{
 	z-index: 15;
 	width: 100%;
 	height: 100%;
+	overflow: hidden;
 	@include user-select(none);
 	display: none;
 	
@@ -364,7 +365,6 @@ body{
 			z-index: 1;
 			width: 0;
 			height: 0;
-			@include backfaceHidden();
 			
 			&.loaded{
 				.default{
@@ -400,6 +400,7 @@ body{
 					z-index: 1;
 					width: 100%;
 					height: 100%;
+					@include backfaceHidden();
 				}
 
 				.default{
@@ -409,6 +410,93 @@ body{
 				.large{
 					display: none;
 				}
+			}
+		}
+
+		>.slider{
+			position: absolute;
+			z-index: 2;
+			right: 4%;
+			top: 50%;
+			margin-top: -115px;
+			width: 41px;
+			height: 230px;
+			background: $color_lightgray;
+			opacity: 1;
+			visibility: visible;
+			@include transition(opacity .4s, visibility .4s, transform .4s $easeOutCubic);
+			@include box-shadow(1px 1px 2px 0px rgba(black,0.1));
+
+			&:not(.show){
+				opacity: 0;
+				visibility: hidden;
+				@include translateX(20px);
+			}
+
+			&.disabled{
+				opacity: 0 !important;
+				visibility: hidden !important;
+			}
+
+			>.inner{
+				position: relative;
+				left: 20px;
+				top: 35px;
+				width: 1px;
+				height: 160px;
+
+				&:before, &:after{
+					position: absolute;
+					left: -1rem;
+					display: block;
+					width: 2rem;
+					height: 3rem;
+					font-size: 1.4rem;
+					line-height: 3rem;
+					text-align: center;
+					color: white;
+					@extend .icon;
+				}
+
+				&:before{
+					top: -3rem;
+					@extend .icon-plus-content;
+				}
+
+				&:after{
+					top: 100%;
+					@extend .icon-minus-content;
+				}
+
+				>.track{
+					@include absoluteTopLeft;
+					width: 2px;
+					height: 100%;
+					margin-left: -1px;
+					background: rgba(white, .25);
+				}
+
+				>.handle{
+					position: absolute;
+					@include translate(-50%, -50%);
+					width: 20px;
+					height: 50px;
+					cursor: ns-resize;
+
+					&:after{
+						content: '';
+						display: block;
+						position: relative;
+						margin-top: 23px;
+						width: 100%;
+						height: 4px;
+						background: white;
+					}
+				}
+			}
+
+			@include breakpoint($break_mobile) {
+				display: none;
 			}
 		}
 	}

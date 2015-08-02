@@ -3,6 +3,7 @@ goog.provide( 'gux.controllers.ImageViewer' );
 goog.require( 'goog.events.EventTarget' );
 goog.require( 'goog.events.EventHandler' );
 goog.require( 'goog.events.MouseWheelHandler' );
+goog.require( 'goog.fx.Dragger' );
 goog.require( 'goog.userAgent' );
 goog.require( 'goog.style' );
 goog.require( 'gux.events' );
@@ -17,6 +18,7 @@ gux.controllers.ImageViewer = function() {
 	this._refImg = null;
 	this._image = null;
 	this._imageContainer = null;
+	this._slider = null;
 
 	this._containerSize = null;
 	this._margin = 20;
@@ -29,21 +31,16 @@ gux.controllers.ImageViewer = function() {
 	this._mouseWheelHandler = new goog.events.MouseWheelHandler( this._container );
 	this._mouseWheelHandler.setMaxDeltaY( this._maxMouseWheelDelta );
 
-	var zoomProp = {
-		zoom: 0
-	};
-
-	this._zoomTweener = new TweenMax( zoomProp, .35, {
-		zoom: 0,
-		'paused': true,
-		'ease': Cubic.easeOut,
-		'onUpdate': this.updateZoom,
-		'onUpdateScope': this
-	} );
+	this._zoomTweener = null;
 
 	this._zoomThrottle = new goog.Throttle( this.triggerZoom, 50, this );
 
 	this._draggable = null;
+
+	this._sliderDragger = null;
+
+	this._hammer = null;
+	this._lastPinchScale = 1;
 };
 goog.inherits( gux.controllers.ImageViewer, goog.events.EventTarget );
 goog.addSingletonGetter( gux.controllers.ImageViewer );
@@ -116,11 +113,20 @@ gux.controllers.ImageViewer.prototype.open = function( refImg, largeSrc ) {
 gux.controllers.ImageViewer.prototype.close = function() {
 
 	this._eventHandler.removeAll();
-	this._zoomTweener.pause();
+
+	this._zoomTweener.kill();
+	this._zoomTweener = null;
+
 	this._zoomThrottle.stop();
 
 	this._draggable.kill();
 	this._draggable = null;
+
+	this._sliderDragger.dispose();
+	this._sliderDragger = null;
+
+	this._hammer.destroy();
+	this._hammer = null;
 
 	this.dispatchEvent( gux.events.EventType.CLOSE );
 
@@ -130,7 +136,9 @@ gux.controllers.ImageViewer.prototype.close = function() {
 
 	var overlay = goog.dom.getElementByClass( 'overlay', this._container );
 	var shadow = goog.dom.getElementByClass( 'shadow', this._container );
+	var slider = goog.dom.getElementByClass( 'slider', this._container );
 
+	goog.dom.classlist.enable( slider, 'show', false );
 	goog.dom.classlist.enable( shadow, 'show', false );
 
 	TweenMax.to( this._imageContainer, .65, {
@@ -157,6 +165,7 @@ gux.controllers.ImageViewer.prototype.close = function() {
 			this._refImg = null;
 			this._image = null;
 			this._imageContainer = null;
+			this._slider = null;
 
 			goog.dom.removeChildren( this._container );
 		},
@@ -168,7 +177,7 @@ gux.controllers.ImageViewer.prototype.close = function() {
 gux.controllers.ImageViewer.prototype.reset = function() {
 
 	this._zoom = 0;
-	this._zoomTweener.target.zoom = this._zoom;
+	this._lastPinchScale = 1;
 };
 
 
@@ -224,10 +233,13 @@ gux.controllers.ImageViewer.prototype.updateZoom = function() {
 	var halfDistY = height / 2 + this._margin;
 	var halfDistX = width / 2 + this._margin;
 
-	var bTop = ( height < this._containerSize.height ) ? this._containerSize.height / 2 : halfDistY;
-	var bLeft = ( width < this._containerSize.width ) ? this._containerSize.width / 2 : halfDistX;
-	var bWidth = ( width < this._containerSize.width ) ? 0 : this._containerSize.width - bLeft * 2;
-	var bHeight = ( height < this._containerSize.height ) ? 0 : this._containerSize.height - bTop * 2;
+	var canPanVert = ( height > this._containerSize.height );
+	var canPanHoriz = ( width > this._containerSize.width );
+
+	var bTop = !canPanVert ? this._containerSize.height / 2 : halfDistY;
+	var bLeft = !canPanHoriz ? this._containerSize.width / 2 : halfDistX;
+	var bWidth = !canPanHoriz ? 0 : this._containerSize.width - bLeft * 2;
+	var bHeight = !canPanVert ? 0 : this._containerSize.height - bTop * 2;
 
 	this._draggable.applyBounds( {
 		'top': bTop,
@@ -235,6 +247,27 @@ gux.controllers.ImageViewer.prototype.updateZoom = function() {
 		'width': bWidth,
 		'height': bHeight
 	} );
+
+	this.setSliderProgress( 1 - zoom );
+
+	var canEnlarge = ( this._maxSize.width > this._containerSize.width || this._maxSize.height > this._containerSize.height );
+	goog.dom.classlist.enable( this._slider, 'disabled', !canEnlarge );
+};
+
+
+gux.controllers.ImageViewer.prototype.setSliderProgress = function( progress ) {
+
+	goog.style.setStyle( this._sliderDragger.target, 'top', progress * 100 + '%' );
+};
+
+
+gux.controllers.ImageViewer.prototype.onDragSlider = function( x, y ) {
+
+	var fractionY = y / this._sliderDragger.limits.height;
+	this.setSliderProgress( fractionY );
+
+	this._zoom = 1 - fractionY;
+	this._zoomThrottle.fire();
 };
 
 
@@ -266,8 +299,41 @@ gux.controllers.ImageViewer.prototype.onOpenComplete = function() {
 	// draggable
 	this._draggable = new Draggable( this._image, {
 		'type': 'x,y',
-		'throwProps': true
+		'throwProps': true,
+		'zIndexBoost': false
 	} );
+
+	// zoom tweener
+	var zoomProp = {
+		zoom: 0
+	};
+
+	this._zoomTweener = new TweenMax( zoomProp, .35, {
+		zoom: 0,
+		'paused': true,
+		'ease': Cubic.easeOut,
+		'onUpdate': this.updateZoom,
+		'onUpdateScope': this
+	} );
+
+	// slider
+	this._slider = goog.dom.getElementByClass( 'slider', this._container );
+	var handle = goog.dom.getElementByClass( 'handle', this._slider );
+	this._sliderDragger = new goog.fx.Dragger( handle, null, new goog.math.Rect( 0, 0, 0, 180 ) );
+	this._sliderDragger.defaultAction = goog.bind( this.onDragSlider, this );
+	this.setSliderProgress( 1 - this._zoom );
+
+	goog.dom.classlist.enable( this._slider, 'show', true );
+
+	// hammer
+	this._hammer = new Hammer.Manager( this._imageContainer, {
+		'recognizers': [
+			[ Hammer.Pinch ]
+		]
+	} );
+
+	this._hammer.on( 'pinch', goog.bind( this.onPinch, this ) );
+	this._hammer.on( 'pinchstart', goog.bind( this.onPinchStart, this ) );
 
 	//
 	this._zoomThrottle.fire();
@@ -281,4 +347,21 @@ gux.controllers.ImageViewer.prototype.onMouseWheel = function( e ) {
 	this._zoom = goog.math.clamp( this._zoom + zoomIncrement, 0, 1 );
 
 	this._zoomThrottle.fire();
+};
+
+
+gux.controllers.ImageViewer.prototype.onPinch = function( e ) {
+
+	var scaleDiff = e[ 'scale' ] - this._lastPinchScale;
+	this._lastPinchScale = e[ 'scale' ];
+
+	this._zoom = goog.math.clamp( this._zoom + scaleDiff, 0, 1 );
+
+	this._zoomThrottle.fire();
+};
+
+
+gux.controllers.ImageViewer.prototype.onPinchStart = function( e ) {
+
+	this._lastPinchScale = 1;
 };

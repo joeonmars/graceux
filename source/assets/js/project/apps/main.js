@@ -3,7 +3,7 @@ goog.provide( 'gux.apps.Main' );
 goog.require( 'goog.dom' );
 goog.require( 'goog.dom.query' );
 goog.require( 'goog.fx.anim' );
-goog.require( 'goog.style' );
+goog.require( 'goog.userAgent' );
 goog.require( 'gux.controllers.Router' );
 goog.require( 'gux.controllers.Header' );
 goog.require( 'gux.controllers.Intro' );
@@ -16,7 +16,10 @@ gux.apps.Main = function() {
 
 	goog.fx.anim.setAnimationWindow( window );
 
-	FastClick.attach( document.body );
+	if ( goog.userAgent.MOBILE ) {
+
+		FastClick.attach( document.body );
+	}
 
 	//
 	gux.router = gux.controllers.Router.getInstance();

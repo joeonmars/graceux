@@ -137,8 +137,17 @@
 {% endblock %}
 
 {% block scripts %}
+
+{% if craft.request.getQuery('touch') == 'true' %}
+<script src="http://cdn.rawgit.com/hammerjs/touchemulator/master/touch-emulator.js"></script>
+<script>
+  TouchEmulator();
+</script>
+{% endif %}
+
 <!-- third-party -->
 <script src="{{ siteUrl }}/assets/js/thirdparty.js"></script>
+
 <!-- main js -->
 <script src="{{ siteUrl }}/assets/js/source/thirdparty/closure-library/closure/goog/base.js"></script>
 <script src="{{ siteUrl }}/assets/js/source/project/gux-deps.js"></script>

@@ -37,22 +37,19 @@
 	<ul class="projects">
 		{% for project in entry.projects %}
 			<li data-lightbox-id="{{ project.id }}">
-				<div class="inner">
+				<a class="inner" href="{{ project.url }}" data-ajax="true" data-loader-id="{{ project.id }}">
 					<div class="text-container">
 						<div class="inner">
 							<h6 class="subheading above">{{ project.genre }}</h6>
 							<h4>{{ project.heading|nl2br }}</h4>
 							<p class="description">{{ project.shortDescription }}</p>
-
-							{% include "_includes/_bordered-button"
-								with {'href': project.url, 'text': Copy.viewProject, 'ajax': true, 'loaderId': project.id} %}
 						</div>
 					</div>
 					<div class="preview">
 						<div class="shapes"></div>
 						<div class="image" style="background-image:url({{ project.previewImage[0].url }})"></div>
 					</div>
-				</div>
+				</a>
 			</li>
 		{% endfor %}
 	</ul>

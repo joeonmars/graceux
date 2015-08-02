@@ -82,6 +82,7 @@ module.exports = function( grunt ) {
           '<%= thirdPartyJsDir %>/crossroads.min.js',
           '<%= thirdPartyJsDir %>/two.min.js',
           '<%= thirdPartyJsDir %>/fastclick.js',
+          '<%= thirdPartyJsDir %>/hammer.min.js',
           '<%= thirdPartyJsDir %>/greensock/TweenMax.min.js',
           '<%= thirdPartyJsDir %>/greensock/plugins/ScrollToPlugin.min.js',
           '<%= thirdPartyJsDir %>/greensock/plugins/ThrowPropsPlugin.min.js',

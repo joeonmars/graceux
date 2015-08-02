@@ -90,3 +90,9 @@ var module = {};
 /* FastClick.js */
 var FastClick = {};
 FastClick.attach = {};
+
+/* Hammer.js */
+var Hammer = {};
+Hammer.Manager = {};
+Hammer.Manager.on = {};
+Hammer.Pinch = {};
