@@ -7,35 +7,29 @@
 	</article>
 	<figure>
 		<div class="desktop device">
-			<div class="container">
+			{% set image = feature.desktopScreen[0] %}
+			<div class="container" {% if feature.allowEnlarge and image.width >= 960 %}data-allow-enlarge{% endif %}>
 				<div class="case"></div>
 				<div class="image-container">
-					{% set image = feature.desktopScreen[0] %}
-					<img src="{{ image.url }}" draggable="false"
-						{% if feature.allowEnlarge and image.width >= 960 %}data-allow-enlarge{% endif %}
-						{{ utils.dataMaxSize(image) }}>
+					<img src="{{ image.url }}" draggable="false" {{ utils.srcset(image, 960) }} {{ utils.dataMaxSize(image) }}>
 				</div>
 			</div>
 		</div>
 		<div class="tablet device">
-			<div class="container">
+			<div class="container" {% if feature.allowEnlarge and image.width >= 960 %}data-allow-enlarge{% endif %}>
+				{% set image = feature.tabletScreen[0] %}
 				<div class="case"></div>
 				<div class="image-container">
-					{% set image = feature.tabletScreen[0] %}
-					<img src="{{ image.url }}" draggable="false"
-						{% if feature.allowEnlarge and image.width >= 960 %}data-allow-enlarge{% endif %}
-						{{ utils.dataMaxSize(image) }}>
+					<img src="{{ image.url }}" draggable="false" {{ utils.srcset(image, 960) }} {{ utils.dataMaxSize(image) }}>
 				</div>
 			</div>
 		</div>
 		<div class="mobile device">
-			<div class="container">
+			<div class="container" {% if feature.allowEnlarge and image.width >= 960 %}data-allow-enlarge{% endif %}>
+				{% set image = feature.mobileScreen[0] %}
 				<div class="case"></div>
 				<div class="image-container">
-					{% set image = feature.mobileScreen[0] %}
-					<img src="{{ image.url }}" draggable="false"
-						{% if feature.allowEnlarge and image.width >= 960 %}data-allow-enlarge{% endif %}
-						{{ utils.dataMaxSize(image) }}>
+					<img src="{{ image.url }}" draggable="false" {{ utils.srcset(image, 960) }} {{ utils.dataMaxSize(image) }}>
 				</div>
 			</div>
 		</div>

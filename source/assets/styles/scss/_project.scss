@@ -347,13 +347,10 @@ aside{
 		width: 100%;
 		height: 100%;
 
-		.image-container{
-			background: black;
-		}
-
 		img{
 			width: 100%;
 			height: auto;
+			border: 1px solid $color_lightgray;
 		}
 	}
 	
@@ -362,6 +359,49 @@ aside{
 		margin: 0 auto;
 		text-align: center;
 		@include user-select(none);
+
+		div[data-allow-enlarge] {
+			.image-container{
+				cursor: zoom-in;
+
+				&:before, &:after{
+					position: absolute;
+					z-index: 1;
+					font-size: 3em;
+					margin: .5em;
+					color: $color_logo_blue;
+					opacity: 0;
+					@extend .icon;
+					@include transition(opacity .4s $easeOutCubic, visibility .4s, transform .4s $easeOutCubic);
+				}
+
+				&:before{
+					left: 0;
+					bottom: 0;
+					@extend .icon-arrow-enlarge-left-content;
+					@include translate(20px, -20px);
+				}
+
+				&:after{
+					right: 0;
+					top: 0;
+					@extend .icon-arrow-enlarge-right-content;
+					@include translate(-20px, 20px);
+				}
+
+				&:hover{
+					&:before{
+						opacity: 1;
+						@include translate(0, 0);
+					}
+
+					&:after{
+						opacity: 1;
+						@include translate(0, 0);
+					}
+				}
+			}
+		}
 
 		>div{
 			position: relative;
@@ -391,59 +431,6 @@ aside{
 			&.video{
 				>.movable{
 					position: absolute;
-				}
-			}
-
-			&[data-allow-enlarge] {
-				.image-container{
-					cursor: zoom-in;
-
-					&:before, &:after{
-						position: absolute;
-						z-index: 1;
-						font-size: 3em;
-						margin: .5em;
-						color: white;
-						opacity: 0;
-						@extend .icon;
-						@include transition(opacity .4s $easeOutCubic, visibility .4s, transform .4s $easeOutCubic);
-					}
-
-					&:before{
-						left: 0;
-						bottom: 0;
-						@extend .icon-arrow-enlarge-left-content;
-						@include translate(20px, -20px);
-					}
-
-					&:after{
-						right: 0;
-						top: 0;
-						@extend .icon-arrow-enlarge-right-content;
-						@include translate(-20px, 20px);
-					}
-
-					&:hover{
-						img{
-							opacity: .6;
-						}
-
-						&:before{
-							opacity: 1;
-							@include translate(0, 0);
-						}
-
-						&:after{
-							opacity: 1;
-							@include translate(0, 0);
-						}
-					}
-
-					img{
-						opacity: 1;
-						@include transition(opacity .4s);
-						@include backfaceHidden();
-					}
 				}
 			}
 
