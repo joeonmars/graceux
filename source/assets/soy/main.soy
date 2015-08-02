@@ -38,3 +38,22 @@
 	<div class="spinner"></div>
 </div>
 {/template}
+
+
+/**
+ * Image Viewer
+ * @param defaultSrc the current image src
+ * @param largeSrc the enlarged image src
+ */
+{template .ImageViewer}
+<div id="image-viewer">
+	<div class="overlay"></div>
+	<div class="image">
+		<div class="image-container">
+			<div class="shadow"></div>
+			<img src="{ $defaultSrc }" class="default" draggable="false">
+			<img src="{ $largeSrc }" class="large" draggable="false">
+		</div>
+	</div>
+</div>
+{/template}

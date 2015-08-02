@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="191px" height="402px" viewBox="0 0 191 402" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12081) - http://www.bohemiancoding.com/sketch -->
+    <title>iphone</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="iphone" sketch:type="MSLayerGroup" transform="translate(1.000000, 1.000000)" stroke="#82BCFF">
+            <path d="M189.054227,376.589781 C189.054227,389.484672 178.59662,399.935766 165.69585,399.935766 L23.3598311,399.935766 C10.4590615,399.935766 0.00145426329,389.484672 0.00145426329,376.589781 L0.00145426329,23.4642336 C0.00145426329,10.5693431 10.4590615,0.118248175 23.3598311,0.118248175 L165.69585,0.118248175 C178.59662,0.118248175 189.054227,10.5693431 189.054227,23.4642336 L189.054227,376.589781 L189.054227,376.589781 Z" id="bezel" sketch:type="MSShapeGroup"></path>
+            <path d="M111.978273,37.5854015 C111.978273,38.5124088 111.339851,39.259854 110.553095,39.259854 L81.3194943,39.259854 C80.5312836,39.259854 79.8943163,38.5109489 79.8943163,37.5854015 L79.8943163,33.8189781 C79.8943163,32.8919708 80.5327379,32.1445255 81.3194943,32.1445255 L110.553095,32.1445255 C111.339851,32.1445255 111.978273,32.8934307 111.978273,33.8189781 L111.978273,37.5854015 L111.978273,37.5854015 Z" id="speaker" sketch:type="MSShapeGroup"></path>
+            <ellipse id="camera" sketch:type="MSShapeGroup" cx="95.9813768" cy="17.5182482" rx="4.36278985" ry="4.37956204"></ellipse>
+            <ellipse id="lock" sketch:type="MSShapeGroup" cx="94.585284" cy="370.80438" rx="14.6008034" ry="14.6"></ellipse>
+        </g>
+    </g>
+</svg>

@@ -395,31 +395,39 @@ article{
 	}
 }
 
-%device{
+@mixin device() {
 	.case{
 		background-size: 100% auto;
 		background-repeat: no-repeat;
 		position: absolute;
 		width: 100%;
 		height: 100%;
-		z-index: 1;
+		z-index: 0;
 	}
 
-	img{
+	.image-container{
 		position: absolute;
+		z-index: 1;
+		border: 1px solid $color_logo_blue;
+		box-sizing: border-box;
+
+		>img{
+			width: 100%;
+			height: 100%;
+		}
 	}
 }
 
 @mixin device-desktop($width) {
 	width: $width;
 	padding-bottom: #{534/961*$width} !important;
-	@extend %device;
+	@include device();
 
 	.case{
-		background-image: image-url('devices/laptop.png');
+		background-image: image-url('devices/laptop.svg');
 	}
 
-	img{
+	.image-container{
 		left: 13.6% !important;
 		top: 9.9% !important;
 		width: 72.52% !important;
@@ -430,13 +438,13 @@ article{
 @mixin device-mobile($width) {
 	width: $width;
 	padding-bottom: #{742/352*$width} !important;
-	@extend %device;
+	@include device();
 
 	.case{
-		background-image: image-url('devices/mobile.png');
+		background-image: image-url('devices/mobile.svg');
 	}
 
-	img{
+	.image-container{
 		left: 7.1% !important;
 		top: 13.07% !important;
 		width: 86.36% !important;
@@ -447,13 +455,13 @@ article{
 @mixin device-tablet-portrait($width) {
 	width: $width;
 	padding-bottom: #{740/502*$width} !important;
-	@extend %device;
+	@include device();
 
 	.case{
-		background-image: image-url('devices/tablet-portrait.png');
+		background-image: image-url('devices/tablet-portrait.svg');
 	}
 
-	img{
+	.image-container{
 		left: 7.76% !important;
 		top: 10% !important;
 		width: 85% !important;
@@ -464,13 +472,13 @@ article{
 @mixin device-tablet-landscape($width) {
 	width: $width;
 	padding-bottom: #{502/740*$width} !important;
-	@extend %device;
+	@include device();
 
 	.case{
-		background-image: image-url('devices/tablet-landscape.png');
+		background-image: image-url('devices/tablet-landscape.svg');
 	}
 
-	img{
+	.image-container{
 		left: 10% !important;
 		top: 7.76% !important;
 		width: 80% !important;
@@ -480,7 +488,15 @@ article{
 
 
 @mixin dots-pattern($scale: auto) {
-  background-image: image-url('dots-pattern.png');
+  @include retina-background('dots-pattern.png');
+  background-repeat: repeat;
+  background-position: center center;
+  background-size: #{$scale};
+}
+
+
+@mixin dots-pattern-large($scale: auto) {
+  @include retina-background('dots-pattern-large.png');
   background-repeat: repeat;
   background-position: center center;
   background-size: #{$scale};

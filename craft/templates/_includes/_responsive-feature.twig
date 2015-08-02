@@ -1,3 +1,5 @@
+{% import "_imports/_utils" as utils %}
+
 <section class="feature responsive full">
 	<article>
 		{% include "_includes/_border-heading" with {'tag': 'h4', 'bottom': true, 'text': feature.heading} %}
@@ -5,16 +7,37 @@
 	</article>
 	<figure>
 		<div class="desktop device">
-			<div class="case"></div>
-			<img src="{{ feature.desktopScreen[0].url }}" draggable="false">
+			<div class="container">
+				<div class="case"></div>
+				<div class="image-container">
+					{% set image = feature.desktopScreen[0] %}
+					<img src="{{ image.url }}" draggable="false"
+						{% if feature.allowEnlarge and image.width >= 960 %}data-allow-enlarge{% endif %}
+						{{ utils.dataMaxSize(image) }}>
+				</div>
+			</div>
 		</div>
 		<div class="tablet device">
-			<div class="case"></div>
-			<img src="{{ feature.tabletScreen[0].url }}" draggable="false">
+			<div class="container">
+				<div class="case"></div>
+				<div class="image-container">
+					{% set image = feature.tabletScreen[0] %}
+					<img src="{{ image.url }}" draggable="false"
+						{% if feature.allowEnlarge and image.width >= 960 %}data-allow-enlarge{% endif %}
+						{{ utils.dataMaxSize(image) }}>
+				</div>
+			</div>
 		</div>
 		<div class="mobile device">
-			<div class="case"></div>
-			<img src="{{ feature.mobileScreen[0].url }}" draggable="false">
+			<div class="container">
+				<div class="case"></div>
+				<div class="image-container">
+					{% set image = feature.mobileScreen[0] %}
+					<img src="{{ image.url }}" draggable="false"
+						{% if feature.allowEnlarge and image.width >= 960 %}data-allow-enlarge{% endif %}
+						{{ utils.dataMaxSize(image) }}>
+				</div>
+			</div>
 		</div>
 	</figure>
 </section>

@@ -10,6 +10,7 @@
 		display: flex,
 		justify-content: space-between
 	));
+	@include user-select(none);
 	@include translateY(0);
 
 	.branding{

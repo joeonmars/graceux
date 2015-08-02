@@ -1,6 +1,8 @@
 goog.provide( 'gux.controllers.Header' );
 
 goog.require( 'goog.dom.classlist' );
+goog.require( 'gux.controllers.ImageViewer' );
+goog.require( 'gux.events' );
 
 
 gux.controllers.Header = function() {
@@ -17,6 +19,10 @@ gux.controllers.Header = function() {
 	this._eventHandler = new goog.events.EventHandler( this );
 	this._eventHandler.listen( gux.router, gux.events.EventType.LOAD_PAGE, this.onLoadPage, false, this );
 	this._eventHandler.listen( this._mobileHamburgerButton, goog.events.EventType.CLICK, this.toggleNavigation, false, this );
+
+	var imageViewer = gux.controllers.ImageViewer.getInstance();
+	this._eventHandler.listen( imageViewer, gux.events.EventType.OPEN, this.hide, false, this );
+	this._eventHandler.listen( imageViewer, gux.events.EventType.CLOSE, this.show, false, this );
 
 	goog.array.forEach( this._navigationButtons, function( el ) {
 		this._eventHandler.listen( el, goog.events.EventType.CLICK, this.closeNavigation, false, this );
@@ -47,6 +53,18 @@ gux.controllers.Header.prototype.toggleNavigation = function() {
 };
 
 
+gux.controllers.Header.prototype.show = function() {
+
+	goog.dom.classlist.enable( this.el, 'hide', false );
+};
+
+
+gux.controllers.Header.prototype.hide = function() {
+
+	goog.dom.classlist.enable( this.el, 'hide', true );
+};
+
+
 gux.controllers.Header.prototype.onLoadPage = function( e ) {
 
 	goog.array.forEach( this._navigationButtons, function( el ) {
@@ -62,8 +80,13 @@ gux.controllers.Header.prototype.onScrollUpdate = function( progress, y ) {
 	var shouldHide = ( y === 0 && !this._intro.isDisposed() );
 
 	if ( !shouldHide ) {
-		goog.dom.classlist.enable( this.el, 'transition', true );
-	}
 
-	goog.dom.classlist.enable( this.el, 'hide', shouldHide );
+		goog.dom.classlist.enable( this.el, 'transition', true );
+
+		this.show();
+
+	} else {
+
+		this.hide();
+	}
 };

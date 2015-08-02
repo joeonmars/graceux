@@ -1,6 +1,6 @@
-goog.provide('gux.events');
+goog.provide( 'gux.events' );
 
-goog.require('goog.userAgent');
+goog.require( 'goog.userAgent' );
 
 gux.events.EventType = {
 	ANIMATE_IN_START: 'animate_in_start',
@@ -15,7 +15,9 @@ gux.events.EventType = {
 	LOAD_PROGRESS: 'load_progress',
 	LOAD_COMPLETE: 'load_complete',
 	ANIMATE_COMPLETE: 'animate_complete',
+	OPEN: 'open',
+	CLOSE: 'close',
 	DOWN: goog.userAgent.MOBILE ? 'touchstart' : 'mousedown',
 	MOVE: goog.userAgent.MOBILE ? 'touchmove' : 'mousemove',
-	UP: goog.userAgent.MOBILE ? ['touchend', 'touchcancel'] : 'mouseup'
+	UP: goog.userAgent.MOBILE ? [ 'touchend', 'touchcancel' ] : 'mouseup'
 };

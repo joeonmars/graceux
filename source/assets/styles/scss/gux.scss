@@ -190,10 +190,10 @@ body{
 	z-index: 15;
 	width: 100%;
 	height: 100%;
-	visibility: hidden;
+	display: none;
 	
 	&.show{
-		visibility: visible;
+		display: block;
 	}
 
 	>div{
@@ -329,6 +329,86 @@ body{
 				padding-bottom: percentage(180/380);
 				background-image: image-url('gux-spinner.gif');
 				background-size: 100% 100%;
+			}
+		}
+	}
+}
+
+#image-viewer-container{
+	position: fixed;
+	z-index: 15;
+	width: 100%;
+	height: 100%;
+	@include user-select(none);
+	display: none;
+	
+	&.show{
+		display: block;
+	}
+
+	#image-viewer{
+		width: 100%;
+		height: 100%;
+
+		>.overlay{
+			position: absolute;
+			z-index: 0;
+			bottom: 0;
+			z-index: 0;
+			width: 100%;
+			background: $color_logo_blue;
+		}
+
+		>.image{
+			position: absolute;
+			z-index: 1;
+			width: 0;
+			height: 0;
+			@include backfaceHidden();
+			
+			&.loaded{
+				.default{
+					display: none !important;
+				}
+
+				.large{
+					display: block !important;
+				}
+			}
+
+			>.image-container{
+				@include translate(-50%, -50%);
+
+				>.shadow{
+					display: none;
+					position: absolute;
+					z-index: 0;
+					top: 20px;
+					left: 20px;
+					width: 100%;
+					height: 100%;
+					@include dots-pattern;
+					pointer-events: none;
+
+					&.show{
+						display: block;
+					}
+				}
+
+				img{
+					position: absolute;
+					z-index: 1;
+					width: 100%;
+					height: 100%;
+				}
+
+				.default{
+					display: block;
+				}
+
+				.large{
+					display: none;
+				}
 			}
 		}
 	}

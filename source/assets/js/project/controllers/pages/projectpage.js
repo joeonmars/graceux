@@ -1,5 +1,7 @@
 goog.provide( 'gux.controllers.pages.ProjectPage' );
 
+goog.require( 'goog.string' );
+goog.require( 'gux.controllers.ImageViewer' );
 goog.require( 'gux.controllers.modules.Intro' );
 goog.require( 'gux.controllers.modules.Comparison' );
 goog.require( 'gux.controllers.modules.Workflow' );
@@ -40,4 +42,25 @@ gux.controllers.pages.ProjectPage.prototype.init = function() {
 	} );
 
 	this._modules.push.apply( this._modules, workflows );
+
+	// query enlargeable medias
+	var enlargeableEls = goog.dom.query( '*[data-allow-enlarge]', this.el );
+	goog.array.forEach( enlargeableEls, function( el ) {
+		this._eventHandler.listen( el, goog.events.EventType.CLICK, this.onClickEnlargeable, false, this );
+	}, this );
+};
+
+
+gux.controllers.pages.ProjectPage.prototype.onClickEnlargeable = function( e ) {
+
+	var img = goog.dom.query( 'img', e.currentTarget )[ 0 ];
+
+	var srcs = img.srcset.split( ',' );
+	var src2x = goog.array.find( srcs, function( src ) {
+		return goog.string.contains( src, ' 2x' );
+	} );
+	src2x = src2x.replace( ' 2x', '' ).replace( /\s/g, '' );
+
+	var imageViewer = gux.controllers.ImageViewer.getInstance();
+	imageViewer.open( img, src2x );
 };

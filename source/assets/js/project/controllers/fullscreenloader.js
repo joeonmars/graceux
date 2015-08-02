@@ -72,10 +72,6 @@ gux.controllers.FullscreenLoader.prototype.openProjectLoader = function( lightbo
 
 	var dimmedBackground = goog.dom.getElementByClass( 'dimmed-background', this._el );
 
-	TweenMax.set( this._el, {
-		'height': '100%'
-	} );
-
 	var tweener = TweenMax.fromTo( dimmedBackground, .4, {
 		'opacity': 0
 	}, {
@@ -134,6 +130,7 @@ gux.controllers.FullscreenLoader.prototype.closeProjectLoader = function() {
 	var tweener = TweenMax.to( this._el, .8, {
 		'delay': 1,
 		'height': 0,
+		'clearProps': 'height',
 		'ease': Quad.easeInOut,
 		'onComplete': function() {
 			goog.dom.classlist.enable( this._container, 'show', false );

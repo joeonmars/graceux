@@ -35,3 +35,14 @@ gux.templates.Main.ProjectLoader = function(opt_data, opt_ignored) {
 gux.templates.Main.SimpleLoader = function(opt_data, opt_ignored) {
   return '<div class="simple-loader"><div class="spinner"></div></div>';
 };
+
+
+/**
+ * @param {Object.<string, *>=} opt_data
+ * @param {(null|undefined)=} opt_ignored
+ * @return {string}
+ * @notypecheck
+ */
+gux.templates.Main.ImageViewer = function(opt_data, opt_ignored) {
+  return '<div id="image-viewer"><div class="overlay"></div><div class="image"><div class="image-container"><div class="shadow"></div><img src="' + opt_data.defaultSrc + '" class="default" draggable="false"><img src="' + opt_data.largeSrc + '" class="large" draggable="false"></div></div></div>';
+};

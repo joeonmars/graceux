@@ -5,23 +5,60 @@
 	}
 
 	.device{
-		position: absolute;
 		height: 0;
-		z-index: 10;
 	}
 
-	.desktop{
-		position: relative;
-		@include device-desktop(68%);
+	@include breakpoint($break_above_mobile) {
+		.device{
+			position: absolute;
+			z-index: 10;
+		}
+
+		.desktop{
+			position: relative;
+			@include device-desktop(68%);
+		}
+		.tablet{
+			left: 63%;
+			top: -10%;
+			@include device-tablet-portrait(21.28%);
+		}
+		.mobile{
+			right: 0;
+			top: 10%;
+			@include device-mobile(14%);
+		}
 	}
-	.tablet{
-		left: 63%;
-		top: -10%;
-		@include device-tablet-portrait(21.28%);
-	}
-	.mobile{
-		right: 0;
-		top: 10%;
-		@include device-mobile(14%);
+
+	@include breakpoint($break_mobile) {
+		.device{
+			position: relative;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.desktop{
+			max-width: 100% !important;
+
+			>.container{
+				@include device-desktop(100%);
+			}
+		}
+
+		.tablet{
+			max-width: 80% !important;
+
+			>.container{
+				@include device-tablet-portrait(100%);
+			}
+		}
+
+		.mobile{
+			max-width: 50% !important;
+
+			>.container{
+				@include device-mobile(100%);
+			}
+		}
 	}
 }

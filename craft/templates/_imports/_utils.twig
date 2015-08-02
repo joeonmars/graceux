@@ -61,3 +61,10 @@
         {% endif %}
     {% endspaceless -%}
 {% endmacro %}
+
+
+{% macro dataMaxSize(image) %}
+    {%- spaceless %}
+        data-max-width="{{ image.width }}" data-max-height="{{ image.height }}"
+    {% endspaceless -%}
+{% endmacro %}

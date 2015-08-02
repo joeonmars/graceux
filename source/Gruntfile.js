@@ -41,7 +41,7 @@ module.exports = function( grunt ) {
         options: {
           livereload: true,
           interrupt: true,
-          spawn: false,
+          spawn: true,
         },
       },
       soy: {
@@ -54,7 +54,7 @@ module.exports = function( grunt ) {
         options: {
           livereload: true,
           interrupt: true,
-          spawn: false,
+          spawn: true,
         },
       },
       scss: {
@@ -66,7 +66,7 @@ module.exports = function( grunt ) {
         options: {
           livereload: true,
           interrupt: true,
-          spawn: false,
+          spawn: true,
         },
       },
       svg: {
@@ -120,6 +120,7 @@ module.exports = function( grunt ) {
         destCss: './assets/styles/scss',
         options: {
           stylesheet: 'scss',
+          template: './assets/styles/templates/icons.css',
           relativeFontPath: '../fonts/fontcustom',
           htmlDemo: true,
           hashes: true,
