@@ -10,6 +10,8 @@ goog.require( 'gux.fx.Shape' );
 
 gux.controllers.Intro = function() {
 
+	goog.base( this );
+
 	this.el = goog.dom.getElement( 'main-intro' );
 
 	this._canvasContainer = goog.dom.query( '.canvas-container', this.el )[ 0 ];
@@ -397,7 +399,10 @@ gux.controllers.Intro.prototype.onLoadAnimateComplete = function( e ) {
 		'display': 'none',
 		delay: 4,
 		ease: Strong.easeInOut,
-		onComplete: this.dispose,
+		onComplete: function() {
+			this.dispatchEvent( gux.events.EventType.ANIMATE_OUT_COMPLETE );
+			this.dispose();
+		},
 		onCompleteScope: this
 	} );
 };

@@ -32,7 +32,6 @@ html{
   font-family: $font_system;
   box-sizing: border-box;
   font-size: 10px;
-
   @include border-box-sizing;
 
   &.touch{
@@ -49,6 +48,12 @@ html{
 body{
   min-width: $min-width;
   min-height: $min-height;
+  overflow-x: hidden;
+  overflow-y: hidden;
+
+  .touch &{
+    overflow-y: visible;
+  }
 }
 
 .hidden{
@@ -61,6 +66,10 @@ body{
 
 .dummy-scroll{
   overflow: hidden !important;
+
+  .touch &{
+    overflow: visible !important;
+  }
 }
 
 @mixin absoluteTopLeft() {

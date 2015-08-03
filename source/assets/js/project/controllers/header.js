@@ -19,6 +19,7 @@ gux.controllers.Header = function() {
 	this._eventHandler = new goog.events.EventHandler( this );
 	this._eventHandler.listen( gux.router, gux.events.EventType.LOAD_PAGE, this.onLoadPage, false, this );
 	this._eventHandler.listen( this._mobileHamburgerButton, goog.events.EventType.CLICK, this.toggleNavigation, false, this );
+	this._eventHandler.listenOnce( this._intro, gux.events.EventType.ANIMATE_OUT_COMPLETE, this.show, false, this );
 
 	var imageViewer = gux.controllers.ImageViewer.getInstance();
 	this._eventHandler.listen( imageViewer, gux.events.EventType.OPEN, this.hide, false, this );
@@ -55,6 +56,7 @@ gux.controllers.Header.prototype.toggleNavigation = function() {
 
 gux.controllers.Header.prototype.show = function() {
 
+	goog.dom.classlist.enable( this.el, 'transition', true );
 	goog.dom.classlist.enable( this.el, 'hide', false );
 };
 
@@ -80,8 +82,6 @@ gux.controllers.Header.prototype.onScrollUpdate = function( progress, y ) {
 	var shouldHide = ( y === 0 && !this._intro.isDisposed() );
 
 	if ( !shouldHide ) {
-
-		goog.dom.classlist.enable( this.el, 'transition', true );
 
 		this.show();
 

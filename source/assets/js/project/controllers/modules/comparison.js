@@ -43,6 +43,7 @@ gux.controllers.modules.Comparison.prototype.doActivate = function() {
 	goog.base( this, 'doActivate' );
 
 	this._eventHandler.listen( this._dragger, goog.fx.Dragger.EventType.START, this.startSlide, false, this );
+	this._eventHandler.listen( this._dragger, goog.fx.Dragger.EventType.DRAG, this.onDragMove, false, this );
 	this._eventHandler.listen( this._dragger, goog.fx.Dragger.EventType.END, this.onDragEnd, false, this );
 	this._eventHandler.listen( window, goog.events.EventType.RESIZE, this.resize, false, this );
 
@@ -129,6 +130,12 @@ gux.controllers.modules.Comparison.prototype.onDrag = function( x, y ) {
 	this._progress = x / this._draggerLimits.width;
 
 	this.startSlide();
+};
+
+
+gux.controllers.modules.Comparison.prototype.onDragMove = function( e ) {
+
+	e.preventDefault();
 };
 
 
