@@ -328,7 +328,7 @@
 						left: 10%;
 						width: 80%;
 						height: 1px;
-						@include retina-background('dotted-line.png', auto auto);
+						@include retina-background('dotted-line.png', 497px, 1px);
 					}
 
 					&:last-child{

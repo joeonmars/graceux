@@ -22,6 +22,23 @@ $easeOutCubic: cubic-bezier(0.215, 0.61, 0.355, 1);
 $easeOutSine: cubic-bezier(0.39, 0.575, 0.565, 1);
 $easeOutQuint: cubic-bezier(0.230, 1.000, 0.320, 1.000);
 
+// -- Global Mixins --
+@mixin absoluteTopLeft() {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@mixin font-smoothing() {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin backfaceHidden() {
+  -webkit-backface-visibility: hidden;
+}
+
+//
 html, body{
   position: absolute;
   width: 100%;
@@ -48,12 +65,13 @@ html{
 body{
   min-width: $min-width;
   min-height: $min-height;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  overflow: hidden;
 
+  /*
   .touch &{
     overflow-y: visible;
   }
+  */
 }
 
 .hidden{
@@ -66,23 +84,14 @@ body{
 
 .dummy-scroll{
   overflow: hidden !important;
-
+  
+  /*
   .touch &{
     overflow: visible !important;
   }
+  */
 }
 
-@mixin absoluteTopLeft() {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-@mixin font-smoothing() {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-@mixin backfaceHidden() {
-  -webkit-backface-visibility: hidden;
+*[data-sticky="true"] {
+  @include backfaceHidden();
 }

@@ -7,6 +7,7 @@ goog.require( 'goog.dom' );
 goog.require( 'goog.fx.Dragger' );
 goog.require( 'goog.math.Size' );
 goog.require( 'goog.math.Box' );
+goog.require( 'goog.userAgent' );
 goog.require( 'gux.events' );
 
 /**
@@ -48,7 +49,7 @@ gux.fx.DummyScroller = function( viewOuter, scrollbar, opt_speed, opt_ease ) {
     'position': 'absolute',
     'top': 0,
     'left': 0,
-    'width': 'calc(100% + 50px)',
+    'width': goog.userAgent.MOBILE ? '100%' : 'calc(100% + 50px)',
     'height': '100%',
     'overflow': 'auto',
     'z-index': 100
@@ -61,6 +62,19 @@ gux.fx.DummyScroller = function( viewOuter, scrollbar, opt_speed, opt_ease ) {
 
   this._scrollbar = scrollbar;
   this._handle = goog.dom.getElementByClass( 'handle', this._scrollbar );
+
+  // draggable
+  this._draggable = new Draggable( this._viewOuter, {
+    'type': 'scrollTop',
+    'zIndexBoost': false,
+    'cursor': 'initial',
+    'throwProps': true,
+    'onDrag': this.onThrowUpdate,
+    'onDragScope': this,
+    'onThrowUpdate': this.onThrowUpdate,
+    'onThrowUpdateScope': this
+  } );
+  this._draggable.enabled( goog.userAgent.MOBILE );
 
   // events
   this._eventHandler = new goog.events.EventHandler( this );
@@ -106,10 +120,10 @@ gux.fx.DummyScroller.prototype.reset = function() {
 gux.fx.DummyScroller.prototype.lock = function( opt_y ) {
 
   if ( !goog.userAgent.MOBILE ) {
+
+    this._eventHandler.unlisten( this._dummyOuter, goog.events.EventType.SCROLL, this.onDummyScroll, false, this );
     this._eventHandler.unlisten( this._viewOuter, 'mousewheel', this.onMouseWheel, false, this );
   }
-
-  this._eventHandler.unlisten( this._dummyOuter, 'scroll', this.onDummyScroll, false, this );
 
   goog.style.setStyle( this._scrollbar, 'visibility', 'hidden' );
   goog.style.setStyle( this._dummyOuter, 'overflow', 'hidden' );
@@ -123,10 +137,10 @@ gux.fx.DummyScroller.prototype.lock = function( opt_y ) {
 gux.fx.DummyScroller.prototype.unlock = function() {
 
   if ( !goog.userAgent.MOBILE ) {
+
+    this._eventHandler.listen( this._dummyOuter, goog.events.EventType.SCROLL, this.onDummyScroll, false, this );
     this._eventHandler.listen( this._viewOuter, 'mousewheel', this.onMouseWheel, false, this );
   }
-
-  this._eventHandler.listen( this._dummyOuter, 'scroll', this.onDummyScroll, false, this );
 
   goog.style.setStyle( this._scrollbar, 'visibility', 'visible' );
   goog.style.setStyle( this._dummyOuter, 'overflow', 'auto' );
@@ -179,12 +193,7 @@ gux.fx.DummyScroller.prototype.scrollTo = function( y ) {
   var handleY = Math.round( this._scrollbarHeight * handleRatio );
   goog.style.setStyle( this._handle, 'top', handleY + 'px' );
 
-  // call update callbacks
-  var updateCallbacks = this._callbacks[ gux.events.EventType.SCROLL_UPDATE ];
-  var i, l = updateCallbacks.length;
-  for ( i = 0; i < l; i++ ) {
-    updateCallbacks[ i ]( this.getProgress(), this._viewInnerY );
-  }
+  this.dispatchUpdateCallbacks();
 };
 
 
@@ -210,6 +219,30 @@ gux.fx.DummyScroller.prototype.resize = function() {
 };
 
 
+gux.fx.DummyScroller.prototype.dispatchUpdateCallbacks = function() {
+
+  var updateCallbacks = this._callbacks[ gux.events.EventType.SCROLL_UPDATE ];
+  var i, l = updateCallbacks.length;
+  var progress = this.getProgress();
+
+  for ( i = 0; i < l; i++ ) {
+    updateCallbacks[ i ]( progress, this._viewInnerY );
+  }
+};
+
+
+gux.fx.DummyScroller.prototype.dispatchCompleteCallbacks = function() {
+
+  var completeCallbacks = this._callbacks[ gux.events.EventType.SCROLL_COMPLETE ];
+  var i, l = completeCallbacks.length;
+  var progress = this.getProgress();
+
+  for ( i = 0; i < l; i++ ) {
+    completeCallbacks[ i ]( progress, this._viewInnerY );
+  }
+};
+
+
 gux.fx.DummyScroller.prototype.onDummyScroll = function( e ) {
 
   this._dummyScrollRatio = goog.math.clamp(
@@ -220,6 +253,22 @@ gux.fx.DummyScroller.prototype.onDummyScroll = function( e ) {
     this._isAnimating = true;
     goog.fx.anim.registerAnimation( this );
   }
+};
+
+
+gux.fx.DummyScroller.prototype.onThrowUpdate = function() {
+
+  this._viewInnerY = -this._draggable.y;
+
+  this.dispatchUpdateCallbacks();
+};
+
+
+gux.fx.DummyScroller.prototype.onThrowComplete = function() {
+
+  this._viewInnerY = -this._draggable.y;
+
+  this.dispatchCompleteCallbacks();
 };
 
 
@@ -269,11 +318,7 @@ gux.fx.DummyScroller.prototype.onAnimationFrame = function( now ) {
     this._isAnimating = false;
 
     // call complete callbacks
-    var completeCallbacks = this._callbacks[ gux.events.EventType.SCROLL_COMPLETE ];
-    var i, l = completeCallbacks.length;
-    for ( i = 0; i < l; i++ ) {
-      completeCallbacks[ i ]( this.getProgress(), this._viewInnerY );
-    }
+    this.dispatchCompleteCallbacks();
   }
 
   this.scrollTo( this._viewInnerY );

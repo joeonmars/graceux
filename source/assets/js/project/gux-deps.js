@@ -20,7 +20,7 @@ goog.addDependency('../../../../project/controllers/pages/projectpage.js', ['gux
 goog.addDependency('../../../../project/controllers/portfolionavigation.js', ['gux.controllers.PortfolioNavigation'], ['goog.events.EventHandler', 'goog.fx.easing', 'goog.math.Size']);
 goog.addDependency('../../../../project/controllers/router.js', ['gux.controllers.Router'], ['goog.Uri', 'goog.async.Deferred', 'goog.async.DeferredList', 'goog.events.EventTarget', 'goog.history.Html5History', 'goog.net.XhrIo', 'goog.object', 'gux.controllers.pages.LabsPage', 'gux.controllers.pages.Page', 'gux.controllers.pages.ProjectPage']);
 goog.addDependency('../../../../project/events/events.js', ['gux.events'], ['goog.userAgent']);
-goog.addDependency('../../../../project/fx/dummyscroller.js', ['gux.fx.DummyScroller'], ['goog.async.Delay', 'goog.dom', 'goog.events.EventHandler', 'goog.events.EventTarget', 'goog.fx.Dragger', 'goog.math.Box', 'goog.math.Size', 'gux.events']);
+goog.addDependency('../../../../project/fx/dummyscroller.js', ['gux.fx.DummyScroller'], ['goog.async.Delay', 'goog.dom', 'goog.events.EventHandler', 'goog.events.EventTarget', 'goog.fx.Dragger', 'goog.math.Box', 'goog.math.Size', 'goog.userAgent', 'gux.events']);
 goog.addDependency('../../../../project/fx/shape.js', ['gux.fx.Shape'], ['goog.math']);
 goog.addDependency('../../../../project/fx/sticky.js', ['gux.fx.Sticky'], ['goog.dom', 'goog.style']);
 goog.addDependency('../../../../project/gux.js', ['gux'], ['gux.apps.Main']);

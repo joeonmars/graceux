@@ -26,7 +26,7 @@ hr{
 	border: none;
 	width: 100%;
 	height: 1px;
-	@include retina-background('dotted-line.png', auto auto);
+	@include retina-background('dotted-line.png', 497px, 1px);
 }
 
 article{
@@ -64,7 +64,7 @@ article{
 				display: block;
 				width: 100%;
 				height: 1px;
-				@include retina-background('dotted-line.png', auto auto);
+				@include retina-background('dotted-line.png', 497px, 1px);
 			}
 
 			/* -- alternate shapes -- */
@@ -488,17 +488,13 @@ article{
 }
 
 
-@mixin dots-pattern($scale: auto) {
-  @include retina-background('dots-pattern.png');
+@mixin dots-pattern() {
+  @include retina-background('dots-pattern.png', 36px, 22px);
   background-repeat: repeat;
-  background-position: center center;
-  background-size: #{$scale};
 }
 
 
-@mixin dots-pattern-large($scale: auto) {
-  @include retina-background('dots-pattern-large.png');
+@mixin dots-pattern-large() {
+  @include retina-background('dots-pattern-large.png', 72px, 44px);
   background-repeat: repeat;
-  background-position: center center;
-  background-size: #{$scale};
 }
