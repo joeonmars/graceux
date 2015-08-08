@@ -3,21 +3,14 @@
 @import "modules/_workflow";
 
 >.intro{
-	height: calc(100vh - 7em);
 	text-align: center;
 
 	>.container{
 		position: relative;
 		height: calc(100% - 5rem - #{$border-padding*2});
-		background: black;
 		overflow: hidden;
 
 		>.media-container{
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			overflow: hidden;
-
 			>.image{
 				@include absoluteTopLeft;
 				width: 100%;
@@ -30,17 +23,8 @@
 
 		>.text-container{
 			position: relative;
-			height: 100%;
 			text-align: left;
 			@include container(12);
-			@include flexbox((
-				display: flex,
-				align-items: center
-			));
-
-			>.masthead{
-				padding: 0 span(3 wide);
-			}
 		}
 	}
 
@@ -55,6 +39,86 @@
 
 		&.loading{
 			background-image: image-url('u-spinner.gif');
+		}
+	}
+
+	@include breakpoint($break_above_mobile) {
+		height: calc(100vh - 7em);
+
+		>.container{
+			background: black;
+
+			>.media-container{
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+
+			>.text-container{
+				height: 100%;
+				@include flexbox((
+					display: flex,
+					align-items: center
+				));
+
+				>.masthead{
+					padding: 0 span(3 wide);
+				}
+			}
+		}
+	}
+
+	@include breakpoint($break_tablet) {
+
+		>.container{
+			>.text-container{
+				h3{
+					font-size: 8rem;
+				}
+
+				>.masthead{
+					padding: 0 span(2 wide);
+				}
+			}
+		}
+	}
+
+	@include breakpoint($break_mobile) {
+		height: calc(100vh - 5rem);
+
+		>.container{
+			@include flexbox((
+				display: flex,
+				align-items: center
+			));
+
+			>.media-container{
+				position: absolute;
+				background: black;
+				width: 100%;
+				height: 100%;
+			}
+
+			>.text-container{
+				font-size: .6em;
+
+				h3{
+					font-size: 12vmin;
+				}
+
+				p{
+					font-size: 1.8rem;
+				}
+
+				.border.left{
+					display: none;
+				}
+
+				>.masthead{
+					padding: span(1) span(1 wide);
+				}
+			}
 		}
 	}
 }

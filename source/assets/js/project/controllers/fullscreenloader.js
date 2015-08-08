@@ -2,6 +2,7 @@ goog.provide( 'gux.controllers.FullscreenLoader' );
 
 goog.require( 'goog.events.EventTarget' );
 goog.require( 'goog.events.EventHandler' );
+goog.require( 'goog.userAgent' );
 goog.require( 'gux.fx.Shape' );
 goog.require( 'gux.templates.Main' );
 
@@ -23,7 +24,7 @@ gux.controllers.FullscreenLoader.prototype.open = function( opt_lightboxId ) {
 
 	var hasLightboxId = goog.isString( opt_lightboxId );
 
-	if ( hasLightboxId ) {
+	if ( hasLightboxId && !goog.userAgent.MOBILE ) {
 
 		return this.openProjectLoader( opt_lightboxId );
 

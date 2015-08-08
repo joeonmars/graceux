@@ -210,7 +210,7 @@
 					background: $color_logo_blue;
 					border: 2px solid $color_logo_blue;
 					@include box-sizing(border-box);
-					@include transition(color .2s $easeOutCubic, background .2s $easeOutCubic);
+					@include transition(color .25s $easeOutCubic, background .25s $easeOutCubic);
 				}
 
 				p{
