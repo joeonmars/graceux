@@ -29,8 +29,12 @@
 		{% for project in entry.projects %}
 			<li class="i{{ count % 6 + 1 }}">
 				<div class="preview">
-					<div class="image" style="{{ utils.retinaBackground(project.previewImage[0], 600) }}"
-						data-lightbox-id="{{ project.id }}"></div>
+					<div class="inner">
+						<div class="image-loader" data-lazy-load>
+							<div class="image" style="{{ utils.retinaBackground(project.previewImage[0], 600) }}"
+								data-lightbox-id="{{ project.id }}"></div>
+						</div>
+					</div>
 				</div>
 				<div class="text-container">
 					<div class="inner">

@@ -23,11 +23,48 @@ hr{
 .preview{
 	width: 100%;
 
-	.image{
+	.inner{
+		position: relative;
 		width: 100%;
 		height: 0;
-		background-size: cover;
-		background-position: center center;
+
+		.image-loader{
+			@include absoluteTopLeft;
+			width: 100%;
+			height: 100%;
+			background-position: center center;
+			background-size: 100px auto;
+			background-repeat: no-repeat;
+
+			&:not(.loaded){
+				display: none;
+			}
+
+			&.loading{
+				display: block;
+				
+				>.image{
+					opacity: 0;
+				}
+			}
+
+			&.loaded{
+				display: block;
+				background-image: none !important;
+				
+				>.image{
+					opacity: 1;
+				}
+			}
+
+			.image{
+				width: 100%;
+				height: 100%;
+				background-size: cover;
+				background-position: center center;
+				@include transition(opacity .8s $easeOutCubic);
+			}
+		}
 	}
 }
 
@@ -54,8 +91,12 @@ hr{
 				.preview{
 					display: table-header-group;
 
-					.image{
+					.inner{
 						padding-top: 97%;
+						
+						.image-loader{
+							background-image: image-url('g-spinner.gif');
+						}
 					}
 				}
 			}
@@ -71,8 +112,12 @@ hr{
 				.preview{
 					display: table-footer-group;
 
-					.image{
+					.inner{
 						padding-top: 132%;
+
+						.image-loader{
+							background-image: image-url('u-spinner.gif');
+						}
 					}
 				}
 			}
@@ -92,8 +137,12 @@ hr{
 				.preview{
 					@include span(6 first);
 
-					.image{
+					.inner{
 						padding-top: 72%;
+
+						.image-loader{
+							background-image: image-url('x-spinner.gif');
+						}
 					}
 				}
 			}
@@ -109,8 +158,12 @@ hr{
 				.preview{
 					display: table-footer-group;
 
-					.image{
+					.inner{
 						padding-top: 132%;
+
+						.image-loader{
+							background-image: image-url('g-spinner.gif');
+						}
 					}
 				}
 			}
@@ -130,8 +183,12 @@ hr{
 				.preview{
 					display: table-header-group;
 
-					.image{
+					.inner{
 						padding-top: 97%;
+
+						.image-loader{
+							background-image: image-url('u-spinner.gif');
+						}
 					}
 				}
 			}
@@ -151,8 +208,12 @@ hr{
 				.preview{
 					@include span(6 last);
 
-					.image{
+					.inner{
 						padding-top: 72%;
+
+						.image-loader{
+							background-image: image-url('x-spinner.gif');
+						}
 					}
 				}
 			}
@@ -183,7 +244,7 @@ hr{
 			padding: gutter();
 
 			.preview{
-				.image{
+				.inner{
 					padding-top: 65%;
 				}
 			}

@@ -8,6 +8,7 @@ goog.require( 'goog.net.XhrIo' );
 goog.require( 'gux.controllers.ContactForm' );
 goog.require( 'gux.controllers.modules.VideoPlayer' );
 goog.require( 'gux.fx.Sticky' );
+goog.require( 'gux.fx.LazyLoader' );
 
 
 gux.controllers.pages.Page = function( el ) {
@@ -20,6 +21,7 @@ gux.controllers.pages.Page = function( el ) {
 
 	this._modules = [];
 	this._stickies = [];
+	this._lazyLoaders = [];
 
 	this._eventHandler = new goog.events.EventHandler( this );
 
@@ -61,6 +63,17 @@ gux.controllers.pages.Page.prototype.init = function() {
 		return sticky;
 	} );
 
+	// create lazy loaders
+	var lazyEls = goog.dom.query( '*[data-lazy-load]', this.el );
+
+	this._lazyLoaders = goog.array.map( lazyEls, function( el ) {
+
+		var lazyLoader = new gux.fx.LazyLoader( el, scrollEl );
+		lazyLoader.activate();
+
+		return lazyLoader;
+	} );
+
 	//
 	gux.mainScroller.addCallback( gux.events.EventType.SCROLL_UPDATE, this._onScrollUpdate );
 
@@ -76,7 +89,17 @@ gux.controllers.pages.Page.prototype.disposeInternal = function() {
 		module.dispose();
 	} );
 
+	goog.array.forEach( this._stickies, function( sticky ) {
+		sticky.dispose();
+	} );
+
+	goog.array.forEach( this._lazyLoaders, function( lazyLoader ) {
+		lazyLoader.dispose();
+	} );
+
 	this._modules = null;
+	this._stickies = null;
+	this._lazyLoaders = null;
 
 	this._eventHandler.removeAll();
 	this._eventHandler.dispose();
@@ -121,6 +144,10 @@ gux.controllers.pages.Page.prototype.resize = function() {
 		sticky.resize();
 	} );
 
+	goog.array.forEach( this._lazyLoaders, function( lazyLoader ) {
+		lazyLoader.resize();
+	} );
+
 	goog.array.forEach( this._modules, function( module ) {
 		module.resize();
 	} );
@@ -139,6 +166,10 @@ gux.controllers.pages.Page.prototype.onScrollUpdate = function( progress, y ) {
 
 	goog.array.forEach( this._stickies, function( sticky ) {
 		sticky.render( y );
+	} );
+
+	goog.array.forEach( this._lazyLoaders, function( lazyLoader ) {
+		lazyLoader.update( y );
 	} );
 };
 

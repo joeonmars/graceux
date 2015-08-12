@@ -1,10 +1,13 @@
 goog.provide( 'gux.fx.Sticky' );
 
+goog.require( 'goog.Disposable' );
 goog.require( 'goog.dom' );
 goog.require( 'goog.style' );
 
 
 gux.fx.Sticky = function( element, scrollerElement, opt_autoRender ) {
+
+	goog.base( this );
 
 	this.el = element;
 	this._parentEl = goog.dom.getParentElement( this.el );
@@ -18,15 +21,29 @@ gux.fx.Sticky = function( element, scrollerElement, opt_autoRender ) {
 	this._prevY = 0;
 
 	this._autoRender = goog.isBoolean( opt_autoRender ) ? opt_autoRender : true;
+	this._eventHandler = new goog.events.EventHandler( this );
+};
+goog.inherits( gux.fx.Sticky, goog.Disposable );
+
+
+gux.fx.Sticky.prototype.disposeInternal = function() {
+
+	this.deactivate();
+
+	this.el = null;
+	this._parentEl = null;
+	this._scrollerEl = null;
+
+	goog.base( this, 'disposeInternal' );
 };
 
 
 gux.fx.Sticky.prototype.activate = function() {
 
-	goog.events.listen( window, goog.events.EventType.RESIZE, this.resize, false, this );
+	this._eventHandler.listen( window, goog.events.EventType.RESIZE, this.resize, false, this );
 
 	if ( this._autoRender ) {
-		goog.events.listen( this._scrollerEl, goog.events.EventType.SCROLL, this.render, false, this );
+		this._eventHandler.listen( this._scrollerEl, goog.events.EventType.SCROLL, this.render, false, this );
 	}
 
 	this.resize();
@@ -36,11 +53,7 @@ gux.fx.Sticky.prototype.activate = function() {
 
 gux.fx.Sticky.prototype.deactivate = function() {
 
-	goog.events.unlisten( window, goog.events.EventType.RESIZE, this.resize, false, this );
-
-	if ( this._autoRender ) {
-		goog.events.unlisten( this._scrollerEl, goog.events.EventType.SCROLL, this.render, false, this );
-	}
+	this._eventHandler.removeAll();
 };
 
 
