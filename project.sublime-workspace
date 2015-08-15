@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"dis",
+				"disposeInternal"
+			],
+			[
+				"backgr",
+				"background-image"
+			],
+			[
+				"scro",
+				"scrollTop"
+			],
+			[
+				"lazy",
+				"lazyLoader"
+			],
+			[
 				"fot",
 				"font-size"
 			],
@@ -388,10 +404,6 @@
 				"scrollTop"
 			],
 			[
-				"scro",
-				"scrollToStep"
-			],
-			[
 				"_ste",
 				"_step"
 			],
@@ -502,18 +514,6 @@
 			[
 				"_dum",
 				"_dummyOuterHeight"
-			],
-			[
-				"_dy",
-				"_dummyOuter"
-			],
-			[
-				"_dym",
-				"_dummyInnerHeight"
-			],
-			[
-				"_dummy",
-				"_dummyInner"
 			]
 		]
 	},
@@ -568,38 +568,6 @@
 			}
 		},
 		{
-			"file": "source/assets/js/project/controllers/pages/page.js",
-			"settings":
-			{
-				"buffer_size": 3945,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "source/assets/js/project/controllers/fullscreenloader.js",
-			"settings":
-			{
-				"buffer_size": 4163,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "craft/templates/_includes/_workflow.twig",
-			"settings":
-			{
-				"buffer_size": 1058,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "craft/templates/_extends/_project.html",
-			"settings":
-			{
-				"buffer_size": 6260,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "source/assets/styles/scss/_ui.scss",
 			"settings":
 			{
@@ -616,18 +584,18 @@
 			}
 		},
 		{
-			"file": "source/assets/styles/scss/_project.scss",
-			"settings":
-			{
-				"buffer_size": 10817,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "source/assets/styles/scss/_about.scss",
 			"settings":
 			{
 				"buffer_size": 3440,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/assets/styles/scss/_global.scss",
+			"settings":
+			{
+				"buffer_size": 1671,
 				"line_ending": "Unix"
 			}
 		},
@@ -648,10 +616,10 @@
 			}
 		},
 		{
-			"file": "craft/templates/_imports/_utils.twig",
+			"file": "source/assets/styles/scss/_home.scss",
 			"settings":
 			{
-				"buffer_size": 2613,
+				"buffer_size": 3515,
 				"line_ending": "Unix"
 			}
 		}
@@ -708,10 +676,12 @@
 		"/Users/yixiongzhou/Documents/workspace/graceux/craft/templates/_extends",
 		"/Users/yixiongzhou/Documents/workspace/graceux/craft/templates/_imports",
 		"/Users/yixiongzhou/Documents/workspace/graceux/craft/templates/_includes",
+		"/Users/yixiongzhou/Documents/workspace/graceux/public",
+		"/Users/yixiongzhou/Documents/workspace/graceux/public/assets",
+		"/Users/yixiongzhou/Documents/workspace/graceux/public/assets/js",
+		"/Users/yixiongzhou/Documents/workspace/graceux/public/assets/js/source",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets",
-		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/js",
-		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/soy",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/styles",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/styles/scss",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/styles/scss/modules",
@@ -719,8 +689,18 @@
 	],
 	"file_history":
 	[
-		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/styles/scss/_typography.scss",
+		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/js/project/fx/lazyloader.js",
+		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/js/project/controllers/pages/page.js",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/js/project/controllers/fullscreenloader.js",
+		"/Users/yixiongzhou/Documents/workspace/graceux/craft/templates/_includes/_workflow.twig",
+		"/Users/yixiongzhou/Documents/workspace/graceux/craft/templates/_extends/_project.html",
+		"/Users/yixiongzhou/Documents/workspace/graceux/craft/templates/index.html",
+		"/Users/yixiongzhou/Documents/workspace/graceux/public/assets/js/source/project/controllers/pages/page.js",
+		"/Users/yixiongzhou/Documents/workspace/graceux/public/assets/js/source/project/fx/sticky.js",
+		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/styles/scss/_project.scss",
+		"/Users/yixiongzhou/Documents/workspace/graceux/public/assets/js/source/project/fx/dummyscroller.js",
+		"/Users/yixiongzhou/Documents/workspace/graceux/craft/templates/_imports/_utils.twig",
+		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/styles/scss/_typography.scss",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/styles/scss/_labs.scss",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/styles/scss/_global.scss",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/js/project/fx/sticky.js",
@@ -734,7 +714,6 @@
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/js/project/events/events.js",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/js/project/controllers/imageviewer.js",
 		"/Users/yixiongzhou/Documents/workspace/graceux/craft/templates/_extends/_layout.html",
-		"/Users/yixiongzhou/Documents/workspace/graceux/craft/templates/index.html",
 		"/Users/yixiongzhou/Documents/workspace/graceux/craft/templates/_extends/_main.html",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/js/project/controllers/mainscroller.js",
 		"/Users/yixiongzhou/Documents/workspace/graceux/craft/config/db.php",
@@ -742,17 +721,13 @@
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/Gruntfile.js",
 		"/Users/yixiongzhou/Documents/workspace/graceux/craft/app/templates/error.html",
 		"/Users/yixiongzhou/Documents/workspace/graceux/craft/templates/_includes/_responsive-feature.twig",
-		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/styles/scss/_project.scss",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/styles/scss/modules/_comparison.scss",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/js/project/controllers/pages/labspage.js",
-		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/js/project/controllers/pages/page.js",
-		"/Users/yixiongzhou/Documents/workspace/graceux/craft/templates/_imports/_utils.twig",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/styles/templates/icons.css",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/styles/scss/_icons.scss",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/styles/scss/modules/_responsive.scss",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/styles/scss/_ui.scss",
 		"/Users/yixiongzhou/Documents/workspace/graceux/craft/templates/_includes/_annotation-feature.twig",
-		"/Users/yixiongzhou/Documents/workspace/graceux/craft/templates/_extends/_project.html",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/js/project/controllers/portfolionavigation.js",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/js/project/controllers/contactform.js",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/js/project/fx/shape.js",
@@ -782,7 +757,6 @@
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/js/project/controllers/modules/comparison.js",
 		"/Users/yixiongzhou/Documents/workspace/graceux/craft/config/redactor/Feature.json",
 		"/Users/yixiongzhou/Documents/workspace/graceux/craft/templates/_includes/_media-feature.twig",
-		"/Users/yixiongzhou/Documents/workspace/graceux/craft/templates/_includes/_workflow.twig",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/js/project/templates/main.soy.js",
 		"/Users/yixiongzhou/Documents/workspace/graceux/craft/templates/_extends/_main-content.html",
 		"/Users/yixiongzhou/Documents/workspace/graceux/source/assets/js/project/controllers/modules/module.js",
@@ -842,11 +816,7 @@
 		"/Users/joezhou/Documents/workspace/graceux/source/assets/js/project/fx/sticky.js",
 		"/Users/joezhou/Documents/workspace/graceux/craft/templates/_includes/_workflow.twig",
 		"/Users/joezhou/Documents/workspace/graceux/craft/templates/_includes/_responsive-feature.twig",
-		"/Users/joezhou/Documents/workspace/graceux/craft/templates/_includes/_annotation-feature.twig",
-		"/Users/joezhou/Documents/workspace/graceux/craft/templates/_includes/_comparison-feature.twig",
-		"/Users/joezhou/Documents/workspace/graceux/craft/templates/_includes/_media-feature.twig",
-		"/Users/joezhou/Documents/workspace/graceux/craft/config/general.php",
-		"/Users/joezhou/Documents/workspace/graceux/craft/app/etc/templating/twigextensions/CraftTwigExtension.php"
+		"/Users/joezhou/Documents/workspace/graceux/craft/templates/_includes/_annotation-feature.twig"
 	],
 	"find":
 	{
@@ -924,6 +894,21 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"goog.events.listen",
+			"goog.events",
+			"this._loadedDelay",
+			"isLoading",
+			"resize",
+			"render",
+			"gux.fx.Sticky",
+			"stickie",
+			"sticky",
+			"Sticky",
+			"sticky",
+			"image-url",
+			"image-container",
+			".image{",
+			".image",
 			"utils",
 			"srcs",
 			"960",
@@ -1036,22 +1021,7 @@
 			"CLOSE",
 			"overlay",
 			"20",
-			"remove",
-			"largeSrc",
-			"'100%'",
-			"TweenMax.set",
-			"this._eventHandler",
-			"this._eventHandler.listen",
-			"imagec",
-			"this._imageContainer",
-			"imageContainer",
-			"this._imageContainer",
-			"largeImg",
-			".8,",
-			"start",
-			"his._min",
-			"start",
-			"dots"
+			"remove"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -1091,7 +1061,7 @@
 	"groups":
 	[
 		{
-			"selected": 9,
+			"selected": 5,
 			"sheets":
 			[
 				{
@@ -1120,7 +1090,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
@@ -1149,7 +1119,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
@@ -1178,7 +1148,7 @@
 						"translation.y": 503.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
@@ -1207,7 +1177,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 16,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
@@ -1236,7 +1206,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -1252,8 +1222,8 @@
 						"selection":
 						[
 							[
-								3634,
-								3634
+								226,
+								226
 							]
 						],
 						"settings":
@@ -1263,136 +1233,20 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3908.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "source/assets/js/project/controllers/pages/page.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3945,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2855,
-								2855
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": -0.0,
-						"translation.y": 1084.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "source/assets/js/project/controllers/fullscreenloader.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4163,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								294,
-								294
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "craft/templates/_includes/_workflow.twig",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1058,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								522,
-								522
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Craft-Twig/Syntaxes/Craft-Twig.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "craft/templates/_extends/_project.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6260,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								784,
-								784
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 6,
+			"selected": 3,
 			"sheets":
 			[
 				{
-					"buffer": 10,
+					"buffer": 6,
 					"file": "source/assets/styles/scss/_ui.scss",
 					"semi_transient": false,
 					"settings":
@@ -1404,8 +1258,8 @@
 						"selection":
 						[
 							[
-								1791,
-								1791
+								170,
+								170
 							]
 						],
 						"settings":
@@ -1417,11 +1271,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 7,
 					"file": "source/assets/js/project/controllers/modules/comparison.js",
 					"semi_transient": false,
 					"settings":
@@ -1446,40 +1300,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
-					"file": "source/assets/styles/scss/_project.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10817,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1371,
-								1371
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/SCSS/SCSS.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 543.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
+					"buffer": 8,
 					"file": "source/assets/styles/scss/_about.scss",
 					"semi_transient": false,
 					"settings":
@@ -1501,14 +1326,44 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2557.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 9,
+					"file": "source/assets/styles/scss/_global.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1671,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1370,
+								1370
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SCSS/SCSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 488.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
 					"file": "source/assets/soy/main.soy",
 					"semi_transient": false,
 					"settings":
@@ -1533,11 +1388,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 11,
 					"file": "craft/templates/_includes/_media-feature.twig",
 					"semi_transient": false,
 					"settings":
@@ -1562,37 +1417,36 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 16,
-					"file": "craft/templates/_imports/_utils.twig",
+					"buffer": 12,
+					"file": "source/assets/styles/scss/_home.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2613,
+						"buffer_size": 3515,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2441,
-								2441
+								435,
+								435
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Craft-Twig/Syntaxes/Craft-Twig.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/SCSS/SCSS.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 153.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -1626,7 +1480,7 @@
 		"cols":
 		[
 			0.0,
-			0.51425836674,
+			0.544291229447,
 			1.0
 		],
 		"rows":
@@ -2189,7 +2043,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 275.0,
+	"side_bar_width": 287.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

@@ -67,11 +67,9 @@ body{
   min-height: $min-height;
   overflow: hidden;
 
-  /*
-  .touch &{
-    overflow-y: visible;
+  &:not(.load) {
+    display: none;
   }
-  */
 }
 
 .hidden{
@@ -84,12 +82,6 @@ body{
 
 .dummy-scroll{
   overflow: hidden !important;
-  
-  /*
-  .touch &{
-    overflow: visible !important;
-  }
-  */
 }
 
 *[data-sticky="true"] {

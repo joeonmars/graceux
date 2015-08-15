@@ -172,15 +172,6 @@
 									}
 								}
 							}
-							&.media-col-3{
-								.mobile{
-									@include span(4);
-
-									&:nth-child(3n) {
-										@include last;
-									}
-								}
-							}
 						}
 					}
 				}
@@ -202,7 +193,8 @@
 						margin-left: span(1 wide);
 					}
 					>figure{
-						@include full;
+						@include span(10);
+						margin-left: span(1 wide);
 						margin-top: span(1);
 					}
 
@@ -220,11 +212,19 @@
 								}
 							}
 							&.media-col-3{
+								@include span(10);
+								margin-left: span(1 wide);
+
 								.mobile{
 									@include span(4);
+									width: span(4) !important;
 
 									&:nth-child(3n) {
 										@include last;
+									}
+
+									.movable{
+										@include device-mobile(100%);
 									}
 								}
 							}
@@ -242,10 +242,10 @@
 
 					&:nth-child(odd) {
 						>article{
-							@include span(isolate 4 at 8 last);
+							@include span(isolate 4 at 8);
 						}
 						>figure{
-							@include span(isolate 6 at 2 first);
+							@include span(isolate 6 at 2);
 						}
 					}
 				}
@@ -272,9 +272,9 @@
 					}
 
 					&.media{
-						@include nested(12) {
-							>figure{
-								&.media-col-2{
+						>figure{
+							&.media-col-2{
+								@include nested(12) {
 									.mobile{
 										@include push(2);
 										@include span(4);
@@ -285,12 +285,22 @@
 										}
 									}
 								}
-								&.media-col-3{
+							}
+							&.media-col-3{
+								@include span(8);
+								margin-left: span(1 wide);
+
+								@include nested(12) {
 									.mobile{
 										@include span(4);
+										width: span(4) !important;
 
 										&:nth-child(3n) {
 											@include last;
+										}
+
+										.movable{
+											@include device-mobile(100%);
 										}
 									}
 								}
@@ -301,18 +311,18 @@
 
 				&.fluid{
 					>article{
-						@include span(isolate 4 first);
+						@include span(isolate 4 at 1);
 					}
 					>figure{
-						@include span(isolate 6 last);
+						@include span(isolate 5 at 5);
 					}
 
 					&:nth-child(odd) {
 						>article{
-							@include span(isolate 4 last);
+							@include span(isolate 4 at 6);
 						}
 						>figure{
-							@include span(isolate 6 first);
+							@include span(isolate 5 at 1);
 						}
 					}
 				}
@@ -414,7 +424,7 @@ aside{
 		img{
 			width: 100%;
 			height: auto;
-			border: 1px solid $color_lightgray;
+			//border: 1px solid $color_lightgray;
 		}
 	}
 	
@@ -479,6 +489,7 @@ aside{
 				&.device{
 					.movable{
 						position: relative;
+						margin: 0 auto;
 					}
 
 					.aspect-container{

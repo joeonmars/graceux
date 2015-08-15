@@ -21,17 +21,6 @@ gux.apps.Main = function() {
 		FastClick.attach( document.body );
 	}
 
-	//
-	gux.router = gux.controllers.Router.getInstance();
-
-	gux.portfolioNavigation = gux.controllers.PortfolioNavigation.getInstance();
-
-	gux.mainScroller = gux.controllers.MainScroller.getInstance();
-
-	gux.header = gux.controllers.Header.getInstance();
-
-	gux.fullscreenLoader = gux.controllers.FullscreenLoader.getInstance();
-
 	// load site map
 	gux.siteMap = null;
 
@@ -40,7 +29,19 @@ gux.apps.Main = function() {
 	goog.net.XhrIo.send( siteMapUrl, function( e ) {
 		if ( e.target.isSuccess() ) {
 
+			goog.dom.classlist.add( document.body, 'load' );
+
 			gux.siteMap = e.target.getResponseJson();
+
+			gux.router = gux.controllers.Router.getInstance();
+
+			gux.portfolioNavigation = gux.controllers.PortfolioNavigation.getInstance();
+
+			gux.mainScroller = gux.controllers.MainScroller.getInstance();
+
+			gux.header = gux.controllers.Header.getInstance();
+
+			gux.fullscreenLoader = gux.controllers.FullscreenLoader.getInstance();
 
 			var intro = gux.controllers.Intro.getInstance();
 			intro.activate();
