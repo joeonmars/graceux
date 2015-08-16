@@ -57,6 +57,8 @@ gux.controllers.pages.ProjectPage.prototype.init = function() {
 	// intro mouse scroll
 	if ( !goog.userAgent.MOBILE ) {
 
+		gux.mainScroller.hideScrollbar();
+
 		this._eventHandler.listen( this._scrollButton, goog.events.EventType.CLICK, this.handleMouseEventOnIntro, false, this );
 
 		this._eventHandler.listen( this._mouseWheelHandler,
@@ -130,5 +132,7 @@ gux.controllers.pages.ProjectPage.prototype.handleMouseEventOnIntro = function( 
 			'onCompleteScope': this,
 			'ease': Cubic.easeInOut
 		} );
+
+		gux.mainScroller.showScrollbar();
 	}
 };

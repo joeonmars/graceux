@@ -171,6 +171,18 @@ gux.fx.DummyScroller.prototype.disableDummyScroll = function() {
 };
 
 
+gux.fx.DummyScroller.prototype.showScrollbar = function() {
+
+  goog.style.setElementShown( this._scrollbar, true );
+};
+
+
+gux.fx.DummyScroller.prototype.hideScrollbar = function() {
+
+  goog.style.setElementShown( this._scrollbar, false );
+};
+
+
 gux.fx.DummyScroller.prototype.addCallback = function( type, callback ) {
 
   goog.array.insert( this._callbacks[ type ], callback );
