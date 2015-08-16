@@ -39,6 +39,25 @@
   }
 }
 
+@include keyframes(arrow-scroll) {
+  0% {
+    opacity: 0;
+    @include translateY(-100%);
+  }
+  30% {
+    opacity: 1;
+    @include translateY(0);
+  }
+  70% {
+    opacity: 1;
+    @include translateY(0);
+  }
+  100% {
+    opacity: 0;
+    @include translateY(50%);
+  }
+}
+
 /* Generated with Bounce.js. Edit at http://goo.gl/yq18sP */
 
 @keyframes animate-in-loader { 

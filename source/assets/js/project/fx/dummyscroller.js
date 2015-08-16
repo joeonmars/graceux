@@ -183,7 +183,7 @@ gux.fx.DummyScroller.prototype.removeCallback = function( type, callback ) {
 };
 
 
-gux.fx.DummyScroller.prototype.scrollTo = function( y ) {
+gux.fx.DummyScroller.prototype.scrollTo = function( y, syncDummyScroll ) {
 
   this._viewInnerY = Math.round( y );
 
@@ -192,6 +192,14 @@ gux.fx.DummyScroller.prototype.scrollTo = function( y ) {
   var handleRatio = Math.abs( this._viewInnerY / this._viewInnerHeight );
   var handleY = Math.round( this._scrollbarHeight * handleRatio );
   goog.style.setStyle( this._handle, 'top', handleY + 'px' );
+
+  if ( syncDummyScroll ) {
+
+    this._dummyScrollRatio = goog.math.clamp(
+      this._viewInnerY / ( this._viewInnerHeight - this._viewOuterHeight ), 0, 1 );
+
+    this._dummyOuter.scrollTop = ( this._dummyInnerHeight - this._dummyOuterHeight ) * this._dummyScrollRatio;
+  }
 
   this.dispatchUpdateCallbacks();
 };
