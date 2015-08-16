@@ -51,13 +51,7 @@ gux.controllers.Router.prototype.init = function() {
 
 	// create the page instance from initial token
 	var initialToken = this._history.getToken();
-
-	var route = this.getMatchedRoute( initialToken );
-
-	var mainContent = goog.dom.getElement( 'main-content' );
-	var el = goog.dom.getFirstElementChild( mainContent );
-
-	this._currentPage = this.createPage( route[ '_pattern' ], el );
+	crossroads.parse( initialToken );
 };
 
 
@@ -159,10 +153,20 @@ gux.controllers.Router.prototype.onLoadComplete = function( e ) {
 
 		var pattern = router[ '_pattern' ];
 
-		var el = goog.dom.createDom( 'div' );
-		el.appendChild( goog.dom.htmlToDocumentFragment( e.target.getResponseText() ) );
+		if ( !this._currentPage ) {
 
-		this._nextPage = this.createPage( pattern, el );
+			var mainContent = goog.dom.getElement( 'main-content' );
+			var el = goog.dom.getFirstElementChild( mainContent );
+
+			this._currentPage = this.createPage( pattern, el );
+
+		} else {
+
+			var el = goog.dom.createDom( 'div' );
+			el.appendChild( goog.dom.htmlToDocumentFragment( e.target.getResponseText() ) );
+
+			this._nextPage = this.createPage( pattern, el );
+		}
 
 		this._deferredLoad.callback();
 

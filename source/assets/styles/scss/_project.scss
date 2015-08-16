@@ -162,7 +162,7 @@
 					&.media{
 						>figure{
 							&.media-col-2{
-								.mobile{
+								.mobile, .iphone4{
 									@include push(2);
 									@include span(4);
 
@@ -201,7 +201,7 @@
 					&.media{
 						>figure{
 							&.media-col-2{
-								.mobile{
+								.mobile, .iphone4{
 									@include push(2);
 									@include span(4);
 
@@ -215,17 +215,21 @@
 								@include span(10);
 								margin-left: span(1 wide);
 
-								.mobile{
+								.mobile, .iphone4{
 									@include span(4);
 									width: span(4) !important;
 
 									&:nth-child(3n) {
 										@include last;
 									}
+								}
 
-									.movable{
-										@include device-mobile(100%);
-									}
+								.mobile .movable{
+									@include device-mobile(100%);
+								}
+
+								.iphone4 .movable{
+									@include device-iphone4(100%);
 								}
 							}
 						}
@@ -275,7 +279,7 @@
 						>figure{
 							&.media-col-2{
 								@include nested(12) {
-									.mobile{
+									.mobile, .iphone4{
 										@include push(2);
 										@include span(4);
 
@@ -291,17 +295,21 @@
 								margin-left: span(1 wide);
 
 								@include nested(12) {
-									.mobile{
+									.mobile, .iphone4{
 										@include span(4);
 										width: span(4) !important;
 
 										&:nth-child(3n) {
 											@include last;
 										}
+									}
 
-										.movable{
-											@include device-mobile(100%);
-										}
+									.mobile .movable{
+										@include device-mobile(100%);
+									}
+
+									.iphone4 .movable{
+										@include device-iphone4(100%);
 									}
 								}
 							}
@@ -441,12 +449,14 @@ aside{
 				&:before, &:after{
 					position: absolute;
 					z-index: 1;
-					font-size: 3em;
+					font-size: 2.5em;
 					margin: .5em;
-					color: $color_logo_blue;
+					padding: .6em;
+					color: white;
+					background: $color_logo_blue;
 					opacity: 0;
 					@extend .icon;
-					@include transition(opacity .4s $easeOutCubic, visibility .4s, transform .4s $easeOutCubic);
+					@include transition(opacity .3s $easeOutCubic, visibility .3s, transform .3s $easeOutCubic);
 				}
 
 				&:before{
@@ -530,7 +540,12 @@ section.fluid.media{
 	}
 	.mobile{
 		.movable{
-			@include device-mobile(60%);
+			@include device-mobile(80%);
+		}
+	}
+	.iphone4{
+		.movable{
+			@include device-iphone4(80%);
 		}
 	}
 	.tablet-portrait{
@@ -557,7 +572,14 @@ section.full.media{
 		max-width: 350px !important;
 
 		.movable{
-			@include device-mobile(60%);
+			@include device-mobile(80%);
+		}
+	}
+	.iphone4{
+		max-width: 350px !important;
+
+		.movable{
+			@include device-iphone4(80%);
 		}
 	}
 	.tablet-portrait{
