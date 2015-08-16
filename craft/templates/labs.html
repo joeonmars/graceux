@@ -10,9 +10,13 @@
 
 {% set title = "Labs" %}
 
+{% import "_imports/_utils" as utils %}
+
 {% block content %}
 <div id="labs">
 
+	<section class="masthead"></section>
+	
 	<article class="intro">
 		{% include "_includes/_border-heading"
 			with {'tag': 'h3', 'bottom': true, 'text': entry.heading} %}
@@ -20,19 +24,6 @@
 			{{ entry.body }}
 		</div>
 	</article>
-
-	{% set featured = entry.featuredEntry[0] %}
-	<div class="featured" data-lightbox-id="{{ featured.id }}">
-		<div class="text-container">
-			<h6 class="subheading white above">{{ featured.genre }}</h6>
-			{% include "_includes/_border-heading"
-				with {'tag': 'h3', 'left': true, 'bottom': true, 'text': featured.title, 'color': 'white'} %}
-			<p class="description">{{ featured.shortDescription }}</p>
-
-			{% include "_includes/_bordered-button"
-				with {'classes': 'white', 'href': featured.url, 'text': Copy.viewProject, 'ajax': true, 'loaderId': featured.id} %}
-		</div>
-	</div>
 
 	<ul class="projects">
 		{% for project in entry.projects %}
@@ -46,8 +37,8 @@
 						</div>
 					</div>
 					<div class="preview">
+						<div class="image" style="{{ utils.retinaBackground(project.previewImage[0], 500) }}"></div>
 						<div class="shapes"></div>
-						<div class="image" style="background-image:url({{ project.previewImage[0].url }})"></div>
 					</div>
 				</a>
 			</li>

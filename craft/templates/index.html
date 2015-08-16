@@ -27,7 +27,7 @@
 	<ul>
 		{% set count = 0 %}
 		{% for project in entry.projects %}
-			<li class="i{{ count % 6 + 1 }}">
+			<li class="i{{ count % 6 + 1 }} {% if loop.last %}last{% endif %}">
 				<div class="preview">
 					<div class="inner">
 						<div class="image-loader" data-lazy-load>

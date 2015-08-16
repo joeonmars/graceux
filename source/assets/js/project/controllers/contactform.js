@@ -16,6 +16,7 @@ gux.controllers.ContactForm = function() {
 
 	this._overlay = goog.dom.query( '.overlay', this.container )[ 0 ];
 	this._form = goog.dom.query( 'form', this.el )[ 0 ];
+	this._textareaEl = goog.dom.query( '.textarea', this.el )[ 0 ];
 	this._sendButton = goog.dom.query( '.send', this.el )[ 0 ];
 	this._composeEl = goog.dom.query( '.compose', this.el )[ 0 ];
 	this._resultEl = goog.dom.query( '.result', this.el )[ 0 ];
@@ -222,6 +223,8 @@ gux.controllers.ContactForm.prototype.handleValidationError = function( currentE
 gux.controllers.ContactForm.prototype.onSubmit = function( e ) {
 
 	e.preventDefault();
+
+	this._messageEl.value = this._textareaEl.innerHTML;
 
 	var validated = this.validate();
 	if ( validated !== true ) {

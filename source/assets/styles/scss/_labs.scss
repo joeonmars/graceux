@@ -1,22 +1,8 @@
-.featured{
-	position: relative;
-	color: white;
-	background-color: $color_logo_blue;
-	padding-top: span(1);
-
-	.text-container{
-		.border-heading{
-			font-size: 8em;
-		}
-
-		p{
-			font-size: 2.4em;
-		}
-
-		.bordered-button{
-			margin-top: 2em;
-		}
-	}
+.masthead{
+	height: 0;
+	padding-bottom: percentage(960/2133);
+	background-image: image-url('about-masthead.jpg');
+	background-size: 100%;
 }
 
 .projects{
@@ -24,21 +10,42 @@
 
 	li{
 		position: relative;
-		@include dots-pattern;
+
+		&:after{
+			@include absoluteTopLeft;
+			z-index: 0;
+			content: "";
+			display: block;
+			width: calc(100% - 1px);
+			height: calc(100% - 1px);
+			@include dots-pattern;
+		}
 
 		&:hover{
 			>.inner{
 				@include translate(-12px, -12px);
 			}
+
+			.text-container{
+				opacity: 0;
+			}
+
+			.preview{
+				>.image{
+					opacity: 1;
+				}
+			}
 		}
 
 		>.inner{
+			@include absoluteTopLeft;
+			z-index: 1;
 			display: table;
 			width: 100%;
 			height: 100%;
 			padding: 4em;
 			background: $color_lightergray;
-			border: 1px solid $color_lightgray;
+			//border: 1px solid $color_lightgray;
 			@include translate(0, 0);
 			@include transition(transform, .15s, $easeOutQuint);
 		}
@@ -49,6 +56,8 @@
 			width: 100%;
 			display: table-cell;
 			vertical-align: middle;
+			opacity: 1;
+			@include transition(opacity .15s $easeOutQuint);
 
 			.inner{
 				margin: 2.5rem 0;
@@ -128,9 +137,11 @@
 			>.image{
 				@include absoluteTopLeft;
 				width: 100%;
-				height: 0;
+				height: 100%;
 				background-size: cover;
 				background-position: center center;
+				opacity: 0;
+				@include transition(opacity .35s);
 			}
 		}
 	}
