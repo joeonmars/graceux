@@ -22,6 +22,8 @@ goog.addSingletonGetter( gux.controllers.FullscreenLoader );
 
 gux.controllers.FullscreenLoader.prototype.open = function( opt_lightboxId ) {
 
+	this.resetContainer();
+
 	var hasLightboxId = goog.isString( opt_lightboxId );
 
 	if ( hasLightboxId && !goog.userAgent.MOBILE ) {
@@ -133,11 +135,7 @@ gux.controllers.FullscreenLoader.prototype.closeProjectLoader = function() {
 		'height': 0,
 		'clearProps': 'height',
 		'ease': Quad.easeInOut,
-		'onComplete': function() {
-			goog.dom.classlist.enable( this._container, 'show', false );
-			goog.dom.removeNode( this._el );
-			this._el = null;
-		},
+		'onComplete': this.resetContainer,
 		'onCompleteScope': this
 	} );
 
@@ -151,13 +149,20 @@ gux.controllers.FullscreenLoader.prototype.closeSimpleLoader = function() {
 	var tweener = TweenMax.to( this._el, .8, {
 		'opacity': 0,
 		'ease': Quad.easeInOut,
-		'onComplete': function() {
-			goog.dom.classlist.enable( this._container, 'show', false );
-			goog.dom.removeNode( this._el );
-			this._el = null;
-		},
+		'onComplete': this.resetContainer,
 		'onCompleteScope': this
 	} );
 
 	return tweener;
+};
+
+
+gux.controllers.FullscreenLoader.prototype.resetContainer = function() {
+
+	goog.dom.classlist.enable( this._container, 'show', false );
+
+	if ( this._el ) {
+		goog.dom.removeNode( this._el );
+		this._el = null;
+	}
 };

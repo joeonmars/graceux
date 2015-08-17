@@ -71,6 +71,10 @@ gux.controllers.pages.ProjectPage.prototype.disposeInternal = function() {
 
 	this._mouseWheelHandler.dispose();
 
+	if ( this._autoScrollTweener ) {
+		this._autoScrollTweener.kill();
+	}
+
 	goog.base( this, 'disposeInternal' );
 };
 

@@ -34,7 +34,7 @@ goog.inherits( gux.controllers.pages.Page, goog.events.EventTarget );
 
 gux.controllers.pages.Page.prototype.init = function() {
 
-	this._eventHandler.listen( gux.router, gux.events.EventType.LOAD_PAGE, this.onRouterLoadPage, false, this );
+	this._eventHandler.listenOnce( gux.router, gux.events.EventType.LOAD_PAGE, this.onRouterLoadPage, false, this );
 	this._eventHandler.listen( window, goog.events.EventType.RESIZE, this.resize, false, this );
 
 	var emailButtons = goog.dom.query( '.email-button', this.el );

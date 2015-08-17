@@ -7,7 +7,7 @@
 	</video>
 
 	{% if video.videoPoster|length > 0 %}
-	<div class="poster" style="{{ utils.retinaBackground(video.videoPoster[0], 600) }}"></div>
+	<div class="poster" style="{{ utils.retinaBackground(video.videoPoster[0], 600) }}" data-preload></div>
 	{% endif %}
 
 	<div class="controls">

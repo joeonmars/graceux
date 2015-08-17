@@ -2,11 +2,9 @@
   "name": "gux",
   "version": "1.0.0",
   "main": "",
-  "ignore": [
-  ],
+  "ignore": [],
   "dependencies": {
-    "closure-library": "git://github.com/joeonmars/closure-library#stable"
+    "closure-library": "https://github.com/joeonmars/closure-library.git#79dc4394c4"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

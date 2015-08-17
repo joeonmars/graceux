@@ -4,12 +4,14 @@ goog.require( 'goog.async.Deferred' );
 goog.require( 'goog.async.DeferredList' );
 goog.require( 'goog.events.EventTarget' );
 goog.require( 'goog.history.Html5History' );
+goog.require( 'goog.net.ImageLoader' );
 goog.require( 'goog.net.XhrIo' );
 goog.require( 'goog.object' );
 goog.require( 'goog.Uri' );
 goog.require( 'gux.controllers.pages.Page' );
 goog.require( 'gux.controllers.pages.ProjectPage' );
 goog.require( 'gux.controllers.pages.LabsPage' );
+goog.require( 'gux.Utils' );
 
 
 gux.controllers.Router = function() {
@@ -23,14 +25,17 @@ gux.controllers.Router = function() {
 	goog.events.listen( this._history, goog.history.EventType.NAVIGATE, this.onNavigate, false, this );
 	goog.events.listen( document.body, goog.events.EventType.CLICK, this.onClick, false, this );
 
-	this._currentPage = null;
-	this._nextPage = null;
+	this._page = null;
 
 	this._lightboxId = null;
 
 	this._deferredSwitchToNextPage = null;
-	this._deferredLoad = null;
+	this._deferredLoadPage = null;
+	this._deferredLoadAssets = null;
 	this._deferredAnimateOut = null;
+
+	this._pageRequest = null;
+	this._imageLoader = null;
 
 	// setup crossroads
 	crossroads.routed.add( this.onRouted, this );
@@ -80,8 +85,8 @@ gux.controllers.Router.prototype.createPage = function( pattern, el ) {
 
 gux.controllers.Router.prototype.switchToNextPage = function() {
 
-	if ( this._nextPage ) {
-		this._nextPage.animateIn( this._lightboxId );
+	if ( this._page ) {
+		this._page.animateIn( this._lightboxId );
 	}
 
 	this._lightboxId = null;
@@ -95,18 +100,19 @@ gux.controllers.Router.prototype.switchToNextPage = function() {
 gux.controllers.Router.prototype.loadPage = function( url, routeKey, routeParams ) {
 
 	// create deferred list
-	this._deferredLoad = new goog.async.Deferred();
+	this._deferredLoadPage = new goog.async.Deferred();
+	this._deferredLoadAssets = new goog.async.Deferred();
 	this._deferredAnimateOut = new goog.async.Deferred();
 
 	this._deferredSwitchToNextPage = goog.async.DeferredList.gatherResults( [
-		this._deferredLoad, this._deferredAnimateOut
+		this._deferredLoadPage, this._deferredLoadAssets, this._deferredAnimateOut
 	] );
 
 	this._deferredSwitchToNextPage.addCallback( this.switchToNextPage, this );
 
 	// make ajax request for next page
 	var timeout = 10000;
-	goog.net.XhrIo.send( url, goog.bind( this.onLoadComplete, this ), 'GET', null, null, timeout );
+	this._pageRequest = goog.net.XhrIo.send( url, goog.bind( this.onLoadComplete, this ), 'GET', null, null, timeout );
 
 	this.dispatchEvent( {
 		type: gux.events.EventType.LOAD_PAGE,
@@ -130,6 +136,26 @@ gux.controllers.Router.prototype.onRouted = function( request, data ) {
 
 	console.log( 'routed: ', request, data );
 
+	// stop current page request
+	if ( this._pageRequest ) {
+		this._pageRequest.dispose();
+		this._pageRequest = null;
+	}
+
+	// stop image load
+	if ( this._imageLoader ) {
+		this._imageLoader.removeAllListeners();
+		this._imageLoader.dispose();
+		this._imageLoader = null;
+	}
+
+	// stop deferred
+	if ( this._deferredSwitchToNextPage ) {
+		this._deferredSwitchToNextPage.cancel( true );
+		this._deferredSwitchToNextPage = null;
+	}
+
+	//
 	var routeKey = goog.object.findKey( gux.controllers.Router.mappings, function( value ) {
 		return value.pattern === data.route[ '_pattern' ];
 	} );
@@ -153,27 +179,72 @@ gux.controllers.Router.prototype.onLoadComplete = function( e ) {
 
 		var pattern = router[ '_pattern' ];
 
-		if ( !this._currentPage ) {
+		if ( !this._page ) {
 
 			var mainContent = goog.dom.getElement( 'main-content' );
 			var el = goog.dom.getFirstElementChild( mainContent );
 
-			this._currentPage = this.createPage( pattern, el );
+			this._page = this.createPage( pattern, el );
 
 		} else {
+
+			if ( this._page ) {
+				this._page.dispose();
+			}
 
 			var el = goog.dom.createDom( 'div' );
 			el.appendChild( goog.dom.htmlToDocumentFragment( e.target.getResponseText() ) );
 
-			this._nextPage = this.createPage( pattern, el );
+			this._page = this.createPage( pattern, el );
 		}
 
-		this._deferredLoad.callback();
+		// resolve deferred page load
+		this._deferredLoadPage.callback();
+
+		// parse external assets
+		var preloadEls = goog.dom.query( '*[data-preload]', this._page.el );
+		if ( preloadEls.length > 0 ) {
+
+			var pixelRatio = window[ 'devicePixelRatio' ];
+
+			this._imageLoader = new goog.net.ImageLoader();
+			this._imageLoader.listenOnce( goog.net.EventType.COMPLETE, function( e ) {
+				this._deferredLoadAssets.callback();
+			}, false, this );
+
+			goog.array.forEach( preloadEls, function( el, i ) {
+
+				var urls;
+				var now = goog.now();
+
+				if ( el.tagName === 'DIV' ) {
+
+					urls = gux.Utils.findUrls( goog.style.getStyle( el, 'background-image' ) );
+
+				} else if ( el.tagName === 'IMG' ) {
+
+					urls = gux.Utils.findUrls( el[ 'srcset' ] || el.src );
+				}
+
+				var src = ( pixelRatio === 1 ) ? urls[ 0 ] : urls[ 1 ];
+				this._imageLoader.addImage( now + i, src );
+
+			}, this );
+
+			this._imageLoader.start();
+
+		} else {
+
+			this._deferredLoadAssets.callback();
+		}
 
 	} else {
 
 		console.log( "LOAD ERROR: ", e );
 	}
+
+	this._pageRequest.dispose();
+	this._pageRequest = null;
 };
 
 

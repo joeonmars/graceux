@@ -3,6 +3,7 @@ goog.provide( 'gux.fx.LazyLoader' );
 goog.require( 'goog.Disposable' );
 goog.require( 'goog.dom' );
 goog.require( 'goog.style' );
+goog.require( 'gux.Utils' );
 
 
 gux.fx.LazyLoader = function( element, scrollerElement ) {
@@ -78,7 +79,7 @@ gux.fx.LazyLoader.prototype.loadImage = function() {
 
 		img = new Image();
 
-		var srcs = this.findUrls( goog.style.getStyle( this._imageEl, 'background-image' ) );
+		var srcs = gux.Utils.findUrls( goog.style.getStyle( this._imageEl, 'background-image' ) );
 		var pixelRatio = window[ 'devicePixelRatio' ];
 		img.src = ( pixelRatio === 1 ) ? srcs[ 0 ] : srcs[ 1 ];
 	}
@@ -88,26 +89,6 @@ gux.fx.LazyLoader.prototype.loadImage = function() {
 	this._isLoadStarted = true;
 
 	goog.dom.classlist.add( this.el, 'loading' );
-};
-
-
-gux.fx.LazyLoader.prototype.findUrls = function( text ) {
-
-	var source = ( text || '' ).toString();
-	var urlArray = [];
-	var url;
-	var matchArray;
-
-	// Regular expression to find FTP, HTTP(S) and email URLs.
-	var regexToken = /(((ftp|https?):\/\/)[\-\w@:%_\+.~#?,&\/\/=]+)|((mailto:)?[_.\w-]+@([\w][\w\-]+\.)+[a-zA-Z]{2,3})/g;
-
-	// Iterate through any URLs in the text.
-	while ( ( matchArray = regexToken.exec( source ) ) !== null ) {
-		var token = matchArray[ 0 ];
-		urlArray.push( token );
-	}
-
-	return urlArray;
 };
 
 
