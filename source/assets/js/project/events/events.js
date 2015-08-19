@@ -17,6 +17,7 @@ gux.events.EventType = {
 	ANIMATE_COMPLETE: 'animate_complete',
 	OPEN: 'open',
 	CLOSE: 'close',
+	CLOSED: 'closed',
 	DOWN: goog.userAgent.MOBILE ? 'touchstart' : 'mousedown',
 	MOVE: goog.userAgent.MOBILE ? 'touchmove' : 'mousemove',
 	UP: goog.userAgent.MOBILE ? [ 'touchend', 'touchcancel' ] : 'mouseup'

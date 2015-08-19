@@ -23,6 +23,9 @@ gux.controllers.pages.Page = function( el ) {
 	this._stickies = [];
 	this._lazyLoaders = [];
 
+	this._animateInTweener = null;
+	this._animateOutTweener = null;
+
 	this._eventHandler = new goog.events.EventHandler( this );
 
 	this._onScrollUpdate = goog.bind( this.onScrollUpdate, this );
@@ -97,6 +100,16 @@ gux.controllers.pages.Page.prototype.disposeInternal = function() {
 		lazyLoader.dispose();
 	} );
 
+	if ( this._animateInTweener ) {
+		this._animateInTweener.kill();
+		this._animateInTweener = null;
+	}
+
+	if ( this._animateOutTweener ) {
+		this._animateOutTweener.kill();
+		this._animateOutTweener = null;
+	}
+
 	this._modules = null;
 	this._stickies = null;
 	this._lazyLoaders = null;
@@ -117,17 +130,17 @@ gux.controllers.pages.Page.prototype.animateIn = function( opt_lightboxId ) {
 
 	this.resize();
 
-	var tweener = gux.fullscreenLoader.close( opt_lightboxId );
+	this._animateInTweener = gux.fullscreenLoader.close( opt_lightboxId );
 
-	return tweener;
+	return this._animateInTweener;
 };
 
 
 gux.controllers.pages.Page.prototype.animateOut = function( opt_lightboxId ) {
 
-	var tweener = gux.fullscreenLoader.open( opt_lightboxId );
+	this._animateOutTweener = gux.fullscreenLoader.open( opt_lightboxId );
 
-	return tweener;
+	return this._animateOutTweener;
 };
 
 

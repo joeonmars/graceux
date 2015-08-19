@@ -3,6 +3,7 @@ goog.provide( 'gux.controllers.FullscreenLoader' );
 goog.require( 'goog.events.EventTarget' );
 goog.require( 'goog.events.EventHandler' );
 goog.require( 'goog.userAgent' );
+goog.require( 'gux.events' );
 goog.require( 'gux.fx.Shape' );
 goog.require( 'gux.templates.Main' );
 
@@ -10,6 +11,8 @@ goog.require( 'gux.templates.Main' );
 gux.controllers.FullscreenLoader = function() {
 
 	goog.base( this );
+
+	this.isActive = false;
 
 	this._container = goog.dom.getElement( 'fullscreen-loader-container' );
 	this._el = null;
@@ -23,6 +26,8 @@ goog.addSingletonGetter( gux.controllers.FullscreenLoader );
 gux.controllers.FullscreenLoader.prototype.open = function( opt_lightboxId ) {
 
 	this.resetContainer();
+
+	this.isActive = true;
 
 	var hasLightboxId = goog.isString( opt_lightboxId );
 
@@ -135,7 +140,7 @@ gux.controllers.FullscreenLoader.prototype.closeProjectLoader = function() {
 		'height': 0,
 		'clearProps': 'height',
 		'ease': Quad.easeInOut,
-		'onComplete': this.resetContainer,
+		'onComplete': this.onClosed,
 		'onCompleteScope': this
 	} );
 
@@ -149,11 +154,21 @@ gux.controllers.FullscreenLoader.prototype.closeSimpleLoader = function() {
 	var tweener = TweenMax.to( this._el, .8, {
 		'opacity': 0,
 		'ease': Quad.easeInOut,
-		'onComplete': this.resetContainer,
+		'onComplete': this.onClosed,
 		'onCompleteScope': this
 	} );
 
 	return tweener;
+};
+
+
+gux.controllers.FullscreenLoader.prototype.onClosed = function() {
+
+	this.resetContainer();
+
+	this.isActive = false;
+
+	this.dispatchEvent( gux.events.EventType.CLOSED );
 };
 
 

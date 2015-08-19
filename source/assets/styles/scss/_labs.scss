@@ -21,22 +21,6 @@
 			@include dots-pattern;
 		}
 
-		&:hover{
-			>.inner{
-				@include translate(-12px, -12px);
-			}
-
-			.text-container{
-				opacity: 0;
-			}
-
-			.preview{
-				>.image{
-					opacity: 1;
-				}
-			}
-		}
-
 		>.inner{
 			@include absoluteTopLeft;
 			z-index: 1;
@@ -184,6 +168,22 @@
 			&:nth-child(3n){
 				@include last();
 			}
+
+			&:hover{
+				>.inner{
+					@include translate(-12px, -12px);
+				}
+
+				.text-container{
+					opacity: 0;
+				}
+
+				.preview{
+					>.image{
+						opacity: 1;
+					}
+				}
+			}
 		}
 	}
 }
@@ -211,7 +211,30 @@
 		padding: gutter();
 
 		li{
-			margin: gutter() 0;
+			margin: span(2) 0;
+
+			>.inner{
+				position: relative;
+				display: block;
+				padding: 0;
+			}
+
+			.text-container{
+				display: block;
+				width: 100%;
+				padding: 4em;
+				padding-bottom: 30em;
+			}
+
+			.preview{
+				height: 26em;
+				bottom: 0;
+				top: auto;
+
+				>.image{
+					opacity: 1;
+				}
+			}
 		}
 	}
 }

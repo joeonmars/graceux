@@ -37,6 +37,8 @@ gux.controllers.Router = function() {
 	this._pageRequest = null;
 	this._imageLoader = null;
 
+	this._pendingToken = null;
+
 	// setup crossroads
 	crossroads.routed.add( this.onRouted, this );
 
@@ -57,6 +59,9 @@ gux.controllers.Router.prototype.init = function() {
 	// create the page instance from initial token
 	var initialToken = this._history.getToken();
 	crossroads.parse( initialToken );
+
+	//
+	goog.events.listen( gux.fullscreenLoader, gux.events.EventType.CLOSED, this.onFullscreenLoaderClosed, false, this );
 };
 
 
@@ -136,6 +141,11 @@ gux.controllers.Router.prototype.onRouted = function( request, data ) {
 
 	console.log( 'routed: ', request, data );
 
+	if ( gux.fullscreenLoader.isActive ) {
+		this._pendingToken = request;
+		return;
+	}
+
 	// stop current page request
 	if ( this._pageRequest ) {
 		this._pageRequest.dispose();
@@ -187,10 +197,6 @@ gux.controllers.Router.prototype.onLoadComplete = function( e ) {
 			this._page = this.createPage( pattern, el );
 
 		} else {
-
-			if ( this._page ) {
-				this._page.dispose();
-			}
 
 			var el = goog.dom.createDom( 'div' );
 			el.appendChild( goog.dom.htmlToDocumentFragment( e.target.getResponseText() ) );
@@ -260,6 +266,16 @@ gux.controllers.Router.prototype.onClick = function( e ) {
 		this._history.setToken( token );
 
 		e.preventDefault();
+	}
+};
+
+
+gux.controllers.Router.prototype.onFullscreenLoaderClosed = function( e ) {
+
+	if ( goog.isString( this._pendingToken ) ) {
+		crossroads.resetState();
+		crossroads.parse( this._pendingToken );
+		this._pendingToken = null;
 	}
 };
 
