@@ -1,12 +1,20 @@
 >.masthead{
+	position: relative;
 	height: 0;
 	padding-bottom: percentage(960/2133);
 	background-image: image-url('about-masthead.jpg');
 	background-size: 100%;
+
+	>.scroll{
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		margin-left: -2.5rem;
+	}
 }
 
 >.content{
-	padding-bottom: span(1);
+	padding: span(1) 0;
 	
 	@include breakpoint($break_mobile) {
 		@include container(6);

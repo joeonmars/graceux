@@ -1,8 +1,16 @@
 .masthead{
+	position: relative;
 	height: 0;
 	padding-bottom: percentage(960/2133);
-	background-image: image-url('about-masthead.jpg');
+	background-image: image-url('labs-masthead.jpg');
 	background-size: 100%;
+
+	>.scroll{
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		margin-left: -2.5rem;
+	}
 }
 
 .projects{

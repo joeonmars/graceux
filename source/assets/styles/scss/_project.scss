@@ -31,26 +31,7 @@
 	}
 
 	>.scroll{
-		@extend %reset-button;
 		margin-top: $border-padding;
-		width: 5rem;
-		height: 5rem;
-		background-color: $color_logo_blue;
-		overflow: hidden;
-		opacity: 1;
-		visibility: visible;
-		@include transition(opacity .5s, visibility .5s);
-
-		>.icon{
-			color: white;
-			font-size: 2.5rem;
-			@include animation( arrow-scroll 1.5s $easeOutQuint infinite );
-		}
-
-		&.hide{
-			visibility: hidden;
-			opacity: 0;
-		}
 	}
 
 	@include breakpoint($break_above_mobile) {
