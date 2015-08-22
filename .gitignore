@@ -3,6 +3,7 @@ craft/app/*
 craft/config/license.key
 craft/storage/*
 !craft/storage/backups
+!craft/storage/logo
 source/bower_components
 source/node_modules
 source/.sass-cache
