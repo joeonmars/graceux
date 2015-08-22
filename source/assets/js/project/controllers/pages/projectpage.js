@@ -84,13 +84,12 @@ gux.controllers.pages.ProjectPage.prototype.onClickEnlargeable = function( e ) {
 	var img = goog.dom.query( 'img', e.currentTarget )[ 0 ];
 
 	var srcs = img.srcset.split( ',' );
-	var src2x = goog.array.find( srcs, function( src ) {
-		return goog.string.contains( src, ' 2x' );
-	} );
-	src2x = src2x.replace( ' 2x', '' ).replace( /\s/g, '' );
+
+	var src2x = srcs[ 1 ].replace( ' 2x', '' ).replace( /\s/g, '' );
+	var src = ( window[ 'devicePixelRatio' ] === 1 ) ? srcs[ 0 ] : src2x;
 
 	var imageViewer = gux.controllers.ImageViewer.getInstance();
-	imageViewer.open( img, src2x );
+	imageViewer.open( img, src, src2x );
 };
 
 

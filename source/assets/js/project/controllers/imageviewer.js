@@ -46,67 +46,18 @@ goog.inherits( gux.controllers.ImageViewer, goog.events.EventTarget );
 goog.addSingletonGetter( gux.controllers.ImageViewer );
 
 
-gux.controllers.ImageViewer.prototype.open = function( refImg, largeSrc ) {
+gux.controllers.ImageViewer.prototype.open = function( refImg, defaultSrc, largeSrc ) {
 
 	this._refImg = refImg;
 
 	var el = soy.renderAsFragment( gux.templates.Main.ImageViewer, {
-		defaultSrc: refImg.src,
+		defaultSrc: defaultSrc,
 		largeSrc: largeSrc
 	} );
 	goog.dom.appendChild( this._container, el );
 
-	this._image = goog.dom.getElementByClass( 'image', this._container );
-	this._imageContainer = goog.dom.getElementByClass( 'image-container', this._container );
-
-	var overlay = goog.dom.getElementByClass( 'overlay', this._container );
-	var shadow = goog.dom.getElementByClass( 'shadow', this._container );
-
-	var startPosition = goog.style.getPageOffset( refImg );
-	var startSize = goog.style.getSize( refImg );
-
-	this._maxSize.width = parseInt( refImg.getAttribute( 'data-max-width' ) );
-	this._maxSize.height = parseInt( refImg.getAttribute( 'data-max-height' ) );
-
-	this.dispatchEvent( gux.events.EventType.OPEN );
-
-	// animate in
-	goog.dom.classlist.enable( refImg, 'hidden-keep-layout', true );
-	goog.dom.classlist.enable( shadow, 'show', true );
-	goog.dom.classlist.enable( this._container, 'show', true );
-
-	this.reset();
-	this.updateSize();
-
-	TweenMax.fromTo( this._imageContainer, .8, {
-		'width': startSize.width,
-		'height': startSize.height
-	}, {
-		'width': this._minSize.width,
-		'height': this._minSize.height,
-		'immediateRender': true,
-		'ease': Cubic.easeInOut,
-		'onComplete': this.onOpenComplete,
-		'onCompleteScope': this
-	} );
-
-	TweenMax.fromTo( this._image, .8, {
-		'left': startPosition.x + startSize.width / 2,
-		'top': startPosition.y + startSize.height / 2
-	}, {
-		'left': '50%',
-		'top': '50%',
-		'immediateRender': true,
-		'ease': Cubic.easeInOut
-	} );
-
-	TweenMax.fromTo( overlay, .8, {
-		'height': 0
-	}, {
-		'height': '100%',
-		'immediateRender': true,
-		'ease': Cubic.easeInOut
-	} );
+	var defaultImg = goog.dom.getElementByClass( 'default', el );
+	this._eventHandler.listenOnce( defaultImg, goog.events.EventType.LOAD, this.onDefaultImageLoad, false, this );
 };
 
 
@@ -268,6 +219,62 @@ gux.controllers.ImageViewer.prototype.onDragSlider = function( x, y ) {
 
 	this._zoom = 1 - fractionY;
 	this._zoomThrottle.fire();
+};
+
+
+gux.controllers.ImageViewer.prototype.onDefaultImageLoad = function( e ) {
+
+	this._image = goog.dom.getElementByClass( 'image', this._container );
+	this._imageContainer = goog.dom.getElementByClass( 'image-container', this._container );
+
+	var overlay = goog.dom.getElementByClass( 'overlay', this._container );
+	var shadow = goog.dom.getElementByClass( 'shadow', this._container );
+
+	var startPosition = goog.style.getPageOffset( this._refImg );
+	var startSize = goog.style.getSize( this._refImg );
+
+	this._maxSize.width = parseInt( this._refImg.getAttribute( 'data-max-width' ) );
+	this._maxSize.height = parseInt( this._refImg.getAttribute( 'data-max-height' ) );
+
+	this.dispatchEvent( gux.events.EventType.OPEN );
+
+	// animate in
+	goog.dom.classlist.enable( this._refImg, 'hidden-keep-layout', true );
+	goog.dom.classlist.enable( shadow, 'show', true );
+	goog.dom.classlist.enable( this._container, 'show', true );
+
+	this.reset();
+	this.updateSize();
+
+	TweenMax.fromTo( this._imageContainer, .8, {
+		'width': startSize.width,
+		'height': startSize.height
+	}, {
+		'width': this._minSize.width,
+		'height': this._minSize.height,
+		'immediateRender': true,
+		'ease': Cubic.easeInOut,
+		'onComplete': this.onOpenComplete,
+		'onCompleteScope': this
+	} );
+
+	TweenMax.fromTo( this._image, .8, {
+		'left': startPosition.x + startSize.width / 2,
+		'top': startPosition.y + startSize.height / 2
+	}, {
+		'left': '50%',
+		'top': '50%',
+		'immediateRender': true,
+		'ease': Cubic.easeInOut
+	} );
+
+	TweenMax.fromTo( overlay, .8, {
+		'height': 0
+	}, {
+		'height': '100%',
+		'immediateRender': true,
+		'ease': Cubic.easeInOut
+	} );
 };
 
 
