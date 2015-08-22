@@ -18,9 +18,12 @@ gux.controllers.ImageViewer = function() {
 	this._refImg = null;
 	this._image = null;
 	this._imageContainer = null;
+	this._controls = null;
 	this._slider = null;
 
 	this._containerSize = null;
+	this._trackHeight = 160;
+	this._handleHeight = 50;
 	this._margin = 20;
 	this._minSize = new goog.math.Size( 1, 1 );
 	this._maxSize = new goog.math.Size( 1, 1 );
@@ -79,6 +82,8 @@ gux.controllers.ImageViewer.prototype.close = function() {
 	this._hammer.destroy();
 	this._hammer = null;
 
+	gux.shortcuts.unregister( 'close-imageviewer' );
+
 	this.dispatchEvent( gux.events.EventType.CLOSE );
 
 	// animate out
@@ -87,9 +92,9 @@ gux.controllers.ImageViewer.prototype.close = function() {
 
 	var overlay = goog.dom.getElementByClass( 'overlay', this._container );
 	var shadow = goog.dom.getElementByClass( 'shadow', this._container );
-	var slider = goog.dom.getElementByClass( 'slider', this._container );
+	var controls = goog.dom.getElementByClass( 'controls', this._container );
 
-	goog.dom.classlist.enable( slider, 'show', false );
+	goog.dom.classlist.enable( controls, 'show', false );
 	goog.dom.classlist.enable( shadow, 'show', false );
 
 	TweenMax.to( this._imageContainer, .65, {
@@ -116,6 +121,7 @@ gux.controllers.ImageViewer.prototype.close = function() {
 			this._refImg = null;
 			this._image = null;
 			this._imageContainer = null;
+			this._controls = null;
 			this._slider = null;
 
 			goog.dom.removeChildren( this._container );
@@ -202,13 +208,15 @@ gux.controllers.ImageViewer.prototype.updateZoom = function() {
 	this.setSliderProgress( 1 - zoom );
 
 	var canEnlarge = ( this._maxSize.width > this._containerSize.width || this._maxSize.height > this._containerSize.height );
-	goog.dom.classlist.enable( this._slider, 'disabled', !canEnlarge );
+	goog.dom.classlist.enable( this._controls, 'disabled', !canEnlarge );
 };
 
 
 gux.controllers.ImageViewer.prototype.setSliderProgress = function( progress ) {
 
-	goog.style.setStyle( this._sliderDragger.target, 'top', progress * 100 + '%' );
+	var handleHeight = 50;
+	var sliderY = goog.math.lerp( this._handleHeight / 2, this._trackHeight - this._handleHeight / 2, progress );
+	goog.style.setStyle( this._sliderDragger.target, 'top', sliderY + 'px' );
 };
 
 
@@ -289,6 +297,9 @@ gux.controllers.ImageViewer.prototype.onOpenComplete = function() {
 	var overlay = goog.dom.getElementByClass( 'overlay', this._container );
 	this._eventHandler.listen( overlay, goog.events.EventType.CLICK, this.close, false, this );
 
+	var closeButton = goog.dom.getElementByClass( 'close', this._container );
+	this._eventHandler.listenOnce( closeButton, goog.events.EventType.CLICK, this.close, false, this );
+
 	this._eventHandler.listen( window, goog.events.EventType.RESIZE, this.resize, false, this );
 	this._eventHandler.listen( this._mouseWheelHandler, goog.events.MouseWheelHandler.EventType.MOUSEWHEEL, this.onMouseWheel, false, this );
 
@@ -323,14 +334,17 @@ gux.controllers.ImageViewer.prototype.onOpenComplete = function() {
 		'onUpdateScope': this
 	} );
 
+	// controls
+	this._controls = goog.dom.getElementByClass( 'controls', this._container );
+
 	// slider
 	this._slider = goog.dom.getElementByClass( 'slider', this._container );
 	var handle = goog.dom.getElementByClass( 'handle', this._slider );
-	this._sliderDragger = new goog.fx.Dragger( handle, null, new goog.math.Rect( 0, 0, 0, 180 ) );
+	this._sliderDragger = new goog.fx.Dragger( handle, null, new goog.math.Rect( 0, 0, 0, this._trackHeight ) );
 	this._sliderDragger.defaultAction = goog.bind( this.onDragSlider, this );
 	this.setSliderProgress( 1 - this._zoom );
 
-	goog.dom.classlist.enable( this._slider, 'show', true );
+	goog.dom.classlist.enable( this._controls, 'show', true );
 
 	// hammer
 	this._hammer = new Hammer.Manager( this._imageContainer, {
@@ -341,6 +355,9 @@ gux.controllers.ImageViewer.prototype.onOpenComplete = function() {
 
 	this._hammer.on( 'pinch', goog.bind( this.onPinch, this ) );
 	this._hammer.on( 'pinchstart', goog.bind( this.onPinchStart, this ) );
+
+	// shortcuts
+	gux.shortcuts.register( 'close-imageviewer', 'esc', goog.bind( this.close, this ) );
 
 	//
 	this._zoomThrottle.fire();

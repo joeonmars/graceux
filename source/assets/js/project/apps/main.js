@@ -10,6 +10,7 @@ goog.require( 'gux.controllers.Intro' );
 goog.require( 'gux.controllers.PortfolioNavigation' );
 goog.require( 'gux.controllers.MainScroller' );
 goog.require( 'gux.controllers.FullscreenLoader' );
+goog.require( 'gux.controllers.Shortcuts' );
 
 
 gux.apps.Main = function() {
@@ -34,6 +35,8 @@ gux.apps.Main = function() {
 			gux.siteMap = e.target.getResponseJson();
 
 			gux.router = gux.controllers.Router.getInstance();
+
+			gux.shortcuts = gux.controllers.Shortcuts.getInstance();
 
 			gux.portfolioNavigation = gux.controllers.PortfolioNavigation.getInstance();
 

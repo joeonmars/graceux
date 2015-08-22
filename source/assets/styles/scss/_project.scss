@@ -441,28 +441,31 @@ aside{
 				&:before, &:after{
 					position: absolute;
 					z-index: 1;
-					font-size: 2.5em;
-					margin: .5em;
-					padding: .6em;
+					margin: .2em;
+					font-size: 2.2rem;
+					line-height: 5rem;
+					width: 5rem;
+					height: 5rem;
+					text-align: center;
 					color: white;
 					background: $color_logo_blue;
 					opacity: 0;
 					@extend .icon;
-					@include transition(opacity .3s $easeOutCubic, visibility .3s, transform .3s $easeOutCubic);
+					@include transition(opacity .3s ease-in-out, visibility .3s, transform .3s ease-in-out);
 				}
 
 				&:before{
 					left: 0;
 					bottom: 0;
 					@extend .icon-arrow-enlarge-left-content;
-					@include translate(20px, -20px);
+					@include translate(8px, -8px);
 				}
 
 				&:after{
 					right: 0;
 					top: 0;
 					@extend .icon-arrow-enlarge-right-content;
-					@include translate(-20px, 20px);
+					@include translate(-8px, 8px);
 				}
 
 				&:hover{

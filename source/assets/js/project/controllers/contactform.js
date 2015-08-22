@@ -41,12 +41,17 @@ gux.controllers.ContactForm.prototype.activate = function() {
 
 	this._eventHandler.listen( this._closeButton, goog.events.EventType.CLICK, this.close, false, this );
 	this._eventHandler.listen( this._form, goog.events.EventType.SUBMIT, this.onSubmit, false, this );
+
+	// shortcuts
+	gux.shortcuts.register( 'close-form', 'esc', goog.bind( this.close, this ) );
 };
 
 
 gux.controllers.ContactForm.prototype.deactivate = function() {
 
 	this._eventHandler.removeAll();
+
+	gux.shortcuts.unregister( 'close-form' );
 };
 
 

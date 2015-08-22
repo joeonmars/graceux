@@ -44,5 +44,5 @@ gux.templates.Main.SimpleLoader = function(opt_data, opt_ignored) {
  * @notypecheck
  */
 gux.templates.Main.ImageViewer = function(opt_data, opt_ignored) {
-  return '<div id="image-viewer"><div class="overlay"></div><div class="image"><div class="image-container"><div class="shadow"></div><img src="' + opt_data.defaultSrc + '" class="default" draggable="false"><img src="' + opt_data.largeSrc + '" class="large" draggable="false"></div></div><div class="slider"><div class="inner"><div class="track"></div><div class="handle"></div></div></div></div>';
+  return '<div id="image-viewer"><div class="overlay"></div><div class="image"><div class="image-container"><div class="shadow"></div><img src="' + opt_data.defaultSrc + '" class="default" draggable="false"><img src="' + opt_data.largeSrc + '" class="large" draggable="false"></div></div><div class="controls"><button class="close"></button><div class="slider"><div class="inner"><div class="track"></div><div class="handle"></div></div></div></div></div>';
 };

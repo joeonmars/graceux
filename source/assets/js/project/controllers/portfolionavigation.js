@@ -95,6 +95,9 @@ gux.controllers.PortfolioNavigation.prototype.open = function() {
 	this._eventHandler.listen( window, goog.events.EventType.RESIZE, this.resize, false, this );
 
 	TweenMax.ticker.addEventListener( 'tick', this.update, this );
+
+	// shortcuts
+	gux.shortcuts.register( 'close-navigation', 'esc', goog.bind( this.close, this ) );
 };
 
 
@@ -121,6 +124,8 @@ gux.controllers.PortfolioNavigation.prototype.close = function() {
 		'y': 0,
 		'ease': Quint.easeOut
 	} );
+
+	gux.shortcuts.unregister( 'close-navigation' );
 };
 
 
