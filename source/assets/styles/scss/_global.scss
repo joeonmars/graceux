@@ -15,6 +15,7 @@ $min_height: 320px;
 $break_mobile: max-width 680px;
 $break_above_mobile: min-width 680px;
 $break_tablet: (min-width 680px) (max-width 1200px);
+$break_tablet_portrait: (min-width 680px) (max-width 1200px) (orientation portrait);
 $break_desktop: min-width 1200px;
 
 $easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1);

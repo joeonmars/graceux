@@ -118,25 +118,22 @@
 >.content{
 	@include container();
 	color: black;
+
+	@include breakpoint($break_tablet_portrait) {
+		@include with-layout($tablet-portrait-grid) {
+			@include container();
+		}
+	}
 }
 
 .details{
-	>section{
-		&:nth-child(2), &:nth-last-child(2) {
-			margin-top: span(1 of 12) !important;
-		}
-
-		&:first-child, &:nth-last-child(3) {
-			margin-bottom: span(1 of 12) !important;
-		}
-	}
 
 	@include breakpoint($break_mobile) {
 		@include full;
 
 		@include nested(12) {
 			>section{
-				margin: span(2) 0;
+				margin: span(3) 0;
 				@include clearfix;
 
 				&.full, &.fluid{
@@ -176,7 +173,7 @@
 
 		@include nested(12) {
 			>section{
-				margin: span(2) 0;
+				margin: span(3) 0;
 				@include clearfix;
 
 				&.full{
@@ -242,6 +239,82 @@
 						}
 						>figure{
 							@include span(isolate 6 at 2);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@include breakpoint($break_tablet_portrait) {
+		@include full;
+
+		@include nested(12) {
+			>section{
+				margin: span(3) 0;
+				@include clearfix;
+
+				&.full{
+					>article{
+						@include span(9);
+					}
+					>figure{
+						@include full;
+						margin-top: span(1);
+					}
+
+					&.media{
+						>figure{
+							&.media-col-2{
+								.mobile, .iphone4{
+									@include push(2);
+									@include span(4);
+
+									&:nth-child(2n) {
+										@include push(0);
+										@include span(4);
+									}
+								}
+							}
+							&.media-col-3{
+								@include full;
+								margin-left: 0;
+
+								.mobile, .iphone4{
+									@include span(4);
+									width: span(4) !important;
+
+									&:nth-child(3n) {
+										@include last;
+									}
+								}
+
+								.mobile .movable{
+									@include device-mobile(100%);
+								}
+
+								.iphone4 .movable{
+									@include device-iphone4(100%);
+								}
+							}
+						}
+					}
+				}
+
+				&.fluid{
+					>article{
+						@include span(isolate 6 at 1 first);
+					}
+					>figure{
+						@include span(isolate 6 at 7 last);
+					}
+
+					&:nth-child(odd) {
+						>article{
+							@include span(isolate 6 at 7 last);
+						}
+						>figure{
+							@include span(isolate 6 at 1 first);
 						}
 					}
 				}
@@ -367,27 +440,39 @@ aside{
 		@include full;
 		@include transform( translateY(0) !important );
 		padding: span(1 wide);
+
+		li{
+			@include inline-block(top);
+			margin-right: .5em;
+		}
 	}
 
 	@include breakpoint($break_tablet) {
 		@include full;
 		@include transform( translateY(0) !important );
-		padding: span(1 wide);
+		padding: span(1) 0;
 
 		>div{
 			@include span(5);
 
 			&.launch{
 				@include full;
-			}
-
-			&:nth-child(even) {
-				@include first;
+				@include push(1);
 			}
 
 			&:nth-child(odd) {
+				@include first;
+				@include push(1);
+			}
+
+			&:nth-child(even) {
 				@include last;
 			}
+		}
+
+		li{
+			@include inline-block(top);
+			margin-right: .5em;
 		}
 	}
 
