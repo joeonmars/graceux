@@ -83,6 +83,11 @@ body{
 
 .dummy-scroll{
   overflow: hidden !important;
+
+  >div{
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
+  }
 }
 
 *[data-sticky="true"] {

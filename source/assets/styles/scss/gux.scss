@@ -40,7 +40,6 @@
 			position: absolute;
 			margin-left: -15rem;
 			width: 30rem;
-			text-align: center;
 
 			>a{
 				display: inline-block;
@@ -56,7 +55,10 @@
 
 				h6{
 					@include inline-block(middle);
+					max-width: 250px;
 					font-size: 1.2rem;
+					line-height: 1.4;
+					text-align: left;
 				}
 
 				&:hover, &.active{
@@ -125,6 +127,15 @@
 		.projects{
 			display: none;
 		}
+	}
+
+	/* -- break-points -- */
+	@include breakpoint($break_tablet) {
+		font-size: .85rem;
+	}
+
+	@include breakpoint($break_desktop) {
+		font-size: 1rem;
 	}
 }
 
