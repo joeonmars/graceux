@@ -1,3 +1,141 @@
+@mixin device() {
+	.case{
+		background-size: 100% auto;
+		background-repeat: no-repeat;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: 0;
+	}
+
+	.image-container{
+		position: absolute;
+		z-index: 1;
+		border: 1px solid $color_logo_blue;
+		box-sizing: border-box;
+
+		>img{
+			width: 100%;
+			height: 100%;
+			border: none;
+		}
+	}
+}
+
+@mixin device-desktop($width) {
+	width: $width;
+	padding-bottom: #{534/961*$width} !important;
+	@include device();
+
+	.case{
+		background-image: image-url('devices/laptop.svg');
+	}
+
+	.image-container{
+		left: 13.6% !important;
+		top: 9.9% !important;
+		width: 72.52% !important;
+		height: 76.59% !important;
+	}
+}
+
+@mixin device-mobile($width) {
+	width: $width;
+	padding-bottom: #{742/352*$width} !important;
+	@include device();
+
+	.case{
+		background-image: image-url('devices/mobile.svg');
+	}
+
+	.image-container{
+		left: 7.1% !important;
+		top: 13.07% !important;
+		width: 86.36% !important;
+		height: 72.91% !important;
+	}
+}
+
+@mixin device-iphone4($width) {
+	width: $width;
+	padding-bottom: #{360/190*$width} !important;
+	@include device();
+
+	.case{
+		background-image: image-url('devices/iphone4.svg');
+	}
+
+	.image-container{
+		left: 6.8% !important;
+		top: 14.58% !important;
+		width: 85.67% !important;
+		height: 68.51% !important;
+	}
+}
+
+@mixin device-tablet-portrait($width) {
+	width: $width;
+	padding-bottom: #{740/502*$width} !important;
+	@include device();
+
+	.case{
+		background-image: image-url('devices/tablet-portrait.svg');
+	}
+
+	.image-container{
+		left: 7.76% !important;
+		top: 10% !important;
+		width: 85% !important;
+		height: 80% !important;
+	}
+}
+
+@mixin device-tablet-landscape($width) {
+	width: $width;
+	padding-bottom: #{502/740*$width} !important;
+	@include device();
+
+	.case{
+		background-image: image-url('devices/tablet-landscape.svg');
+	}
+
+	.image-container{
+		left: 10% !important;
+		top: 7.76% !important;
+		width: 80% !important;
+		height: 85% !important;
+	}
+}
+
+@mixin dots-pattern() {
+  @include retina-background('dots-pattern.png', 36px, 22px);
+  background-repeat: repeat;
+}
+
+
+@mixin dots-pattern-large() {
+  @include retina-background('dots-pattern-large.png', 72px, 44px);
+  background-repeat: repeat;
+}
+
+
+@mixin grab-cursor {
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: -o-grab;
+  cursor: -ms-grab;
+  cursor: grab;
+}
+
+@mixin grabbing-cursor {
+  cursor: -webkit-grabbing !important;
+  cursor: -moz-grabbing !important;
+  cursor: -o-grabbing !important;
+  cursor: -ms-grabbing !important;
+  cursor: grabbing !important;
+}
+
+
 %reset-button{
   border: none;
   outline: none;
@@ -109,6 +247,18 @@ article{
 			}
 		}
 	}
+}
+
+*[data-cursor="grabbing"] {
+	@include grabbing-cursor;
+}
+
+*[data-cursor="grab"] {
+	@include grab-cursor;
+}
+
+*[data-cursor="inherit"] {
+	cursor: inherit !important;
 }
 
 .scrollbar{
@@ -432,125 +582,4 @@ article{
 	&.keynote{
 		@include retina-icon('keynote');
 	}
-}
-
-@mixin device() {
-	.case{
-		background-size: 100% auto;
-		background-repeat: no-repeat;
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		z-index: 0;
-	}
-
-	.image-container{
-		position: absolute;
-		z-index: 1;
-		border: 1px solid $color_logo_blue;
-		box-sizing: border-box;
-
-		>img{
-			width: 100%;
-			height: 100%;
-			border: none;
-		}
-	}
-}
-
-@mixin device-desktop($width) {
-	width: $width;
-	padding-bottom: #{534/961*$width} !important;
-	@include device();
-
-	.case{
-		background-image: image-url('devices/laptop.svg');
-	}
-
-	.image-container{
-		left: 13.6% !important;
-		top: 9.9% !important;
-		width: 72.52% !important;
-		height: 76.59% !important;
-	}
-}
-
-@mixin device-mobile($width) {
-	width: $width;
-	padding-bottom: #{742/352*$width} !important;
-	@include device();
-
-	.case{
-		background-image: image-url('devices/mobile.svg');
-	}
-
-	.image-container{
-		left: 7.1% !important;
-		top: 13.07% !important;
-		width: 86.36% !important;
-		height: 72.91% !important;
-	}
-}
-
-@mixin device-iphone4($width) {
-	width: $width;
-	padding-bottom: #{360/190*$width} !important;
-	@include device();
-
-	.case{
-		background-image: image-url('devices/iphone4.svg');
-	}
-
-	.image-container{
-		left: 6.8% !important;
-		top: 14.58% !important;
-		width: 85.67% !important;
-		height: 68.51% !important;
-	}
-}
-
-@mixin device-tablet-portrait($width) {
-	width: $width;
-	padding-bottom: #{740/502*$width} !important;
-	@include device();
-
-	.case{
-		background-image: image-url('devices/tablet-portrait.svg');
-	}
-
-	.image-container{
-		left: 7.76% !important;
-		top: 10% !important;
-		width: 85% !important;
-		height: 80% !important;
-	}
-}
-
-@mixin device-tablet-landscape($width) {
-	width: $width;
-	padding-bottom: #{502/740*$width} !important;
-	@include device();
-
-	.case{
-		background-image: image-url('devices/tablet-landscape.svg');
-	}
-
-	.image-container{
-		left: 10% !important;
-		top: 7.76% !important;
-		width: 80% !important;
-		height: 85% !important;
-	}
-}
-
-
-@mixin dots-pattern() {
-  @include retina-background('dots-pattern.png', 36px, 22px);
-  background-repeat: repeat;
-}
-
-
-@mixin dots-pattern-large() {
-  @include retina-background('dots-pattern-large.png', 72px, 44px);
-  background-repeat: repeat;
 }

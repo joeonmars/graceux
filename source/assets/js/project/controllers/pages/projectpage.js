@@ -7,6 +7,7 @@ goog.require( 'gux.controllers.modules.Intro' );
 goog.require( 'gux.controllers.modules.Comparison' );
 goog.require( 'gux.controllers.modules.Workflow' );
 goog.require( 'gux.controllers.pages.Page' );
+goog.require( 'gux.Utils' );
 
 
 gux.controllers.pages.ProjectPage = function( el ) {
@@ -54,6 +55,12 @@ gux.controllers.pages.ProjectPage.prototype.init = function() {
 		this._eventHandler.listen( el, goog.events.EventType.CLICK, this.onClickEnlargeable, false, this );
 	}, this );
 
+	// query share buttons
+	var shareButtons = goog.dom.query( '.share a', this.el );
+	goog.array.forEach( shareButtons, function( el ) {
+		this._eventHandler.listen( el, goog.events.EventType.CLICK, this.onClickShareButton, false, this );
+	}, this );
+
 	// intro mouse scroll
 	if ( !goog.userAgent.MOBILE ) {
 
@@ -90,6 +97,14 @@ gux.controllers.pages.ProjectPage.prototype.onClickEnlargeable = function( e ) {
 
 	var imageViewer = gux.controllers.ImageViewer.getInstance();
 	imageViewer.open( img, src, src2x );
+};
+
+
+gux.controllers.pages.ProjectPage.prototype.onClickShareButton = function( e ) {
+
+	e.preventDefault();
+
+	gux.Utils.popup( e.currentTarget.href );
 };
 
 

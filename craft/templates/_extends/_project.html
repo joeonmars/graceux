@@ -80,15 +80,18 @@
 				<h6>{{ Copy.share }}</h6>
 				<ul>
 					<li class="underlined-button">
-						<a class="icon-facebook icon content" data-id="facebook"></a>
+						<a class="icon-facebook icon content" data-id="facebook"
+							href="https://www.facebook.com/sharer/sharer.php?u={{ entry.url }}" target="_blank" ></a>
 						<div class="underline"></div>
 					</li>
 					<li class="underlined-button">
-						<a class="icon-twitter icon content" data-id="twitter"></a>
+						<a class="icon-twitter icon content" data-id="twitter"
+							href="https://twitter.com/intent/tweet?original_referer={{ entry.url }}" target="_blank" ></a>
 						<div class="underline"></div>
 					</li>
 					<li class="underlined-button">
-						<a class="icon-google icon content" data-id="google"></a>
+						<a class="icon-google icon content" data-id="google"
+							href="https://plus.google.com/share?url={{ entry.url }}" target="_blank"></a>
 						<div class="underline"></div>
 					</li>
 				</ul>

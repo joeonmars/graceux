@@ -81,3 +81,10 @@ gux.Utils.popup = function( url ) {
     'resizable': true
   } );
 };
+
+
+gux.Utils.setCursorType = function( type, el ) {
+
+  var _el = el || goog.dom.query( 'html' )[ 0 ];
+  _el.setAttribute( 'data-cursor', type );
+};

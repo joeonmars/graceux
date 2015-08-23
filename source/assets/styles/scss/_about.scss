@@ -1,15 +1,40 @@
 >.masthead{
 	position: relative;
-	height: 0;
-	padding-bottom: percentage(960/2133);
 	background-image: image-url('about-masthead.jpg');
-	background-size: 100%;
+	background-position: center center;
 
 	>.scroll{
 		position: absolute;
 		bottom: 0;
 		left: 50%;
 		margin-left: -2.5rem;
+	}
+
+	@include breakpoint($break_above_mobile) {
+		background-size: auto 100%;
+	}
+
+	@include breakpoint($break_tablet) {
+		height: calc(100vh - #{7em*.85} - #{$border-padding});
+	}
+
+	@include breakpoint($break_tablet_portrait) {
+		background-size: 100% auto;
+		background-repeat: no-repeat;
+	}
+
+	@include breakpoint($break_desktop) {
+		height: calc(100vh - 7em - #{$border-padding});
+	}
+
+	@include breakpoint($break_mobile) {
+		height: 0;
+		padding-bottom: percentage(960/2133);
+		background-size: 100% 100%;
+
+		>.scroll{
+			display: none;
+		}
 	}
 }
 

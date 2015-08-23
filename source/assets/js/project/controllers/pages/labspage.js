@@ -18,7 +18,7 @@ gux.controllers.pages.LabsPage.prototype.init = function() {
 
 	var shapeContainers = goog.dom.query( '.projects .shapes', this.el );
 	var shape = gux.fx.Shape.getInstance();
-	var colors = [ 'red', 'blue', 'yellow', 'green' ];
+	var colors = [ 'yellow', 'blue', 'red', 'green' ];
 	var types = [ 'g', 'u', 'x' ];
 
 	goog.array.forEach( shapeContainers, function( container ) {

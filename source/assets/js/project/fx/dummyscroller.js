@@ -67,7 +67,7 @@ gux.fx.DummyScroller = function( viewOuter, scrollbar, opt_speed, opt_ease ) {
   this._draggable = new Draggable( this._viewOuter, {
     'type': 'scrollTop',
     'zIndexBoost': false,
-    'cursor': 'initial',
+    'cursor': 'inherit',
     'throwProps': true,
     'onDrag': this.onThrowUpdate,
     'onDragScope': this,
@@ -131,6 +131,8 @@ gux.fx.DummyScroller.prototype.lock = function( opt_y ) {
   if ( goog.isNumber( opt_y ) ) {
     this.scrollTo( opt_y );
   }
+
+  this._draggable.enabled( false );
 };
 
 
@@ -144,6 +146,8 @@ gux.fx.DummyScroller.prototype.unlock = function() {
 
   goog.style.setStyle( this._scrollbar, 'visibility', 'visible' );
   goog.style.setStyle( this._dummyOuter, 'overflow', 'auto' );
+
+  this._draggable.enabled( goog.userAgent.MOBILE ? true : false );
 };
 
 

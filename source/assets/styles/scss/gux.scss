@@ -257,22 +257,22 @@
 
 					&:nth-child(3n+1) {
 						@extend .icon-shape-g-stroke;
-						@include animation( floating-1 2s linear infinite alternate );
+						@include animation( floating-1 4s $easeInOutSine infinite alternate );
 					}
 
 					&:nth-child(3n+2) {
 						@extend .icon-shape-u-stroke;
-						@include animation( floating-2 3s linear infinite alternate );
+						@include animation( floating-2 3s $easeInOutSine infinite alternate );
 					}
 
 					&:nth-child(3n+3) {
 						@extend .icon-shape-x-stroke;
-						@include animation( floating-3 4s linear infinite alternate );
+						@include animation( floating-3 4s $easeInOutSine infinite alternate );
 					}
 
 					&:nth-child(3n+4) {
 						@extend .icon-shape-x-stroke;
-						@include animation( floating-1 5s linear infinite alternate );
+						@include animation( floating-1 5s $easeInOutSine infinite alternate );
 					}
 				}
 			}
@@ -372,6 +372,7 @@
 			z-index: 1;
 			width: 0;
 			height: 0;
+			@include grab-cursor;
 			
 			&.loaded{
 				.default{

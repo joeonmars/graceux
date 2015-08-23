@@ -8,6 +8,7 @@ goog.require( 'goog.userAgent' );
 goog.require( 'goog.style' );
 goog.require( 'gux.events' );
 goog.require( 'gux.templates.Main' );
+goog.require( 'gux.Utils' );
 
 
 gux.controllers.ImageViewer = function() {
@@ -318,7 +319,12 @@ gux.controllers.ImageViewer.prototype.onOpenComplete = function() {
 	this._draggable = new Draggable( this._image, {
 		'type': 'x,y',
 		'throwProps': true,
-		'zIndexBoost': false
+		'zIndexBoost': false,
+		'cursor': goog.style.getComputedCursor( this._image ),
+		'onDragStart': this.onDragStart,
+		'onDragStartScope': this,
+		'onDragEnd': this.onDragEnd,
+		'onDragEndScope': this
 	} );
 
 	// zoom tweener
@@ -388,4 +394,18 @@ gux.controllers.ImageViewer.prototype.onPinch = function( e ) {
 gux.controllers.ImageViewer.prototype.onPinchStart = function( e ) {
 
 	this._lastPinchScale = 1;
+};
+
+
+gux.controllers.ImageViewer.prototype.onDragStart = function() {
+
+	gux.Utils.setCursorType( 'grabbing' );
+	gux.Utils.setCursorType( 'inherit', this._image );
+};
+
+
+gux.controllers.ImageViewer.prototype.onDragEnd = function() {
+
+	gux.Utils.setCursorType( '' );
+	gux.Utils.setCursorType( '', this._image );
 };

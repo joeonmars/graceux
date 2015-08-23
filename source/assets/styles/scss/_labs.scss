@@ -1,9 +1,7 @@
 .masthead{
 	position: relative;
-	height: 0;
-	padding-bottom: percentage(960/2133);
 	background-image: image-url('labs-masthead.jpg');
-	background-size: 100%;
+	background-position: center center;
 
 	>.scroll{
 		position: absolute;
@@ -11,6 +9,37 @@
 		left: 50%;
 		margin-left: -2.5rem;
 	}
+
+	@include breakpoint($break_above_mobile) {
+		background-size: auto 100%;
+	}
+
+	@include breakpoint($break_tablet) {
+		height: calc(100vh - #{7em*.85} - #{$border-padding});
+	}
+
+	@include breakpoint($break_tablet_portrait) {
+		background-size: 100% auto;
+		background-repeat: no-repeat;
+	}
+
+	@include breakpoint($break_desktop) {
+		height: calc(100vh - 7em - #{$border-padding});
+	}
+
+	@include breakpoint($break_mobile) {
+		height: 0;
+		padding-bottom: percentage(960/2100);
+		background-size: 100% 100%;
+
+		>.scroll{
+			display: none;
+		}
+	}
+}
+
+hr{
+	@include container(12);
 }
 
 .projects{
@@ -19,35 +48,21 @@
 	li{
 		position: relative;
 
-		&:after{
-			@include absoluteTopLeft;
-			z-index: 0;
-			content: "";
-			display: block;
-			width: calc(100% - 1px);
-			height: calc(100% - 1px);
-			@include dots-pattern;
-		}
-
 		>.inner{
 			@include absoluteTopLeft;
 			z-index: 1;
-			display: table;
 			width: 100%;
 			height: 100%;
-			padding: 4em;
-			background: $color_lightergray;
-			//border: 1px solid $color_lightgray;
-			@include translate(0, 0);
-			@include transition(transform, .15s, $easeOutQuint);
+			@include flexbox((
+				display: flex,
+				align-items: center
+			));
 		}
 
 		.text-container{
 			position: relative;
 			z-index: 1;
 			width: 100%;
-			display: table-cell;
-			vertical-align: middle;
 			opacity: 1;
 			@include transition(opacity .15s $easeOutQuint);
 
@@ -65,7 +80,6 @@
 			z-index: 0;
 			width: 100%;
 			height: 100%;
-			overflow: hidden;
 
 			>.shapes{
 				position: absolute;
@@ -109,19 +123,19 @@
 					}
 
 					&:nth-child(1), &:nth-child(5) {
-						@include animation( floating-1 2s linear infinite alternate );
+						@include animation( floating-1 4s $easeInOutSine infinite alternate );
 					}
 
 					&:nth-child(2), &:nth-child(6) {
-						@include animation( floating-2 3s linear infinite alternate );
+						@include animation( floating-2 3s $easeInOutSine infinite alternate );
 					}
 
 					&:nth-child(3) {
-						@include animation( floating-3 4s linear infinite alternate );
+						@include animation( floating-3 4s $easeInOutSine infinite alternate );
 					}
 
 					&:nth-child(4) {
-						@include animation( floating-1 3s linear infinite alternate );
+						@include animation( floating-1 3s $easeInOutSine infinite alternate );
 					}
 				}
 			}
@@ -133,37 +147,34 @@
 				background-size: cover;
 				background-position: center center;
 				opacity: 0;
-				@include transition(opacity .35s);
+				@include translate(0, 0);
+				@include transition(opacity .35s, transform, .15s, $easeOutQuint);
 			}
 		}
 	}
 }
 
+
 @include breakpoint($break_above_mobile) {
 
 	.intro{
 		@include container(12);
-		padding: span(1);
+		padding: span(2) 0 span(1) 0;
 
 		>h3{
 			@include span(5);
+			@include push(1);
 		}
 
 		>div{
-			@include span(7);
+			@include span(6);
+			@include push(1);
 		}
 	}
+}
 
-	.featured{
-		@include container(12);
-		padding: 0 gutter();
-		margin-bottom: gutter();
 
-		.text-container{
-			@include span(6 last);
-			padding: 10em 0;
-		}
-	}
+@include breakpoint($break_desktop) {
 
 	.projects{
 		@include container(12);
@@ -171,17 +182,18 @@
 		li{
 			@include span(4);
 			margin-bottom: gutter();
-			height: 45em;
+			height: 0;
+			padding-bottom: span(4);
+
+			>.inner{
+				padding: 4em;
+			}
 
 			&:nth-child(3n){
 				@include last();
 			}
 
 			&:hover{
-				>.inner{
-					@include translate(-12px, -12px);
-				}
-
 				.text-container{
 					opacity: 0;
 				}
@@ -189,6 +201,7 @@
 				.preview{
 					>.image{
 						opacity: 1;
+						@include translate(-12px, -12px);
 					}
 				}
 			}
@@ -196,22 +209,62 @@
 	}
 }
 
+
+@include breakpoint($break_tablet) {
+
+	.projects{
+		@include container(12);
+
+		li{
+			@include span(5);
+			margin-bottom: gutter();
+			height: 0;
+			padding-bottom: span(5);
+
+			>.inner{
+				padding-right: 4em;
+			}
+
+			&:nth-child(2n-1){
+				@include first;
+				@include push(1);
+			}
+
+			&:hover{
+				.text-container{
+					opacity: 0;
+				}
+
+				.preview{
+					>.image{
+						opacity: 1;
+						@include translate(-12px, -12px);
+					}
+				}
+			}
+		}
+	}
+}
+
+
 @include breakpoint($break_mobile) {
 	@include container(8);
 
 	.intro{
 		@include container(8);
-		padding: span(1 of 8);
-	}
+		
+		@include with-layout(8) {
+			padding: span(1) 0;
 
-	.featured{
-		@include container(8);
-		padding: span(1 of 8);
-		margin-bottom: gutter();
-		font-size: .65rem;
+			>h3{
+				@include span(6);
+				@include push(1);
+			}
 
-		.text-container{
-			padding: 4em 0;
+			>div{
+				@include span(6);
+				@include push(1);
+			}
 		}
 	}
 
