@@ -41,67 +41,6 @@
 >.content{
 	padding: span(1) 0;
 	
-	@include breakpoint($break_mobile) {
-		@include container(6);
-		padding: gutter();
-
-		aside{
-			@include full;
-			@include transform( translateY(0) !important );
-
-			.portrait{
-				margin: span(1) auto;
-				width: 30%;
-				padding-bottom: 30%;
-			}
-		}
-
-		.details{
-			@include full;
-
-			@include with-layout(6) {
-				.heading{
-					text-align: center;
-
-					.border{
-						margin: 2rem auto;
-					}
-
-					.greeting{
-						font-size: 3em;
-					}
-				}
-
-				.merit{
-					margin-bottom: span(1);
-
-					h4{
-						margin-bottom: .6em;
-					}
-				}
-
-				.social{
-					font-size: .8em;
-					text-align: center;
-
-					.border{
-						margin: 2rem auto;
-					}
-
-					ul{
-						@include span(5);
-						margin-left: span(1);
-						text-align: left;
-					}
-
-					.or{
-						@include full;
-					}
-				}
-			}
-		}
-	}
-
 	@include breakpoint($break_above_mobile) {
 		@include container(12);
 		margin-top: span(.5);
@@ -163,6 +102,144 @@
 						&:nth-child(even) {
 							@include last;
 						}
+					}
+				}
+			}
+		}
+	}
+
+	@include breakpoint($break_tablet_portrait) {
+		@include container(12);
+		margin-top: span(.5);
+
+		aside{
+			@include full;
+			@include transform( translateY(0) !important );
+
+			.portrait{
+				margin: span(1) auto;
+				width: 20%;
+				padding-bottom: 20%;
+			}
+		}
+
+		.details{
+			@include span(10);
+			@include push(1);
+
+			@include with-layout(10) {
+
+				.heading{
+					text-align: center;
+
+					.border{
+						margin: 2rem auto;
+					}
+				}
+
+				.status{
+					@include full;
+				}
+
+				.merit{
+					@include span(5);
+
+					&.has-figure{
+						@include full;
+
+						.heading-container{
+							padding-right: span(5);
+						}
+
+						.content-container{
+							p{
+								@include span(5 first);
+							}
+
+							.figure{
+								@include span(5 last);
+							}
+						}
+					}
+
+					&:nth-child(even) {
+						@include last;
+					}
+
+					h4{
+						width: 80%;
+						min-height: 12rem;
+					}
+				}
+
+				.social{
+					li{
+						@include span(5);
+
+						&:nth-child(even) {
+							@include last;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@include breakpoint($break_mobile) {
+		@include container(6);
+		padding: gutter();
+
+		aside{
+			@include full;
+			@include transform( translateY(0) !important );
+
+			.portrait{
+				margin: span(1) auto;
+				width: 30%;
+				padding-bottom: 30%;
+			}
+		}
+
+		.details{
+			@include full;
+
+			@include with-layout(6) {
+				.heading{
+					text-align: center;
+
+					.border{
+						margin: 2rem auto;
+					}
+
+					.greeting{
+						font-size: 3em;
+					}
+				}
+
+				.merit{
+					margin-bottom: span(1);
+
+					h4{
+						margin-bottom: .6em;
+					}
+				}
+
+				.social{
+					font-size: .8em;
+					text-align: center;
+
+					.border{
+						margin: 2rem auto;
+					}
+
+					ul{
+						@include span(5);
+						margin-left: span(1);
+						text-align: left;
+					}
+
+					.or{
+						@include full;
 					}
 				}
 			}

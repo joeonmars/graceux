@@ -25,8 +25,7 @@
 
 		    {% default %}
 		    	{% set actualImageWidth = utils.getActualImageWidth(media) %}
-		        <div class="image {{device}} {% if device != null %}device{% endif %}"
-		        	{% if media.width/media.height < 1.5 %}style="width:{{ actualImageWidth }}px;"{% endif %}
+		        <div class="image {{device}} {% if device != null %}device{% endif %}" style="max-width:{{ actualImageWidth }}px;"
 		        	{% if feature.allowEnlarge and media.width >= 960 %}data-allow-enlarge{% endif %}>
 		        	<div class="aspect-container" {% if device == null %}style="padding-bottom:{{ media.height/media.width*100 }}%"{% endif %}>
 			        	<div class="movable">
