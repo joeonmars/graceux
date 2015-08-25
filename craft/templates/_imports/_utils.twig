@@ -60,14 +60,7 @@
         {# Determine the image size that 1X screens should get #}
         {% set width = (cssWidth > maxCssWidth ? maxCssWidth : cssWidth) %}
 
-        {# Determine the image size that 2X screens should get #}
-        {% set width2x = (width * 2) > image.width ? image.width : (width * 2) %}
-
-        {%- if is2x %}
-            {{ width2x }}
-        {% else %}
-            {{ width }}
-        {% endif %}
+        {{ width }}
     {% endspaceless -%}
 {% endmacro %}
 
