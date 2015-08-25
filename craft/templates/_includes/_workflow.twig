@@ -4,13 +4,13 @@
 
 <figure class="workflow">
 
-	<div class="image-container" style="width:{{ utils.getActualImageWidth(firstImage) }}px">
+	<div class="image-container" style="width:{{ utils.getActualImageWidth(firstImage, 960) }}px">
 		<div class="scroller" style="padding-bottom:{{ (firstImage.height/firstImage.width*100)|round }}%">
 			<ul>
 			{% for step in workflow.step %}
 			    <li>
 			    	{% set image = step.image[0] %}
-			    	<img {{ utils.srcset(image, 975, true) }} draggable="false">
+			    	<img {{ utils.srcset(image, 960, true) }} draggable="false">
 			   	</li>
 			{% endfor %}
 			</ul>

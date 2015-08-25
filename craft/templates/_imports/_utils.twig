@@ -49,22 +49,49 @@
 {% endmacro %}
 
 
-{% macro getActualImageWidth(image) %}
+{% macro getActualImageWidth(image, maxCssWidth) %}
     {%- spaceless %}
         {# Is this a 2X image? #}
         {% set is2x = image.filename matches '/@2x\\.\\w+$/' %}
 
+        {# Determine the CSS width for the image, if it were output at 100% #}
+        {% set cssWidth = (is2x ? round(image.width / 2) : image.width) %}
+
+        {# Determine the image size that 1X screens should get #}
+        {% set width = (cssWidth > maxCssWidth ? maxCssWidth : cssWidth) %}
+
+        {# Determine the image size that 2X screens should get #}
+        {% set width2x = (width * 2) > image.width ? image.width : (width * 2) %}
+
         {%- if is2x %}
-            {{ round(image.width/2) }}
+            {{ width2x }}
         {% else %}
-            {{ image.width }}
+            {{ width }}
         {% endif %}
     {% endspaceless -%}
 {% endmacro %}
 
 
-{% macro dataMaxSize(image) %}
+{% macro dataMaxSize(image, maxCssWidth) %}
     {%- spaceless %}
-        data-max-width="{{ image.width }}" data-max-height="{{ image.height }}"
+        {# Is this a 2X image? #}
+        {% set is2x = image.filename matches '/@2x\\.\\w+$/' %}
+
+        {# Determine the CSS width for the image, if it were output at 100% #}
+        {% set cssWidth = (is2x ? round(image.width / 2) : image.width) %}
+
+        {# Determine the image size that 1X screens should get #}
+        {% set width = (cssWidth > maxCssWidth ? maxCssWidth : cssWidth) %}
+        {% set height = round(width / (image.width / image.height)) %}
+
+        {# Determine the image size that 2X screens should get #}
+        {% set width2x = (width * 2) > image.width ? image.width : (width * 2) %}
+        {% set height2x = round(width2x / (image.width / image.height)) %}
+
+        {%- if is2x %}
+            data-max-width="{{ width2x }}" data-max-height="{{ height2x }}"
+        {% else %}
+            data-max-width="{{ width }}" data-max-height="{{ height }}"
+        {% endif %}
     {% endspaceless -%}
 {% endmacro %}
