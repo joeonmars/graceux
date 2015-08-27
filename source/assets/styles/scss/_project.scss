@@ -134,7 +134,7 @@
 
 		@include nested(12) {
 			>section{
-				margin: span(3) 0;
+				margin: span(2) 0;
 				@include clearfix;
 
 				&.full, &.fluid{
@@ -174,7 +174,7 @@
 
 		@include nested(12) {
 			>section{
-				margin: span(3) 0;
+				margin: span(2) 0;
 				@include clearfix;
 
 				&.full{
@@ -252,7 +252,7 @@
 
 		@include nested(12) {
 			>section{
-				margin: span(3) 0;
+				margin: span(2) 0;
 				@include clearfix;
 
 				&.full{

@@ -7,12 +7,13 @@
 	</article>
 	<figure {%if feature.fadeEnabled %}class="fade-enabled"{% endif %}>
 		{% set firstImage = feature.images[0] %}
-		<div class="comparison-container" style="width:{{firstImage.width}}px">
+		{% set actualImageWidth = utils.getActualImageWidth(firstImage, 960) %}
+		<div class="comparison-container" style="width:{{actualImageWidth}}px">
 			<div class="images-container" style="padding-bottom:{{ firstImage.height/firstImage.width*100 }}%">
 				<div class="inner">
 				{% for image in feature.images %}
 				    <div class="image-container">
-				    	<img {{ utils.srcset(image, 975) }} draggable="false">
+				    	<img {{ utils.srcset(image, 960) }} draggable="false">
 				    </div>
 				{% endfor %}
 				</div>
