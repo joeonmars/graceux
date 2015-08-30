@@ -1,10 +1,17 @@
 {% import "_imports/_utils" as utils %}
 
 <section class="feature media {{ feature.layout }}">
+	{% if feature.heading or feature.body %}
 	<article {% if feature.layout == 'fluid' %}data-sticky="true"{% endif %}>
+		{% if feature.heading %}
 		{% include "_includes/_border-heading" with {'tag': 'h4', 'bottom': true, 'text': feature.heading} %}
+		{% endif %}
+
+		{% if feature.body %}
 		<div>{{ feature.body }}</div>
+		{% endif %}
 	</article>
+	{% endif %}
 
 	{% set device = (feature.device != 'none' ? feature.device : null) %}
 	{% set mediaColumns = min(feature.media|length, 3) %}
