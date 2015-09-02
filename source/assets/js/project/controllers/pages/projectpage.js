@@ -1,7 +1,5 @@
 goog.provide( 'gux.controllers.pages.ProjectPage' );
 
-goog.require( 'goog.events.MouseWheelHandler' );
-goog.require( 'goog.string' );
 goog.require( 'gux.controllers.ImageViewer' );
 goog.require( 'gux.controllers.modules.Intro' );
 goog.require( 'gux.controllers.modules.Comparison' );
@@ -11,11 +9,6 @@ goog.require( 'gux.Utils' );
 
 
 gux.controllers.pages.ProjectPage = function( el ) {
-
-	this._autoScrollTweener = null;
-	this._mouseWheelHandler = new goog.events.MouseWheelHandler( el );
-
-	this._scrollButton = goog.dom.query( '.intro .scroll', el )[ 0 ];
 
 	goog.base( this, el );
 };
@@ -60,27 +53,10 @@ gux.controllers.pages.ProjectPage.prototype.init = function() {
 	goog.array.forEach( shareButtons, function( el ) {
 		this._eventHandler.listen( el, goog.events.EventType.CLICK, this.onClickShareButton, false, this );
 	}, this );
-
-	// intro mouse scroll
-	if ( !goog.userAgent.MOBILE ) {
-
-		gux.mainScroller.hideScrollbar();
-
-		this._eventHandler.listen( this._scrollButton, goog.events.EventType.CLICK, this.handleMouseEventOnIntro, false, this );
-
-		this._eventHandler.listen( this._mouseWheelHandler,
-			goog.events.MouseWheelHandler.EventType.MOUSEWHEEL, this.handleMouseEventOnIntro, false, this );
-	}
 };
 
 
 gux.controllers.pages.ProjectPage.prototype.disposeInternal = function() {
-
-	this._mouseWheelHandler.dispose();
-
-	if ( this._autoScrollTweener ) {
-		this._autoScrollTweener.kill();
-	}
 
 	goog.base( this, 'disposeInternal' );
 };
@@ -105,52 +81,4 @@ gux.controllers.pages.ProjectPage.prototype.onClickShareButton = function( e ) {
 	e.preventDefault();
 
 	gux.Utils.popup( e.currentTarget.href );
-};
-
-
-gux.controllers.pages.ProjectPage.prototype.onScrollUpdate = function( progress, y ) {
-
-	goog.base( this, 'onScrollUpdate', progress, y );
-
-	var atTop = ( progress === 0 );
-	goog.dom.classlist.enable( this._scrollButton, 'hide', !atTop );
-	this._scrollButton.disabled = !atTop;
-};
-
-
-gux.controllers.pages.ProjectPage.prototype.handleMouseEventOnIntro = function( e ) {
-
-	var isClick = ( e.type === goog.events.EventType.CLICK );
-	var isMousewheel = ( e.type === goog.events.MouseWheelHandler.EventType.MOUSEWHEEL );
-
-	if ( isMousewheel ) {
-		e.preventDefault();
-		e.stopPropagation();
-	}
-
-	if ( ( isMousewheel && !this._autoScrollTweener && e.deltaY > 5 ) || isClick ) {
-
-		var el = goog.dom.query( '.intro .container', this.el )[ 0 ];
-		var height = goog.style.getSize( el ).height;
-		var prop = {
-			scrollY: 0
-		};
-
-		this._autoScrollTweener = TweenMax.fromTo( prop, 1, {
-			scrollY: 0
-		}, {
-			scrollY: height,
-			'onUpdate': function() {
-				gux.mainScroller.scrollTo( prop.scrollY, true );
-			},
-			'onComplete': function() {
-				this._eventHandler.unlisten( this._mouseWheelHandler,
-					goog.events.MouseWheelHandler.EventType.MOUSEWHEEL, this.handleMouseEventOnIntro, false, this );
-			},
-			'onCompleteScope': this,
-			'ease': Cubic.easeInOut
-		} );
-
-		gux.mainScroller.showScrollbar();
-	}
 };

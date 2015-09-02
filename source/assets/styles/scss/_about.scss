@@ -1,9 +1,14 @@
->.masthead{
+.intro{
 	position: relative;
 	background-image: image-url('about-masthead.jpg');
 	background-position: center center;
 
-	>.scroll{
+	.container{
+		position: relative;
+		height: 100%;
+	}
+	
+	.scroll{
 		position: absolute;
 		bottom: 0;
 		left: 50%;
@@ -32,7 +37,7 @@
 		padding-bottom: percentage(960/2133);
 		background-size: 100% 100%;
 
-		>.scroll{
+		.scroll{
 			display: none;
 		}
 	}

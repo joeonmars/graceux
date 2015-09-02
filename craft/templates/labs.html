@@ -15,13 +15,15 @@
 {% block content %}
 <div id="labs">
 
-	<section class="masthead">
-		<button class="scroll">
-			<div class="icon icon-arrow-down"></div>
-		</button>
+	<section class="intro">
+		<div class="container">
+			<button class="scroll">
+				<div class="icon icon-arrow-down"></div>
+			</button>
+		</div>
 	</section>
 	
-	<article class="intro">
+	<article class="heading">
 		{% include "_includes/_border-heading"
 			with {'tag': 'h3', 'bottom': true, 'text': entry.heading} %}
 		<div>

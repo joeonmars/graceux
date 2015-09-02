@@ -3,6 +3,7 @@ goog.provide( 'gux.controllers.pages.Page' );
 goog.require( 'goog.async.Throttle' );
 goog.require( 'goog.events.EventTarget' );
 goog.require( 'goog.events.EventHandler' );
+goog.require( 'goog.events.MouseWheelHandler' );
 goog.require( 'goog.dom.classlist' );
 goog.require( 'goog.net.XhrIo' );
 goog.require( 'gux.controllers.ContactForm' );
@@ -18,6 +19,7 @@ gux.controllers.pages.Page = function( el ) {
 	this.el = el;
 
 	this._mainContainer = goog.dom.getElement( 'main-container' );
+	this._scrollButton = goog.dom.query( '.intro .scroll', el )[ 0 ];
 
 	this._modules = [];
 	this._stickies = [];
@@ -25,8 +27,10 @@ gux.controllers.pages.Page = function( el ) {
 
 	this._animateInTweener = null;
 	this._animateOutTweener = null;
+	this._autoScrollTweener = null;
 
 	this._eventHandler = new goog.events.EventHandler( this );
+	this._mouseWheelHandler = new goog.events.MouseWheelHandler( el );
 
 	this._onScrollUpdate = goog.bind( this.onScrollUpdate, this );
 
@@ -77,6 +81,17 @@ gux.controllers.pages.Page.prototype.init = function() {
 		return lazyLoader;
 	} );
 
+	// intro mouse scroll
+	if ( !goog.userAgent.MOBILE && this._scrollButton ) {
+
+		gux.mainScroller.hideScrollbar();
+
+		this._eventHandler.listen( this._scrollButton, goog.events.EventType.CLICK, this.handleMouseEventOnIntro, false, this );
+
+		this._eventHandler.listen( this._mouseWheelHandler,
+			goog.events.MouseWheelHandler.EventType.MOUSEWHEEL, this.handleMouseEventOnIntro, false, this );
+	}
+
 	//
 	gux.mainScroller.addCallback( gux.events.EventType.SCROLL_UPDATE, this._onScrollUpdate );
 
@@ -110,9 +125,15 @@ gux.controllers.pages.Page.prototype.disposeInternal = function() {
 		this._animateOutTweener = null;
 	}
 
+	if ( this._autoScrollTweener ) {
+		this._autoScrollTweener.kill();
+	}
+
 	this._modules = null;
 	this._stickies = null;
 	this._lazyLoaders = null;
+
+	this._mouseWheelHandler.dispose();
 
 	this._eventHandler.removeAll();
 	this._eventHandler.dispose();
@@ -184,6 +205,12 @@ gux.controllers.pages.Page.prototype.onScrollUpdate = function( progress, y ) {
 	goog.array.forEach( this._lazyLoaders, function( lazyLoader ) {
 		lazyLoader.update( y );
 	} );
+
+	if ( this._scrollButton ) {
+		var atTop = ( progress === 0 );
+		goog.dom.classlist.enable( this._scrollButton, 'hide', !atTop );
+		this._scrollButton.disabled = !atTop;
+	}
 };
 
 
@@ -193,6 +220,45 @@ gux.controllers.pages.Page.prototype.onClickEmailButton = function( e ) {
 
 	var contactForm = gux.controllers.ContactForm.getInstance();
 	contactForm.open();
+};
+
+
+
+gux.controllers.pages.Page.prototype.handleMouseEventOnIntro = function( e ) {
+
+	var isClick = ( e.type === goog.events.EventType.CLICK );
+	var isMousewheel = ( e.type === goog.events.MouseWheelHandler.EventType.MOUSEWHEEL );
+
+	if ( isMousewheel ) {
+		e.preventDefault();
+		e.stopPropagation();
+	}
+
+	if ( ( isMousewheel && !this._autoScrollTweener && e.deltaY > 5 ) || isClick ) {
+
+		var el = goog.dom.query( '.intro .container', this.el )[ 0 ];
+		var height = goog.style.getSize( el ).height;
+		var prop = {
+			scrollY: 0
+		};
+
+		this._autoScrollTweener = TweenMax.fromTo( prop, 1, {
+			scrollY: 0
+		}, {
+			scrollY: height,
+			'onUpdate': function() {
+				gux.mainScroller.scrollTo( prop.scrollY, true );
+			},
+			'onComplete': function() {
+				this._eventHandler.unlisten( this._mouseWheelHandler,
+					goog.events.MouseWheelHandler.EventType.MOUSEWHEEL, this.handleMouseEventOnIntro, false, this );
+			},
+			'onCompleteScope': this,
+			'ease': Cubic.easeInOut
+		} );
+
+		gux.mainScroller.showScrollbar();
+	}
 };
 
 

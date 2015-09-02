@@ -1,9 +1,14 @@
-.masthead{
+.intro{
 	position: relative;
 	background-image: image-url('labs-masthead.jpg');
 	background-position: center center;
 
-	>.scroll{
+	.container{
+		position: relative;
+		height: 100%;
+	}
+
+	.scroll{
 		position: absolute;
 		bottom: 0;
 		left: 50%;
@@ -32,7 +37,7 @@
 		padding-bottom: percentage(960/2100);
 		background-size: 100% 100%;
 
-		>.scroll{
+		.scroll{
 			display: none;
 		}
 	}
@@ -157,7 +162,7 @@ hr{
 
 @include breakpoint($break_above_mobile) {
 
-	.intro{
+	.heading{
 		@include container(12);
 		padding: span(2) 0 span(1) 0;
 
@@ -250,7 +255,7 @@ hr{
 @include breakpoint($break_mobile) {
 	@include container(8);
 
-	.intro{
+	.heading{
 		@include container(8);
 		
 		@include with-layout(8) {

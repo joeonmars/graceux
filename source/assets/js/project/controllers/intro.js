@@ -380,29 +380,41 @@ gux.controllers.Intro.prototype.onLoadAnimateComplete = function( e ) {
 	TweenMax.fromTo( config.openingQ, 2, {
 		slideY: this._two.height + this._shapeBaseScale
 	}, {
-		delay: 0.7,
 		slideY: this._two.height * .3,
-		ease: Expo.easeOut
+		'delay': 0.7,
+		'ease': Expo.easeOut
 	} );
 
 	TweenMax.fromTo( config.closingQ, 2, {
 		slideY: this._two.height + this._shapeBaseScale
 	}, {
-		delay: 0.9,
 		slideY: this._two.height * .45,
-		ease: Expo.easeOut
+		'delay': 0.9,
+		'ease': Expo.easeOut
 	} );
 
 	// animate out
 	TweenMax.to( this.el, 1, {
 		'y': '-100%',
 		'display': 'none',
-		delay: 4,
-		ease: Strong.easeInOut,
-		onComplete: function() {
+		'delay': 4,
+		'ease': Strong.easeInOut,
+		'onComplete': function() {
 			this.dispatchEvent( gux.events.EventType.ANIMATE_OUT_COMPLETE );
 			this.dispose();
 		},
-		onCompleteScope: this
+		'onCompleteScope': this
+	} );
+
+	var mainContent = goog.dom.getElement( 'main-content' );
+	TweenMax.fromTo( mainContent, 1, {
+		'opacity': 0,
+		'y': 150
+	}, {
+		'opacity': 1,
+		'y': 0,
+		'delay': 4,
+		'ease': Strong.easeInOut,
+		'clearProps': 'opacity, y'
 	} );
 };

@@ -1,6 +1,12 @@
 .workflow{
 	@include full;
 
+	&.single{
+		.pagination, .button-container{
+			display: none !important;
+		}
+	}
+
 	>.image-container{
 		position: relative;
 		margin: 0 auto;
