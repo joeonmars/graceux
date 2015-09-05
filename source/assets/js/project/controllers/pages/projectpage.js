@@ -3,7 +3,7 @@ goog.provide( 'gux.controllers.pages.ProjectPage' );
 goog.require( 'gux.controllers.ImageViewer' );
 goog.require( 'gux.controllers.modules.Intro' );
 goog.require( 'gux.controllers.modules.Comparison' );
-goog.require( 'gux.controllers.modules.Workflow' );
+goog.require( 'gux.controllers.modules.Carousel' );
 goog.require( 'gux.controllers.pages.Page' );
 goog.require( 'gux.Utils' );
 
@@ -34,13 +34,13 @@ gux.controllers.pages.ProjectPage.prototype.init = function() {
 
 	this._modules.push.apply( this._modules, comparisons );
 
-	// create workflow modules
-	var workflows = goog.array.map( goog.dom.query( '.workflow', this.el ), function( el ) {
-		var workflow = new gux.controllers.modules.Workflow( el );
-		return workflow;
+	// create carousel modules
+	var carousels = goog.array.map( goog.dom.query( '.carousel', this.el ), function( el ) {
+		var carousel = new gux.controllers.modules.Carousel( el );
+		return carousel;
 	} );
 
-	this._modules.push.apply( this._modules, workflows );
+	this._modules.push.apply( this._modules, carousels );
 
 	// query enlargeable medias
 	var enlargeableEls = goog.dom.query( '*[data-allow-enlarge]', this.el );

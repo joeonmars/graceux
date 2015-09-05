@@ -1,0 +1,33 @@
+{% import "_imports/_utils" as utils %}
+
+{% set firstImage = feature.images[0] %}
+
+<section class="feature full">
+
+	<article>
+		{% include "_includes/_border-heading" with {'tag': 'h4', 'bottom': true, 'text': feature.heading} %}
+		<div>{{ feature.body }}</div>
+	</article>
+
+	<figure class="carousel {% if feature.images|length == 1 %}single{% endif %}">
+
+		<div class="image-container" style="width:{{ utils.getActualImageWidth(firstImage, 960) }}px">
+			<div class="scroller" style="padding-bottom:{{ (firstImage.height/firstImage.width*100)|round }}%">
+				<ul>
+				{% for image in feature.images %}
+				    <li>
+				    	<img {{ utils.srcset(image, 960, true) }} draggable="false">
+				   	</li>
+				{% endfor %}
+				</ul>
+			</div>
+
+			<div class="button-container">
+				<button class="icon icon-arrow-prev prev" disabled></button>
+				<button class="icon icon-arrow-next next"></button>
+			</div>
+		</div>
+
+	</figure>
+
+</section>

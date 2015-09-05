@@ -1,10 +1,10 @@
-goog.provide( 'gux.controllers.modules.Workflow' );
+goog.provide( 'gux.controllers.modules.Carousel' );
 
 goog.require( 'goog.fx.Dragger' );
 goog.require( 'gux.controllers.Module' );
 
 
-gux.controllers.modules.Workflow = function( element ) {
+gux.controllers.modules.Carousel = function( element ) {
 
 	goog.base( this, element );
 
@@ -34,16 +34,16 @@ gux.controllers.modules.Workflow = function( element ) {
 
 	this.activate();
 };
-goog.inherits( gux.controllers.modules.Workflow, gux.controllers.Module );
+goog.inherits( gux.controllers.modules.Carousel, gux.controllers.Module );
 
 
-gux.controllers.modules.Workflow.prototype.disposeInternal = function() {
+gux.controllers.modules.Carousel.prototype.disposeInternal = function() {
 
 	goog.base( this, 'disposeInternal' );
 };
 
 
-gux.controllers.modules.Workflow.prototype.doActivate = function() {
+gux.controllers.modules.Carousel.prototype.doActivate = function() {
 
 	goog.base( this, 'doActivate' );
 
@@ -61,7 +61,7 @@ gux.controllers.modules.Workflow.prototype.doActivate = function() {
 };
 
 
-gux.controllers.modules.Workflow.prototype.doDeactivate = function() {
+gux.controllers.modules.Carousel.prototype.doDeactivate = function() {
 
 	goog.base( this, 'doDeactivate' );
 
@@ -69,21 +69,21 @@ gux.controllers.modules.Workflow.prototype.doDeactivate = function() {
 };
 
 
-gux.controllers.modules.Workflow.prototype.prevStep = function() {
+gux.controllers.modules.Carousel.prototype.prevStep = function() {
 
 	var step = Math.max( 0, this._step - 1 );
 	this.scrollToStep( step );
 };
 
 
-gux.controllers.modules.Workflow.prototype.nextStep = function() {
+gux.controllers.modules.Carousel.prototype.nextStep = function() {
 
 	var step = Math.min( this._numSteps - 1, this._step + 1 );
 	this.scrollToStep( step );
 };
 
 
-gux.controllers.modules.Workflow.prototype.scrollToStep = function( step ) {
+gux.controllers.modules.Carousel.prototype.scrollToStep = function( step ) {
 
 	this._step = step;
 
@@ -106,13 +106,13 @@ gux.controllers.modules.Workflow.prototype.scrollToStep = function( step ) {
 };
 
 
-gux.controllers.modules.Workflow.prototype.resize = function() {
+gux.controllers.modules.Carousel.prototype.resize = function() {
 
 	this.scrollToStep( this._step );
 };
 
 
-gux.controllers.modules.Workflow.prototype.onDragStart = function( e ) {
+gux.controllers.modules.Carousel.prototype.onDragStart = function( e ) {
 
 	var touchX = this._dragger.clientX;
 
@@ -130,7 +130,7 @@ gux.controllers.modules.Workflow.prototype.onDragStart = function( e ) {
 };
 
 
-gux.controllers.modules.Workflow.prototype.onDragEnd = function( e ) {
+gux.controllers.modules.Carousel.prototype.onDragEnd = function( e ) {
 
 	if ( this._scrollProps.isVertical ) return;
 
@@ -159,7 +159,7 @@ gux.controllers.modules.Workflow.prototype.onDragEnd = function( e ) {
 };
 
 
-gux.controllers.modules.Workflow.prototype.onDrag = function( x, y ) {
+gux.controllers.modules.Carousel.prototype.onDrag = function( x, y ) {
 
 	if ( this._scrollProps.isVertical ) return;
 
@@ -178,7 +178,7 @@ gux.controllers.modules.Workflow.prototype.onDrag = function( x, y ) {
 };
 
 
-gux.controllers.modules.Workflow.prototype.onClickStepButton = function( e ) {
+gux.controllers.modules.Carousel.prototype.onClickStepButton = function( e ) {
 
 	var step = parseInt( e.currentTarget.getAttribute( 'data-step' ) );
 

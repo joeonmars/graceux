@@ -2,7 +2,7 @@
 
 {% set firstImage = workflow.step[0].image[0] %}
 
-<figure class="workflow {% if workflow.step|length == 1 %}single{% endif %}">
+<figure class="workflow carousel {% if workflow.step|length == 1 %}single{% endif %}">
 
 	<div class="image-container" style="width:{{ utils.getActualImageWidth(firstImage, 960) }}px">
 		<div class="scroller" style="padding-bottom:{{ (firstImage.height/firstImage.width*100)|round }}%">
