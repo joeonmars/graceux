@@ -1,6 +1,7 @@
 $color_lightergray: #F7F7F7;
 $color_lightgray: #CCCCCC;
 $color_gray: #979797;
+$color_black: #404040;
 $color_logo_red: #FF8680;
 $color_logo_blue: #82BCFF;
 $color_logo_yellow: #FFDCA4;
@@ -199,6 +200,7 @@ $border-padding: 8px;
 
 h1, h2, h3, h4, h5, h6{
 	font-family: $font_flama;
+	color: $color_black;
 }
 
 h3, h4{
@@ -281,4 +283,8 @@ article{
 			margin-bottom: 0;
 		}
 	}
+}
+
+html, body{
+	color: $color_black;
 }

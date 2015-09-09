@@ -62,7 +62,7 @@
 		>p{
 			@include inline-block(bottom);
 			@extend %italic-heading;
-			color: black;
+			color: $color_black;
 			max-width: 15vw;
 			text-overflow: ellipsis;
 			overflow: hidden;
@@ -93,7 +93,7 @@
 			@include absoluteTopLeft;
 			width: 100%;
 			text-align: center;
-			color: black;
+			color: $color_black;
 			opacity: 0;
 			@include translateY(0);
 			@include transition(opacity .35s ease-out, transform .35s ease-out);
@@ -173,7 +173,7 @@
 				a{
 					letter-spacing: 0.1em;
 					text-transform: uppercase;
-					color: black;
+					color: $color_black;
 					
 					&:before{
 						@extend .icon;

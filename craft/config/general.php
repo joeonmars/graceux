@@ -11,7 +11,7 @@ return array(
 	'*' => array(
         'omitScriptNameInUrls' => true,
         'defaultImageQuality' => 100,
-        'maxUploadFileSize' => 33554432,
+        'maxUploadFileSize' => 134217728,
     ),
 
     'graceux.craft.dev' => array(
