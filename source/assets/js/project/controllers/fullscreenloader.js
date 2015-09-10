@@ -83,7 +83,8 @@ gux.controllers.FullscreenLoader.prototype.openProjectLoader = function( lightbo
 	var tweener = TweenMax.fromTo( dimmedBackground, .4, {
 		'opacity': 0
 	}, {
-		'opacity': 1
+		'opacity': 1,
+		'immediateRender': true
 	} );
 
 	var lightbox = goog.dom.getElementByClass( 'lightbox', this._el );
@@ -106,6 +107,7 @@ gux.controllers.FullscreenLoader.prototype.openProjectLoader = function( lightbo
 	}, {
 		'clip': 'rect(' + endTop + 'px ' + endRight + 'px ' + endBottom + 'px ' + endLeft + 'px)',
 		'clearProps': 'clip',
+		'immediateRender': true,
 		'ease': Cubic.easeInOut
 	} );
 
@@ -119,14 +121,16 @@ gux.controllers.FullscreenLoader.prototype.openSimpleLoader = function() {
 	goog.dom.classlist.enable( this._container, 'show', true );
 
 	this._el = soy.renderAsFragment( gux.templates.Main.SimpleLoader );
-	goog.dom.appendChild( this._container, this._el );
 
 	var tweener = TweenMax.fromTo( this._el, .8, {
 		'opacity': 0
 	}, {
 		'opacity': 1,
+		'immediateRender': true,
 		'ease': Cubic.easeInOut
 	} );
+
+	goog.dom.appendChild( this._container, this._el );
 
 	return tweener;
 };
