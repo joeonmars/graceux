@@ -27,6 +27,10 @@
 			position: relative;
 			text-align: left;
 			@include container(12);
+			@include flexbox((
+				display: flex,
+				align-items: center
+			));
 		}
 	}
 
@@ -49,10 +53,6 @@
 
 			>.text-container{
 				height: 100%;
-				@include flexbox((
-					display: flex,
-					align-items: center
-				));
 
 				>.masthead{
 					padding: 0 span(3 wide);
@@ -128,6 +128,36 @@
 }
 
 .details{
+
+	>section {
+		&:nth-last-child(3){
+			margin-bottom: span(1) !important;
+		}
+
+		&.brief, &.learned{
+			padding: span(1) 0;
+			background: $color_lightergray;
+		}
+
+		&.brief{
+			margin-top: 0 !important;
+			margin-bottom: span(1) !important;
+		}
+
+		&.learned{
+			margin-top: span(1) !important;
+			margin-bottom: 0 !important;
+
+			.signature{
+				@include retina-icon('gux-m');
+				margin-top: span(1 of 10);
+			}
+		}
+
+		&.analysis{
+			margin-top: span(1) !important;
+		}
+	}
 
 	@include breakpoint($break_mobile) {
 		@include full;
@@ -484,24 +514,6 @@ aside{
 	}
 }
 
-.brief, .learned{
-	padding: span(1) 0;
-	background: $color_lightergray;
-}
-
-.brief{
-	margin-top: 0 !important;
-}
-
-.learned{
-	margin-bottom: 0 !important;
-
-	.signature{
-		@include retina-icon('gux-m');
-		margin-top: span(1 of 10);
-	}
-}
-
 .feature{
 
 	.movable{
@@ -688,6 +700,7 @@ section.full.media{
 		position: relative;
 		z-index: 0;
 		display: block;
+		margin: span(1) auto;
 		@include dots-pattern;
 
 		>.inner{
@@ -797,19 +810,16 @@ section.full.media{
 			}
 		}
 
-		@include breakpoint($break_mobile) {
+		@include breakpoint($break_below_tablet_portrait) {
 			@include span(6 of 12);
-			margin-top: span(1);
 		}
 
-		@include breakpoint($break_tablet) {
-			@include span(6 of 12);
-			margin: 6em auto;
+		@include breakpoint($break_above_tablet_portrait) {
+			@include span(4 of 12);
 		}
 
 		@include breakpoint($break_desktop) {
 			@include span(3 of 10);
-			margin: 6em auto;
 		}
 	}
 }

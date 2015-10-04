@@ -76,6 +76,7 @@ gux.controllers.FullscreenLoader.prototype.openProjectLoader = function( lightbo
 		shapes: shapes,
 		project: projectData
 	} );
+	console.log( projectData.headingHtml )
 	goog.dom.appendChild( this._container, this._el );
 
 	var dimmedBackground = goog.dom.getElementByClass( 'dimmed-background', this._el );

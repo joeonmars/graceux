@@ -95,21 +95,29 @@ module.exports = function( grunt ) {
     clean: {},
 
     compass: {
+      options: {
+        sassDir: './assets/styles/scss',
+        cssDir: '<%= publicStylesDir %>/css',
+        fontsDir: '<%= publicStylesDir %>/fonts',
+        imagesDir: '<%= publicImagesDir %>',
+        spriteLoadPath: './assets/images',
+        generatedImagesDir: '<%= publicImagesDir %>/generated',
+        relativeAssets: true,
+        noLineComments: true,
+        assetCacheBuster: true,
+        watch: false,
+        require: [ 'breakpoint' ]
+      },
       development: {
         options: {
-          sassDir: './assets/styles/scss',
-          cssDir: '<%= publicStylesDir %>/css',
-          fontsDir: '<%= publicStylesDir %>/fonts',
-          imagesDir: '<%= publicImagesDir %>',
-          spriteLoadPath: './assets/images',
-          generatedImagesDir: '<%= publicImagesDir %>/generated',
-          relativeAssets: true,
-          noLineComments: true,
-          assetCacheBuster: true,
-          watch: false,
-          outputStyle: 'compressed', //nested, expanded, compact, compressed
+          outputStyle: 'nested', //nested, expanded, compact, compressed
           environment: 'development',
-          require: [ 'breakpoint' ]
+        }
+      },
+      production: {
+        options: {
+          outputStyle: 'compressed', //nested, expanded, compact, compressed
+          environment: 'production',
         }
       },
     },
@@ -219,7 +227,7 @@ module.exports = function( grunt ) {
   ] );
 
   grunt.registerTask( 'dev', [
-    'compass',
+    'compass:development',
     'webfont',
     'concat:thirdparty',
     'closureSoys',
@@ -229,7 +237,7 @@ module.exports = function( grunt ) {
   ] );
 
   grunt.registerTask( 'build', [
-    'compass',
+    'compass:release',
     'webfont',
     'closureSoys',
     'closureBuilder',

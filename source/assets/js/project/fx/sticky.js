@@ -13,6 +13,18 @@ gux.fx.Sticky = function( element, scrollerElement, opt_autoRender ) {
 	this._parentEl = goog.dom.getParentElement( this.el );
 	this._scrollerEl = scrollerElement;
 
+	this._stickyPosition = .5;
+
+	switch ( element.getAttribute( 'data-sticky-position' ) ) {
+		case 'top':
+			this._stickyPosition = 0;
+			break;
+
+		case 'bottom':
+			this._stickyPosition = 1;
+			break;
+	}
+
 	this._elHeight = 0; // element height
 	this._parentHeight = 0;
 	this._top = 0; // relative to scroller
@@ -64,7 +76,7 @@ gux.fx.Sticky.prototype.resize = function() {
 	this._top = goog.style.getPosition( this._parentEl ).y;
 	this._bottom = goog.style.getSize( this._parentEl ).height - this._elHeight;
 
-	this._marginTop = ( goog.dom.getViewportSize().height - this._elHeight ) / 2;
+	this._marginTop = ( goog.dom.getViewportSize().height - this._elHeight ) * this._stickyPosition;
 
 	this.render();
 };

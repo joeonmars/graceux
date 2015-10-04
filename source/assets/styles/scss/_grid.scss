@@ -1,16 +1,23 @@
+$debug: (
+	debug: (
+		image: show,
+		output: overlay
+	)
+);
+
 $susy: (
 	columns: 12,
 	container: 1440px,
 	gutters: .35,
 	global-box-sizing: border-box,
-	debug: (
-		image: show,
-		output: overlay,
-		toggle: top right,
-	),
 );
 
 $tablet-portrait-grid: (
 	container: 1024px,
 	gutters: .3,
 );
+
+@if compass-env() == 'development' {
+	$susy: map-merge($susy, $debug);
+	$tablet-portrait-grid: map-merge($tablet-portrait-grid, $debug);
+}

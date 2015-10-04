@@ -21,7 +21,7 @@ gux.templates.Main.ProjectLoader = function(opt_data, opt_ignored) {
     var shapeData4 = shapeList4[shapeIndex4];
     output += '<div class="icon" style="top:' + shapeData4.y + ';left:' + shapeData4.x + '"></div>';
   }
-  output += '</div><div class="text-container"><div class="masthead"><h6 class="subheading above ' + opt_data.project.color + '">' + opt_data.project.genre + '</h6><h3 class="border-heading has-bottom has-left">' + opt_data.project.heading + '<div class="border bottom ' + opt_data.project.color + '"></div><div class="border left ' + opt_data.project.color + '"></div></h3><p class="description">' + opt_data.project.shortDescription + '</p></div></div></div></div>';
+  output += '</div><div class="text-container"><div class="masthead"><h6 class="subheading above ' + opt_data.project.color + '">' + opt_data.project.genre + '</h6><h3 class="border-heading has-bottom has-left">' + opt_data.project.headingHtml + '<div class="border bottom ' + opt_data.project.color + '"></div><div class="border left ' + opt_data.project.color + '"></div></h3><p class="description">' + opt_data.project.shortDescription + '</p></div></div></div></div>';
   return output;
 };
 

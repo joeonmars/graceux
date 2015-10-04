@@ -46,7 +46,7 @@ hr{
 			&.loading{
 				display: block;
 				
-				>.image{
+				.image{
 					opacity: 0;
 				}
 			}
@@ -55,17 +55,59 @@ hr{
 				display: block;
 				background-image: none !important;
 				
-				>.image{
+				.image{
 					opacity: 1;
 				}
 			}
 
 			.image{
+				display: block;
 				width: 100%;
 				height: 100%;
 				background-size: cover;
 				background-position: center center;
-				@include transition(opacity .8s $easeOutCubic);
+				@include scale(1);
+				@include transition(opacity .8s $easeOutCubic, transform .4s $easeOutCubic);
+			}
+		}
+	}
+}
+
+>ul{
+	li{
+		&.i1{
+			.image-loader{
+				background-image: image-url('g-spinner.gif');
+			}
+		}
+
+		&.i2{
+			.image-loader{
+				background-image: image-url('u-spinner.gif');
+			}
+		}
+
+		&.i3, &.i1.last{
+			.image-loader{
+				background-image: image-url('x-spinner.gif');
+			}
+		}
+
+		&.i4{
+			.image-loader{
+				background-image: image-url('g-spinner.gif');
+			}
+		}
+
+		&.i5{
+			.image-loader{
+				background-image: image-url('u-spinner.gif');
+			}
+		}
+
+		&.i6, &.i4.last{
+			.image-loader{
+				background-image: image-url('x-spinner.gif');
 			}
 		}
 	}
@@ -96,10 +138,6 @@ hr{
 
 					.inner{
 						padding-top: 97%;
-						
-						.image-loader{
-							background-image: image-url('g-spinner.gif');
-						}
 					}
 				}
 			}
@@ -117,10 +155,6 @@ hr{
 
 					.inner{
 						padding-top: 132%;
-
-						.image-loader{
-							background-image: image-url('u-spinner.gif');
-						}
 					}
 				}
 			}
@@ -142,10 +176,6 @@ hr{
 
 					.inner{
 						padding-top: 72%;
-
-						.image-loader{
-							background-image: image-url('x-spinner.gif');
-						}
 					}
 				}
 			}
@@ -163,10 +193,6 @@ hr{
 
 					.inner{
 						padding-top: 132%;
-
-						.image-loader{
-							background-image: image-url('g-spinner.gif');
-						}
 					}
 				}
 			}
@@ -188,10 +214,6 @@ hr{
 
 					.inner{
 						padding-top: 97%;
-
-						.image-loader{
-							background-image: image-url('u-spinner.gif');
-						}
 					}
 				}
 			}
@@ -213,10 +235,6 @@ hr{
 
 					.inner{
 						padding-top: 72%;
-
-						.image-loader{
-							background-image: image-url('x-spinner.gif');
-						}
 					}
 				}
 			}

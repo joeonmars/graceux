@@ -1,7 +1,6 @@
 <footer class="main-footer">
-	{% include "_includes/_logo" %}
+	<p class="copyright">{{ siteName }} &copy; Copyright 2010-{{ now.year }}.</p>
 	<div class="info">
-		<p class="copyright">{{ siteName }} &copy; Copyright 2010-{{ now.year }}.</p>
 		<ul class="social">
 		{% for social in about.social %}
 			{% if social.enabled == true %}

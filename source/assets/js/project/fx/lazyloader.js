@@ -75,7 +75,7 @@ gux.fx.LazyLoader.prototype.loadImage = function() {
 
 		img = this._imageEl;
 
-	} else if ( this._imageEl.tagName === 'DIV' ) {
+	} else {
 
 		img = new Image();
 

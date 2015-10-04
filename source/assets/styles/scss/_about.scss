@@ -195,7 +195,7 @@
 
 	@include breakpoint($break_mobile) {
 		@include container(6);
-		padding: gutter();
+		padding: 0 gutter() span(2) gutter();
 
 		aside{
 			@include full;

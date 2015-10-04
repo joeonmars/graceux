@@ -93,15 +93,10 @@
 					display: flex,
 					align-items: center
 				));
-
+				
 				>.masthead{
-					padding: 0 span(3 wide);
 					color: #000;
 					@include transition(opacity 1s $easeOutCubic, transform 1s $easeOutCubic);
-
-					.border-heading{
-						white-space: pre;
-					}
 
 					.border{
 						&.left{
@@ -148,20 +143,56 @@
 			}
 
 			/* -- break-points -- */
-			@include breakpoint($break_mobile) {
-				padding: none;
+			@include breakpoint($break_above_mobile) {
+				padding: $border-padding;
+				padding-top: 7em;
+				padding-bottom: calc(5rem + #{$border-padding*2});
+
+				>.text-container{
+					>.masthead{
+						padding: 0 span(3 wide);
+					}
+				}
 			}
 
 			@include breakpoint($break_tablet) {
 				padding: $border-padding;
 				padding-top: #{7em*.85};
 				padding-bottom: calc(5rem + #{$border-padding*2});
+
+				>.text-container{
+					h3{
+						font-size: 8rem;
+					}
+
+					>.masthead{
+						padding: 0 span(2 wide);
+					}
+				}
 			}
 
-			@include breakpoint($break_desktop) {
-				padding: $border-padding;
-				padding-top: 7em;
-				padding-bottom: calc(5rem + #{$border-padding*2});
+			@include breakpoint($break_mobile) {
+				padding: none;
+
+				>.text-container{
+					font-size: .6em;
+
+					h3{
+						font-size: 12vmin;
+					}
+
+					p{
+						font-size: 1.8rem;
+					}
+
+					.border.left{
+						display: none;
+					}
+
+					>.masthead{
+						padding: span(1) span(1 wide);
+					}
+				}
 			}
 		}
 	}

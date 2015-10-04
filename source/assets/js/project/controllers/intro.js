@@ -60,9 +60,13 @@ gux.controllers.Intro = function() {
 		this._openingQGroup, this._closingQGroup
 	);
 
-	this._foreGroup = this._two.makeGroup(
-		this._whiteBg, this._shadowU, this._shapeU, this._shadowG, this._shapeG,
+	this._letterGroup = this._two.makeGroup(
+		this._shadowU, this._shapeU, this._shadowG, this._shapeG,
 		this._shadowXTop, this._shapeXTop, this._shadowXBottom, this._shapeXBottom
+	);
+
+	this._foreGroup = this._two.makeGroup(
+		this._whiteBg, this._letterGroup
 	);
 
 	this._mask = this._two.makeRectangle( 0, 0, 1, 1 );
@@ -198,7 +202,7 @@ gux.controllers.Intro.prototype.createPolygon = function( vector, hex, opt_opaci
 		flattenedVectors.push( v[ 0 ] * 10, v[ 1 ] * 10 );
 	} );
 
-	var polygon = this._two.makePolygon.apply( this._two, flattenedVectors );
+	var polygon = this._two.makePath.apply( this._two, flattenedVectors );
 	polygon.opacity = goog.isNumber( opt_opacity ) ? opt_opacity : 1;
 
 	if ( opt_stroke ) {
@@ -290,25 +294,24 @@ gux.controllers.Intro.prototype.resize = function() {
 
 	//
 	var margin = Math.max( 6, scale * .06 );
-	var startX = ( resWidth - ( scale * 2 + margin * 2 ) ) / 2;
-	var y = resHeight * .52;
+	var startX = ( this._two.width - ( scale / 2 + margin + scale + margin + scale / 2 ) ) / 2;
+	var startY = this._two.height * .52;
 
-	//
 	var config = this._shapeConfig;
 	config.g.baseX = startX;
-	config.g.baseY = y;
+	config.g.baseY = startY;
 	config.g.shadowOffset = scale * .1;
 
 	config.u.baseX = startX + scale + margin;
-	config.u.baseY = y;
+	config.u.baseY = startY;
 	config.u.shadowOffset = scale * .08;
 
 	config.xTop.baseX = startX + scale * 2 + margin * 2;
-	config.xTop.baseY = y - scale / 4;
+	config.xTop.baseY = startY - scale / 4;
 	config.xTop.shadowOffset = scale * .05;
 
 	config.xBottom.baseX = startX + scale * 2 + margin * 2;
-	config.xBottom.baseY = y + scale / 4;
+	config.xBottom.baseY = startY + scale / 4;
 	config.xBottom.shadowOffset = scale * .05;
 
 	config.openingQ.baseX = this._two.width * .07;
