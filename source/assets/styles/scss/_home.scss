@@ -1,6 +1,5 @@
 >ul{
 	@include container(12);
-	padding-top: span(1);
 	padding-bottom: span(1);
 }
 
@@ -14,6 +13,10 @@ hr{
 
 .text-container{
 	width: 100%;
+
+	h4{
+		@extend %multi-line-heading;
+	}
 
 	p{
 		margin: 2rem 0;
@@ -68,7 +71,7 @@ hr{
 	}
 }
 
-@include breakpoint($break_above_mobile) {
+@include breakpoint($break_above_tablet_portrait) {
 	>ul{
 		@include container(12);
 
@@ -235,7 +238,7 @@ hr{
 	}
 }
 
-@include breakpoint($break_mobile) {
+@include breakpoint($break_below_tablet_portrait) {
 	>ul{
 		@include container(6);
 

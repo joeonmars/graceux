@@ -5,7 +5,10 @@
 	<div class="branding">
 		{% include "_includes/_logo" %}
 		<span class="vertical-bar"></span>
-		<h1>{{ siteName }}</h1>
+		<h1 class="subheading">
+			<span>{{ siteName }}</span>
+			<span>{{ Copy.specialty }}</span>
+		</h1>
 	</div>
 
 	<div class="menu {% if showMenuButton is not defined or showMenuButton != true %}hide{% endif %}">

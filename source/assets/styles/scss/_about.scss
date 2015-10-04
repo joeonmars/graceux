@@ -95,8 +95,11 @@
 					}
 
 					h4{
-						width: 80%;
 						min-height: 12rem;
+					}
+
+					p{
+						padding-right: gutter();
 					}
 				}
 
@@ -353,7 +356,7 @@ hr{
 	margin-bottom: span(1);
 
 	h4{
-		font-size: 3rem;
+		@extend %multi-line-heading;
 	}
 }
 

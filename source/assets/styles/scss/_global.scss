@@ -12,11 +12,14 @@
 $min_width: 320px;
 $min_height: 320px;
 
-$break_mobile: max-width 680px;
-$break_above_mobile: min-width 680px;
-$break_tablet: (min-width 680px) (max-width 1200px);
-$break_tablet_portrait: (min-width 680px) (max-width 1200px) (orientation portrait);
-$break_desktop: min-width 1200px;
+$break_mobile: max-width 700px;
+$break_above_mobile: min-width 700px;
+$break_tablet: (min-width 700px) (max-width 1400px);
+$break_tablet_portrait: (min-width 700px) (max-width 800px) (orientation portrait);
+$break_below_tablet: max-width 1400px;
+$break_below_tablet_portrait: max-width 800px;
+$break_above_tablet_portrait: min-width 800px;
+$break_desktop: min-width 1400px;
 
 $easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1);
 $easeOutCubic: cubic-bezier(0.215, 0.61, 0.355, 1);

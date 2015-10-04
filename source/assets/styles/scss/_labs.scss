@@ -164,7 +164,7 @@ hr{
 
 	.heading{
 		@include container(12);
-		padding: span(2) 0 span(1) 0;
+		padding: span(1) 0;
 
 		>h3{
 			@include span(5);

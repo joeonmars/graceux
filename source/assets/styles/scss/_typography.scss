@@ -77,6 +77,11 @@ $border-padding: 8px;
 	}
 }
 
+%multi-line-heading{
+	font-size: 3rem;
+	line-height: 1.2;
+}
+
 .subheading{
 	line-height: 2;
 	font-size: 1.2rem;
@@ -103,21 +108,21 @@ $border-padding: 8px;
 
 	/* -- break-points -- */
 	@include breakpoint($break_mobile) {
-		font-size: 1.2rem;
-	}
-
-	@include breakpoint($break_tablet) {
 		font-size: 1.4rem;
 	}
 
-	@include breakpoint($break_desktop) {
+	@include breakpoint($break_tablet) {
 		font-size: 1.6rem;
+	}
+
+	@include breakpoint($break_desktop) {
+		font-size: 1.8rem;
 	}
 }
 
 .border-heading{
 	position: relative;
-	line-height: 1.2;
+	line-height: 1.1;
 	text-align: left;
 	letter-spacing: .05em;
 	@include inline-block(top);
@@ -140,7 +145,6 @@ $border-padding: 8px;
 		width: 30px;
 		height: 10px;
 		margin: 2rem 0;
-		@include transition(width .25s);
 	}
 
 	>.left{
@@ -149,7 +153,6 @@ $border-padding: 8px;
 		width: 10px;
 		height: calc(100% - 2rem);
 		margin: 0 1.5rem;
-		@include transition(height .25s);
 	}
 }
 
@@ -204,28 +207,26 @@ h1, h2, h3, h4, h5, h6{
 }
 
 h3, h4{
+	line-height: 1.6;
+
 	/* -- break-points -- */
 	@include breakpoint($break_mobile) {
-		font-size: 2.8rem;
-		line-height: (3.7/2.8);
+		font-size: 2.4rem;
 	}
 
 	@include breakpoint($break_tablet) {
-		font-size: 3rem;
-		line-height: (3.7/3);
+		font-size: 2.6rem;
 	}
 
 	@include breakpoint($break_desktop) {
-		font-size: 3.2rem;
-		line-height: (3.7/3.2);
+		font-size: 2.8rem;
 	}
 }
 
 p{
 	font-family: $font_whitney_light;
-	font-size: 1.6rem;
-	line-height: (2.6/1.6);
-	letter-spacing: 0.12rem;
+	font-size: 1.8rem;
+	line-height: 1.6;
 }
 
 b, strong{
@@ -248,7 +249,7 @@ legend{
 label{
 	display: block;
 	font-family: $font_whitney_lightitalic;
-	font-size: 1.6rem;
+	font-size: 1.8rem;
 }
 
 input, textarea, .textarea{
@@ -260,7 +261,7 @@ input, textarea, .textarea{
 	&:not([type="submit"]){
 		border-bottom: 1px solid $color_lightgray;
 		font-family: $font_whitney_light;
-		font-size: 1.6rem;
+		font-size: 1.8rem;
 		letter-spacing: .15rem;
 		color: $color_gray;
 		@include transition( border-color .25s );

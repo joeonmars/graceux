@@ -79,12 +79,16 @@ gux.controllers.FullscreenLoader.prototype.openProjectLoader = function( lightbo
 	goog.dom.appendChild( this._container, this._el );
 
 	var dimmedBackground = goog.dom.getElementByClass( 'dimmed-background', this._el );
+	var masthead = goog.dom.getElementByClass( 'masthead', this._el );
 
-	var tweener = TweenMax.fromTo( dimmedBackground, .4, {
+	TweenMax.fromTo( dimmedBackground, .4, {
 		'opacity': 0
 	}, {
 		'opacity': 1,
-		'immediateRender': true
+		'immediateRender': true,
+		'onComplete': function() {
+			goog.dom.classlist.add( masthead, 'animate-in' );
+		}
 	} );
 
 	var lightbox = goog.dom.getElementByClass( 'lightbox', this._el );
