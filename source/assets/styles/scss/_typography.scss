@@ -116,7 +116,7 @@ $border-padding: 8px;
 	}
 
 	@include breakpoint($break_desktop) {
-		font-size: 1.8rem;
+		font-size: 1.7rem;
 	}
 }
 
@@ -225,8 +225,8 @@ h3, h4{
 
 p{
 	font-family: $font_whitney_light;
-	font-size: 1.8rem;
-	line-height: 1.6;
+	font-size: 1.7rem;
+	line-height: 1.76;
 }
 
 b, strong{
@@ -249,7 +249,7 @@ legend{
 label{
 	display: block;
 	font-family: $font_whitney_lightitalic;
-	font-size: 1.8rem;
+	font-size: 1.7rem;
 }
 
 input, textarea, .textarea{
@@ -261,7 +261,7 @@ input, textarea, .textarea{
 	&:not([type="submit"]){
 		border-bottom: 1px solid $color_lightgray;
 		font-family: $font_whitney_light;
-		font-size: 1.8rem;
+		font-size: 1.7rem;
 		letter-spacing: .15rem;
 		color: $color_gray;
 		@include transition( border-color .25s );

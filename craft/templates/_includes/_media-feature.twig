@@ -38,7 +38,7 @@
 			        	<div class="movable">
 			        		{% if device != null %}<div class="case"></div>{% endif %}
 			        		<div class="image-container">
-			        			<img {{ utils.srcset(media, 960) }} {{ utils.dataMaxSize(media, 960) }} draggable="false">
+			        			<img {% if media.outline %}class="outline"{% endif %} {{ utils.srcset(media, 960) }} {{ utils.dataMaxSize(media, 960) }} draggable="false">
 			        		</div>
 			        	</div>
 		        	</div>

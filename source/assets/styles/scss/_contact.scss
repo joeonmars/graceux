@@ -15,7 +15,7 @@
 		position: absolute;
 		bottom: 0;
 		width: 100%;
-		background: $color_logo_blue;
+		background: $color_lightergray;
 		overflow: hidden;
 	}
 
@@ -28,12 +28,24 @@
 
 	#contact-form{
 		position: relative;
+		z-index: 0;
 		margin: 0 auto;
 		width: 30%;
 		min-width: 50rem;
 		min-height: 45rem;
 		background: white;
-		@include box-shadow( 0px 2px 2px 0px rgba(0,0,0,0.15) );
+
+		&:after{
+			content: '';
+			display: block;
+			position: absolute;
+			z-index: -1;
+			top: 20px;
+			left: 20px;
+			width: 100%;
+			height: 100%;
+			@include dots-pattern;
+		}
 
 		>.close{
 			position: absolute;

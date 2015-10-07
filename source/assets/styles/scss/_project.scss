@@ -8,6 +8,7 @@
 	>.container{
 		position: relative;
 		height: calc(100% - 5rem - #{$border-padding*2});
+		background: black;
 		overflow: hidden;
 
 		>.media-container{
@@ -42,8 +43,6 @@
 		height: calc(100vh - 7em);
 
 		>.container{
-			background: black;
-
 			>.media-container{
 				position: absolute;
 				width: 100%;
@@ -482,7 +481,7 @@ aside{
 	@include breakpoint($break_tablet) {
 		@include full;
 		@include transform( translateY(0) !important );
-		padding: span(1) 0;
+		padding-bottom: span(1);
 
 		>div{
 			@include span(5);
@@ -523,8 +522,12 @@ aside{
 
 		img{
 			width: 100%;
-			height: auto;
-			//border: 1px solid $color_lightgray;
+			height: 100%;
+
+			&.outline{
+				@include box-sizing(border-box);
+				border: 2px solid $color_lightergray;
+			}
 		}
 	}
 	
@@ -541,11 +544,11 @@ aside{
 				&:before, &:after{
 					position: absolute;
 					z-index: 1;
-					margin: .2em;
-					font-size: 2.2rem;
-					line-height: 5rem;
-					width: 5rem;
-					height: 5rem;
+					margin: .5em;
+					font-size: 2rem;
+					line-height: 4rem;
+					width: 4rem;
+					height: 4rem;
 					text-align: center;
 					color: white;
 					background: $color_logo_blue;
@@ -617,6 +620,10 @@ aside{
 			&:last-child{
 				margin-bottom: 0;
 			}
+		}
+
+		.image-container{
+			height: 100%;
 		}
 	}
 }
