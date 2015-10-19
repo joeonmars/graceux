@@ -168,7 +168,7 @@ hr{
 
 article{
 	ul{
-		margin-top: 2rem;
+		margin: 4rem 0;
 
 		>li{
 			position: relative;
@@ -180,7 +180,6 @@ article{
 			letter-spacing: .08em;
 
 			&:last-child{
-				padding-bottom: 1.4em;
 				border-bottom: none;
 
 				&:after{

@@ -157,11 +157,13 @@
 
 		article{
 			a{
-				border-bottom: 1px solid $color_logo_blue;
-				@include transition(color .25s);
+				color: $color_black;
+				border-bottom: 1px solid $color_black;
+				@include transition(color .25s, border-color .25s);
 
 				&:hover{
 					color: $color_logo_blue;
+					border-color: $color_logo_blue;
 				}
 			}
 		}

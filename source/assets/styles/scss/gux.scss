@@ -190,8 +190,22 @@
 
 #main-scrollbar{
 	z-index: 10;
-	top: calc(7em + #{$border-padding});
-	height: calc(100% - #{7em*2});
+
+	/* -- break-points -- */
+	@include breakpoint($break_mobile) {
+		top: #{7em*.7};
+		height: calc(100% - #{7em*.7*2});
+	}
+
+	@include breakpoint($break_tablet) {
+		top: #{7em*.85};
+		height: calc(100% - #{7em*.85*2});
+	}
+
+	@include breakpoint($break_desktop) {
+		top: 7em;
+		height: calc(100% - #{7em*2});
+	}
 }
 
 #image-viewer-container{
