@@ -71,7 +71,7 @@ gux.controllers.PortfolioNavigation.prototype.open = function() {
 	} );
 
 	TweenMax.to( this._mainContainer, 1, {
-		'y': innerHeight * .55,
+		'y': innerHeight * .4,
 		'ease': Quint.easeOut
 	} );
 

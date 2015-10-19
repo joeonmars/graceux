@@ -168,9 +168,11 @@ hr{
 
 article{
 	ul{
+		margin-top: 2rem;
+
 		>li{
 			position: relative;
-			padding-top: 1.4em;
+			margin-top: 1.4em;
 			padding-left: 5rem;
 			font-family: $font_whitney_lightitalic;
 			font-size: 1.5em;
@@ -187,9 +189,7 @@ article{
 			}
 
 			&:before{
-				position: absolute;
-				top: 1.4em;
-				left: 0;
+				@include absoluteTopLeft;
 				font-size: 1.8rem;
 				line-height: 1.8em;
 				@extend .icon;
@@ -307,7 +307,6 @@ article{
 	cursor: pointer;
 	overflow: hidden;
 	@include transition(background .3s $easeOutQuint);
-	@include box-shadow(1px 1px 2px 0px rgba(black,0.1));
 
 	>span{
 		display: block;

@@ -139,12 +139,10 @@
 		}
 
 		&.brief{
-			margin-top: 0 !important;
 			margin-bottom: span(1) !important;
 		}
 
 		&.learned{
-			margin-top: span(1) !important;
 			margin-bottom: 0 !important;
 
 			.signature{
@@ -154,7 +152,18 @@
 		}
 
 		&.analysis{
-			margin-top: span(1) !important;
+			margin-bottom: span(1) !important;
+		}
+
+		article{
+			a{
+				border-bottom: 1px solid $color_logo_blue;
+				@include transition(color .25s);
+
+				&:hover{
+					color: $color_logo_blue;
+				}
+			}
 		}
 	}
 
@@ -163,7 +172,7 @@
 
 		@include nested(12) {
 			>section{
-				margin: span(2) 0;
+				margin-bottom: span(2);
 				@include clearfix;
 
 				&.full, &.fluid{
@@ -203,7 +212,7 @@
 
 		@include nested(12) {
 			>section{
-				margin: span(2) 0;
+				margin-bottom: span(2);
 				@include clearfix;
 
 				&.full{
@@ -281,7 +290,7 @@
 
 		@include nested(12) {
 			>section{
-				margin: span(2) 0;
+				margin-bottom: span(2);
 				@include clearfix;
 
 				&.full{
@@ -357,7 +366,7 @@
 
 		@include nested(10) {
 			>section{
-				margin: span(2) 0;
+				margin-bottom: span(2);
 				@include clearfix;
 
 				&.full{
@@ -484,15 +493,15 @@ aside{
 		padding-bottom: span(1);
 
 		>div{
-			@include span(5);
+			@include span(3);
 
 			&:nth-child(odd) {
-				@include first;
 				@include push(1);
 			}
 
 			&:nth-child(even) {
-				@include last;
+				@include first;
+				@include push(1);
 			}
 
 			&.launch, &.share{

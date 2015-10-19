@@ -28,6 +28,7 @@
 		background: $color_lightergray;
 		border: $border-padding solid white;
 		border-top: none;
+		border-bottom: none;
 		overflow: hidden;
 
 		>.particles-container{
@@ -132,7 +133,7 @@
 
 	/* -- break-points -- */
 	@include breakpoint($break_tablet) {
-		font-size: .85rem;
+		font-size: .75rem;
 	}
 
 	@include breakpoint($break_desktop) {
