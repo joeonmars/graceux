@@ -542,7 +542,20 @@ body {
     letter-spacing: 1px; }
 
 .description {
-  font-family: "whitney_lightitalic"; }
+  font-family: "whitney_lightitalic";
+  line-height: 1.7; }
+
+.closing {
+  width: 100%;
+  padding: 8rem 5.26316%;
+  color: #fff;
+  background: #82BCFF;
+  text-align: center;
+  font-size: 2.4rem;
+  font-family: "whitney_bookitalic";
+  -moz-box-shadow: inset 1px 1px 2px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: inset 1px 1px 2px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 1px 1px 2px 0px rgba(0, 0, 0, 0.1); }
 
 #main-header .hamburger-button > p {
   font-family: "whitney_bookitalic";
@@ -2648,6 +2661,10 @@ article ul {
       background-size: 100% 100%; }
       #labs .intro .scroll {
         display: none; } }
+#labs .heading p {
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit; }
 #labs .projects {
   padding: 6.30915% 0; }
   #labs .projects li {
@@ -2737,6 +2754,17 @@ article ul {
         -o-transition: opacity 0.35s, -o-transform, 0.15s, cubic-bezier(0.23, 1, 0.32, 1);
         -webkit-transition: opacity 0.35s, -webkit-transform, 0.15s, cubic-bezier(0.23, 1, 0.32, 1);
         transition: opacity 0.35s, transform, 0.15s, cubic-bezier(0.23, 1, 0.32, 1); }
+#labs .closing {
+  width: 100%;
+  padding: 8rem 2.2082%;
+  color: #fff;
+  background: #82BCFF;
+  text-align: center;
+  font-size: 2.4rem;
+  font-family: "whitney_bookitalic";
+  -moz-box-shadow: inset 1px 1px 2px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: inset 1px 1px 2px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 1px 1px 2px 0px rgba(0, 0, 0, 0.1); }
 @media (min-width: 1400px) {
   #labs .heading {
     max-width: 1440px;
@@ -2770,12 +2798,14 @@ article ul {
     #labs .heading > h3 {
       width: 40.37855%;
       float: left;
-      margin-right: 2.2082%; }
+      margin-right: 2.2082%;
+      font-size: 4.2rem; }
     #labs .heading > div {
       width: 48.8959%;
       float: left;
       margin-right: 2.2082%;
-      clear: both; }
+      clear: both;
+      font-size: 2.4rem; }
   #labs .projects {
     max-width: 1440px;
     margin-left: auto;
@@ -2858,13 +2888,15 @@ article ul {
       width: 40.37855%;
       float: left;
       margin-right: 2.2082%;
-      margin-left: 8.51735%; }
+      margin-left: 8.51735%;
+      font-size: 4rem; }
     #labs .heading > div {
       width: 48.8959%;
       float: left;
       margin-right: 2.2082%;
       margin-left: 8.51735%;
-      clear: both; }
+      clear: both;
+      font-size: 2rem; }
   #labs .projects {
     max-width: 1440px;
     margin-left: auto;
@@ -2975,12 +3007,14 @@ article ul {
         width: 74.16268%;
         float: left;
         margin-right: 3.34928%;
-        margin-left: 12.91866%; }
+        margin-left: 12.91866%;
+        font-size: 3rem; }
       #labs .heading > div {
         width: 74.16268%;
         float: left;
         margin-right: 3.34928%;
-        margin-left: 12.91866%; }
+        margin-left: 12.91866%;
+        font-size: 1.8rem; }
     #labs .projects {
       max-width: 1440px;
       margin-left: auto;
