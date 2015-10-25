@@ -225,6 +225,7 @@
 				}
 
 				.merit{
+					padding: 0 gutter();
 					margin-bottom: span(1);
 
 					h4{
@@ -234,20 +235,11 @@
 
 				.social{
 					font-size: .8em;
-					text-align: center;
-
-					.border{
-						margin: 2rem auto;
-					}
+					text-align: left;
+					padding: 0 gutter();
 
 					ul{
-						@include span(5);
-						margin-left: span(1);
 						text-align: left;
-					}
-
-					.or{
-						@include full;
 					}
 				}
 			}

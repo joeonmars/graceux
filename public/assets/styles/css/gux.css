@@ -847,7 +847,7 @@ article ul {
   text-transform: uppercase;
   border: 2px solid #82BCFF;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 1.4rem;
   letter-spacing: 0.85px;
   background: transparent;
   cursor: pointer;
@@ -2665,106 +2665,101 @@ article ul {
   font-size: inherit;
   font-family: inherit;
   line-height: inherit; }
-#labs .projects {
-  padding: 6.30915% 0; }
-  #labs .projects li {
-    position: relative; }
-    #labs .projects li > .inner {
+#labs .projects li {
+  position: relative; }
+  #labs .projects li > .inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%; }
+  #labs .projects li .text-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%; }
+    #labs .projects li .text-container .inner {
+      margin: 2.5rem 0; }
+    #labs .projects li .text-container h4 {
+      font-size: 3rem;
+      line-height: 1.2; }
+    #labs .projects li .text-container p {
+      margin: 2rem 0; }
+  #labs .projects li .preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; }
+    #labs .projects li .preview > .shapes {
+      position: absolute;
+      top: 25%;
+      left: -25%;
+      width: 150%;
+      height: 50%; }
+      #labs .projects li .preview > .shapes > .icon, #labs .projects li article .preview > ul.shapes > li:before, article #labs .projects li .preview > ul.shapes > li:before, #labs .projects #main-header .navigation ul li .preview > .shapes > a:before, #main-header .navigation ul #labs .projects li .preview > .shapes > a:before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:before, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:after, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:after, #labs .projects li #image-viewer-container #image-viewer .preview > .shapes > .close, #image-viewer-container #image-viewer #labs .projects li .preview > .shapes > .close, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:before, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:before, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:after, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:after {
+        position: absolute;
+        -webkit-backface-visibility: hidden; }
+        #labs .projects li .preview > .shapes > .icon:nth-child(3n+1), #labs .projects li article .preview > ul.shapes > li:nth-child(3n+1):before, article #labs .projects li .preview > ul.shapes > li:nth-child(3n+1):before, #labs .projects #main-header .navigation ul li .preview > .shapes > a:nth-child(3n+1):before, #main-header .navigation ul #labs .projects li .preview > .shapes > a:nth-child(3n+1):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(3n+1):before, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(3n+1):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(3n+1):after, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(3n+1):after, #labs .projects li #image-viewer-container #image-viewer .preview > .shapes > .close:nth-child(3n+1), #image-viewer-container #image-viewer #labs .projects li .preview > .shapes > .close:nth-child(3n+1), #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(3n+1):before, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(3n+1):before, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(3n+1):after, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(3n+1):after {
+          font-size: 2vmin;
+          margin: -1.5vmin;
+          opacity: .2; }
+        #labs .projects li .preview > .shapes > .icon:nth-child(3n+2), #labs .projects li article .preview > ul.shapes > li:nth-child(3n+2):before, article #labs .projects li .preview > ul.shapes > li:nth-child(3n+2):before, #labs .projects #main-header .navigation ul li .preview > .shapes > a:nth-child(3n+2):before, #main-header .navigation ul #labs .projects li .preview > .shapes > a:nth-child(3n+2):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(3n+2):before, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(3n+2):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(3n+2):after, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(3n+2):after, #labs .projects li #image-viewer-container #image-viewer .preview > .shapes > .close:nth-child(3n+2), #image-viewer-container #image-viewer #labs .projects li .preview > .shapes > .close:nth-child(3n+2), #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(3n+2):before, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(3n+2):before, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(3n+2):after, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(3n+2):after {
+          font-size: 3vmin;
+          margin: -2vmin;
+          opacity: .3; }
+        #labs .projects li .preview > .shapes > .icon:nth-child(3n+3), #labs .projects li article .preview > ul.shapes > li:nth-child(3n+3):before, article #labs .projects li .preview > ul.shapes > li:nth-child(3n+3):before, #labs .projects #main-header .navigation ul li .preview > .shapes > a:nth-child(3n+3):before, #main-header .navigation ul #labs .projects li .preview > .shapes > a:nth-child(3n+3):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(3n+3):before, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(3n+3):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(3n+3):after, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(3n+3):after, #labs .projects li #image-viewer-container #image-viewer .preview > .shapes > .close:nth-child(3n+3), #image-viewer-container #image-viewer #labs .projects li .preview > .shapes > .close:nth-child(3n+3), #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(3n+3):before, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(3n+3):before, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(3n+3):after, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(3n+3):after {
+          font-size: 6vmin;
+          margin: -3vmin;
+          opacity: .4; }
+        #labs .projects li .preview > .shapes > .icon:nth-child(1), #labs .projects li article .preview > ul.shapes > li:nth-child(1):before, article #labs .projects li .preview > ul.shapes > li:nth-child(1):before, #labs .projects #main-header .navigation ul li .preview > .shapes > a:nth-child(1):before, #main-header .navigation ul #labs .projects li .preview > .shapes > a:nth-child(1):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(1):before, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(1):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(1):after, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(1):after, #labs .projects li #image-viewer-container #image-viewer .preview > .shapes > .close:nth-child(1), #image-viewer-container #image-viewer #labs .projects li .preview > .shapes > .close:nth-child(1), #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(1):before, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(1):before, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(1):after, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(1):after, #labs .projects li .preview > .shapes > .icon:nth-child(5), #labs .projects li article .preview > ul.shapes > li:nth-child(5):before, article #labs .projects li .preview > ul.shapes > li:nth-child(5):before, #labs .projects #main-header .navigation ul li .preview > .shapes > a:nth-child(5):before, #main-header .navigation ul #labs .projects li .preview > .shapes > a:nth-child(5):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(5):before, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(5):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(5):after, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(5):after, #labs .projects li #image-viewer-container #image-viewer .preview > .shapes > .close:nth-child(5), #image-viewer-container #image-viewer #labs .projects li .preview > .shapes > .close:nth-child(5), #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(5):before, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(5):before, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(5):after, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(5):after {
+          -moz-animation: floating-1 4s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
+          -webkit-animation: floating-1 4s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
+          animation: floating-1 4s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate; }
+        #labs .projects li .preview > .shapes > .icon:nth-child(2), #labs .projects li article .preview > ul.shapes > li:nth-child(2):before, article #labs .projects li .preview > ul.shapes > li:nth-child(2):before, #labs .projects #main-header .navigation ul li .preview > .shapes > a:nth-child(2):before, #main-header .navigation ul #labs .projects li .preview > .shapes > a:nth-child(2):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(2):before, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(2):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(2):after, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(2):after, #labs .projects li #image-viewer-container #image-viewer .preview > .shapes > .close:nth-child(2), #image-viewer-container #image-viewer #labs .projects li .preview > .shapes > .close:nth-child(2), #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(2):before, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(2):before, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(2):after, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(2):after, #labs .projects li .preview > .shapes > .icon:nth-child(6), #labs .projects li article .preview > ul.shapes > li:nth-child(6):before, article #labs .projects li .preview > ul.shapes > li:nth-child(6):before, #labs .projects #main-header .navigation ul li .preview > .shapes > a:nth-child(6):before, #main-header .navigation ul #labs .projects li .preview > .shapes > a:nth-child(6):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(6):before, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(6):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(6):after, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(6):after, #labs .projects li #image-viewer-container #image-viewer .preview > .shapes > .close:nth-child(6), #image-viewer-container #image-viewer #labs .projects li .preview > .shapes > .close:nth-child(6), #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(6):before, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(6):before, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(6):after, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(6):after {
+          -moz-animation: floating-2 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
+          -webkit-animation: floating-2 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
+          animation: floating-2 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate; }
+        #labs .projects li .preview > .shapes > .icon:nth-child(3), #labs .projects li article .preview > ul.shapes > li:nth-child(3):before, article #labs .projects li .preview > ul.shapes > li:nth-child(3):before, #labs .projects #main-header .navigation ul li .preview > .shapes > a:nth-child(3):before, #main-header .navigation ul #labs .projects li .preview > .shapes > a:nth-child(3):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(3):before, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(3):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(3):after, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(3):after, #labs .projects li #image-viewer-container #image-viewer .preview > .shapes > .close:nth-child(3), #image-viewer-container #image-viewer #labs .projects li .preview > .shapes > .close:nth-child(3), #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(3):before, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(3):before, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(3):after, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(3):after {
+          -moz-animation: floating-3 4s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
+          -webkit-animation: floating-3 4s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
+          animation: floating-3 4s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate; }
+        #labs .projects li .preview > .shapes > .icon:nth-child(4), #labs .projects li article .preview > ul.shapes > li:nth-child(4):before, article #labs .projects li .preview > ul.shapes > li:nth-child(4):before, #labs .projects #main-header .navigation ul li .preview > .shapes > a:nth-child(4):before, #main-header .navigation ul #labs .projects li .preview > .shapes > a:nth-child(4):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(4):before, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(4):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(4):after, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(4):after, #labs .projects li #image-viewer-container #image-viewer .preview > .shapes > .close:nth-child(4), #image-viewer-container #image-viewer #labs .projects li .preview > .shapes > .close:nth-child(4), #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(4):before, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(4):before, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(4):after, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(4):after {
+          -moz-animation: floating-1 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
+          -webkit-animation: floating-1 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
+          animation: floating-1 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate; }
+    #labs .projects li .preview > .image {
       position: absolute;
       top: 0;
       left: 0;
-      z-index: 1;
       width: 100%;
       height: 100%;
-      display: -webkit-flex;
-      -webkit-align-items: center;
-      display: flex;
-      align-items: center; }
-    #labs .projects li .text-container {
-      position: relative;
-      z-index: 1;
-      width: 100%;
+      background-size: cover;
       opacity: 1;
-      -moz-transition: opacity 0.15s cubic-bezier(0.23, 1, 0.32, 1);
-      -o-transition: opacity 0.15s cubic-bezier(0.23, 1, 0.32, 1);
-      -webkit-transition: opacity 0.15s cubic-bezier(0.23, 1, 0.32, 1);
-      transition: opacity 0.15s cubic-bezier(0.23, 1, 0.32, 1); }
-      #labs .projects li .text-container .inner {
-        margin: 2.5rem 0; }
-      #labs .projects li .text-container p {
-        margin: 2rem 0; }
-    #labs .projects li .preview {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 0;
-      width: 100%;
-      height: 100%; }
-      #labs .projects li .preview > .shapes {
-        position: absolute;
-        top: 25%;
-        left: -25%;
-        width: 150%;
-        height: 50%; }
-        #labs .projects li .preview > .shapes > .icon, #labs .projects li article .preview > ul.shapes > li:before, article #labs .projects li .preview > ul.shapes > li:before, #labs .projects #main-header .navigation ul li .preview > .shapes > a:before, #main-header .navigation ul #labs .projects li .preview > .shapes > a:before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:before, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:after, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:after, #labs .projects li #image-viewer-container #image-viewer .preview > .shapes > .close, #image-viewer-container #image-viewer #labs .projects li .preview > .shapes > .close, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:before, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:before, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:after, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:after {
-          position: absolute;
-          -webkit-backface-visibility: hidden; }
-          #labs .projects li .preview > .shapes > .icon:nth-child(3n+1), #labs .projects li article .preview > ul.shapes > li:nth-child(3n+1):before, article #labs .projects li .preview > ul.shapes > li:nth-child(3n+1):before, #labs .projects #main-header .navigation ul li .preview > .shapes > a:nth-child(3n+1):before, #main-header .navigation ul #labs .projects li .preview > .shapes > a:nth-child(3n+1):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(3n+1):before, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(3n+1):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(3n+1):after, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(3n+1):after, #labs .projects li #image-viewer-container #image-viewer .preview > .shapes > .close:nth-child(3n+1), #image-viewer-container #image-viewer #labs .projects li .preview > .shapes > .close:nth-child(3n+1), #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(3n+1):before, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(3n+1):before, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(3n+1):after, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(3n+1):after {
-            font-size: 2vmin;
-            margin: -1.5vmin;
-            opacity: .2; }
-          #labs .projects li .preview > .shapes > .icon:nth-child(3n+2), #labs .projects li article .preview > ul.shapes > li:nth-child(3n+2):before, article #labs .projects li .preview > ul.shapes > li:nth-child(3n+2):before, #labs .projects #main-header .navigation ul li .preview > .shapes > a:nth-child(3n+2):before, #main-header .navigation ul #labs .projects li .preview > .shapes > a:nth-child(3n+2):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(3n+2):before, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(3n+2):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(3n+2):after, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(3n+2):after, #labs .projects li #image-viewer-container #image-viewer .preview > .shapes > .close:nth-child(3n+2), #image-viewer-container #image-viewer #labs .projects li .preview > .shapes > .close:nth-child(3n+2), #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(3n+2):before, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(3n+2):before, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(3n+2):after, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(3n+2):after {
-            font-size: 3vmin;
-            margin: -2vmin;
-            opacity: .3; }
-          #labs .projects li .preview > .shapes > .icon:nth-child(3n+3), #labs .projects li article .preview > ul.shapes > li:nth-child(3n+3):before, article #labs .projects li .preview > ul.shapes > li:nth-child(3n+3):before, #labs .projects #main-header .navigation ul li .preview > .shapes > a:nth-child(3n+3):before, #main-header .navigation ul #labs .projects li .preview > .shapes > a:nth-child(3n+3):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(3n+3):before, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(3n+3):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(3n+3):after, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(3n+3):after, #labs .projects li #image-viewer-container #image-viewer .preview > .shapes > .close:nth-child(3n+3), #image-viewer-container #image-viewer #labs .projects li .preview > .shapes > .close:nth-child(3n+3), #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(3n+3):before, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(3n+3):before, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(3n+3):after, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(3n+3):after {
-            font-size: 6vmin;
-            margin: -3vmin;
-            opacity: .4; }
-          #labs .projects li .preview > .shapes > .icon:nth-child(1), #labs .projects li article .preview > ul.shapes > li:nth-child(1):before, article #labs .projects li .preview > ul.shapes > li:nth-child(1):before, #labs .projects #main-header .navigation ul li .preview > .shapes > a:nth-child(1):before, #main-header .navigation ul #labs .projects li .preview > .shapes > a:nth-child(1):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(1):before, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(1):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(1):after, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(1):after, #labs .projects li #image-viewer-container #image-viewer .preview > .shapes > .close:nth-child(1), #image-viewer-container #image-viewer #labs .projects li .preview > .shapes > .close:nth-child(1), #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(1):before, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(1):before, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(1):after, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(1):after, #labs .projects li .preview > .shapes > .icon:nth-child(5), #labs .projects li article .preview > ul.shapes > li:nth-child(5):before, article #labs .projects li .preview > ul.shapes > li:nth-child(5):before, #labs .projects #main-header .navigation ul li .preview > .shapes > a:nth-child(5):before, #main-header .navigation ul #labs .projects li .preview > .shapes > a:nth-child(5):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(5):before, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(5):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(5):after, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(5):after, #labs .projects li #image-viewer-container #image-viewer .preview > .shapes > .close:nth-child(5), #image-viewer-container #image-viewer #labs .projects li .preview > .shapes > .close:nth-child(5), #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(5):before, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(5):before, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(5):after, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(5):after {
-            -moz-animation: floating-1 4s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
-            -webkit-animation: floating-1 4s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
-            animation: floating-1 4s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate; }
-          #labs .projects li .preview > .shapes > .icon:nth-child(2), #labs .projects li article .preview > ul.shapes > li:nth-child(2):before, article #labs .projects li .preview > ul.shapes > li:nth-child(2):before, #labs .projects #main-header .navigation ul li .preview > .shapes > a:nth-child(2):before, #main-header .navigation ul #labs .projects li .preview > .shapes > a:nth-child(2):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(2):before, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(2):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(2):after, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(2):after, #labs .projects li #image-viewer-container #image-viewer .preview > .shapes > .close:nth-child(2), #image-viewer-container #image-viewer #labs .projects li .preview > .shapes > .close:nth-child(2), #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(2):before, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(2):before, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(2):after, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(2):after, #labs .projects li .preview > .shapes > .icon:nth-child(6), #labs .projects li article .preview > ul.shapes > li:nth-child(6):before, article #labs .projects li .preview > ul.shapes > li:nth-child(6):before, #labs .projects #main-header .navigation ul li .preview > .shapes > a:nth-child(6):before, #main-header .navigation ul #labs .projects li .preview > .shapes > a:nth-child(6):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(6):before, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(6):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(6):after, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(6):after, #labs .projects li #image-viewer-container #image-viewer .preview > .shapes > .close:nth-child(6), #image-viewer-container #image-viewer #labs .projects li .preview > .shapes > .close:nth-child(6), #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(6):before, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(6):before, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(6):after, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(6):after {
-            -moz-animation: floating-2 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
-            -webkit-animation: floating-2 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
-            animation: floating-2 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate; }
-          #labs .projects li .preview > .shapes > .icon:nth-child(3), #labs .projects li article .preview > ul.shapes > li:nth-child(3):before, article #labs .projects li .preview > ul.shapes > li:nth-child(3):before, #labs .projects #main-header .navigation ul li .preview > .shapes > a:nth-child(3):before, #main-header .navigation ul #labs .projects li .preview > .shapes > a:nth-child(3):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(3):before, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(3):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(3):after, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(3):after, #labs .projects li #image-viewer-container #image-viewer .preview > .shapes > .close:nth-child(3), #image-viewer-container #image-viewer #labs .projects li .preview > .shapes > .close:nth-child(3), #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(3):before, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(3):before, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(3):after, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(3):after {
-            -moz-animation: floating-3 4s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
-            -webkit-animation: floating-3 4s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
-            animation: floating-3 4s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate; }
-          #labs .projects li .preview > .shapes > .icon:nth-child(4), #labs .projects li article .preview > ul.shapes > li:nth-child(4):before, article #labs .projects li .preview > ul.shapes > li:nth-child(4):before, #labs .projects #main-header .navigation ul li .preview > .shapes > a:nth-child(4):before, #main-header .navigation ul #labs .projects li .preview > .shapes > a:nth-child(4):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(4):before, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(4):before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:nth-child(4):after, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:nth-child(4):after, #labs .projects li #image-viewer-container #image-viewer .preview > .shapes > .close:nth-child(4), #image-viewer-container #image-viewer #labs .projects li .preview > .shapes > .close:nth-child(4), #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(4):before, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(4):before, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:nth-child(4):after, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:nth-child(4):after {
-            -moz-animation: floating-1 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
-            -webkit-animation: floating-1 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
-            animation: floating-1 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate; }
-      #labs .projects li .preview > .image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-size: cover;
-        background-position: center center;
-        opacity: 0;
-        -moz-transform: translate(0, 0);
-        -ms-transform: translate(0, 0);
-        -webkit-transform: translate(0, 0);
-        transform: translate(0, 0);
-        -moz-transition: opacity 0.35s, -moz-transform, 0.15s, cubic-bezier(0.23, 1, 0.32, 1);
-        -o-transition: opacity 0.35s, -o-transform, 0.15s, cubic-bezier(0.23, 1, 0.32, 1);
-        -webkit-transition: opacity 0.35s, -webkit-transform, 0.15s, cubic-bezier(0.23, 1, 0.32, 1);
-        transition: opacity 0.35s, transform, 0.15s, cubic-bezier(0.23, 1, 0.32, 1); }
-#labs .closing {
-  width: 100%;
-  padding: 8rem 2.2082%;
-  color: #fff;
-  background: #82BCFF;
-  text-align: center;
-  font-size: 2.4rem;
-  font-family: "whitney_bookitalic";
-  -moz-box-shadow: inset 1px 1px 2px 0px rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: inset 1px 1px 2px 0px rgba(0, 0, 0, 0.1);
-  box-shadow: inset 1px 1px 2px 0px rgba(0, 0, 0, 0.1); }
+      -moz-transform: scale(1, 1);
+      -ms-transform: scale(1, 1);
+      -webkit-transform: scale(1, 1);
+      transform: scale(1, 1);
+      -moz-transition: opacity, 0.25s, cubic-bezier(0.23, 1, 0.32, 1), -moz-transform, 0.25s, cubic-bezier(0.23, 1, 0.32, 1);
+      -o-transition: opacity, 0.25s, cubic-bezier(0.23, 1, 0.32, 1), -o-transform, 0.25s, cubic-bezier(0.23, 1, 0.32, 1);
+      -webkit-transition: opacity, 0.25s, cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform, 0.25s, cubic-bezier(0.23, 1, 0.32, 1);
+      transition: opacity, 0.25s, cubic-bezier(0.23, 1, 0.32, 1), transform, 0.25s, cubic-bezier(0.23, 1, 0.32, 1); }
+@media (min-width: 700px) {
+  #labs .text-container {
+    visibility: hidden;
+    opacity: 0;
+    padding: 14.8265%;
+    -moz-transition: opacity 0.25s cubic-bezier(0.23, 1, 0.32, 1), visibility 0.25s;
+    -o-transition: opacity 0.25s cubic-bezier(0.23, 1, 0.32, 1), visibility 0.25s;
+    -webkit-transition: opacity 0.25s cubic-bezier(0.23, 1, 0.32, 1), visibility 0.25s;
+    transition: opacity 0.25s cubic-bezier(0.23, 1, 0.32, 1), visibility 0.25s;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    display: flex;
+    align-items: center; } }
 @media (min-width: 1400px) {
   #labs .heading {
     max-width: 1440px;
@@ -2807,9 +2802,10 @@ article ul {
       clear: both;
       font-size: 2.4rem; }
   #labs .projects {
-    max-width: 1440px;
+    max-width: 100%;
     margin-left: auto;
-    margin-right: auto; }
+    margin-right: auto;
+    padding-top: 8.33333%; }
     #labs .projects:after {
       content: " ";
       display: block;
@@ -2824,36 +2820,32 @@ article ul {
         right: 0;
         content: " ";
         z-index: 998;
-        background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuNSIgeDI9IjEuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzY2NjZmZiIgc3RvcC1vcGFjaXR5PSIwLjI1Ii8+PHN0b3Agb2Zmc2V0PSI3NC4wNzQwNyUiIHN0b3AtY29sb3I9IiNiM2IzZmYiIHN0b3Atb3BhY2l0eT0iMC4yNSIvPjxzdG9wIG9mZnNldD0iNzQuMDc0MDclIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+        background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuNSIgeDI9IjEuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzY2NjZmZiIgc3RvcC1vcGFjaXR5PSIwLjI1Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjYjNiM2ZmIiBzdG9wLW9wYWNpdHk9IjAuMjUiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4wIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
         background-size: 100%;
-        background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, rgba(102, 102, 255, 0.25)), color-stop(74.07407%, rgba(179, 179, 255, 0.25)), color-stop(74.07407%, rgba(0, 0, 0, 0)));
-        background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 74.07407%, rgba(0, 0, 0, 0) 74.07407%);
-        background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 74.07407%, rgba(0, 0, 0, 0) 74.07407%);
-        background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 74.07407%, rgba(0, 0, 0, 0) 74.07407%);
-        background-size: 8.51735%;
+        background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, rgba(102, 102, 255, 0.25)), color-stop(100%, rgba(179, 179, 255, 0.25)), color-stop(100%, rgba(0, 0, 0, 0)));
+        background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 100%, rgba(0, 0, 0, 0) 100%);
+        background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 100%, rgba(0, 0, 0, 0) 100%);
+        background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 100%, rgba(0, 0, 0, 0) 100%);
+        background-size: 8.33333%;
         background-origin: content-box;
         background-clip: content-box;
         background-position: left top; }
     #labs .projects li {
-      width: 31.8612%;
+      width: 33.33333%;
       float: left;
-      margin-right: 2.2082%;
-      margin-bottom: 2.2082%;
       height: 0;
-      padding-bottom: 31.8612%; }
-      #labs .projects li > .inner {
-        padding-right: 4em; }
-      #labs .projects li:nth-child(3n) {
-        float: right;
-        margin-right: 0; }
+      padding-bottom: 33.33333%; }
+      #labs .projects li:nth-child(3n-1) {
+        margin-left: 0; }
       #labs .projects li:hover .text-container {
-        opacity: 0; }
-      #labs .projects li:hover .preview > .image {
         opacity: 1;
-        -moz-transform: translate(-12px, -12px);
-        -ms-transform: translate(-12px, -12px);
-        -webkit-transform: translate(-12px, -12px);
-        transform: translate(-12px, -12px); } }
+        visibility: visible; }
+      #labs .projects li:hover .preview > .image {
+        opacity: .05;
+        -moz-transform: scale(1.05, 1.05);
+        -ms-transform: scale(1.05, 1.05);
+        -webkit-transform: scale(1.05, 1.05);
+        transform: scale(1.05, 1.05); } }
 @media (min-width: 700px) and (max-width: 1400px) {
   #labs .heading {
     max-width: 1440px;
@@ -2885,22 +2877,23 @@ article ul {
         background-clip: content-box;
         background-position: left top; }
     #labs .heading > h3 {
-      width: 40.37855%;
+      width: 57.41325%;
       float: left;
       margin-right: 2.2082%;
       margin-left: 8.51735%;
       font-size: 4rem; }
     #labs .heading > div {
-      width: 48.8959%;
+      width: 65.9306%;
       float: left;
       margin-right: 2.2082%;
       margin-left: 8.51735%;
       clear: both;
       font-size: 2rem; }
   #labs .projects {
-    max-width: 1440px;
+    max-width: 100%;
     margin-left: auto;
-    margin-right: auto; }
+    margin-right: auto;
+    padding-top: 8.33333%; }
     #labs .projects:after {
       content: " ";
       display: block;
@@ -2915,36 +2908,28 @@ article ul {
         right: 0;
         content: " ";
         z-index: 998;
-        background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuNSIgeDI9IjEuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzY2NjZmZiIgc3RvcC1vcGFjaXR5PSIwLjI1Ii8+PHN0b3Agb2Zmc2V0PSI3NC4wNzQwNyUiIHN0b3AtY29sb3I9IiNiM2IzZmYiIHN0b3Atb3BhY2l0eT0iMC4yNSIvPjxzdG9wIG9mZnNldD0iNzQuMDc0MDclIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+        background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuNSIgeDI9IjEuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzY2NjZmZiIgc3RvcC1vcGFjaXR5PSIwLjI1Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjYjNiM2ZmIiBzdG9wLW9wYWNpdHk9IjAuMjUiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4wIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
         background-size: 100%;
-        background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, rgba(102, 102, 255, 0.25)), color-stop(74.07407%, rgba(179, 179, 255, 0.25)), color-stop(74.07407%, rgba(0, 0, 0, 0)));
-        background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 74.07407%, rgba(0, 0, 0, 0) 74.07407%);
-        background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 74.07407%, rgba(0, 0, 0, 0) 74.07407%);
-        background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 74.07407%, rgba(0, 0, 0, 0) 74.07407%);
-        background-size: 8.51735%;
+        background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, rgba(102, 102, 255, 0.25)), color-stop(100%, rgba(179, 179, 255, 0.25)), color-stop(100%, rgba(0, 0, 0, 0)));
+        background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 100%, rgba(0, 0, 0, 0) 100%);
+        background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 100%, rgba(0, 0, 0, 0) 100%);
+        background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 100%, rgba(0, 0, 0, 0) 100%);
+        background-size: 8.33333%;
         background-origin: content-box;
         background-clip: content-box;
         background-position: left top; }
     #labs .projects li {
-      width: 40.37855%;
+      width: 50%;
       float: left;
-      margin-right: 2.2082%;
-      margin-bottom: 2.2082%;
       height: 0;
-      padding-bottom: 40.37855%; }
-      #labs .projects li > .inner {
-        padding-right: 4em; }
+      padding-bottom: 50%; }
       #labs .projects li:nth-child(2n-1) {
-        margin-left: 0;
-        margin-left: 8.51735%; }
-      #labs .projects li:hover .text-container {
-        opacity: 0; }
+        margin-left: 0; }
       #labs .projects li:hover .preview > .image {
-        opacity: 1;
-        -moz-transform: translate(-12px, -12px);
-        -ms-transform: translate(-12px, -12px);
-        -webkit-transform: translate(-12px, -12px);
-        transform: translate(-12px, -12px); } }
+        -moz-transform: scale(1.05, 1.05);
+        -ms-transform: scale(1.05, 1.05);
+        -webkit-transform: scale(1.05, 1.05);
+        transform: scale(1.05, 1.05); } }
 @media (max-width: 700px) {
   #labs {
     max-width: 1440px;
@@ -2978,7 +2963,7 @@ article ul {
       max-width: 1440px;
       margin-left: auto;
       margin-right: auto;
-      padding: 9.56938% 0; }
+      padding: 0 6.69856%; }
       #labs .heading:after {
         content: " ";
         display: block;
@@ -3004,21 +2989,14 @@ article ul {
           background-clip: content-box;
           background-position: left top; }
       #labs .heading > h3 {
-        width: 74.16268%;
-        float: left;
-        margin-right: 3.34928%;
-        margin-left: 12.91866%;
         font-size: 3rem; }
       #labs .heading > div {
-        width: 74.16268%;
-        float: left;
-        margin-right: 3.34928%;
-        margin-left: 12.91866%;
         font-size: 1.8rem; }
     #labs .projects {
       max-width: 1440px;
       margin-left: auto;
-      margin-right: auto; }
+      margin-right: auto;
+      padding: 6.30915% 0; }
       #labs .projects:after {
         content: " ";
         display: block;
@@ -3052,22 +3030,20 @@ article ul {
         #labs .projects li .text-container {
           display: block;
           width: 100%;
-          padding: 4em 0 30em 0;
           overflow: hidden;
           *zoom: 1; }
           #labs .projects li .text-container > .inner {
-            width: 74.16268%;
-            float: left;
-            margin-right: 3.34928%;
-            margin-left: 12.91866%; }
+            padding: 0 6.69856%; }
         #labs .projects li .preview {
+          position: relative;
           width: calc(100% - 6.69856%);
           height: 26em;
-          left: 3.34928%;
-          bottom: 0;
-          top: auto; }
+          left: 3.34928%; }
           #labs .projects li .preview > .image {
-            opacity: 1; } }
+            -moz-transform: scale(1.05, 1.05);
+            -ms-transform: scale(1.05, 1.05);
+            -webkit-transform: scale(1.05, 1.05);
+            transform: scale(1.05, 1.05); } }
 
 #project-container .comparison .comparison-container {
   margin: 0 auto;
@@ -4835,26 +4811,16 @@ article ul {
           #about > .content .details .heading .greeting {
             font-size: 3em; }
         #about > .content .details .merit {
+          padding: 0 4.51613%;
           margin-bottom: 12.90323%; }
           #about > .content .details .merit h4 {
             margin-bottom: .6em; }
         #about > .content .details .social {
           font-size: .8em;
-          text-align: center; }
-          #about > .content .details .social .border {
-            margin: 2rem auto; }
+          text-align: left;
+          padding: 0 4.51613%; }
           #about > .content .details .social ul {
-            width: 82.58065%;
-            float: left;
-            margin-right: 4.51613%;
-            margin-left: 12.90323%;
-            text-align: left; }
-          #about > .content .details .social .or {
-            clear: both;
-            width: 100%;
-            float: left;
-            margin-left: 0;
-            margin-right: 0; } }
+            text-align: left; } }
 #about .portrait {
   -moz-background-size: 100% 100%;
   -o-background-size: 100% 100%;

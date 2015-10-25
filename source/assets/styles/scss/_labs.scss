@@ -52,8 +52,6 @@
 }
 
 .projects{
-	padding: span(1) 0;
-
 	li{
 		position: relative;
 
@@ -62,21 +60,21 @@
 			z-index: 1;
 			width: 100%;
 			height: 100%;
-			@include flexbox((
-				display: flex,
-				align-items: center
-			));
 		}
 
 		.text-container{
 			position: relative;
 			z-index: 1;
 			width: 100%;
-			opacity: 1;
-			@include transition(opacity .15s $easeOutQuint);
+			height: 100%;
 
 			.inner{
 				margin: 2.5rem 0;
+			}
+
+			h4{
+				font-size: 3rem;
+				line-height: 1.2;
 			}
 
 			p{
@@ -89,6 +87,7 @@
 			z-index: 0;
 			width: 100%;
 			height: 100%;
+			overflow: hidden;
 
 			>.shapes{
 				position: absolute;
@@ -154,14 +153,29 @@
 				width: 100%;
 				height: 100%;
 				background-size: cover;
-				background-position: center center;
-				opacity: 0;
-				@include translate(0, 0);
-				@include transition(opacity .35s, transform, .15s, $easeOutQuint);
+				opacity: 1;
+				@include scale(1);
+				@include transition(opacity, .25s, $easeOutQuint, transform, .25s, $easeOutQuint);
 			}
 		}
 	}
 }
+
+
+@include breakpoint($break_above_mobile) {
+
+	.text-container{
+		visibility: hidden;
+		opacity: 0;
+		padding: span(2);
+		@include transition(opacity .25s $easeOutQuint, visibility .25s);
+		@include flexbox((
+			display: flex,
+			align-items: center
+		));
+	}
+}
+
 
 @include breakpoint($break_desktop) {
 
@@ -181,32 +195,31 @@
 		}
 	}
 
-	.projects{
-		@include container(12);
+	@include with-layout($no-gutters-grid-full) {
+		.projects{
+			@include container(12);
+			padding-top: span(1);
 
-		li{
-			@include span(4);
-			margin-bottom: gutter();
-			height: 0;
-			padding-bottom: span(4);
+			li{
+				@include span(4);
+				height: 0;
+				padding-bottom: span(4);
 
-			>.inner{
-				padding-right: 4em;
-			}
-
-			&:nth-child(3n){
-				@include last();
-			}
-
-			&:hover{
-				.text-container{
-					opacity: 0;
+				&:nth-child(3n-1){
+					@include first;
 				}
 
-				.preview{
-					>.image{
+				&:hover{
+					.text-container{
 						opacity: 1;
-						@include translate(-12px, -12px);
+						visibility: visible;
+					}
+
+					.preview{
+						>.image{
+							opacity: .05;
+							@include scale(1.05);
+						}
 					}
 				}
 			}
@@ -222,46 +235,38 @@
 		padding-top: span(1);
 
 		>h3{
-			@include span(5);
+			@include span(7);
 			@include push(1);
 			font-size: 4rem;
 		}
 
 		>div{
-			@include span(6);
+			@include span(8);
 			@include push(1);
 			clear: both;
 			font-size: 2rem;
 		}
 	}
 
-	.projects{
-		@include container(12);
+	@include with-layout($no-gutters-grid-full) {
+		.projects{
+			@include container(12);
+			padding-top: span(1);
 
-		li{
-			@include span(5);
-			margin-bottom: gutter();
-			height: 0;
-			padding-bottom: span(5);
+			li{
+				@include span(6);
+				height: 0;
+				padding-bottom: span(6);
 
-			>.inner{
-				padding-right: 4em;
-			}
-
-			&:nth-child(2n-1){
-				@include first;
-				@include push(1);
-			}
-
-			&:hover{
-				.text-container{
-					opacity: 0;
+				&:nth-child(2n-1){
+					@include first;
 				}
 
-				.preview{
-					>.image{
-						opacity: 1;
-						@include translate(-12px, -12px);
+				&:hover{
+					.preview{
+						>.image{
+							@include scale(1.05);
+						}
 					}
 				}
 			}
@@ -277,17 +282,13 @@
 		@include container(8);
 		
 		@include with-layout(8) {
-			padding: span(1) 0;
+			padding: 0 #{gutter()*2};
 
 			>h3{
-				@include span(6);
-				@include push(1);
 				font-size: 3rem;
 			}
 
 			>div{
-				@include span(6);
-				@include push(1);
 				font-size: 1.8rem;
 			}
 		}
@@ -295,6 +296,7 @@
 
 	.projects{
 		@include container(8);
+		padding: span(1) 0;
 
 		@include with-layout(8) {
 			li{
@@ -309,24 +311,21 @@
 				.text-container{
 					display: block;
 					width: 100%;
-					padding: 4em 0 30em 0;
 					@include clearfix;
 
 					>.inner{
-						@include span(6);
-						@include push(1);
+						padding: 0 #{gutter()*2};
 					}
 				}
 
 				.preview{
+					position: relative;
 					width: calc(100% - #{gutter()*2});
 					height: 26em;
 					left: gutter();
-					bottom: 0;
-					top: auto;
 
 					>.image{
-						opacity: 1;
+						@include scale(1.05);
 					}
 				}
 			}
