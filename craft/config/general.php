@@ -14,10 +14,11 @@ return array(
         'maxUploadFileSize' => 134217728,
     ),
 
-    'graceux.craft.dev' => array(
+    '.dev' => array(
         'devMode' => true,
-        'user' => 'root',
-        'password' => 'root',
-        'database' => 'graceux'
+    ),
+
+    '.com' => array(
+        'devMode' => false,
     ),
 );

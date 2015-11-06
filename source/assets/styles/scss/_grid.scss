@@ -17,6 +17,18 @@ $tablet-portrait-grid: (
 	gutters: .3,
 );
 
+$no-gutters-grid-full: (
+	columns: 12,
+	container: 100%,
+	gutters: 0,
+);
+
+$no-gutters-grid: (
+	columns: 12,
+	container: 1440px,
+	gutters: 0,
+);
+
 @if compass-env() == 'development' {
 	$susy: map-merge($susy, $debug);
 	$tablet-portrait-grid: map-merge($tablet-portrait-grid, $debug);
