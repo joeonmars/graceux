@@ -45,6 +45,14 @@
 					margin-right: 0;
 				}
 			}
+
+			a{
+				@include transition(color .25s);
+
+				&:hover{
+					color: $color_logo_blue;
+				}
+			}
 		}
 	}
 

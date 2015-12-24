@@ -8,83 +8,84 @@ goog.require( 'goog.window' );
 
 gux.Utils.escapeConsole = function() {
 
-  window.console = {};
+	window.console = {};
 
-  var methods = [
-    'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
-    'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
-    'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
-    'timeStamp', 'trace', 'warn'
-  ];
+	var methods = [
+		'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
+		'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
+		'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
+		'timeStamp', 'trace', 'warn'
+	];
 
-  for ( var i = 0; i < methods.length; i++ ) {
-    console[ methods[ i ] ] = function() {};
-  }
+	for ( var i = 0; i < methods.length; i++ ) {
+		console[ methods[ i ] ] = function() {};
+	}
 };
 
 
 gux.Utils.findUrls = function( text ) {
 
-  var source = ( text || '' ).toString();
-  var urlArray = [];
-  var url;
-  var matchArray;
+	var source = ( text || '' ).toString();
+	var urlArray = [];
+	var url;
+	var matchArray;
 
-  // Regular expression to find FTP, HTTP(S) and email URLs.
-  var regexToken = /(((ftp|https?):\/\/)[\-\w@:%_\+.~#?,&\/\/=]+)|((mailto:)?[_.\w-]+@([\w][\w\-]+\.)+[a-zA-Z]{2,3})/g;
+	// Regular expression to find FTP, HTTP(S) and email URLs.
+	var regexToken = /url\(([^)]+)\)/gi;
 
-  // Iterate through any URLs in the text.
-  while ( ( matchArray = regexToken.exec( source ) ) !== null ) {
-    var token = matchArray[ 0 ];
-    urlArray.push( token );
-  }
+	// Iterate through any URLs in the text.
+	matchArray = source.match( regexToken );
 
-  return urlArray;
+	var urlArray = goog.array.map( matchArray, function( str ) {
+		return str.replace( 'url("', '' ).replace( '")', '' );
+	} );
+
+	return urlArray;
 };
 
 
 gux.Utils.popup = function( url ) {
 
-  var width, height;
+	var width, height;
 
-  var isFacebook = goog.string.contains( url, 'facebook' );
-  var isTwitter = goog.string.contains( url, 'twitter' );
-  var isGoogle = goog.string.contains( url, 'google' );
+	var isFacebook = goog.string.contains( url, 'facebook' );
+	var isTwitter = goog.string.contains( url, 'twitter' );
+	var isGoogle = goog.string.contains( url, 'google' );
 
-  if ( isFacebook ) {
+	if ( isFacebook ) {
 
-    width = 640;
-    height = 275;
+		width = 640;
+		height = 275;
 
-  } else if ( isTwitter ) {
+	} else if ( isTwitter ) {
 
-    width = 575;
-    height = 275;
+		width = 575;
+		height = 275;
 
-  } else if ( isGoogle ) {
+	} else if ( isGoogle ) {
 
-    width = 640;
-    height = 470;
-  }
+		width = 640;
+		height = 470;
+	}
 
-  var viewportSize = goog.dom.getViewportSize();
+	var viewportSize = goog.dom.getViewportSize();
 
-  goog.window.open( url, {
-    'width': width,
-    'height': height,
-    'left': ( window.screenLeft || window.screenX ) + ( viewportSize.width - width ) / 2,
-    'top': ( window.screenTop || window.screenY ) + ( viewportSize.height - height ) / 2,
-    'toolbar': false,
-    'scrollbars': true,
-    'statusbar': false,
-    'menubar': false,
-    'resizable': true
-  } );
+	goog.window.open( url, {
+		'width': width,
+		'height': height,
+		'left': ( window.screenLeft || window.screenX ) + ( viewportSize.width - width ) / 2,
+		'top': ( window.screenTop || window.screenY ) + ( viewportSize.height - height ) / 2,
+		'toolbar': false,
+		'scrollbars': true,
+		'statusbar': false,
+		'menubar': false,
+		'resizable': true
+	} );
 };
 
 
 gux.Utils.setCursorType = function( type, el ) {
 
-  var _el = el || goog.dom.query( 'html' )[ 0 ];
-  _el.setAttribute( 'data-cursor', type );
+	var _el = el || goog.dom.query( 'html' )[ 0 ];
+	_el.setAttribute( 'data-cursor', type );
 };

@@ -79,7 +79,8 @@ gux.fx.LazyLoader.prototype.loadImage = function() {
 
 		img = new Image();
 
-		var srcs = gux.Utils.findUrls( goog.style.getStyle( this._imageEl, 'background-image' ) );
+		var imageStyle = goog.style.getStyle( this._imageEl, 'background-image' );
+		var srcs = gux.Utils.findUrls( imageStyle );
 		var pixelRatio = window[ 'devicePixelRatio' ];
 		img.src = ( pixelRatio === 1 ) ? srcs[ 0 ] : srcs[ 1 ];
 	}

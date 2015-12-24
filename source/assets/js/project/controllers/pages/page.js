@@ -185,6 +185,8 @@ gux.controllers.pages.Page.prototype.resize = function() {
 	goog.array.forEach( this._modules, function( module ) {
 		module.resize();
 	} );
+
+	gux.mainScroller.resize();
 };
 
 

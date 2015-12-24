@@ -18,9 +18,12 @@
 				@include absoluteTopLeft;
 				width: 100%;
 				height: 100%;
-				opacity: .4;
 				background-size: cover;
 				background-position: center center;
+
+				&.darken{
+					opacity: .4;
+				}
 			}
 		}
 
@@ -712,7 +715,6 @@ section.full.media{
 }
 
 .siblings{
-	@include clearfix;
 
 	>a{
 		position: relative;
@@ -797,13 +799,13 @@ section.full.media{
 
 			&.prev{
 				.movable{
-					@include translate(1.5rem, -1.5rem);
+					@include translate(-1.5rem, -1.5rem);
 				}
 			}
 
 			&.next{
 				.movable{
-					@include translate(-1.5rem, -1.5rem);
+					@include translate(1.5rem, -1.5rem);
 				}
 			}
 

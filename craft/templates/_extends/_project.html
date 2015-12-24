@@ -24,7 +24,9 @@
 	<section class="intro">
 		<div class="container">
 			<div class="media-container">
-				<div class="image" style="{{ utils.retinaBackground(entry.promotionalImage[0], 1024) }}" data-preload></div>
+				<div class="image {% if entry.promotionalImage.darken %}darken{% endif %}"
+					style="{{ utils.retinaBackground(entry.promotionalImage[0], 1024) }}"
+					data-preload></div>
 			</div>
 			<div class="text-container">
 				<div class="masthead">
