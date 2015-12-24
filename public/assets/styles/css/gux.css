@@ -606,7 +606,7 @@ body {
     .closing > span.icon, #project-container .feature figure div[data-allow-enlarge] .closing > span.image-container:before, #project-container .feature figure div[data-allow-enlarge] .closing > span.image-container:after, #image-viewer-container #image-viewer .closing > span.close, #image-viewer-container #image-viewer .slider.closing > span.inner:before, #image-viewer-container #image-viewer .slider.closing > span.inner:after {
       color: #FFDCA4;
       margin: 0 .5rem;
-      font-size: 2.4rem;
+      font-size: 3rem;
       -moz-animation: heart-beat 1.5s ease-in-out infinite;
       -webkit-animation: heart-beat 1.5s ease-in-out infinite;
       animation: heart-beat 1.5s ease-in-out infinite; }
