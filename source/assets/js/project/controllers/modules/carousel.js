@@ -10,9 +10,9 @@ gux.controllers.modules.Carousel = function( element ) {
 
 	this._imageContainer = goog.dom.query( '.image-container', this.el )[ 0 ];
 	this._scroller = goog.dom.query( '.scroller', this.el )[ 0 ];
-	this._prevButton = goog.dom.query( '.prev', this.el )[ 0 ];
-	this._nextButton = goog.dom.query( '.next', this.el )[ 0 ];
-	this._stepButtons = goog.dom.query( '.pagination button', this.el );
+	this._nextButton = goog.dom.query( '.next-button', this.el )[ 0 ];
+	this._dots = goog.dom.query( '.pagination .dots', this.el )[ 0 ];
+	this._stepButtons = goog.dom.query( 'button', this._dots );
 
 	this._dragger = new goog.fx.Dragger( this._scroller );
 	this._dragger.setHysteresis( 10 );
@@ -50,8 +50,7 @@ gux.controllers.modules.Carousel.prototype.doActivate = function() {
 	this._eventHandler.listen( this._dragger, goog.fx.Dragger.EventType.START, this.onDragStart, false, this );
 	this._eventHandler.listen( this._dragger, goog.fx.Dragger.EventType.END, this.onDragEnd, false, this );
 
-	this._eventHandler.listen( this._prevButton, goog.events.EventType.CLICK, this.prevStep, false, this );
-	this._eventHandler.listen( this._nextButton, goog.events.EventType.CLICK, this.nextStep, false, this );
+	this._eventHandler.listen( this._nextButton, goog.events.EventType.CLICK, this.onClickNextButton, false, this );
 
 	this._eventHandler.listen( window, goog.events.EventType.RESIZE, this.resize, false, this );
 
@@ -85,6 +84,10 @@ gux.controllers.modules.Carousel.prototype.nextStep = function() {
 
 gux.controllers.modules.Carousel.prototype.scrollToStep = function( step ) {
 
+	var fromStepClass = 'step-' + ( this._step + 1 );
+	var toStepClass = 'step-' + ( step + 1 );
+	goog.dom.classlist.swap( this._dots, fromStepClass, toStepClass );
+
 	this._step = step;
 
 	var stepWidth = goog.style.getSize( this._imageContainer ).width;
@@ -96,13 +99,6 @@ gux.controllers.modules.Carousel.prototype.scrollToStep = function( step ) {
 		},
 		'ease': Quad.easeOut
 	} );
-
-	goog.array.forEach( this._stepButtons, function( el, index ) {
-		goog.dom.classlist.enable( el, 'active', ( step === index ) );
-	} );
-
-	this._prevButton.disabled = ( step === 0 );
-	this._nextButton.disabled = ( step === this._numSteps - 1 );
 };
 
 
@@ -185,4 +181,16 @@ gux.controllers.modules.Carousel.prototype.onClickStepButton = function( e ) {
 	if ( this._step !== step ) {
 		this.scrollToStep( step );
 	}
+};
+
+
+gux.controllers.modules.Carousel.prototype.onClickNextButton = function( e ) {
+
+	var nextStep = this._step + 1;
+
+	if ( nextStep > this._numSteps - 1 ) {
+		nextStep = 0;
+	}
+
+	this.scrollToStep( nextStep );
 };

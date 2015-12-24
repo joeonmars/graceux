@@ -21,13 +21,18 @@
 				{% endfor %}
 				</ul>
 			</div>
-
-			<div class="button-container">
-				<button class="icon icon-arrow-prev prev" disabled></button>
-				<button class="icon icon-arrow-next next"></button>
-			</div>
 		</div>
 
+		<div class="pagination">
+			<div class="dots step-1">
+			{% for i in 1..(feature.images|length) %}
+				<button data-step="{{i-1}}"></button>
+			{% endfor %}
+			</div>
+
+			<button class="icon icon-arrow-next next-button"></button>
+		</div>
+		
 	</figure>
 
 </section>

@@ -102,11 +102,11 @@ $border-padding: 8px;
 
 .closing{
 	width: 100%;
-	padding: 8rem gutter();
+	padding: 5rem gutter();
 	color: #fff;
 	background: $color_logo_green;
 	text-align: center;
-	font-size: 2rem;
+	font-size: 1.8rem;
 	font-family: $font_flama;
 	text-transform: uppercase;
 	@include box-shadow(inset 0px 1px 2px 0px rgba(black,0.1));
@@ -116,7 +116,10 @@ $border-padding: 8px;
 		vertical-align: middle;
 
 		&.icon{
-			color: $color_logo_red;
+			color: $color_logo_yellow;
+			margin: 0 .5rem;
+			font-size: 2.4rem;
+			@include animation(heart-beat 1.5s ease-in-out infinite);
 		}
 	}
 }

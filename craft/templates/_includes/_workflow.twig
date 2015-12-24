@@ -15,23 +15,16 @@
 			{% endfor %}
 			</ul>
 		</div>
-
-		<div class="button-container">
-			<button class="icon icon-arrow-prev prev" disabled></button>
-			<button class="icon icon-arrow-next next"></button>
-		</div>
 	</div>
 
 	<div class="pagination">
-	{% for i in 1..(workflow.step|length) %}
-	    <button class="underlined-button {% if loop.first %}active{% endif %}" data-step="{{i-1}}">
-	    	<div class="content">{{i}}</div>
-	    	<div class="underline"></div>
-	    </button>
-	    {% if not loop.last %}
-	    	<span class="dash"></span>
-	    {% endif %}
-	{% endfor %}
+		<div class="dots step-1">
+		{% for i in 1..(workflow.step|length) %}
+			<button data-step="{{i-1}}"></button>
+		{% endfor %}
+		</div>
+
+		<button class="icon icon-arrow-next next-button"></button>
 	</div>
 
 </figure>
