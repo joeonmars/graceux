@@ -713,6 +713,9 @@ p {
 b, strong {
   font-family: "Whitney"; }
 
+em, i {
+  font-family: "whitney_lightitalic"; }
+
 a {
   color: inherit;
   text-decoration: none; }
@@ -3820,6 +3823,8 @@ article ul {
   #project-container .details > section article a:hover {
     color: #82BCFF;
     border-color: #82BCFF; }
+#project-container .details > section article a, #project-container .details > section article em, #project-container .details > section article i, #project-container .details > section article strong, #project-container .details > section article b {
+  font-size: 1.1em; }
 @media (max-width: 700px) {
   #project-container .details {
     clear: both;
