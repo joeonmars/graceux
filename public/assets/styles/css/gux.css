@@ -3015,10 +3015,14 @@ article ul {
         opacity: 1;
         visibility: visible; }
       #labs .projects li:hover .preview > .image {
+        opacity: .05;
         -moz-transform: scale(1.05, 1.05);
         -ms-transform: scale(1.05, 1.05);
         -webkit-transform: scale(1.05, 1.05);
-        transform: scale(1.05, 1.05); } }
+        transform: scale(1.05, 1.05); }
+      #labs .projects li:hover .preview > .shapes {
+        opacity: 1;
+        visibility: visible; } }
 @media (max-width: 700px) {
   #labs {
     max-width: 1440px;

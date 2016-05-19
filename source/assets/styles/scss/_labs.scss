@@ -278,7 +278,13 @@
 
 					.preview{
 						>.image{
+							opacity: .05;
 							@include scale(1.05);
+						}
+
+						>.shapes{
+							opacity: 1;
+							visibility: visible;
 						}
 					}
 				}
