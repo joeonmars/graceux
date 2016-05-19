@@ -59,6 +59,7 @@
 	@include breakpoint($break_mobile) {
 		padding: gutter() * 3 gutter() * 2;
 		font-size: .8rem;
+		text-align: center;
 
 		.copyright{
 			float: none;
@@ -67,11 +68,12 @@
 
 			&:before{
 				display: block;
+				margin: 0 auto 1rem auto;
 			}
 		}
 
 		.info{
-			float: left;
+			float: none;
 
 			.social{
 				display: block;

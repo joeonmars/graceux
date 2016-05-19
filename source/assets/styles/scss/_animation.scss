@@ -59,9 +59,9 @@
 }
 
 @include keyframes(heart-beat) {
-  0%{@include scale(1);}
-  50%{@include scale(1.1);}
-  100%{@include scale(1);}
+  0%{@include scale(.8);}
+  50%{@include scale(1);}
+  100%{@include scale(.8);}
 }
 
 /* Generated with Bounce.js. Edit at http://goo.gl/yq18sP */

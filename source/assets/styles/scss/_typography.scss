@@ -102,11 +102,12 @@ $border-padding: 8px;
 
 .closing{
 	width: 100%;
-	padding: 5rem gutter();
-	color: #fff;
-	background: $color_logo_green;
+	padding: 5rem gutter() 2rem gutter();
+	color: $color_black;
+	background: $color_lightergray;
 	text-align: center;
-	font-size: 1.8rem;
+	font-size: 1.3rem;
+	letter-spacing: .2em;
 	font-family: $font_flama;
 	text-transform: uppercase;
 	@include box-shadow(inset 0px 1px 2px 0px rgba(black,0.1));
@@ -115,11 +116,17 @@ $border-padding: 8px;
 	>span{
 		vertical-align: middle;
 
-		&.icon{
-			color: $color_logo_yellow;
+		&.icon-braces{
+			color: $color_logo_blue;
+			margin-right: .5rem;
+			font-size: 2rem;
+		}
+
+		&.icon-heart{
+			color: $color_logo_red;
 			margin: 0 .5rem;
-			font-size: 3rem;
-			@include animation(heart-beat 1.5s ease-in-out infinite);
+			font-size: 2rem;
+			@include animation(heart-beat 1s ease-in-out infinite);
 		}
 	}
 }

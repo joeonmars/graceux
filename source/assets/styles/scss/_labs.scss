@@ -95,6 +95,9 @@
 				left: -25%;
 				width: 150%;
 				height: 50%;
+				opacity: 0;
+				visibility: hidden;
+				@include transition(opacity .25s, visibility .25s);
 
 				>.icon{
 					position: absolute;
@@ -219,6 +222,11 @@
 						>.image{
 							opacity: .05;
 							@include scale(1.05);
+						}
+
+						>.shapes{
+							opacity: 1;
+							visibility: visible;
 						}
 					}
 				}

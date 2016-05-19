@@ -56,8 +56,8 @@
 
 			.portrait{
 				margin-top: 1rem;
-				width: 75%;
-				padding-bottom: 75%;
+				width: 80%;
+				padding-bottom: 80%;
 			}
 		}
 
@@ -249,6 +249,7 @@
 
 .portrait{
 	@include retina-background('portrait.png');
+	@include border-radius(100%);
 }
 
 .heading{

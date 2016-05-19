@@ -77,8 +77,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   src: url('../fonts/whitney-bookitalic/whitney-bookitalic-webfont.eot?1430972282') format('embedded-opentype'), url('../fonts/whitney-bookitalic/whitney-bookitalic-webfont.woff2?1430972282') format('woff2'), url('../fonts/whitney-bookitalic/whitney-bookitalic-webfont.woff?1430972282') format('woff'), url('../fonts/whitney-bookitalic/whitney-bookitalic-webfont.ttf?1430972282') format('truetype'), url('../fonts/whitney-bookitalic/whitney-bookitalic-webfont.svg?1430972282#whitney_bookitalic') format('svg'); }
 @font-face {
   font-family: "icons";
-  src: url("../fonts/fontcustom/icons-4d738b1798ad1cf9497d05b471957a55.eot");
-  src: url("../fonts/fontcustom/icons-4d738b1798ad1cf9497d05b471957a55.eot?#iefix") format("embedded-opentype"), url("../fonts/fontcustom/icons-4d738b1798ad1cf9497d05b471957a55.woff") format("woff"), url("../fonts/fontcustom/icons-4d738b1798ad1cf9497d05b471957a55.ttf") format("truetype"), url("../fonts/fontcustom/icons-4d738b1798ad1cf9497d05b471957a55.svg?#icons") format("svg");
+  src: url("../fonts/fontcustom/icons-13f1241e6507c8d559e3f11731d8daa5.eot");
+  src: url("../fonts/fontcustom/icons-13f1241e6507c8d559e3f11731d8daa5.eot?#iefix") format("embedded-opentype"), url("../fonts/fontcustom/icons-13f1241e6507c8d559e3f11731d8daa5.woff") format("woff"), url("../fonts/fontcustom/icons-13f1241e6507c8d559e3f11731d8daa5.ttf") format("truetype"), url("../fonts/fontcustom/icons-13f1241e6507c8d559e3f11731d8daa5.svg?#icons") format("svg");
   font-weight: normal;
   font-style: normal; }
 .icon, article ul > li:before, #main-header .navigation ul li a:before, #project-container .feature figure div[data-allow-enlarge] .image-container:before, #project-container .feature figure div[data-allow-enlarge] .image-container:after, #image-viewer-container #image-viewer .close, #image-viewer-container #image-viewer .slider > .inner:before, #image-viewer-container #image-viewer .slider > .inner:after {
@@ -113,68 +113,71 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .icon-behance:before {
   content: "\f106"; }
 
-.icon-close:before, #image-viewer-container #image-viewer .close:before {
+.icon-braces:before {
   content: "\f107"; }
 
-.icon-contact:before {
+.icon-close:before, #image-viewer-container #image-viewer .close:before {
   content: "\f108"; }
 
-.icon-dribbble:before {
+.icon-contact:before {
   content: "\f109"; }
 
-.icon-email:before {
+.icon-dribbble:before {
   content: "\f10a"; }
 
-.icon-facebook:before {
+.icon-email:before {
   content: "\f10b"; }
 
-.icon-google:before {
+.icon-facebook:before {
   content: "\f10c"; }
 
-.icon-heart:before {
+.icon-google:before {
   content: "\f10d"; }
 
-.icon-linkedin:before {
+.icon-heart:before {
   content: "\f10e"; }
 
-.icon-minus:before {
+.icon-linkedin:before {
   content: "\f10f"; }
 
-.icon-pause:before, .video-player .controls > .play:before {
+.icon-minus:before {
   content: "\f110"; }
 
-.icon-play:before, .video-player .controls > .play.paused:before {
+.icon-pause:before, .video-player .controls > .play:before {
   content: "\f111"; }
 
-.icon-plus:before {
+.icon-play:before, .video-player .controls > .play.paused:before {
   content: "\f112"; }
 
-.icon-shape-g-stroke:before, #fullscreen-loader-container > .project-loader .lightbox > .shapes > .icon:nth-child(3n+1):before, #fullscreen-loader-container > .project-loader article .lightbox > ul.shapes > li:nth-child(3n+1):before, article #fullscreen-loader-container > .project-loader .lightbox > ul.shapes > li:nth-child(3n+1):before, #fullscreen-loader-container > .project-loader #main-header .navigation ul li .lightbox > .shapes > a:nth-child(3n+1):before, #main-header .navigation ul li #fullscreen-loader-container > .project-loader .lightbox > .shapes > a:nth-child(3n+1):before, #fullscreen-loader-container > .project-loader #project-container .feature figure div[data-allow-enlarge] .lightbox > .shapes > .image-container:nth-child(3n+1):before, #project-container .feature figure div[data-allow-enlarge] #fullscreen-loader-container > .project-loader .lightbox > .shapes > .image-container:nth-child(3n+1):before, #fullscreen-loader-container > .project-loader #image-viewer-container #image-viewer .lightbox > .shapes > .close:nth-child(3n+1):before, #image-viewer-container #image-viewer #fullscreen-loader-container > .project-loader .lightbox > .shapes > .close:nth-child(3n+1):before, #fullscreen-loader-container > .project-loader #image-viewer-container #image-viewer .lightbox > .slider.shapes > .inner:nth-child(3n+1):before, #image-viewer-container #image-viewer #fullscreen-loader-container > .project-loader .lightbox > .slider.shapes > .inner:nth-child(3n+1):before, #portfolio-navigation > .inner li:nth-child(3n+1) .icon:before, #portfolio-navigation > .inner li:nth-child(3n+1) article ul > li:before, article #portfolio-navigation > .inner li:nth-child(3n+1) ul > li:before, #portfolio-navigation > .inner #main-header .navigation ul li:nth-child(3n+1) a:before, #main-header .navigation ul #portfolio-navigation > .inner li:nth-child(3n+1) a:before, #portfolio-navigation > .inner li:nth-child(3n+1) #project-container .feature figure div[data-allow-enlarge] .image-container:before, #project-container .feature figure div[data-allow-enlarge] #portfolio-navigation > .inner li:nth-child(3n+1) .image-container:before, #portfolio-navigation > .inner li:nth-child(3n+1) #image-viewer-container #image-viewer .close:before, #image-viewer-container #image-viewer #portfolio-navigation > .inner li:nth-child(3n+1) .close:before, #portfolio-navigation > .inner li:nth-child(3n+1) #image-viewer-container #image-viewer .slider > .inner:before, #image-viewer-container #image-viewer #portfolio-navigation > .inner li:nth-child(3n+1) .slider > .inner:before, #labs .projects li .preview > .shapes > .icon.g:before, #labs .projects li article .preview > ul.shapes > li.g:before, article #labs .projects li .preview > ul.shapes > li.g:before, #labs .projects #main-header .navigation ul li .preview > .shapes > a.g:before, #main-header .navigation ul #labs .projects li .preview > .shapes > a.g:before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .g.image-container:before, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .g.image-container:before, #labs .projects li #image-viewer-container #image-viewer .preview > .shapes > .g.close:before, #image-viewer-container #image-viewer #labs .projects li .preview > .shapes > .g.close:before, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .g.inner:before, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .g.inner:before {
+.icon-plus:before {
   content: "\f113"; }
 
-.icon-shape-g:before, article ul > li:nth-child(3n-2):before, #main-header .navigation ul li:nth-child(1) a:before {
+.icon-shape-g-stroke:before, #fullscreen-loader-container > .project-loader .lightbox > .shapes > .icon:nth-child(3n+1):before, #fullscreen-loader-container > .project-loader article .lightbox > ul.shapes > li:nth-child(3n+1):before, article #fullscreen-loader-container > .project-loader .lightbox > ul.shapes > li:nth-child(3n+1):before, #fullscreen-loader-container > .project-loader #main-header .navigation ul li .lightbox > .shapes > a:nth-child(3n+1):before, #main-header .navigation ul li #fullscreen-loader-container > .project-loader .lightbox > .shapes > a:nth-child(3n+1):before, #fullscreen-loader-container > .project-loader #project-container .feature figure div[data-allow-enlarge] .lightbox > .shapes > .image-container:nth-child(3n+1):before, #project-container .feature figure div[data-allow-enlarge] #fullscreen-loader-container > .project-loader .lightbox > .shapes > .image-container:nth-child(3n+1):before, #fullscreen-loader-container > .project-loader #image-viewer-container #image-viewer .lightbox > .shapes > .close:nth-child(3n+1):before, #image-viewer-container #image-viewer #fullscreen-loader-container > .project-loader .lightbox > .shapes > .close:nth-child(3n+1):before, #fullscreen-loader-container > .project-loader #image-viewer-container #image-viewer .lightbox > .slider.shapes > .inner:nth-child(3n+1):before, #image-viewer-container #image-viewer #fullscreen-loader-container > .project-loader .lightbox > .slider.shapes > .inner:nth-child(3n+1):before, #portfolio-navigation > .inner li:nth-child(3n+1) .icon:before, #portfolio-navigation > .inner li:nth-child(3n+1) article ul > li:before, article #portfolio-navigation > .inner li:nth-child(3n+1) ul > li:before, #portfolio-navigation > .inner #main-header .navigation ul li:nth-child(3n+1) a:before, #main-header .navigation ul #portfolio-navigation > .inner li:nth-child(3n+1) a:before, #portfolio-navigation > .inner li:nth-child(3n+1) #project-container .feature figure div[data-allow-enlarge] .image-container:before, #project-container .feature figure div[data-allow-enlarge] #portfolio-navigation > .inner li:nth-child(3n+1) .image-container:before, #portfolio-navigation > .inner li:nth-child(3n+1) #image-viewer-container #image-viewer .close:before, #image-viewer-container #image-viewer #portfolio-navigation > .inner li:nth-child(3n+1) .close:before, #portfolio-navigation > .inner li:nth-child(3n+1) #image-viewer-container #image-viewer .slider > .inner:before, #image-viewer-container #image-viewer #portfolio-navigation > .inner li:nth-child(3n+1) .slider > .inner:before, #labs .projects li .preview > .shapes > .icon.g:before, #labs .projects li article .preview > ul.shapes > li.g:before, article #labs .projects li .preview > ul.shapes > li.g:before, #labs .projects #main-header .navigation ul li .preview > .shapes > a.g:before, #main-header .navigation ul #labs .projects li .preview > .shapes > a.g:before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .g.image-container:before, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .g.image-container:before, #labs .projects li #image-viewer-container #image-viewer .preview > .shapes > .g.close:before, #image-viewer-container #image-viewer #labs .projects li .preview > .shapes > .g.close:before, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .g.inner:before, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .g.inner:before {
   content: "\f114"; }
 
-.icon-shape-u-stroke:before, #fullscreen-loader-container > .project-loader .lightbox > .shapes > .icon:nth-child(3n+2):before, #fullscreen-loader-container > .project-loader article .lightbox > ul.shapes > li:nth-child(3n+2):before, article #fullscreen-loader-container > .project-loader .lightbox > ul.shapes > li:nth-child(3n+2):before, #fullscreen-loader-container > .project-loader #main-header .navigation ul li .lightbox > .shapes > a:nth-child(3n+2):before, #main-header .navigation ul li #fullscreen-loader-container > .project-loader .lightbox > .shapes > a:nth-child(3n+2):before, #fullscreen-loader-container > .project-loader #project-container .feature figure div[data-allow-enlarge] .lightbox > .shapes > .image-container:nth-child(3n+2):before, #project-container .feature figure div[data-allow-enlarge] #fullscreen-loader-container > .project-loader .lightbox > .shapes > .image-container:nth-child(3n+2):before, #fullscreen-loader-container > .project-loader #image-viewer-container #image-viewer .lightbox > .shapes > .close:nth-child(3n+2):before, #image-viewer-container #image-viewer #fullscreen-loader-container > .project-loader .lightbox > .shapes > .close:nth-child(3n+2):before, #fullscreen-loader-container > .project-loader #image-viewer-container #image-viewer .lightbox > .slider.shapes > .inner:nth-child(3n+2):before, #image-viewer-container #image-viewer #fullscreen-loader-container > .project-loader .lightbox > .slider.shapes > .inner:nth-child(3n+2):before, #portfolio-navigation > .inner li:nth-child(3n+2) .icon:before, #portfolio-navigation > .inner li:nth-child(3n+2) article ul > li:before, article #portfolio-navigation > .inner li:nth-child(3n+2) ul > li:before, #portfolio-navigation > .inner #main-header .navigation ul li:nth-child(3n+2) a:before, #main-header .navigation ul #portfolio-navigation > .inner li:nth-child(3n+2) a:before, #portfolio-navigation > .inner li:nth-child(3n+2) #project-container .feature figure div[data-allow-enlarge] .image-container:before, #project-container .feature figure div[data-allow-enlarge] #portfolio-navigation > .inner li:nth-child(3n+2) .image-container:before, #portfolio-navigation > .inner li:nth-child(3n+2) #image-viewer-container #image-viewer .close:before, #image-viewer-container #image-viewer #portfolio-navigation > .inner li:nth-child(3n+2) .close:before, #portfolio-navigation > .inner li:nth-child(3n+2) #image-viewer-container #image-viewer .slider > .inner:before, #image-viewer-container #image-viewer #portfolio-navigation > .inner li:nth-child(3n+2) .slider > .inner:before, #labs .projects li .preview > .shapes > .icon.u:before, #labs .projects li article .preview > ul.shapes > li.u:before, article #labs .projects li .preview > ul.shapes > li.u:before, #labs .projects #main-header .navigation ul li .preview > .shapes > a.u:before, #main-header .navigation ul #labs .projects li .preview > .shapes > a.u:before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .u.image-container:before, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .u.image-container:before, #labs .projects li #image-viewer-container #image-viewer .preview > .shapes > .u.close:before, #image-viewer-container #image-viewer #labs .projects li .preview > .shapes > .u.close:before, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .u.inner:before, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .u.inner:before {
+.icon-shape-g:before, article ul > li:nth-child(3n-2):before, #main-header .navigation ul li:nth-child(1) a:before {
   content: "\f115"; }
 
-.icon-shape-u:before, article ul > li:nth-child(3n-1):before, #main-header .navigation ul li:nth-child(2) a:before {
+.icon-shape-u-stroke:before, #fullscreen-loader-container > .project-loader .lightbox > .shapes > .icon:nth-child(3n+2):before, #fullscreen-loader-container > .project-loader article .lightbox > ul.shapes > li:nth-child(3n+2):before, article #fullscreen-loader-container > .project-loader .lightbox > ul.shapes > li:nth-child(3n+2):before, #fullscreen-loader-container > .project-loader #main-header .navigation ul li .lightbox > .shapes > a:nth-child(3n+2):before, #main-header .navigation ul li #fullscreen-loader-container > .project-loader .lightbox > .shapes > a:nth-child(3n+2):before, #fullscreen-loader-container > .project-loader #project-container .feature figure div[data-allow-enlarge] .lightbox > .shapes > .image-container:nth-child(3n+2):before, #project-container .feature figure div[data-allow-enlarge] #fullscreen-loader-container > .project-loader .lightbox > .shapes > .image-container:nth-child(3n+2):before, #fullscreen-loader-container > .project-loader #image-viewer-container #image-viewer .lightbox > .shapes > .close:nth-child(3n+2):before, #image-viewer-container #image-viewer #fullscreen-loader-container > .project-loader .lightbox > .shapes > .close:nth-child(3n+2):before, #fullscreen-loader-container > .project-loader #image-viewer-container #image-viewer .lightbox > .slider.shapes > .inner:nth-child(3n+2):before, #image-viewer-container #image-viewer #fullscreen-loader-container > .project-loader .lightbox > .slider.shapes > .inner:nth-child(3n+2):before, #portfolio-navigation > .inner li:nth-child(3n+2) .icon:before, #portfolio-navigation > .inner li:nth-child(3n+2) article ul > li:before, article #portfolio-navigation > .inner li:nth-child(3n+2) ul > li:before, #portfolio-navigation > .inner #main-header .navigation ul li:nth-child(3n+2) a:before, #main-header .navigation ul #portfolio-navigation > .inner li:nth-child(3n+2) a:before, #portfolio-navigation > .inner li:nth-child(3n+2) #project-container .feature figure div[data-allow-enlarge] .image-container:before, #project-container .feature figure div[data-allow-enlarge] #portfolio-navigation > .inner li:nth-child(3n+2) .image-container:before, #portfolio-navigation > .inner li:nth-child(3n+2) #image-viewer-container #image-viewer .close:before, #image-viewer-container #image-viewer #portfolio-navigation > .inner li:nth-child(3n+2) .close:before, #portfolio-navigation > .inner li:nth-child(3n+2) #image-viewer-container #image-viewer .slider > .inner:before, #image-viewer-container #image-viewer #portfolio-navigation > .inner li:nth-child(3n+2) .slider > .inner:before, #labs .projects li .preview > .shapes > .icon.u:before, #labs .projects li article .preview > ul.shapes > li.u:before, article #labs .projects li .preview > ul.shapes > li.u:before, #labs .projects #main-header .navigation ul li .preview > .shapes > a.u:before, #main-header .navigation ul #labs .projects li .preview > .shapes > a.u:before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .u.image-container:before, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .u.image-container:before, #labs .projects li #image-viewer-container #image-viewer .preview > .shapes > .u.close:before, #image-viewer-container #image-viewer #labs .projects li .preview > .shapes > .u.close:before, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .u.inner:before, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .u.inner:before {
   content: "\f116"; }
 
-.icon-shape-x-down:before {
+.icon-shape-u:before, article ul > li:nth-child(3n-1):before, #main-header .navigation ul li:nth-child(2) a:before {
   content: "\f117"; }
 
-.icon-shape-x-stroke:before, #fullscreen-loader-container > .project-loader .lightbox > .shapes > .icon:nth-child(3n+3):before, #fullscreen-loader-container > .project-loader article .lightbox > ul.shapes > li:nth-child(3n+3):before, article #fullscreen-loader-container > .project-loader .lightbox > ul.shapes > li:nth-child(3n+3):before, #fullscreen-loader-container > .project-loader #main-header .navigation ul li .lightbox > .shapes > a:nth-child(3n+3):before, #main-header .navigation ul li #fullscreen-loader-container > .project-loader .lightbox > .shapes > a:nth-child(3n+3):before, #fullscreen-loader-container > .project-loader #project-container .feature figure div[data-allow-enlarge] .lightbox > .shapes > .image-container:nth-child(3n+3):before, #project-container .feature figure div[data-allow-enlarge] #fullscreen-loader-container > .project-loader .lightbox > .shapes > .image-container:nth-child(3n+3):before, #fullscreen-loader-container > .project-loader #image-viewer-container #image-viewer .lightbox > .shapes > .close:nth-child(3n+3):before, #image-viewer-container #image-viewer #fullscreen-loader-container > .project-loader .lightbox > .shapes > .close:nth-child(3n+3):before, #fullscreen-loader-container > .project-loader #image-viewer-container #image-viewer .lightbox > .slider.shapes > .inner:nth-child(3n+3):before, #image-viewer-container #image-viewer #fullscreen-loader-container > .project-loader .lightbox > .slider.shapes > .inner:nth-child(3n+3):before, #fullscreen-loader-container > .project-loader .lightbox > .shapes > .icon:nth-child(3n+4):before, #fullscreen-loader-container > .project-loader article .lightbox > ul.shapes > li:nth-child(3n+4):before, article #fullscreen-loader-container > .project-loader .lightbox > ul.shapes > li:nth-child(3n+4):before, #fullscreen-loader-container > .project-loader #main-header .navigation ul li .lightbox > .shapes > a:nth-child(3n+4):before, #main-header .navigation ul li #fullscreen-loader-container > .project-loader .lightbox > .shapes > a:nth-child(3n+4):before, #fullscreen-loader-container > .project-loader #project-container .feature figure div[data-allow-enlarge] .lightbox > .shapes > .image-container:nth-child(3n+4):before, #project-container .feature figure div[data-allow-enlarge] #fullscreen-loader-container > .project-loader .lightbox > .shapes > .image-container:nth-child(3n+4):before, #fullscreen-loader-container > .project-loader #image-viewer-container #image-viewer .lightbox > .shapes > .close:nth-child(3n+4):before, #image-viewer-container #image-viewer #fullscreen-loader-container > .project-loader .lightbox > .shapes > .close:nth-child(3n+4):before, #fullscreen-loader-container > .project-loader #image-viewer-container #image-viewer .lightbox > .slider.shapes > .inner:nth-child(3n+4):before, #image-viewer-container #image-viewer #fullscreen-loader-container > .project-loader .lightbox > .slider.shapes > .inner:nth-child(3n+4):before, #portfolio-navigation > .inner li:nth-child(3n+3) .icon:before, #portfolio-navigation > .inner li:nth-child(3n+3) article ul > li:before, article #portfolio-navigation > .inner li:nth-child(3n+3) ul > li:before, #portfolio-navigation > .inner #main-header .navigation ul li:nth-child(3n+3) a:before, #main-header .navigation ul #portfolio-navigation > .inner li:nth-child(3n+3) a:before, #portfolio-navigation > .inner li:nth-child(3n+3) #project-container .feature figure div[data-allow-enlarge] .image-container:before, #project-container .feature figure div[data-allow-enlarge] #portfolio-navigation > .inner li:nth-child(3n+3) .image-container:before, #portfolio-navigation > .inner li:nth-child(3n+3) #image-viewer-container #image-viewer .close:before, #image-viewer-container #image-viewer #portfolio-navigation > .inner li:nth-child(3n+3) .close:before, #portfolio-navigation > .inner li:nth-child(3n+3) #image-viewer-container #image-viewer .slider > .inner:before, #image-viewer-container #image-viewer #portfolio-navigation > .inner li:nth-child(3n+3) .slider > .inner:before, #portfolio-navigation > .inner li:nth-child(3n+4) .icon:before, #portfolio-navigation > .inner li:nth-child(3n+4) article ul > li:before, article #portfolio-navigation > .inner li:nth-child(3n+4) ul > li:before, #portfolio-navigation > .inner #main-header .navigation ul li:nth-child(3n+4) a:before, #main-header .navigation ul #portfolio-navigation > .inner li:nth-child(3n+4) a:before, #portfolio-navigation > .inner li:nth-child(3n+4) #project-container .feature figure div[data-allow-enlarge] .image-container:before, #project-container .feature figure div[data-allow-enlarge] #portfolio-navigation > .inner li:nth-child(3n+4) .image-container:before, #portfolio-navigation > .inner li:nth-child(3n+4) #image-viewer-container #image-viewer .close:before, #image-viewer-container #image-viewer #portfolio-navigation > .inner li:nth-child(3n+4) .close:before, #portfolio-navigation > .inner li:nth-child(3n+4) #image-viewer-container #image-viewer .slider > .inner:before, #image-viewer-container #image-viewer #portfolio-navigation > .inner li:nth-child(3n+4) .slider > .inner:before, #labs .projects li .preview > .shapes > .icon.x:before, #labs .projects li article .preview > ul.shapes > li.x:before, article #labs .projects li .preview > ul.shapes > li.x:before, #labs .projects #main-header .navigation ul li .preview > .shapes > a.x:before, #main-header .navigation ul #labs .projects li .preview > .shapes > a.x:before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .x.image-container:before, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .x.image-container:before, #labs .projects li #image-viewer-container #image-viewer .preview > .shapes > .x.close:before, #image-viewer-container #image-viewer #labs .projects li .preview > .shapes > .x.close:before, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .x.inner:before, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .x.inner:before {
+.icon-shape-x-down:before {
   content: "\f118"; }
 
-.icon-shape-x-up:before {
+.icon-shape-x-stroke:before, #fullscreen-loader-container > .project-loader .lightbox > .shapes > .icon:nth-child(3n+3):before, #fullscreen-loader-container > .project-loader article .lightbox > ul.shapes > li:nth-child(3n+3):before, article #fullscreen-loader-container > .project-loader .lightbox > ul.shapes > li:nth-child(3n+3):before, #fullscreen-loader-container > .project-loader #main-header .navigation ul li .lightbox > .shapes > a:nth-child(3n+3):before, #main-header .navigation ul li #fullscreen-loader-container > .project-loader .lightbox > .shapes > a:nth-child(3n+3):before, #fullscreen-loader-container > .project-loader #project-container .feature figure div[data-allow-enlarge] .lightbox > .shapes > .image-container:nth-child(3n+3):before, #project-container .feature figure div[data-allow-enlarge] #fullscreen-loader-container > .project-loader .lightbox > .shapes > .image-container:nth-child(3n+3):before, #fullscreen-loader-container > .project-loader #image-viewer-container #image-viewer .lightbox > .shapes > .close:nth-child(3n+3):before, #image-viewer-container #image-viewer #fullscreen-loader-container > .project-loader .lightbox > .shapes > .close:nth-child(3n+3):before, #fullscreen-loader-container > .project-loader #image-viewer-container #image-viewer .lightbox > .slider.shapes > .inner:nth-child(3n+3):before, #image-viewer-container #image-viewer #fullscreen-loader-container > .project-loader .lightbox > .slider.shapes > .inner:nth-child(3n+3):before, #fullscreen-loader-container > .project-loader .lightbox > .shapes > .icon:nth-child(3n+4):before, #fullscreen-loader-container > .project-loader article .lightbox > ul.shapes > li:nth-child(3n+4):before, article #fullscreen-loader-container > .project-loader .lightbox > ul.shapes > li:nth-child(3n+4):before, #fullscreen-loader-container > .project-loader #main-header .navigation ul li .lightbox > .shapes > a:nth-child(3n+4):before, #main-header .navigation ul li #fullscreen-loader-container > .project-loader .lightbox > .shapes > a:nth-child(3n+4):before, #fullscreen-loader-container > .project-loader #project-container .feature figure div[data-allow-enlarge] .lightbox > .shapes > .image-container:nth-child(3n+4):before, #project-container .feature figure div[data-allow-enlarge] #fullscreen-loader-container > .project-loader .lightbox > .shapes > .image-container:nth-child(3n+4):before, #fullscreen-loader-container > .project-loader #image-viewer-container #image-viewer .lightbox > .shapes > .close:nth-child(3n+4):before, #image-viewer-container #image-viewer #fullscreen-loader-container > .project-loader .lightbox > .shapes > .close:nth-child(3n+4):before, #fullscreen-loader-container > .project-loader #image-viewer-container #image-viewer .lightbox > .slider.shapes > .inner:nth-child(3n+4):before, #image-viewer-container #image-viewer #fullscreen-loader-container > .project-loader .lightbox > .slider.shapes > .inner:nth-child(3n+4):before, #portfolio-navigation > .inner li:nth-child(3n+3) .icon:before, #portfolio-navigation > .inner li:nth-child(3n+3) article ul > li:before, article #portfolio-navigation > .inner li:nth-child(3n+3) ul > li:before, #portfolio-navigation > .inner #main-header .navigation ul li:nth-child(3n+3) a:before, #main-header .navigation ul #portfolio-navigation > .inner li:nth-child(3n+3) a:before, #portfolio-navigation > .inner li:nth-child(3n+3) #project-container .feature figure div[data-allow-enlarge] .image-container:before, #project-container .feature figure div[data-allow-enlarge] #portfolio-navigation > .inner li:nth-child(3n+3) .image-container:before, #portfolio-navigation > .inner li:nth-child(3n+3) #image-viewer-container #image-viewer .close:before, #image-viewer-container #image-viewer #portfolio-navigation > .inner li:nth-child(3n+3) .close:before, #portfolio-navigation > .inner li:nth-child(3n+3) #image-viewer-container #image-viewer .slider > .inner:before, #image-viewer-container #image-viewer #portfolio-navigation > .inner li:nth-child(3n+3) .slider > .inner:before, #portfolio-navigation > .inner li:nth-child(3n+4) .icon:before, #portfolio-navigation > .inner li:nth-child(3n+4) article ul > li:before, article #portfolio-navigation > .inner li:nth-child(3n+4) ul > li:before, #portfolio-navigation > .inner #main-header .navigation ul li:nth-child(3n+4) a:before, #main-header .navigation ul #portfolio-navigation > .inner li:nth-child(3n+4) a:before, #portfolio-navigation > .inner li:nth-child(3n+4) #project-container .feature figure div[data-allow-enlarge] .image-container:before, #project-container .feature figure div[data-allow-enlarge] #portfolio-navigation > .inner li:nth-child(3n+4) .image-container:before, #portfolio-navigation > .inner li:nth-child(3n+4) #image-viewer-container #image-viewer .close:before, #image-viewer-container #image-viewer #portfolio-navigation > .inner li:nth-child(3n+4) .close:before, #portfolio-navigation > .inner li:nth-child(3n+4) #image-viewer-container #image-viewer .slider > .inner:before, #image-viewer-container #image-viewer #portfolio-navigation > .inner li:nth-child(3n+4) .slider > .inner:before, #labs .projects li .preview > .shapes > .icon.x:before, #labs .projects li article .preview > ul.shapes > li.x:before, article #labs .projects li .preview > ul.shapes > li.x:before, #labs .projects #main-header .navigation ul li .preview > .shapes > a.x:before, #main-header .navigation ul #labs .projects li .preview > .shapes > a.x:before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .x.image-container:before, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .x.image-container:before, #labs .projects li #image-viewer-container #image-viewer .preview > .shapes > .x.close:before, #image-viewer-container #image-viewer #labs .projects li .preview > .shapes > .x.close:before, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .x.inner:before, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .x.inner:before {
   content: "\f119"; }
 
-.icon-shape-x:before, article ul > li:nth-child(3n):before, #main-header .navigation ul li:nth-child(3) a:before {
+.icon-shape-x-up:before {
   content: "\f11a"; }
 
-.icon-twitter:before {
+.icon-shape-x:before, article ul > li:nth-child(3n):before, #main-header .navigation ul li:nth-child(3) a:before {
   content: "\f11b"; }
+
+.icon-twitter:before {
+  content: "\f11c"; }
 
 .icon-arrow-down-content {
   content: "\f101"; }
@@ -194,68 +197,71 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .icon-behance-content {
   content: "\f106"; }
 
-.icon-close-content {
+.icon-braces-content {
   content: "\f107"; }
 
-.icon-contact-content {
+.icon-close-content {
   content: "\f108"; }
 
-.icon-dribbble-content {
+.icon-contact-content {
   content: "\f109"; }
 
-.icon-email-content {
+.icon-dribbble-content {
   content: "\f10a"; }
 
-.icon-facebook-content {
+.icon-email-content {
   content: "\f10b"; }
 
-.icon-google-content {
+.icon-facebook-content {
   content: "\f10c"; }
 
-.icon-heart-content {
+.icon-google-content {
   content: "\f10d"; }
 
-.icon-linkedin-content {
+.icon-heart-content {
   content: "\f10e"; }
 
-.icon-minus-content, #image-viewer-container #image-viewer .slider > .inner:after {
+.icon-linkedin-content {
   content: "\f10f"; }
 
-.icon-pause-content {
+.icon-minus-content, #image-viewer-container #image-viewer .slider > .inner:after {
   content: "\f110"; }
 
-.icon-play-content {
+.icon-pause-content {
   content: "\f111"; }
 
-.icon-plus-content, #image-viewer-container #image-viewer .slider > .inner:before {
+.icon-play-content {
   content: "\f112"; }
 
-.icon-shape-g-stroke-content {
+.icon-plus-content, #image-viewer-container #image-viewer .slider > .inner:before {
   content: "\f113"; }
 
-.icon-shape-g-content {
+.icon-shape-g-stroke-content {
   content: "\f114"; }
 
-.icon-shape-u-stroke-content {
+.icon-shape-g-content {
   content: "\f115"; }
 
-.icon-shape-u-content {
+.icon-shape-u-stroke-content {
   content: "\f116"; }
 
-.icon-shape-x-down-content {
+.icon-shape-u-content {
   content: "\f117"; }
 
-.icon-shape-x-stroke-content {
+.icon-shape-x-down-content {
   content: "\f118"; }
 
-.icon-shape-x-up-content {
+.icon-shape-x-stroke-content {
   content: "\f119"; }
 
-.icon-shape-x-content {
+.icon-shape-x-up-content {
   content: "\f11a"; }
 
-.icon-twitter-content {
+.icon-shape-x-content {
   content: "\f11b"; }
+
+.icon-twitter-content {
+  content: "\f11c"; }
 
 html, body {
   position: absolute;
@@ -469,40 +475,40 @@ body {
     transform: translateY(50%); } }
 @-moz-keyframes heart-beat {
   0% {
+    -moz-transform: scale(0.8, 0.8);
+    transform: scale(0.8, 0.8); }
+  50% {
     -moz-transform: scale(1, 1);
     transform: scale(1, 1); }
-  50% {
-    -moz-transform: scale(1.1, 1.1);
-    transform: scale(1.1, 1.1); }
   100% {
-    -moz-transform: scale(1, 1);
-    transform: scale(1, 1); } }
+    -moz-transform: scale(0.8, 0.8);
+    transform: scale(0.8, 0.8); } }
 @-webkit-keyframes heart-beat {
   0% {
+    -webkit-transform: scale(0.8, 0.8);
+    transform: scale(0.8, 0.8); }
+  50% {
     -webkit-transform: scale(1, 1);
     transform: scale(1, 1); }
-  50% {
-    -webkit-transform: scale(1.1, 1.1);
-    transform: scale(1.1, 1.1); }
   100% {
-    -webkit-transform: scale(1, 1);
-    transform: scale(1, 1); } }
+    -webkit-transform: scale(0.8, 0.8);
+    transform: scale(0.8, 0.8); } }
 @keyframes heart-beat {
   0% {
+    -moz-transform: scale(0.8, 0.8);
+    -ms-transform: scale(0.8, 0.8);
+    -webkit-transform: scale(0.8, 0.8);
+    transform: scale(0.8, 0.8); }
+  50% {
     -moz-transform: scale(1, 1);
     -ms-transform: scale(1, 1);
     -webkit-transform: scale(1, 1);
     transform: scale(1, 1); }
-  50% {
-    -moz-transform: scale(1.1, 1.1);
-    -ms-transform: scale(1.1, 1.1);
-    -webkit-transform: scale(1.1, 1.1);
-    transform: scale(1.1, 1.1); }
   100% {
-    -moz-transform: scale(1, 1);
-    -ms-transform: scale(1, 1);
-    -webkit-transform: scale(1, 1);
-    transform: scale(1, 1); } }
+    -moz-transform: scale(0.8, 0.8);
+    -ms-transform: scale(0.8, 0.8);
+    -webkit-transform: scale(0.8, 0.8);
+    transform: scale(0.8, 0.8); } }
 /* Generated with Bounce.js. Edit at http://goo.gl/yq18sP */
 @keyframes animate-in-loader {
   0% {
@@ -589,11 +595,12 @@ body {
 
 .closing {
   width: 100%;
-  padding: 5rem 5.26316%;
-  color: #fff;
-  background: #C1D5D5;
+  padding: 5rem 5.26316% 2rem 5.26316%;
+  color: #404040;
+  background: #F7F7F7;
   text-align: center;
-  font-size: 1.8rem;
+  font-size: 1.3rem;
+  letter-spacing: .2em;
   font-family: "flamaregular";
   text-transform: uppercase;
   -moz-box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
@@ -603,13 +610,17 @@ body {
   -moz-osx-font-smoothing: grayscale; }
   .closing > span {
     vertical-align: middle; }
-    .closing > span.icon, #project-container .feature figure div[data-allow-enlarge] .closing > span.image-container:before, #project-container .feature figure div[data-allow-enlarge] .closing > span.image-container:after, #image-viewer-container #image-viewer .closing > span.close, #image-viewer-container #image-viewer .slider.closing > span.inner:before, #image-viewer-container #image-viewer .slider.closing > span.inner:after {
-      color: #FFDCA4;
+    .closing > span.icon-braces {
+      color: #82BCFF;
+      margin-right: .5rem;
+      font-size: 2rem; }
+    .closing > span.icon-heart {
+      color: #FF8680;
       margin: 0 .5rem;
-      font-size: 3rem;
-      -moz-animation: heart-beat 1.5s ease-in-out infinite;
-      -webkit-animation: heart-beat 1.5s ease-in-out infinite;
-      animation: heart-beat 1.5s ease-in-out infinite; }
+      font-size: 2rem;
+      -moz-animation: heart-beat 1s ease-in-out infinite;
+      -webkit-animation: heart-beat 1s ease-in-out infinite;
+      animation: heart-beat 1s ease-in-out infinite; }
 
 #main-header .hamburger-button > p {
   font-family: "whitney_bookitalic";
@@ -1676,15 +1687,17 @@ article ul {
   @media (max-width: 700px) {
     .main-footer {
       padding: 6.62461% 4.4164%;
-      font-size: .8rem; }
+      font-size: .8rem;
+      text-align: center; }
       .main-footer .copyright {
         float: none;
         display: block;
         line-height: 3; }
         .main-footer .copyright:before {
-          display: block; }
+          display: block;
+          margin: 0 auto 1rem auto; }
       .main-footer .info {
-        float: left; }
+        float: none; }
         .main-footer .info .social {
           display: block; }
           .main-footer .info .social > li {
@@ -2763,7 +2776,13 @@ article ul {
       top: 25%;
       left: -25%;
       width: 150%;
-      height: 50%; }
+      height: 50%;
+      opacity: 0;
+      visibility: hidden;
+      -moz-transition: opacity 0.25s, visibility 0.25s;
+      -o-transition: opacity 0.25s, visibility 0.25s;
+      -webkit-transition: opacity 0.25s, visibility 0.25s;
+      transition: opacity 0.25s, visibility 0.25s; }
       #labs .projects li .preview > .shapes > .icon, #labs .projects li article .preview > ul.shapes > li:before, article #labs .projects li .preview > ul.shapes > li:before, #labs .projects #main-header .navigation ul li .preview > .shapes > a:before, #main-header .navigation ul #labs .projects li .preview > .shapes > a:before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:before, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:before, #labs .projects li #project-container .feature figure div[data-allow-enlarge] .preview > .shapes > .image-container:after, #project-container .feature figure div[data-allow-enlarge] #labs .projects li .preview > .shapes > .image-container:after, #labs .projects li #image-viewer-container #image-viewer .preview > .shapes > .close, #image-viewer-container #image-viewer #labs .projects li .preview > .shapes > .close, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:before, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:before, #labs .projects li #image-viewer-container #image-viewer .preview > .slider.shapes > .inner:after, #image-viewer-container #image-viewer #labs .projects li .preview > .slider.shapes > .inner:after {
         position: absolute;
         -webkit-backface-visibility: hidden; }
@@ -2909,7 +2928,10 @@ article ul {
         -moz-transform: scale(1.05, 1.05);
         -ms-transform: scale(1.05, 1.05);
         -webkit-transform: scale(1.05, 1.05);
-        transform: scale(1.05, 1.05); } }
+        transform: scale(1.05, 1.05); }
+      #labs .projects li:hover .preview > .shapes {
+        opacity: 1;
+        visibility: visible; } }
 @media (min-width: 700px) and (max-width: 1400px) {
   #labs .heading {
     max-width: 1440px;
@@ -4866,8 +4888,8 @@ article ul {
         margin-left: 8.51735%; }
         #about > .content aside .portrait {
           margin-top: 1rem;
-          width: 75%;
-          padding-bottom: 75%; }
+          width: 80%;
+          padding-bottom: 80%; }
       #about > .content .details {
         width: 65.9306%;
         float: left;
@@ -5074,10 +5096,13 @@ article ul {
   -o-background-size: 100% 100%;
   -webkit-background-size: 100% 100%;
   background-size: 100% 100%;
-  background-image: url('../../images/static/portrait.png?1437322888'); }
+  background-image: url('../../images/static/portrait.png?1463622037');
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border-radius: 100%; }
   @media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
     #about .portrait {
-      background-image: url('../../images/static/portrait@2x.png?1437322870'); } }
+      background-image: url('../../images/static/portrait@2x.png?1463621986'); } }
 #about .heading {
   overflow: hidden;
   *zoom: 1; }
