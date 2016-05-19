@@ -271,6 +271,11 @@
 				}
 
 				&:hover{
+					.text-container{
+						opacity: 1;
+						visibility: visible;
+					}
+
 					.preview{
 						>.image{
 							@include scale(1.05);

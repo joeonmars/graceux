@@ -3011,6 +3011,9 @@ article ul {
       padding-bottom: 50%; }
       #labs .projects li:nth-child(2n-1) {
         margin-left: 0; }
+      #labs .projects li:hover .text-container {
+        opacity: 1;
+        visibility: visible; }
       #labs .projects li:hover .preview > .image {
         -moz-transform: scale(1.05, 1.05);
         -ms-transform: scale(1.05, 1.05);
