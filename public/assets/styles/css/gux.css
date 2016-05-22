@@ -4676,146 +4676,148 @@ html[data-page="error-404"] footer {
     top: 7.76% !important;
     width: 80% !important;
     height: 85% !important; }
-#project-container section.full.media .desktop {
+#project-container section.full.media figure.media-col-3 .device {
+  max-width: none !important; }
+#project-container section.full.media figure:not(.media-col-3) .desktop {
   max-width: 960px !important; }
-  #project-container section.full.media .desktop .movable {
-    width: 100%;
-    padding-bottom: 55.56712% !important; }
-    #project-container section.full.media .desktop .movable .case {
-      background-size: 100% auto;
-      background-repeat: no-repeat;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: 0; }
-    #project-container section.full.media .desktop .movable .image-container {
-      position: absolute;
-      z-index: 1;
-      border: 1px solid #82BCFF;
-      box-sizing: border-box; }
-      #project-container section.full.media .desktop .movable .image-container > img {
-        width: 100%;
-        height: 100%;
-        border: none; }
-    #project-container section.full.media .desktop .movable .case {
-      background-image: url('../../images/static/devices/laptop.svg?1438376342'); }
-    #project-container section.full.media .desktop .movable .image-container {
-      left: 13.6% !important;
-      top: 9.9% !important;
-      width: 72.52% !important;
-      height: 76.59% !important; }
-#project-container section.full.media .mobile {
+#project-container section.full.media figure:not(.media-col-3) .mobile {
   max-width: 350px !important; }
-  #project-container section.full.media .mobile .movable {
-    width: 80%;
-    padding-bottom: 168.63636% !important; }
-    #project-container section.full.media .mobile .movable .case {
-      background-size: 100% auto;
-      background-repeat: no-repeat;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: 0; }
-    #project-container section.full.media .mobile .movable .image-container {
-      position: absolute;
-      z-index: 1;
-      border: 1px solid #82BCFF;
-      box-sizing: border-box; }
-      #project-container section.full.media .mobile .movable .image-container > img {
-        width: 100%;
-        height: 100%;
-        border: none; }
-    #project-container section.full.media .mobile .movable .case {
-      background-image: url('../../images/static/devices/mobile.svg?1438376432'); }
-    #project-container section.full.media .mobile .movable .image-container {
-      left: 7.1% !important;
-      top: 13.07% !important;
-      width: 86.36% !important;
-      height: 72.91% !important; }
-#project-container section.full.media .iphone4 {
+#project-container section.full.media figure:not(.media-col-3) .iphone4 {
   max-width: 350px !important; }
-  #project-container section.full.media .iphone4 .movable {
-    width: 80%;
-    padding-bottom: 151.57895% !important; }
-    #project-container section.full.media .iphone4 .movable .case {
-      background-size: 100% auto;
-      background-repeat: no-repeat;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: 0; }
-    #project-container section.full.media .iphone4 .movable .image-container {
-      position: absolute;
-      z-index: 1;
-      border: 1px solid #82BCFF;
-      box-sizing: border-box; }
-      #project-container section.full.media .iphone4 .movable .image-container > img {
-        width: 100%;
-        height: 100%;
-        border: none; }
-    #project-container section.full.media .iphone4 .movable .case {
-      background-image: url('../../images/static/devices/iphone4.svg?1439694186'); }
-    #project-container section.full.media .iphone4 .movable .image-container {
-      left: 6.8% !important;
-      top: 14.58% !important;
-      width: 85.67% !important;
-      height: 68.51% !important; }
-#project-container section.full.media .tablet-portrait {
+#project-container section.full.media figure:not(.media-col-3) .tablet-portrait {
   max-width: 500px !important; }
-  #project-container section.full.media .tablet-portrait .movable {
-    width: 80%;
-    padding-bottom: 117.92829% !important; }
-    #project-container section.full.media .tablet-portrait .movable .case {
-      background-size: 100% auto;
-      background-repeat: no-repeat;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: 0; }
-    #project-container section.full.media .tablet-portrait .movable .image-container {
-      position: absolute;
-      z-index: 1;
-      border: 1px solid #82BCFF;
-      box-sizing: border-box; }
-      #project-container section.full.media .tablet-portrait .movable .image-container > img {
-        width: 100%;
-        height: 100%;
-        border: none; }
-    #project-container section.full.media .tablet-portrait .movable .case {
-      background-image: url('../../images/static/devices/tablet-portrait.svg?1438376548'); }
-    #project-container section.full.media .tablet-portrait .movable .image-container {
-      left: 7.76% !important;
-      top: 10% !important;
-      width: 85% !important;
-      height: 80% !important; }
-#project-container section.full.media .tablet-landscape {
+#project-container section.full.media figure:not(.media-col-3) .tablet-landscape {
   max-width: 740px !important; }
-  #project-container section.full.media .tablet-landscape .movable {
+#project-container section.full.media figure .desktop .movable {
+  width: 100%;
+  padding-bottom: 55.56712% !important; }
+  #project-container section.full.media figure .desktop .movable .case {
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    position: absolute;
     width: 100%;
-    padding-bottom: 67.83784% !important; }
-    #project-container section.full.media .tablet-landscape .movable .case {
-      background-size: 100% auto;
-      background-repeat: no-repeat;
-      position: absolute;
+    height: 100%;
+    z-index: 0; }
+  #project-container section.full.media figure .desktop .movable .image-container {
+    position: absolute;
+    z-index: 1;
+    border: 1px solid #82BCFF;
+    box-sizing: border-box; }
+    #project-container section.full.media figure .desktop .movable .image-container > img {
       width: 100%;
       height: 100%;
-      z-index: 0; }
-    #project-container section.full.media .tablet-landscape .movable .image-container {
-      position: absolute;
-      z-index: 1;
-      border: 1px solid #82BCFF;
-      box-sizing: border-box; }
-      #project-container section.full.media .tablet-landscape .movable .image-container > img {
-        width: 100%;
-        height: 100%;
-        border: none; }
-    #project-container section.full.media .tablet-landscape .movable .case {
-      background-image: url('../../images/static/devices/tablet-landscape.svg?1438376602'); }
-    #project-container section.full.media .tablet-landscape .movable .image-container {
-      left: 10% !important;
-      top: 7.76% !important;
-      width: 80% !important;
-      height: 85% !important; }
+      border: none; }
+  #project-container section.full.media figure .desktop .movable .case {
+    background-image: url('../../images/static/devices/laptop.svg?1438376342'); }
+  #project-container section.full.media figure .desktop .movable .image-container {
+    left: 13.6% !important;
+    top: 9.9% !important;
+    width: 72.52% !important;
+    height: 76.59% !important; }
+#project-container section.full.media figure .mobile .movable {
+  width: 80%;
+  padding-bottom: 168.63636% !important; }
+  #project-container section.full.media figure .mobile .movable .case {
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0; }
+  #project-container section.full.media figure .mobile .movable .image-container {
+    position: absolute;
+    z-index: 1;
+    border: 1px solid #82BCFF;
+    box-sizing: border-box; }
+    #project-container section.full.media figure .mobile .movable .image-container > img {
+      width: 100%;
+      height: 100%;
+      border: none; }
+  #project-container section.full.media figure .mobile .movable .case {
+    background-image: url('../../images/static/devices/mobile.svg?1438376432'); }
+  #project-container section.full.media figure .mobile .movable .image-container {
+    left: 7.1% !important;
+    top: 13.07% !important;
+    width: 86.36% !important;
+    height: 72.91% !important; }
+#project-container section.full.media figure .iphone4 .movable {
+  width: 80%;
+  padding-bottom: 151.57895% !important; }
+  #project-container section.full.media figure .iphone4 .movable .case {
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0; }
+  #project-container section.full.media figure .iphone4 .movable .image-container {
+    position: absolute;
+    z-index: 1;
+    border: 1px solid #82BCFF;
+    box-sizing: border-box; }
+    #project-container section.full.media figure .iphone4 .movable .image-container > img {
+      width: 100%;
+      height: 100%;
+      border: none; }
+  #project-container section.full.media figure .iphone4 .movable .case {
+    background-image: url('../../images/static/devices/iphone4.svg?1439694186'); }
+  #project-container section.full.media figure .iphone4 .movable .image-container {
+    left: 6.8% !important;
+    top: 14.58% !important;
+    width: 85.67% !important;
+    height: 68.51% !important; }
+#project-container section.full.media figure .tablet-portrait .movable {
+  width: 80%;
+  padding-bottom: 117.92829% !important; }
+  #project-container section.full.media figure .tablet-portrait .movable .case {
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0; }
+  #project-container section.full.media figure .tablet-portrait .movable .image-container {
+    position: absolute;
+    z-index: 1;
+    border: 1px solid #82BCFF;
+    box-sizing: border-box; }
+    #project-container section.full.media figure .tablet-portrait .movable .image-container > img {
+      width: 100%;
+      height: 100%;
+      border: none; }
+  #project-container section.full.media figure .tablet-portrait .movable .case {
+    background-image: url('../../images/static/devices/tablet-portrait.svg?1438376548'); }
+  #project-container section.full.media figure .tablet-portrait .movable .image-container {
+    left: 7.76% !important;
+    top: 10% !important;
+    width: 85% !important;
+    height: 80% !important; }
+#project-container section.full.media figure .tablet-landscape .movable {
+  width: 100%;
+  padding-bottom: 67.83784% !important; }
+  #project-container section.full.media figure .tablet-landscape .movable .case {
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0; }
+  #project-container section.full.media figure .tablet-landscape .movable .image-container {
+    position: absolute;
+    z-index: 1;
+    border: 1px solid #82BCFF;
+    box-sizing: border-box; }
+    #project-container section.full.media figure .tablet-landscape .movable .image-container > img {
+      width: 100%;
+      height: 100%;
+      border: none; }
+  #project-container section.full.media figure .tablet-landscape .movable .case {
+    background-image: url('../../images/static/devices/tablet-landscape.svg?1438376602'); }
+  #project-container section.full.media figure .tablet-landscape .movable .image-container {
+    left: 10% !important;
+    top: 7.76% !important;
+    width: 80% !important;
+    height: 85% !important; }
 #project-container .siblings > a {
   position: relative;
   z-index: 0;

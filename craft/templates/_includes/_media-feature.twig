@@ -20,7 +20,7 @@
 	{% for media in feature.media %}
 		{% switch media.getExtension() %}
 		    {% case "mp4" %}
-		        <div class="video" style="max-width:960px;">
+		        <div class="video" style="max-width:{{ media.videoWidth }}px;">
 
 		        	<div class="aspect-container"
 		        		style="padding-bottom:{{ media.videoHeight/media.videoWidth*100 }}%">
