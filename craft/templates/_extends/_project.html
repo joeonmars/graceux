@@ -8,6 +8,21 @@
 {% set isAjax = (craft.request.getQuery("ajax") == "true") ? true : false %}
 {% extends isAjax ? "_extends/_main-content" : "_extends/_main" %}
 
+{% if entry.protected %}
+	
+	{% if getCookie( "passcode_permitted" ) != true %}
+
+		{% if craft.request.getQuery("passcode") == credential.passcode %}
+			{% do setCookie( "passcode_permitted", true, 0, "/") %}
+		{% else %}
+			{% exit 403 %}
+		{% endif %}
+
+	{% endif %}
+
+{% endif %}
+
+
 {% import "_imports/_utils" as utils %}
 
 {% set pageTitle = entry.title %}

@@ -11,6 +11,8 @@ goog.require( 'goog.net.XhrIo' );
 
 gux.controllers.ContactForm = function() {
 
+	goog.base( this );
+
 	this.container = goog.dom.getElement( 'contact-form-container' );
 	this.el = goog.dom.getElement( 'contact-form' );
 

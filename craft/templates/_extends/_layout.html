@@ -17,7 +17,9 @@
 {% endfor %}
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" {% if craft.request.isMobileBrowser(true) %}class="touch"{% endif %}>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"
+	{% if craft.request.isMobileBrowser(true) %}class="touch"{% endif %}
+	{% if pageId is defined %}data-page="{{ pageId }}"{% endif %}>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">

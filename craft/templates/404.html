@@ -17,10 +17,13 @@
  #}
 
 {% extends "_extends/_layout" %}
-{% set title = "404" %}
+{% set pageTitle = "Page Not Found" %}
+{% set pageId = "error-404" %}
 
 {% block body %}
-	<h1>Page not found</h1>
+	<h1>Oops 404!</h1>
+	<h2>The page you are looking for was not found.</h2>
+	<p>Please let me know should you have further inquiries. Or, you could visit the home page.</p>
 
-	<p>What’s worse, a hilarious 404 page can’t be found either.</p>
+	{% include "_includes/_footer" %}
 {% endblock %}

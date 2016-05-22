@@ -11,6 +11,8 @@ goog.require( 'goog.Uri' );
 goog.require( 'gux.controllers.pages.Page' );
 goog.require( 'gux.controllers.pages.ProjectPage' );
 goog.require( 'gux.controllers.pages.LabsPage' );
+goog.require( 'gux.controllers.PasscodeForm' );
+goog.require( 'gux.events' );
 goog.require( 'gux.Utils' );
 
 
@@ -26,7 +28,7 @@ gux.controllers.Router = function() {
 	goog.events.listen( document.body, goog.events.EventType.CLICK, this.onClick, false, this );
 
 	this._page = null;
-
+	this._lastUri = null;
 	this._lightboxId = null;
 
 	this._deferredSwitchToNextPage = null;
@@ -102,7 +104,7 @@ gux.controllers.Router.prototype.switchToNextPage = function() {
 };
 
 
-gux.controllers.Router.prototype.loadPage = function( url, routeKey, routeParams ) {
+gux.controllers.Router.prototype.loadPage = function( uri, routeKey, routeParams ) {
 
 	// create deferred list
 	this._deferredLoadPage = new goog.async.Deferred();
@@ -116,8 +118,7 @@ gux.controllers.Router.prototype.loadPage = function( url, routeKey, routeParams
 	this._deferredSwitchToNextPage.addCallback( this.switchToNextPage, this );
 
 	// make ajax request for next page
-	var timeout = 10000;
-	this._pageRequest = goog.net.XhrIo.send( url, goog.bind( this.onLoadComplete, this ), 'GET', null, null, timeout );
+	this._pageRequest = goog.net.XhrIo.send( uri, goog.bind( this.onLoadComplete, this ), 'GET' );
 
 	this.dispatchEvent( {
 		type: gux.events.EventType.LOAD_PAGE,
@@ -172,18 +173,19 @@ gux.controllers.Router.prototype.onRouted = function( request, data ) {
 
 	var routeParams = data[ 'params' ];
 
-	var url = gux.Config[ 'basePath' ] + data[ 'params' ][ 'input' ] + '?ajax=true';
+	var uri = gux.Config[ 'basePath' ] + data[ 'params' ][ 'input' ] + '?ajax=true';
 
-	this.loadPage( url, routeKey, routeParams );
+	this.loadPage( uri, routeKey, routeParams );
 };
 
 
 gux.controllers.Router.prototype.onLoadComplete = function( e ) {
 
+	this._lastUri = this._pageRequest.getLastUri();
+
 	if ( e.target.isSuccess() ) {
 
-		var lastUri = e.target.getLastUri();
-		var path = goog.Uri.parse( lastUri ).getPath();
+		var path = goog.Uri.parse( this._lastUri ).getPath();
 
 		var router = this.getMatchedRoute( path );
 
@@ -246,11 +248,41 @@ gux.controllers.Router.prototype.onLoadComplete = function( e ) {
 
 	} else {
 
-		console.log( "LOAD ERROR: ", e );
+		var status = e.target.getStatus();
+		console.log( 'LOAD ERROR: ' + status );
+
+		// Handle Unauthorized Error
+		if ( status === 403 ) {
+
+			var passcodeForm = gux.controllers.PasscodeForm.getInstance();
+			passcodeForm.open();
+
+			goog.events.listen( passcodeForm, goog.events.EventType.SUBMIT, this.onPasscodeSubmit, false, this );
+			goog.events.listen( passcodeForm, gux.events.EventType.RETURN, this.onPasscodeReturn, false, this );
+		}
 	}
 
 	this._pageRequest.dispose();
 	this._pageRequest = null;
+};
+
+
+gux.controllers.Router.prototype.onPasscodeSubmit = function( e ) {
+
+	var uri = goog.uri.utils.removeParam( this._lastUri, 'passcode' );
+	uri = goog.uri.utils.appendParam( uri, 'passcode', e.passcode );
+
+	this._pageRequest = goog.net.XhrIo.send( uri, goog.bind( this.onLoadComplete, this ), 'GET' );
+};
+
+
+gux.controllers.Router.prototype.onPasscodeReturn = function() {
+
+	window.history.back();
+
+	window.setTimeout( function() {
+		window.location.reload();
+	}, 0 );
 };
 
 

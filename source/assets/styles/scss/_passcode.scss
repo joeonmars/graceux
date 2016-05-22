@@ -1,0 +1,112 @@
+#passcode-form-container{
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: table;
+	width: 100%;
+	height: 100%;
+	z-index: 15;
+
+	&.hide{
+		display: none;
+	}
+
+	>.overlay{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background: rgba(black, .8);
+	}
+
+	>.inner{
+		display: table-cell;
+		vertical-align: middle;
+		width: 100%;
+		height: 100%;
+	}
+
+	#passcode-form{
+		position: relative;
+		z-index: 0;
+		margin: 0 auto;
+		width: 30%;
+		min-width: 50rem;
+		background: white;
+
+		&:after{
+			content: '';
+			display: block;
+			position: absolute;
+			z-index: -1;
+			top: 20px;
+			left: 20px;
+			width: 100%;
+			height: 100%;
+			@include dots-pattern;
+		}
+
+		>.close{
+			position: absolute;
+			z-index: 2;
+			top: 2.8rem;
+			right: 2.8rem;
+			font-size: 2.2rem;
+			line-height: 3.2rem;
+			color: $color_lightgray;
+			@include scale(1);
+			@include transition(color .3s $easeOutSine, transform .3s $easeOutSine);
+
+			&:hover{
+				@include scale(.85);
+				color: $color_logo_blue;
+			}
+
+			&:active{
+				@include scale(.75);
+			}
+		}
+	}
+
+	input[type="text"]{
+		width: 100%;
+		text-align: center;
+		line-height: 1.4;
+		font-size: 4rem;
+		font-family: $font_flama;
+		letter-spacing: 1rem;
+	}
+
+	fieldset{
+		margin: 4rem 0;
+
+		&.error{
+			input, .textarea{
+				border-color: $color_logo_red;
+			}
+		}
+	}
+
+	.compose{
+		padding: 2.8rem;
+		padding-bottom: 3.8rem;
+		width: 100%;
+		background: white;
+		position: relative;
+		text-align: left;
+		@include clearfix;
+
+		h3{
+			line-height: 1;
+		}
+
+		form{
+			opacity: 1;
+			@include scale(1);
+			@include transition(opacity .25s $easeOutCubic, transform .25s $easeOutCubic);
+		}
+
+		.bordered-button{
+			float: right;
+		}
+	}
+}
