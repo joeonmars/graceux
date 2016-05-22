@@ -1,15 +1,9 @@
-{% set Copy = {} %}
-
-{% for _copy in contactForm.dictionary %}
-	{% set Copy = Copy|merge({(_copy.id): _copy.text}) %}
-{% endfor %}
-
 <div id="passcode-form">
 
 	<button class="icon icon-close close"></button>
 
 	<div class="compose">
-		<h3>{{ Copy.heading }}</h3>
+		<h3>{{ Copy.passcodeTitle }}</h3>
 
 		<form method="post" action="" accept-charset="UTF-8" autocomplete="off">
 		    {{ getCsrfInput() }}
@@ -20,11 +14,11 @@
 			    <input id="passcode" name="passcode" type="text" placeholder="" maxLength="12">
 			</fieldset>
 
-			<button type="submit" class="bordered-button" data-text="{{ Copy.send }}">
-				<span>{{ Copy.send }}</span>
+			<button type="submit" class="bordered-button" data-text="{{ Copy.passcodeSubmit }}">
+				<span>{{ Copy.passcodeSubmit }}</span>
 			</button>
 
-		    <input type="hidden" value="{{ Copy.send }}" class="send" data-copy-send="{{ Copy.send }}" data-copy-sending="{{ Copy.sending }}">
+		    <input type="hidden" value="{{ Copy.passcodeSubmit }}" class="send">
 		</form>
 	</div>
 
