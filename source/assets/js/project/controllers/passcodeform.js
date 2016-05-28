@@ -30,11 +30,11 @@ goog.addSingletonGetter( gux.controllers.PasscodeForm );
 
 gux.controllers.PasscodeForm.prototype.activate = function() {
 
-	this._eventHandler.listen( this._closeButton, goog.events.EventType.CLICK, this.return, false, this );
+	this._eventHandler.listen( this._closeButton, goog.events.EventType.CLICK, this.exit, false, this );
 	this._eventHandler.listen( this._form, goog.events.EventType.SUBMIT, this.onSubmit, false, this );
 
 	// shortcuts
-	gux.shortcuts.register( 'close-form', 'esc', goog.bind( this.return, this ) );
+	gux.shortcuts.register( 'close-form', 'esc', goog.bind( this.exit, this ) );
 };
 
 
@@ -105,9 +105,9 @@ gux.controllers.PasscodeForm.prototype.close = function() {
 };
 
 
-gux.controllers.PasscodeForm.prototype.return = function() {
+gux.controllers.PasscodeForm.prototype.exit = function() {
 
-	this.dispatchEvent( gux.events.EventType.RETURN );
+	this.dispatchEvent( gux.events.EventType.EXIT );
 
 	this.close();
 };

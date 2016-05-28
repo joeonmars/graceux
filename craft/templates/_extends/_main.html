@@ -159,9 +159,13 @@
 <script src="{{ siteUrl }}/assets/js/thirdparty.js"></script>
 
 <!-- main js -->
+{% if craft.request.getQuery('compiled') == 'true' %}
+<script src="{{ siteUrl }}/assets/js/gux-compiled.js"></script>
+{% else %}
 <script src="{{ siteUrl }}/assets/js/source/thirdparty/closure-library/closure/goog/base.js"></script>
 <script src="{{ siteUrl }}/assets/js/source/project/gux-deps.js"></script>
 <script src="{{ siteUrl }}/assets/js/source/project/gux.js"></script>
+{% endif %}
 
 <!-- execute main js-->
 <script>

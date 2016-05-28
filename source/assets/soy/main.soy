@@ -16,13 +16,13 @@
 		</div>
 		<div class="text-container">
 			<div class="masthead">
-				<h6 class="subheading above { $project.color }">{ $project.genre }</h6>
+				<h6 class="subheading above { $project.color }">{ $project['genre'] }</h6>
 				<h3 class="border-heading has-bottom has-left">
-					{ $project.headingHtml }
+					{ $project['headingHtml'] }
 					<div class="border bottom { $project.color }"></div>
 					<div class="border left { $project.color }"></div>
 				</h3>
-				<p class="description">{ $project.shortDescription }</p>
+				<p class="description">{ $project['shortDescription'] }</p>
 			</div>
 		</div>
 	</div>
