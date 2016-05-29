@@ -49939,7 +49939,9 @@ gux.controllers.Intro = function() {
 		'g-spinner': gux.Config[ 'imagesPath' ] + 'g-spinner.gif',
 		'u-spinner': gux.Config[ 'imagesPath' ] + 'u-spinner.gif',
 		'x-spinner': gux.Config[ 'imagesPath' ] + 'x-spinner.gif',
-		'gux-spinner': gux.Config[ 'imagesPath' ] + 'gux-spinner.gif'
+		'gux-spinner': gux.Config[ 'imagesPath' ] + 'gux-spinner.gif',
+		'about-masthead': gux.Config[ 'imagesPath' ] + 'about-masthead.jpg',
+		'labs-masthead': gux.Config[ 'imagesPath' ] + 'labs-masthead.jpg'
 	}, 1 );
 };
 goog.inherits( gux.controllers.Intro, goog.events.EventTarget );
