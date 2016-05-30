@@ -81,7 +81,7 @@ gux.fx.Sticky.prototype.resize = function() {
 
 	this._marginTop = ( goog.dom.getViewportSize().height - this._elHeight ) * this._stickyPosition;
 
-	this._disabled = ( Math.abs( this._bottom ) < 200 && parentHeight < window.innerHeight * .5 )
+	this._disabled = ( parentHeight < window.innerHeight * .5 )
 
 	this.render();
 };

@@ -1,8 +1,12 @@
 {% header "Content-Type: application/json" %}
 
+{% set homeEntries = craft.entries.section('home').find()[0].projects %}
+{% set labsEntries = craft.entries.section('labs').find()[0].projects %}
+{% set entries = homeEntries|merge(labsEntries) %}
+
 {
 	"portfolio": {
-	{% for entry in craft.entries.section('portfolio').find() %}
+	{% for entry in entries %}
 		"{{ entry.id }}": {
 			"heading": "{{ entry.heading|replace({'\r\n': '\\n'})  }}",
 			"headingHtml": "{{ entry.heading|replace({'\r\n': '<br>'})|raw  }}",
