@@ -40830,6 +40830,8 @@ gux.fx.Sticky = function( element, scrollerElement, opt_autoRender ) {
 	this._parentEl = goog.dom.getParentElement( this.el );
 	this._scrollerEl = scrollerElement;
 
+	this._disabled = false;
+
 	this._stickyPosition = .5;
 
 	switch ( element.getAttribute( 'data-sticky-position' ) ) {
@@ -40843,7 +40845,6 @@ gux.fx.Sticky = function( element, scrollerElement, opt_autoRender ) {
 	}
 
 	this._elHeight = 0; // element height
-	this._parentHeight = 0;
 	this._top = 0; // relative to scroller
 	this._marginTop = 0; // offset to align element at vertical center
 	this._y = 0;
@@ -40891,15 +40892,24 @@ gux.fx.Sticky.prototype.resize = function() {
 	this._elHeight = goog.style.getSize( this.el ).height;
 
 	this._top = goog.style.getPosition( this._parentEl ).y;
-	this._bottom = goog.style.getSize( this._parentEl ).height - this._elHeight;
+
+	var parentHeight = goog.style.getSize( this._parentEl ).height;
+	this._bottom = parentHeight - this._elHeight;
 
 	this._marginTop = ( goog.dom.getViewportSize().height - this._elHeight ) * this._stickyPosition;
+
+	this._disabled = ( Math.abs( this._bottom ) < 200 && parentHeight < window.innerHeight * .5 )
 
 	this.render();
 };
 
 
 gux.fx.Sticky.prototype.render = function( opt_scrollTop ) {
+
+	if ( this._disabled ) {
+		goog.style.setStyle( this.el, 'transform', 'translateY(0px)' );
+		return;
+	}
 
 	var scrollTop = goog.isNumber( opt_scrollTop ) ? opt_scrollTop : this._scrollerEl.scrollTop;
 	scrollTop += this._marginTop;
