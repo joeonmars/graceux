@@ -16,18 +16,20 @@
 	{% set device = (feature.device != 'none' ? feature.device : null) %}
 	{% set mediaColumns = min(feature.media|length, 3) %}
 
-	<figure class="media-col-{{mediaColumns}}">
+	<figure class="media-col-{{mediaColumns}} {% if feature.media|length == 0 %}no-media{% endif %}">
 	{% for media in feature.media %}
 		{% switch media.getExtension() %}
 		    {% case "mp4" %}
 		        <div class="video" style="max-width:{{ media.videoWidth }}px;">
-
 		        	<div class="aspect-container"
 		        		style="padding-bottom:{{ media.videoHeight/media.videoWidth*100 }}%">
 			        	<div class="movable">
 			        		{% include "_includes/_video-player" with {'video': media} %}
 			        	</div>
 			        </div>
+			        {% if feature.showMediaTitle %}
+			        <figcaption>{{ media.title }}</figcaption>
+			        {% endif %}
 		        </div>
 
 		    {% default %}
@@ -42,6 +44,9 @@
 			        		</div>
 			        	</div>
 		        	</div>
+		        	{% if feature.showMediaTitle %}
+			        <figcaption>{{ media.title }}</figcaption>
+			        {% endif %}
 		        </div>
 		{% endswitch %}
 	{% endfor %}

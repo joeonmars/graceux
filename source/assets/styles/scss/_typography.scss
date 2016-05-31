@@ -163,6 +163,10 @@ $border-padding: 8px;
 		margin-bottom: calc(2rem + 3rem);
 	}
 
+	&.no-text{
+		display: none;
+	}
+
 	>.border{
 		@extend %color-background;
 	}

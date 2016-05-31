@@ -1,7 +1,9 @@
 {% set color = color|default("blue") %}
 
 <{{tag}} class="border-heading
-	{% if bottom is defined %}has-bottom{% endif %} {% if left is defined %}has-left{% endif %}">
+	{% if text|length == 0 %}no-text{% endif %}
+	{% if bottom is defined %}has-bottom{% endif %}
+	{% if left is defined %}has-left{% endif %}">
 	{{text|nl2br}}
 	{% if bottom is defined %}<div class="border bottom {{color}}"></div>{% endif %}
 	{% if left is defined %}<div class="border left {{color}}"></div>{% endif %}

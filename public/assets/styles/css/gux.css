@@ -59,22 +59,22 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
  */
 @font-face {
   font-family: "flamaregular";
-  src: url('../fonts/flama/flama-webfont.eot?1430971122') format('embedded-opentype'), url('../fonts/flama/flama-webfont.eot?&1430971122#iefix') format('embedded-opentype'), url('../fonts/flama/flama-webfont.woff2?1430971122') format('woff2'), url('../fonts/flama/flama-webfont.woff?1430971122') format('woff'), url('../fonts/flama/flama-webfont.ttf?1430971122') format('truetype'), url('../fonts/flama/flama-webfont.svg?1430971122#flamaregular') format('svg'); }
+  src: url('../fonts/flama/flama-webfont.eot?1440271192') format('embedded-opentype'), url('../fonts/flama/flama-webfont.eot?&1440271192#iefix') format('embedded-opentype'), url('../fonts/flama/flama-webfont.woff2?1440271192') format('woff2'), url('../fonts/flama/flama-webfont.woff?1440271192') format('woff'), url('../fonts/flama/flama-webfont.ttf?1440271192') format('truetype'), url('../fonts/flama/flama-webfont.svg?1440271192#flamaregular') format('svg'); }
 @font-face {
   font-family: "Whitney";
-  src: url('../fonts/whitney-medium/whitney-medium.eot?1431277294') format('embedded-opentype'), url('../fonts/whitney-medium/whitney-medium.woff?1431277294') format('woff'), url('../fonts/whitney-medium/whitney-medium.ttf?1431277294') format('truetype'), url('../fonts/whitney-medium/whitney-medium.svg?1431277294#whitney_medium') format('svg'); }
+  src: url('../fonts/whitney-medium/whitney-medium.eot?1440271192') format('embedded-opentype'), url('../fonts/whitney-medium/whitney-medium.woff?1440271192') format('woff'), url('../fonts/whitney-medium/whitney-medium.ttf?1440271192') format('truetype'), url('../fonts/whitney-medium/whitney-medium.svg?1440271192#whitney_medium') format('svg'); }
 @font-face {
   font-family: "whitney_lightregular";
-  src: url('../fonts/whitney-light/whitney-light-webfont.eot?1430972282') format('embedded-opentype'), url('../fonts/whitney-light/whitney-light-webfont.woff2?1430972282') format('woff2'), url('../fonts/whitney-light/whitney-light-webfont.woff?1430972282') format('woff'), url('../fonts/whitney-light/whitney-light-webfont.ttf?1430972282') format('truetype'), url('../fonts/whitney-light/whitney-light-webfont.svg?1430972282#whitney_lightregular') format('svg'); }
+  src: url('../fonts/whitney-light/whitney-light-webfont.eot?1440271192') format('embedded-opentype'), url('../fonts/whitney-light/whitney-light-webfont.woff2?1440271192') format('woff2'), url('../fonts/whitney-light/whitney-light-webfont.woff?1440271192') format('woff'), url('../fonts/whitney-light/whitney-light-webfont.ttf?1440271192') format('truetype'), url('../fonts/whitney-light/whitney-light-webfont.svg?1440271192#whitney_lightregular') format('svg'); }
 @font-face {
   font-family: "whitney_lightitalic";
-  src: url('../fonts/whitney-lightitalic/whitney-lightitalic-webfont.eot?1430971858') format('embedded-opentype'), url('../fonts/whitney-lightitalic/whitney-lightitalic-webfont.woff2?1430971858') format('woff2'), url('../fonts/whitney-lightitalic/whitney-lightitalic-webfont.woff?1430971858') format('woff'), url('../fonts/whitney-lightitalic/whitney-lightitalic-webfont.ttf?1430971858') format('truetype'), url('../fonts/whitney-lightitalic/whitney-lightitalic-webfont.svg?1430971858#whitney_lightitalic') format('svg'); }
+  src: url('../fonts/whitney-lightitalic/whitney-lightitalic-webfont.eot?1440271192') format('embedded-opentype'), url('../fonts/whitney-lightitalic/whitney-lightitalic-webfont.woff2?1440271192') format('woff2'), url('../fonts/whitney-lightitalic/whitney-lightitalic-webfont.woff?1440271192') format('woff'), url('../fonts/whitney-lightitalic/whitney-lightitalic-webfont.ttf?1440271192') format('truetype'), url('../fonts/whitney-lightitalic/whitney-lightitalic-webfont.svg?1440271192#whitney_lightitalic') format('svg'); }
 @font-face {
   font-family: "WhitneyBook";
-  src: url('../fonts/whitney-book/whitney-book.eot?1431276390') format('embedded-opentype'), url('../fonts/whitney-book/whitney-book.woff?1431276390') format('woff'), url('../fonts/whitney-book/whitney-book.ttf?1431276390') format('truetype'), url('../fonts/whitney-book/whitney-book.svg?1431276390#whitney_book') format('svg'); }
+  src: url('../fonts/whitney-book/whitney-book.eot?1440271192') format('embedded-opentype'), url('../fonts/whitney-book/whitney-book.woff?1440271192') format('woff'), url('../fonts/whitney-book/whitney-book.ttf?1440271192') format('truetype'), url('../fonts/whitney-book/whitney-book.svg?1440271192#whitney_book') format('svg'); }
 @font-face {
   font-family: "whitney_bookitalic";
-  src: url('../fonts/whitney-bookitalic/whitney-bookitalic-webfont.eot?1430972282') format('embedded-opentype'), url('../fonts/whitney-bookitalic/whitney-bookitalic-webfont.woff2?1430972282') format('woff2'), url('../fonts/whitney-bookitalic/whitney-bookitalic-webfont.woff?1430972282') format('woff'), url('../fonts/whitney-bookitalic/whitney-bookitalic-webfont.ttf?1430972282') format('truetype'), url('../fonts/whitney-bookitalic/whitney-bookitalic-webfont.svg?1430972282#whitney_bookitalic') format('svg'); }
+  src: url('../fonts/whitney-bookitalic/whitney-bookitalic-webfont.eot?1440271192') format('embedded-opentype'), url('../fonts/whitney-bookitalic/whitney-bookitalic-webfont.woff2?1440271192') format('woff2'), url('../fonts/whitney-bookitalic/whitney-bookitalic-webfont.woff?1440271192') format('woff'), url('../fonts/whitney-bookitalic/whitney-bookitalic-webfont.ttf?1440271192') format('truetype'), url('../fonts/whitney-bookitalic/whitney-bookitalic-webfont.svg?1440271192#whitney_bookitalic') format('svg'); }
 @font-face {
   font-family: "icons";
   src: url("../fonts/fontcustom/icons-13f1241e6507c8d559e3f11731d8daa5.eot");
@@ -651,6 +651,8 @@ body {
   *display: inline; }
   .border-heading.has-bottom {
     margin-bottom: calc(2rem + 3rem); }
+  .border-heading.no-text {
+    display: none; }
   .border-heading > .bottom, .border-heading > .left {
     position: absolute; }
   .border-heading > .bottom {
@@ -4475,6 +4477,8 @@ html[data-page="error-404"] footer {
   -ms-user-select: none;
   -webkit-user-select: none;
   user-select: none; }
+  #project-container .feature figure.no-media {
+    display: none; }
   #project-container .feature figure div[data-allow-enlarge] .image-container {
     cursor: zoom-in; }
     #project-container .feature figure div[data-allow-enlarge] .image-container:before, #project-container .feature figure div[data-allow-enlarge] .image-container:after {
@@ -4536,8 +4540,15 @@ html[data-page="error-404"] footer {
       #project-container .feature figure > div.image.device .aspect-container, #project-container .feature figure > div.video.device .aspect-container {
         height: auto; }
       #project-container .feature figure > div.image .aspect-container, #project-container .feature figure > div.video .aspect-container {
+        position: relative;
         max-width: 100%;
         height: 0; }
+      #project-container .feature figure > div.image figcaption, #project-container .feature figure > div.video figcaption {
+        font-family: "flamaregular";
+        text-transform: uppercase;
+        font-size: 1.2em;
+        line-height: 3;
+        text-align: left; }
     #project-container .feature figure > div.video > .movable {
       position: absolute; }
     #project-container .feature figure > div:last-child {
@@ -5231,13 +5242,13 @@ html[data-page="error-404"] footer {
   -o-background-size: 100% 100%;
   -webkit-background-size: 100% 100%;
   background-size: 100% 100%;
-  background-image: url('../../images/static/portrait.png?1463622037');
+  background-image: url('../../images/static/portrait.png?1463622687');
   -moz-border-radius: 100%;
   -webkit-border-radius: 100%;
   border-radius: 100%; }
   @media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
     #about .portrait {
-      background-image: url('../../images/static/portrait@2x.png?1463621986'); } }
+      background-image: url('../../images/static/portrait@2x.png?1463622687'); } }
 #about .heading {
   overflow: hidden;
   *zoom: 1; }

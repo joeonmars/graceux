@@ -109,7 +109,11 @@
 					<span>Experience</span>
 				</div>
 				<div class="quotation">
-					{{ intro.quotation }}
+					{% set quotation = intro.quotation[ date().timestamp % (intro.quotation | length) ].content %}
+					{% set lines = quotation|split('\n') %}
+					{% for line in lines %}
+			            <p>{{ line }}</p>
+			        {% endfor %}
 					<div class="border"></div>
 					<div class="logo"></div>
 				</div>
