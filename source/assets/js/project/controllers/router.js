@@ -168,7 +168,7 @@ gux.controllers.Router.prototype.onRouted = function( request, data ) {
 
 	//
 	var routeKey = goog.object.findKey( gux.controllers.Router.mappings, function( value ) {
-		return value.pattern === data.route[ '_pattern' ];
+		return value.pattern === data[ 'route' ][ '_pattern' ];
 	} );
 
 	var routeParams = data[ 'params' ];
@@ -258,7 +258,7 @@ gux.controllers.Router.prototype.onLoadComplete = function( e ) {
 			passcodeForm.open();
 
 			goog.events.listen( passcodeForm, goog.events.EventType.SUBMIT, this.onPasscodeSubmit, false, this );
-			goog.events.listen( passcodeForm, gux.events.EventType.RETURN, this.onPasscodeReturn, false, this );
+			goog.events.listen( passcodeForm, gux.events.EventType.EXIT, this.onPasscodeExit, false, this );
 		}
 	}
 
@@ -276,7 +276,7 @@ gux.controllers.Router.prototype.onPasscodeSubmit = function( e ) {
 };
 
 
-gux.controllers.Router.prototype.onPasscodeReturn = function() {
+gux.controllers.Router.prototype.onPasscodeExit = function() {
 
 	window.history.back();
 

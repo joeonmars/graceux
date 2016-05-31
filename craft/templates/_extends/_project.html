@@ -175,11 +175,11 @@
 				{% set category = entry.portfolioCategory[0] %}
 				{% set projects = [] %}
 
-				{% for _entry in craft.entries.section('portfolio').order('year desc').find() %}
-					{% if _entry.portfolioCategory.first() == category %}
-						{% set projects = projects|merge([_entry]) %}
-					{% endif %}
-				{% endfor %}
+				{% if category.title == "Projects" %}
+					{% set projects = craft.entries.section('home').find()[0].projects %}
+				{% elseif category.title == "Labs" %}
+					{% set projects = craft.entries.section('labs').find()[0].projects %}
+				{% endif %}
 
 				{% set projectIndex = 0 %}
 
@@ -189,7 +189,7 @@
 					{% endif %}
 				{% endfor %}
 
-				{% set prevProject = projects[projectIndex - 1]|default(projects[projects|length - 1]) %}
+				{% set prevProject = (projectIndex - 1 < 0) ? projects[projects|length - 1] : projects[projectIndex - 1] %}
 				<a class="prev" href="{{ prevProject.url }}"
 					data-ajax="true" data-loader-id="{{ prevProject.id }}">
 					<div class="inner">
@@ -209,7 +209,7 @@
 					</div>
 				</a>
 
-				{% set nextProject = projects[projectIndex + 1]|default(projects[0]) %}
+				{% set nextProject = (projectIndex + 1 >= projects|length) ? projects[0] : projects[projectIndex + 1] %}
 				<a class="next" href="{{ nextProject.url }}"
 					data-ajax="true" data-loader-id="{{ nextProject.id }}">
 					<div class="inner">

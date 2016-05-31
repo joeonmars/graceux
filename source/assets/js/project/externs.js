@@ -5,6 +5,7 @@ TweenMax.to = {};
 TweenMax.fromTo = {};
 TweenMax.staggerFrom = {};
 TweenMax.staggerFromTo = {};
+TweenMax.updateTo = {};
 TweenMax.repeat = {};
 TweenMax.kill = {};
 TweenMax.killTweensOf = {};
@@ -16,6 +17,7 @@ TweenMax.pause = {};
 TweenMax.resume = {};
 TweenMax.restart = {};
 TweenMax.isActive = {};
+TweenMax.ticker = {};
 
 var TimelineMax = {};
 TimelineMax.data = {};
@@ -33,6 +35,8 @@ TimelineMax.isActive = {};
 var Draggable = {};
 Draggable.enable = {};
 Draggable.disable = {};
+Draggable.applyBounds = {};
+Draggable.kill = {};
 Draggable.scrollProxy = {};
 Draggable.scrollProxy.scrollLeft = {};
 
@@ -96,3 +100,64 @@ var Hammer = {};
 Hammer.Manager = {};
 Hammer.Manager.on = {};
 Hammer.Pinch = {};
+Hammer.destroy = {};
+
+/* Two.js */
+var Two = {};
+Two.width = {};
+Two.height = {};
+Two.appendTo = {};
+Two.update = {};
+
+Two.makePath = {};
+
+Two.makeRectangle = {};
+Two.Rectangle = {};
+Two.Rectangle.opacity = {};
+Two.Rectangle.scale = {};
+Two.Rectangle.vertices = {};
+Two.Rectangle.fill = {};
+Two.Rectangle.noFill = {};
+Two.Rectangle.noStroke = {};
+Two.Rectangle.translation = {}
+Two.Rectangle.translation.x = {}
+Two.Rectangle.translation.y = {}
+Two.Rectangle.translation.set = {}
+Two.Rectangle.translation.copy = {}
+
+Two.createPolygon = {};
+Two.Polygon = {};
+Two.Polygon.opacity = {};
+Two.Polygon.scale = {};
+Two.Polygon.vertices = {};
+Two.Polygon.linewidth = {};
+Two.Polygon.stroke = {};
+Two.Polygon.fill = {};
+Two.Polygon.noFill = {};
+Two.Polygon.noStroke = {};
+Two.Polygon.translation = {}
+Two.Polygon.translation.x = {}
+Two.Polygon.translation.y = {}
+Two.Polygon.translation.set = {}
+Two.Polygon.translation.copy = {}
+
+Two.makeGroup = {};
+Two.Group = {}
+Two.Group.mask = {}
+Two.Group.scale = {}
+Two.Group.translation = {}
+Two.Group.translation.x = {}
+Two.Group.translation.y = {}
+Two.Group.translation.set = {}
+Two.Group.translation.copy = {}
+
+/* Crossroads.js */
+var crossroads = {};
+crossroads.routed = {};
+crossroads.routed.add = {};
+crossroads.addRoute = {};
+crossroads.parse = {};
+crossroads.resetState = {};
+
+var Route = {};
+Route.match = {};

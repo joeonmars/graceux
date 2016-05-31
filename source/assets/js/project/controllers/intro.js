@@ -120,7 +120,9 @@ gux.controllers.Intro = function() {
 		'g-spinner': gux.Config[ 'imagesPath' ] + 'g-spinner.gif',
 		'u-spinner': gux.Config[ 'imagesPath' ] + 'u-spinner.gif',
 		'x-spinner': gux.Config[ 'imagesPath' ] + 'x-spinner.gif',
-		'gux-spinner': gux.Config[ 'imagesPath' ] + 'gux-spinner.gif'
+		'gux-spinner': gux.Config[ 'imagesPath' ] + 'gux-spinner.gif',
+		'about-masthead': gux.Config[ 'imagesPath' ] + 'about-masthead.jpg',
+		'labs-masthead': gux.Config[ 'imagesPath' ] + 'labs-masthead.jpg'
 	}, 1 );
 };
 goog.inherits( gux.controllers.Intro, goog.events.EventTarget );
@@ -138,9 +140,9 @@ gux.controllers.Intro.prototype.activate = function() {
 
 	// animate in
 	var timeline = new TimelineMax( {
-		delay: 0.5,
-		onComplete: this.onTypeTransitionComplete,
-		onCompleteScope: this
+		'delay': 0.5,
+		'onComplete': this.onTypeTransitionComplete,
+		'onCompleteScope': this
 	} );
 
 	var startY = this._two.height * 1.5;
@@ -149,11 +151,11 @@ gux.controllers.Intro.prototype.activate = function() {
 	goog.object.forEach( this._shapeConfig, function( config ) {
 		var tweener = TweenMax.fromTo( config, 1.5, {
 			slideY: startY,
-			scale: 0,
+			scale: 0
 		}, {
 			slideY: endY,
 			scale: 1,
-			ease: Strong.easeOut
+			'ease': Strong.easeOut
 		} );
 
 		tweeners.push( tweener );
@@ -367,9 +369,9 @@ gux.controllers.Intro.prototype.onLoadAnimateComplete = function( e ) {
 	// animate mask
 	TweenMax.to( this, 1, {
 		_maskRatio: 0,
-		ease: Quad.easeInOut,
-		onUpdate: this.updateMask,
-		onUpdateScope: this
+		'ease': Quad.easeInOut,
+		'onUpdate': this.updateMask,
+		'onUpdateScope': this
 	} );
 
 	// animate indicator

@@ -63,7 +63,8 @@
 	<div class="inner">
 		<div class="particles-container">
 			<ul class="projects">
-			{% for entry in craft.entries.section('portfolio').find() %}
+			{% set homeEntries = craft.entries.section('home').find()[0].projects %}
+			{% for entry in homeEntries %}
 				{% if entry.portfolioCategory.first() == 'Projects' %}
 				<li>
 					<a href="{{ entry.url }}"
@@ -77,7 +78,8 @@
 			</ul>
 
 			<ul class="labs">
-			{% for entry in craft.entries.section('portfolio').find() %}
+			{% set labsEntries = craft.entries.section('labs').find()[0].projects %}
+			{% for entry in labsEntries %}
 				{% if entry.portfolioCategory.first() == 'Labs' %}
 				<li>
 					<a href="{{ entry.url }}"
@@ -163,9 +165,13 @@
 <script src="{{ siteUrl }}/assets/js/thirdparty.js"></script>
 
 <!-- main js -->
+{% if craft.request.getQuery('compiled') == 'true' %}
+<script src="{{ siteUrl }}/assets/js/gux-compiled.js"></script>
+{% else %}
 <script src="{{ siteUrl }}/assets/js/source/thirdparty/closure-library/closure/goog/base.js"></script>
 <script src="{{ siteUrl }}/assets/js/source/project/gux-deps.js"></script>
 <script src="{{ siteUrl }}/assets/js/source/project/gux.js"></script>
+{% endif %}
 
 <!-- execute main js-->
 <script>

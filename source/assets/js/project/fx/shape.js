@@ -44,29 +44,6 @@ gux.fx.Shape.prototype.generatePositions = function( maxX, maxY, safeRadius, irr
 };
 
 
-gux.fx.Shape.prototype.getRandomPosition = function( array, removeTaken ) {
-
-	// declarations
-	var randomIndex;
-	var coordinates;
-
-	// get random index
-	randomIndex = getRandomInt( 0, array.length - 1 );
-
-	// get random item from array
-	coordinates = array[ randomIndex ];
-
-	// check if remove taken
-	if ( removeTaken ) {
-		// remove element from array
-		array.splice( randomIndex, 1 );
-	}
-
-	// return position
-	return coordinates;
-};
-
-
 gux.fx.Shape.Vector = {
 	G: [
 		[ 0, 0 ],
