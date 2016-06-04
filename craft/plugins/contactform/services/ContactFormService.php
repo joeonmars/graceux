@@ -31,6 +31,7 @@ class ContactFormService extends BaseApplicationComponent
 		{
 			if (!$event->fakeIt)
 			{
+				// Grab any "to" emails set in the plugin settings.
 				$toEmails = ArrayHelper::stringToArray($settings->toEmail);
 
 				foreach ($toEmails as $toEmail)
@@ -45,10 +46,20 @@ class ContactFormService extends BaseApplicationComponent
 					$email->toEmail   = $toEmail;
 					$email->subject   = $settings->prependSubject . ($settings->prependSubject && $message->subject ? ' - ' : '') . $message->subject;
 					$email->body      = $message->message;
-
-					if ($message->attachment)
+					if (!empty($message->htmlMessage))
 					{
-						$email->addAttachment($message->attachment->getTempName(), $message->attachment->getName(), 'base64', $message->attachment->getType());
+						$email->htmlBody = $message->htmlMessage;
+					}
+
+					if (!empty($message->attachment))
+					{
+						foreach ($message->attachment as $attachment)
+						{
+							if ($attachment)
+							{
+								$email->addAttachment($attachment->getTempName(), $attachment->getName(), 'base64', $attachment->getType());
+							}
+						}
 					}
 
 					craft()->email->sendEmail($email);
@@ -70,4 +81,14 @@ class ContactFormService extends BaseApplicationComponent
 	{
 		$this->raiseEvent('onBeforeSend', $event);
 	}
+			/**
+	 * Fires an 'onBeforeMessageCompile' event.
+	 *
+	 * @param ContactFormMessageEvent $event
+	 */
+	public function onBeforeMessageCompile(ContactFormMessageEvent $event)
+	{
+		$this->raiseEvent('onBeforeMessageCompile', $event);
+	}
+	
 }

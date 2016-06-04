@@ -218,10 +218,12 @@ gux.controllers.pages.Page.prototype.onScrollUpdate = function( progress, y ) {
 
 gux.controllers.pages.Page.prototype.onClickEmailButton = function( e ) {
 
-	e.preventDefault();
+	if ( !goog.userAgent.MOBILE ) {
+		e.preventDefault();
 
-	var contactForm = gux.controllers.ContactForm.getInstance();
-	contactForm.open();
+		var contactForm = gux.controllers.ContactForm.getInstance();
+		contactForm.open();
+	}
 };
 
 

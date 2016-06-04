@@ -30,17 +30,48 @@ class ContactFormController extends BaseController
 		$message->fromEmail  = craft()->request->getPost('fromEmail');
 		$message->fromName	 = craft()->request->getPost('fromName');
 		$message->subject    = craft()->request->getPost('subject');
-		$message->attachment = \CUploadedFile::getInstanceByName('attachment');
+
+		if ($settings->allowAttachments)
+		{
+			if (isset($_FILES['attachment']) && isset($_FILES['attachment']['name']))
+			{
+				if (is_array($_FILES['attachment']['name']))
+				{
+					$message->attachment = \CUploadedFile::getInstancesByName('attachment');
+				}
+				else
+				{
+					$message->attachment = array(\CUploadedFile::getInstanceByName('attachment'));
+				}
+			}
+
+		}
 
 		// Set the message body
 		$postedMessage = craft()->request->getPost('message');
 
-		if ($postedMessage)
+		// Before compile event
+		Craft::import('plugins.contactform.events.ContactFormMessageEvent');
+		$event = new ContactFormMessageEvent($this, array('postedMessage' => $postedMessage));
+		craft()->contactForm->onBeforeMessageCompile($event);
+
+		if ($event->message && $event->messageFields)
+		{
+			$message->message = $event->message;
+			$message->messageFields = $event->messageFields;
+			if (!empty($event->htmlMessage))
+			{
+				$message->htmlMessage = $event->htmlMessage;
+			}
+		}
+		elseif ($postedMessage)
 		{
 			if (is_array($postedMessage))
 			{
-				$savedBody = false;
+				// Capture all of the message fields on the model in case there's a validation error
+				$message->messageFields = $postedMessage;
 
+				// Capture the original message body
 				if (isset($postedMessage['body']))
 				{
 					// Save the message body in case we need to reassign it in the event there's a validation error
@@ -59,7 +90,7 @@ class ContactFormController extends BaseController
 						{
 							if ($compiledMessage)
 							{
-								$compiledMessage .= "\n\n";
+								$compiledMessage .= "  \n";
 							}
 
 							$compiledMessage .= $key.': ';
@@ -91,6 +122,7 @@ class ContactFormController extends BaseController
 			else
 			{
 				$message->message = $postedMessage;
+				$message->messageFields = array('body' => $postedMessage);
 			}
 		}
 
@@ -113,7 +145,7 @@ class ContactFormController extends BaseController
 						$_POST['redirect'] = $successRedirectUrl;
 					}
 
-					craft()->userSession->setNotice('Your message has been sent.');
+					craft()->userSession->setNotice($settings->successFlashMessage);
 					$this->redirectToPostedUrl($message);
 				}
 			}

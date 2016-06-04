@@ -162,23 +162,25 @@
 {% endif %}
 
 <!-- third-party -->
-<script src="{{ siteUrl }}/assets/js/thirdparty.js"></script>
+<script src="/assets/js/thirdparty.js"></script>
 
 <!-- main js -->
-{% if craft.request.getQuery('compiled') == 'true' %}
-<script src="{{ siteUrl }}/assets/js/gux-compiled.js"></script>
+{% if craft.request.getQuery('compiled') == 'true'
+	or craft.request.getServerName() ends with 'graceuserexperience.com'
+	or craft.request.getServerName() ends with 'graceux.com' %}
+<script src="/assets/js/gux-compiled.js"></script>
 {% else %}
-<script src="{{ siteUrl }}/assets/js/source/thirdparty/closure-library/closure/goog/base.js"></script>
-<script src="{{ siteUrl }}/assets/js/source/project/gux-deps.js"></script>
-<script src="{{ siteUrl }}/assets/js/source/project/gux.js"></script>
+<script src="/assets/js/source/thirdparty/closure-library/closure/goog/base.js"></script>
+<script src="/assets/js/source/project/gux-deps.js"></script>
+<script src="/assets/js/source/project/gux.js"></script>
 {% endif %}
 
 <!-- execute main js-->
 <script>
 	var config = {
-		basePath: '{{ siteUrl }}',
-		imagesPath: '{{ siteUrl }}/assets/images/static/',
-		videosPath: '{{ siteUrl }}/assets/videos/static/',
+		basePath: '/',
+		imagesPath: '/assets/images/static/',
+		videosPath: '/assets/videos/static/',
 		app: 'main'
 	};
 

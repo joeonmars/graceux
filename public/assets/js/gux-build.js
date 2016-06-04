@@ -28274,7 +28274,7 @@ gux.Utils.findUrls = function( text ) {
 	matchArray = source.match( regexToken );
 
 	var urlArray = goog.array.map( matchArray, function( str ) {
-		return str.replace( 'url("', '' ).replace( '")', '' );
+		return str.match( /url\(["|']?([^"']*)["|']?\)/ )[ 1 ];
 	} );
 
 	return urlArray;
@@ -41148,10 +41148,12 @@ gux.controllers.pages.Page.prototype.onScrollUpdate = function( progress, y ) {
 
 gux.controllers.pages.Page.prototype.onClickEmailButton = function( e ) {
 
-	e.preventDefault();
+	if ( !goog.userAgent.MOBILE ) {
+		e.preventDefault();
 
-	var contactForm = gux.controllers.ContactForm.getInstance();
-	contactForm.open();
+		var contactForm = gux.controllers.ContactForm.getInstance();
+		contactForm.open();
+	}
 };
 
 

@@ -36,7 +36,8 @@
 			<li data-lightbox-id="{{ project.id }}">
 				<div class="inner">
 					<div class="preview">
-						<div class="image" style="{{ utils.retinaBackground(project.previewImage[0], 500) }}"></div>
+						{% set previewImage = project.previewImage[0] %}
+						<div class="image" style="{{ utils.retinaBackground(previewImage, 500) }} background-position: {{ previewImage.backgroundPosition }}"></div>
 						<div class="shapes"></div>
 					</div>
 					<div class="text-container">

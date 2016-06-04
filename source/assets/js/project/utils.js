@@ -37,7 +37,7 @@ gux.Utils.findUrls = function( text ) {
 	matchArray = source.match( regexToken );
 
 	var urlArray = goog.array.map( matchArray, function( str ) {
-		return str.replace( 'url("', '' ).replace( '")', '' );
+		return str.match( /url\(["|']?([^"']*)["|']?\)/ )[ 1 ];
 	} );
 
 	return urlArray;
