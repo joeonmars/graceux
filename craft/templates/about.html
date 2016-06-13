@@ -47,9 +47,10 @@
 			<hr>
 
 			<div class="merits">
+				{% set counter = 0 %}
 				{% for merit in about.merits %}
 					{% set hasFigure = merit.applications|length ? true : false %}
-					<article class="merit {% if hasFigure == true %}has-figure{% endif %}">
+					<article class="merit {% if hasFigure == true %}has-figure{% else %}{% set counter = counter + 1 %}{% if counter is divisible by(2) %}even{% endif %}{% endif %}">
 						<div class="heading-container">
 							<h5 class="subheading above">{{ merit.subheading }}</h5>
 							<h4>{{ merit.heading|nl2br }}</h4>

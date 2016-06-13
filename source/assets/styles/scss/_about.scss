@@ -90,7 +90,7 @@
 						}
 					}
 
-					&:nth-child(even) {
+					&.even {
 						@include last;
 					}
 
@@ -170,7 +170,7 @@
 						}
 					}
 
-					&:nth-child(even) {
+					&.even {
 						@include last;
 					}
 

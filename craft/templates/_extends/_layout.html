@@ -30,7 +30,7 @@
 	<meta content="{{ craft.request.url }}" property="og:url">
 	<meta content="{% block ogTitle %}{% endblock %}" property="og:title">
 	<meta content="{% block ogDescription %}{% endblock %}" property="og:description">
-	<meta content="{% block ogImage %}/{% endblock %}" property="og:image">
+	<meta content="{{ siteUrl }}{% block ogImage %}{% endblock %}" property="og:image">
 
 	<title>{{ siteName }}{% if pageTitle is defined %} - {{ pageTitle }}{% endif %}</title>
 	

@@ -562,6 +562,9 @@ aside{
 		div[data-allow-enlarge] {
 			.image-container{
 				cursor: zoom-in;
+				border: 1px solid transparent;
+				@include box-sizing(border-box);
+				@include transition(border-color .25s ease-out);
 
 				&:before, &:after{
 					position: absolute;
@@ -576,24 +579,26 @@ aside{
 					background: $color_logo_blue;
 					opacity: 0;
 					@extend .icon;
-					@include transition(opacity .3s ease-in-out, visibility .3s, transform .3s ease-in-out);
+					@include transition(opacity .25s ease-out, visibility .25s, transform .25s ease-out);
 				}
 
 				&:before{
 					left: 0;
 					bottom: 0;
 					@extend .icon-arrow-enlarge-left-content;
-					@include translate(8px, -8px);
+					@include translate(6px, -6px);
 				}
 
 				&:after{
 					right: 0;
 					top: 0;
 					@extend .icon-arrow-enlarge-right-content;
-					@include translate(-8px, 8px);
+					@include translate(-6px, 6px);
 				}
 
 				&:hover{
+					border-color: $color_logo_blue;
+
 					&:before{
 						opacity: 1;
 						@include translate(0, 0);
