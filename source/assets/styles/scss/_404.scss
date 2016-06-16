@@ -5,18 +5,94 @@ html[data-page="error-404"] {
 		width: 100%;
 		height: 100%;
 		display: block !important;
+		background-image: image-url('error-background.jpg');
+		background-size: cover;
+		background-position: center center;
 	}
 
-	h1{
-		font-family: $font_flama;
-		font-size: 10rem;
-		color: $color_logo_red;
-	}
+	.modal{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		display: inline-block;
+		@include translate(-50%, -50%);
 
-	h2{
-		font-family: $font_flama;
-		font-size: 4rem;
-		color: $color_black;
+		.inner{
+			position: relative;
+			z-index: 1;
+			width: 100%;
+			height: 100%;
+			text-align: center;
+			background-color: white;
+			padding: 10em 20em 20em 20em;
+			border: 1px solid $color_logo_red;
+			@include box-sizing(border-box);
+		}
+
+		.shadow{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			z-index: 0;
+			top: 20px;
+			left: 20px;
+			@include dots-pattern;
+		}
+
+		h1{
+			font-family: $font_flama;
+			font-size: 16em;
+			color: $color_logo_red;
+			margin-bottom: .15em;
+		}
+
+		p{
+			font-family: $font_flama;
+			font-size: 3.6em;
+			line-height: 1.6;
+			color: $color_black;
+			@include font-smoothing;
+
+			>span{
+				display: block;
+				text-align: center;
+				white-space: nowrap;
+			}
+
+			a{
+				color: $color_black;
+				border-bottom: 1px solid $color_black;
+				@include transition(color .25s, border-color .25s);
+
+				&:hover{
+					color: $color_logo_blue;
+					border-color: $color_logo_blue;
+				}
+			}
+		}
+
+		@include breakpoint($break_mobile) {
+			font-size: .45rem;
+		}
+
+		@include breakpoint($break_below_tablet_portrait) {
+			@include translate(-50%, -60%);
+
+			.inner{
+				padding: 5vh 15vw 10vh 15vw;
+			}
+
+			p{
+				>span{
+					min-width: 60vw;
+					white-space: normal;
+				}
+			}
+		}
+
+		@include breakpoint($break_tablet) {
+			font-size: .65rem;
+		}
 	}
 
 	footer{

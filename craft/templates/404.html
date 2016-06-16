@@ -21,9 +21,17 @@
 {% set pageId = "error-404" %}
 
 {% block body %}
-	<h1>Oops 404!</h1>
-	<h2>The page you are looking for was not found.</h2>
-	<p>Please let me know should you have further inquiries. Or, you could visit the home page.</p>
+	<div class="modal">
+		<div class="inner">
+			<h1>404</h1>
+			<p>
+				<span>Well. I’d say this is embarrassing, but it’s mostly awkward.</span>
+				<span>It’s probably better if you just <a href="{{ siteUrl }}">turn around?</a></span>
+				<span>Or you can <a href="mailto:{{ craft.systemSettings.email.emailAddress }}">contact me</a> to let me know what’s missing.</span>
+			</p>
+		</div>
+		<div class="shadow"></div>
+	</div>
 
 	{% include "_includes/_footer" %}
 {% endblock %}
