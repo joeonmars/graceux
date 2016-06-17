@@ -20,6 +20,10 @@
 {% set pageTitle = "Page Not Found" %}
 {% set pageId = "error-404" %}
 
+{% block ogTitle %}{{ seo.ogTitle }}{% endblock %}
+{% block ogDescription %}{{ seo.ogDescription }}{% endblock %}
+{% block ogImage %}{{ seo.ogImage[0].url }}{% endblock %}
+
 {% block body %}
 	<div class="modal">
 		<div class="inner">

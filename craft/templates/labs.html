@@ -12,6 +12,10 @@
 
 {% import "_imports/_utils" as utils %}
 
+{% block ogTitle %}{{ seo.ogTitle }}{% endblock %}
+{% block ogDescription %}{{ seo.ogDescription }}{% endblock %}
+{% block ogImage %}{{ seo.ogImage[0].url }}{% endblock %}
+
 {% block content %}
 <div id="labs">
 

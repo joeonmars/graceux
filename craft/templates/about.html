@@ -20,6 +20,10 @@
 {% set isAjax = (craft.request.getQuery("ajax") == "true") ? true : false %}
 {% extends isAjax ? "_extends/_main-content" : "_extends/_main" %}
 
+{% block ogTitle %}{{ seo.ogTitle }}{% endblock %}
+{% block ogDescription %}{{ seo.ogDescription }}{% endblock %}
+{% block ogImage %}{{ seo.ogImage[0].url }}{% endblock %}
+
 {% block content %}
 <div id="about">
 	<section class="intro">
