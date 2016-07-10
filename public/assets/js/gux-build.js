@@ -50259,6 +50259,7 @@ goog.provide( 'gux.fx.DummyScroller' );
 goog.require( 'goog.async.Delay' );
 goog.require( 'goog.events.EventTarget' );
 goog.require( 'goog.events.EventHandler' );
+goog.require( 'goog.events.MouseWheelHandler' );
 goog.require( 'goog.dom' );
 goog.require( 'goog.fx.Dragger' );
 goog.require( 'goog.math.Size' );
@@ -50336,6 +50337,8 @@ gux.fx.DummyScroller = function( viewOuter, scrollbar, opt_speed, opt_ease ) {
 	this._eventHandler = new goog.events.EventHandler( this );
 	this._disableDummyScrollDelay = new goog.async.Delay( this.disableDummyScroll, 250, this );
 
+	this._mouseWheelHandler = new goog.events.MouseWheelHandler( this._viewOuter );
+
 	this._dragger = new goog.fx.Dragger( this._handle );
 	this._dragger.defaultAction = goog.nullFunction;
 	this._draggerLimits = new goog.math.Rect( 0, 0, 0, 0 );
@@ -50361,6 +50364,7 @@ gux.fx.DummyScroller.prototype.activate = function() {
 gux.fx.DummyScroller.prototype.deactivate = function() {
 
 	this._eventHandler.removeAll();
+	this._mouseWheelHandler.removeAllListeners();
 };
 
 
@@ -50378,7 +50382,7 @@ gux.fx.DummyScroller.prototype.lock = function( opt_y ) {
 	if ( !goog.userAgent.MOBILE ) {
 
 		this._eventHandler.unlisten( this._dummyOuter, goog.events.EventType.SCROLL, this.onDummyScroll, false, this );
-		this._eventHandler.unlisten( this._viewOuter, 'mousewheel', this.onMouseWheel, false, this );
+		this._mouseWheelHandler.unlisten( goog.events.MouseWheelHandler.EventType.MOUSEWHEEL, this.onMouseWheel, false, this );
 	}
 
 	goog.style.setStyle( this._scrollbar, 'visibility', 'hidden' );
@@ -50397,7 +50401,7 @@ gux.fx.DummyScroller.prototype.unlock = function() {
 	if ( !goog.userAgent.MOBILE ) {
 
 		this._eventHandler.listen( this._dummyOuter, goog.events.EventType.SCROLL, this.onDummyScroll, false, this );
-		this._eventHandler.listen( this._viewOuter, 'mousewheel', this.onMouseWheel, false, this );
+		this._mouseWheelHandler.listen( goog.events.MouseWheelHandler.EventType.MOUSEWHEEL, this.onMouseWheel, false, this );
 	}
 
 	goog.style.setStyle( this._scrollbar, 'visibility', 'visible' );
