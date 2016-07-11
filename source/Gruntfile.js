@@ -185,7 +185,7 @@ module.exports = function( grunt ) {
 				compilerOpts: {
 					compilation_level: 'ADVANCED_OPTIMIZATIONS', //WHITESPACE_ONLY, SIMPLE_OPTIMIZATIONS, ADVANCED_OPTIMIZATIONS
 					language_in: 'ECMASCRIPT5_STRICT',
-					externs: [ '<%= projectJsDir %>/externs.js' ],
+					externs: [ '<%= projectJsDir %>/externs.js', '<%= projectJsDir %>/universal-analytics-api.js' ],
 					define: [ "'goog.DEBUG=false'" ],
 					warning_level: 'verbose',
 					jscomp_off: [ 'checkTypes', 'fileoverviewTags' ],
